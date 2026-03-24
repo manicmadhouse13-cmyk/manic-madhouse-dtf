@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Manic Madhouse DTF Designs</title>
 
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#0f0f0f;
+color:white;
+}
+
+header{
+background:#ff007a;
+padding:20px;
+text-align:center;
+}
+
+.logo{
+height:80px;
+display:block;
+margin:0 auto 10px;
+}
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+background:#111;
+padding:60px;
+text-align:center;
+}
+
+.section{
+padding:40px 20px;
+text-align:center;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:#1b1b1b;
+padding:20px;
+border-radius:10px;
+}
+
+form{
+max-width:500px;
+margin:auto;
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:none;
+}
+
+button{
+background:#7b2cff;
+color:white;
+padding:12px;
+border:none;
+border-radius:6px;
+width:100%;
+}
+
+footer{
+padding:20px;
+text-align:center;
+background:#111;
+margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="logo.png" class="logo">
+
+<h1>Manic Madhouse DTF Designs</h1>
+
+<nav>
+<a href="#designs">Designs</a>
+<a href="#order">Custom Order</a>
+<a href="#press">Instructions</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h2>Custom DTF Transfers Made To Order</h2>
+
+<p>Upload your design or request one of our premade transfers.</p>
+
+</section>
+
+<section class="section" id="designs">
+
+<h2>Popular Designs</h2>
+
+<div class="grid">
+
+<div class="card">Chaos But Make It Cute</div>
+<div class="card">Hot Mess Express</div>
+<div class="card">Overstimulated Moms Club</div>
+<div class="card">Emotionally Support Cowgirl</div>
+<div class="card">Running On Coffee</div>
+<div class="card">Welcome To The Madhouse</div>
+
+</div>
+
+</section>
+
+<section class="section" id="order">
+
+<h2>Request Custom Order</h2>
+
+<form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
+
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="file" name="design">
+
+<select name="size">
+<option>Pocket</option>
+<option>8 inch</option>
+<option>10 inch</option>
+<option>12 inch</option>
+<option>Oversized</option>
+</select>
+
+<input type="number" name="quantity" placeholder="Quantity">
+
+<textarea name="notes" placeholder="Details"></textarea>
+
+<button type="submit">Request Quote</button>
+
+</form>
+
+</section>
+
+<section class="section" id="press">
+
+<h2>DTF Press Instructions</h2>
+
+<p>Temperature: 305°F – 320°F</p>
+<p>Press Time: 10–15 seconds</p>
+<p>Pressure: Medium / Firm</p>
+
+<p>1. Pre-press garment 5 seconds</p>
+<p>2. Place transfer</p>
+<p>3. Press 10-15 seconds</p>
+<p>4. Let cool completely</p>
+<p>5. Peel film</p>
+<p>6. Re-press 5 seconds</p>
+
+</section>
+
+<footer>
+
+<p>© Manic Madhouse DTF Designs</p>
+
+</footer>
+
+</body>
+</html>
+logo.png
