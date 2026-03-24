@@ -16,49 +16,47 @@ color:white;
 
 header{
 background:linear-gradient(90deg,#ff007a,#7b2cff);
-padding:20px;
+padding:15px;
 text-align:center;
 }
 
 .logo{
-height:90px;
-display:block;
-margin:0 auto 10px;
+height:80px;
 }
 
 nav a{
 color:white;
-margin:0 15px;
+margin:0 10px;
 text-decoration:none;
 font-weight:bold;
+font-size:14px;
 }
 
 .hero{
-padding:60px 20px;
+padding:50px 20px;
 text-align:center;
-background:#111;
 }
 
 .hero h2{
-font-size:28px;
+font-size:26px;
 }
 
 .section{
-padding:50px 20px;
+padding:40px 20px;
 text-align:center;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
 max-width:1000px;
 margin:auto;
 }
 
 .card{
 background:#151520;
-border-radius:12px;
+border-radius:10px;
 overflow:hidden;
 transition:0.3s;
 }
@@ -69,7 +67,6 @@ transform:scale(1.05);
 
 .card img{
 width:100%;
-display:block;
 }
 
 .card h4{
@@ -81,7 +78,7 @@ background:#ff007a;
 border:none;
 color:white;
 padding:10px;
-margin-bottom:15px;
+margin-bottom:10px;
 border-radius:6px;
 cursor:pointer;
 }
@@ -109,9 +106,26 @@ width:100%;
 }
 
 footer{
-padding:20px;
+padding:30px;
 text-align:center;
 background:#111;
+margin-bottom:60px;
+}
+
+.cta-bar{
+position:fixed;
+bottom:0;
+width:100%;
+background:#ff007a;
+text-align:center;
+padding:12px;
+z-index:999;
+}
+
+.cta-bar a{
+color:white;
+font-weight:bold;
+text-decoration:none;
 }
 
 </style>
@@ -121,28 +135,22 @@ background:#111;
 <body>
 
 <header>
-
 <img src="logo.png" class="logo">
-
 <h1>Manic Madhouse DTF Designs</h1>
 
 <nav>
 <a href="#designs">Designs</a>
-<a href="#order">Order</a>
-<a href="#press">Instructions</a>
+<a href="#order">Get Quote</a>
+<a href="#contact">Contact</a>
 </nav>
-
 </header>
 
 <section class="hero">
-
-<h2>Premium Custom DTF Transfers</h2>
-<p>Browse designs or request your own custom transfer.</p>
-
+<h2>Custom DTF Transfers Made To Order</h2>
+<p>Upload your design or choose from our best sellers</p>
 </section>
 
 <section class="section" id="designs">
-
 <h2>Featured Designs</h2>
 
 <div class="grid">
@@ -150,37 +158,19 @@ background:#111;
 <div class="card">
 <img src="design1.png">
 <h4>Chaos But Make It Cute</h4>
-<button onclick="location.href='#order'">Request This</button>
+<button onclick="selectDesign('Chaos But Make It Cute')">Request Quote</button>
 </div>
 
 <div class="card">
 <img src="design2.png">
 <h4>Hot Mess Express</h4>
-<button onclick="location.href='#order'">Request This</button>
+<button onclick="selectDesign('Hot Mess Express')">Request Quote</button>
 </div>
 
 <div class="card">
 <img src="design3.png">
 <h4>Overstimulated Moms Club</h4>
-<button onclick="location.href='#order'">Request This</button>
-</div>
-
-<div class="card">
-<img src="design4.png">
-<h4>Emotionally Support Cowgirl</h4>
-<button onclick="location.href='#order'">Request This</button>
-</div>
-
-<div class="card">
-<img src="design5.png">
-<h4>Running On Coffee</h4>
-<button onclick="location.href='#order'">Request This</button>
-</div>
-
-<div class="card">
-<img src="design6.png">
-<h4>Welcome To The Madhouse</h4>
-<button onclick="location.href='#order'">Request This</button>
+<button onclick="selectDesign('Overstimulated Moms Club')">Request Quote</button>
 </div>
 
 </div>
@@ -188,13 +178,16 @@ background:#111;
 </section>
 
 <section class="section" id="order">
+<h2>Request Your Quote</h2>
 
-<h2>Request Custom Order</h2>
-
-<form action="https://formspree.io/f/yourformid" method="POST">
+<form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
 
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
+
+<input type="text" id="design" name="design" placeholder="Selected Design">
+
+<input type="file" name="designfile">
 
 <select name="size">
 <option>Pocket</option>
@@ -206,7 +199,7 @@ background:#111;
 
 <input type="number" name="quantity" placeholder="Quantity">
 
-<textarea name="notes" placeholder="Details"></textarea>
+<textarea name="notes" placeholder="Tell us what you need"></textarea>
 
 <button type="submit">Request Quote</button>
 
@@ -214,21 +207,35 @@ background:#111;
 
 </section>
 
-<section class="section" id="press">
+<section class="section" id="contact">
+<h2>Order Direct</h2>
 
-<h2>DTF Press Instructions</h2>
-
-<p>305°F - 320°F | 10-15 seconds | Medium Pressure</p>
-
-<p>Pre-press → Apply → Cool → Peel → Re-press</p>
+<p>
+<a href="https://www.instagram.com/manic_madhouse_dtf_designs" target="_blank">
+Message us on Instagram
+</a>
+</p>
 
 </section>
 
 <footer>
-
 <p>© Manic Madhouse DTF Designs</p>
-
 </footer>
+
+<div class="cta-bar">
+<a href="https://www.instagram.com/manic_madhouse_dtf_designs" target="_blank">
+💬 Order via Instagram DM
+</a>
+</div>
+
+<script>
+
+function selectDesign(name){
+document.getElementById('design').value = name;
+location.href='#order';
+}
+
+</script>
 
 </body>
 </html>
