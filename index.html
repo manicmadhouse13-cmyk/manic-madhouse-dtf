@@ -1,501 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manic Madhouse DTF Designs</title>
-  <style>
-    :root{
-      --bg:#07070d;
-      --panel:#10101a;
-      --panel-2:#151524;
-      --text:#f5f5fb;
-      --muted:#b7b7c9;
-      --pink:#ff3b8d;
-      --purple:#7b2cff;
-      --gold:#f6d365;
-      --line:rgba(255,255,255,.08);
-      --shadow:0 20px 60px rgba(0,0,0,.45);
-      --radius:24px;
-      --max:1180px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manic Madhouse DTF Designs</title>
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial,Helvetica,sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(123,44,255,.14), transparent 28%),
-        radial-gradient(circle at 20% 20%, rgba(255,59,141,.12), transparent 25%),
-        var(--bg);
-      color:var(--text);
-    }
+<style>
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+body{
+font-family:Arial;
+margin:0;
+background:#0a0a0f;
+color:white;
+}
 
-    .topbar{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter:blur(14px);
-      background:rgba(7,7,13,.78);
-      border-bottom:1px solid var(--line);
-    }
+header{
+background:linear-gradient(90deg,#ff007a,#7b2cff);
+padding:20px;
+text-align:center;
+}
 
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:18px;padding:14px 0;
-    }
+.logo{
+height:90px;
+display:block;
+margin:0 auto 10px;
+}
 
-    .brand{
-      display:flex;align-items:center;gap:14px;min-width:0;
-    }
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-weight:bold;
+}
 
-    .brand img{
-      width:64px;height:64px;object-fit:contain;
-      border-radius:16px;
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      flex:0 0 auto;
-    }
+.hero{
+padding:60px 20px;
+text-align:center;
+background:#111;
+}
 
-    .brand h1{
-      margin:0;
-      font-size:18px;
-      line-height:1.1;
-      letter-spacing:.4px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
+.hero h2{
+font-size:28px;
+}
 
-    .brand p{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:13px;
-    }
+.section{
+padding:50px 20px;
+text-align:center;
+}
 
-    .menu{
-      display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:1000px;
+margin:auto;
+}
 
-    .menu a{
-      padding:10px 14px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      color:var(--text);
-      background:rgba(255,255,255,.03);
-      font-size:14px;
-    }
+.card{
+background:#151520;
+border-radius:12px;
+overflow:hidden;
+transition:0.3s;
+}
 
-    .menu a:hover{border-color:rgba(255,255,255,.22);transform:translateY(-1px)}
+.card:hover{
+transform:scale(1.05);
+}
 
-    .hero{
-      padding:72px 0 36px;
-    }
+.card img{
+width:100%;
+display:block;
+}
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:22px;
-      align-items:stretch;
-    }
+.card h4{
+margin:10px 0;
+}
 
-    .hero-main,.hero-side,.section-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
+.card button{
+background:#ff007a;
+border:none;
+color:white;
+padding:10px;
+margin-bottom:15px;
+border-radius:6px;
+cursor:pointer;
+}
 
-    .hero-main{
-      padding:34px;
-      overflow:hidden;
-      position:relative;
-    }
+form{
+max-width:500px;
+margin:auto;
+}
 
-    .hero-main::after{
-      content:"";
-      position:absolute;inset:auto -40px -50px auto;
-      width:220px;height:220px;border-radius:50%;
-      background:radial-gradient(circle, rgba(255,59,141,.22), transparent 68%);
-      filter:blur(12px);
-      pointer-events:none;
-    }
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:none;
+}
 
-    .eyebrow{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      color:var(--gold);
-      border:1px solid rgba(246,211,101,.25);
-      background:rgba(246,211,101,.08);
-      padding:8px 12px;
-      border-radius:999px;
-      margin-bottom:18px;
-    }
+button{
+background:#7b2cff;
+color:white;
+padding:12px;
+border:none;
+border-radius:6px;
+width:100%;
+}
 
-    .hero h2{
-      margin:0 0 14px;
-      font-size:clamp(34px,6vw,60px);
-      line-height:1.02;
-      letter-spacing:-.04em;
-    }
+footer{
+padding:20px;
+text-align:center;
+background:#111;
+}
 
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.65;
-      max-width:60ch;
-    }
+</style>
 
-    .hero-actions{
-      display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;
-    }
-
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      border:none;cursor:pointer;
-      padding:14px 18px;
-      border-radius:14px;
-      font-weight:700;
-      letter-spacing:.2px;
-      transition:.2s ease;
-    }
-
-    .btn-primary{
-      background:linear-gradient(135deg, var(--pink), var(--purple));
-      color:#fff;
-      box-shadow:0 12px 28px rgba(123,44,255,.28);
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      border:1px solid var(--line);
-    }
-
-    .btn:hover{transform:translateY(-2px)}
-
-    .hero-side{
-      padding:22px;
-      display:grid;
-      gap:14px;
-    }
-
-    .mini{
-      padding:18px;
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      border-radius:18px;
-    }
-
-    .mini h3{
-      margin:0 0 8px;
-      font-size:16px;
-    }
-
-    .mini p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:14px;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:14px;
-    }
-
-    .stat{
-      padding:16px 14px;
-      border-radius:18px;
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      text-align:center;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:22px;
-      margin-bottom:4px;
-    }
-
-    .stat span{color:var(--muted);font-size:12px}
-
-    .section{
-      padding:28px 0 8px;
-    }
-
-    .section-head{
-      display:flex;align-items:end;justify-content:space-between;gap:16px;
-      margin:22px 0 16px;
-    }
-
-    .section-head h3{
-      margin:0;
-      font-size:28px;
-      letter-spacing:-.03em;
-    }
-
-    .section-head p{
-      margin:0;
-      color:var(--muted);
-      max-width:58ch;
-      line-height:1.6;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:14px;
-    }
-
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:20px;
-      min-height:120px;
-      box-shadow:var(--shadow);
-      transition:.2s ease;
-    }
-
-    .card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18)}
-    .card h4{margin:0 0 8px;font-size:17px}
-    .card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
-
-    .section-card{
-      padding:26px;
-      margin-top:14px;
-    }
-
-    form{
-      display:grid;
-      gap:12px;
-      max-width:640px;
-    }
-
-    input,select,textarea{
-      width:100%;
-      padding:14px 15px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      outline:none;
-      font-size:15px;
-    }
-
-    input::placeholder, textarea::placeholder{color:#a6a6ba}
-    textarea{min-height:120px;resize:vertical}
-
-    .press-list{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:14px;
-    }
-
-    .press-step{
-      padding:18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-    }
-
-    .press-step strong{
-      display:block;
-      margin-bottom:8px;
-      color:var(--gold);
-    }
-
-    footer{
-      padding:34px 0 42px;
-      color:var(--muted);
-      text-align:center;
-    }
-
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns:1fr}
-      .nav{flex-direction:column;align-items:flex-start}
-      .menu{justify-content:flex-start}
-      .stats{grid-template-columns:1fr}
-      .section-head{flex-direction:column;align-items:flex-start}
-      .hero-main{padding:24px}
-    }
-  </style>
 </head>
+
 <body>
 
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <div class="brand">
-          <img src="logo.png" alt="Manic Madhouse DTF Designs logo">
-          <div>
-            <h1>Manic Madhouse DTF Designs</h1>
-            <p>Custom DTF transfers made to order</p>
-          </div>
-        </div>
-        <div class="menu">
-          <a href="#designs">Designs</a>
-          <a href="#order">Custom Quote</a>
-          <a href="#press">Pressing</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<header>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-main">
-          <div class="eyebrow">Made for shirts • hoodies • tote bags</div>
-          <h2>Bold DTF transfers with a clean, professional finish.</h2>
-          <p>
-            Browse popular designs, request a custom quote, and follow the pressing instructions to apply your transfer correctly.
-            Built for quick ordering and easy mobile browsing.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#order">Request a Quote</a>
-            <a class="btn btn-secondary" href="#designs">Browse Designs</a>
-          </div>
-        </div>
+<img src="logo.png" class="logo">
 
-        <aside class="hero-side">
-          <div class="mini">
-            <h3>Fast turnaround</h3>
-            <p>Simple quote requests so customers can message you with exactly what they need.</p>
-          </div>
-          <div class="mini">
-            <h3>Made to order</h3>
-            <p>Custom artwork, premade designs, and transfer sizes that fit your customer’s project.</p>
-          </div>
-          <div class="stats">
-            <div class="stat"><strong>DTF</strong><span>Transfers</span></div>
-            <div class="stat"><strong>Made</strong><span>To Order</span></div>
-            <div class="stat"><strong>Clean</strong><span>Brand Look</span></div>
-          </div>
-        </aside>
-      </div>
-    </section>
+<h1>Manic Madhouse DTF Designs</h1>
 
-    <section class="section" id="designs">
-      <div class="section-head">
-        <div>
-          <h3>Popular Designs</h3>
-          <p>Replace these cards with your real artwork over time. The layout is built to feel like a real catalog instead of a basic starter page.</p>
-        </div>
-      <div class="grid">
+<nav>
+<a href="#designs">Designs</a>
+<a href="#order">Order</a>
+<a href="#press">Instructions</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h2>Premium Custom DTF Transfers</h2>
+<p>Browse designs or request your own custom transfer.</p>
+
+</section>
+
+<section class="section" id="designs">
+
+<h2>Featured Designs</h2>
+
+<div class="grid">
 
 <div class="card">
-<img src="design1.png" style="width:100%; border-radius:12px;">
+<img src="design1.png">
 <h4>Chaos But Make It Cute</h4>
+<button onclick="location.href='#order'">Request This</button>
 </div>
 
 <div class="card">
-<img src="design2.png" style="width:100%; border-radius:12px;">
+<img src="design2.png">
 <h4>Hot Mess Express</h4>
+<button onclick="location.href='#order'">Request This</button>
 </div>
 
 <div class="card">
-<img src="design3.png" style="width:100%; border-radius:12px;">
+<img src="design3.png">
 <h4>Overstimulated Moms Club</h4>
+<button onclick="location.href='#order'">Request This</button>
 </div>
 
 <div class="card">
-<img src="design4.png" style="width:100%; border-radius:12px;">
+<img src="design4.png">
 <h4>Emotionally Support Cowgirl</h4>
+<button onclick="location.href='#order'">Request This</button>
 </div>
 
 <div class="card">
-<img src="design5.png" style="width:100%; border-radius:12px;">
+<img src="design5.png">
 <h4>Running On Coffee</h4>
+<button onclick="location.href='#order'">Request This</button>
 </div>
 
 <div class="card">
-<img src="design6.png" style="width:100%; border-radius:12px;">
+<img src="design6.png">
 <h4>Welcome To The Madhouse</h4>
+<button onclick="location.href='#order'">Request This</button>
 </div>
 
-      </div>
-    </section>
+</div>
 
-    <section class="section" id="order">
-      <div class="section-head">
-        <div>
-          <h3>Request Custom Quote</h3>
-          <p>Customers can upload artwork, choose a size, and send you the details. Replace the Formspree ID with your own when you’re ready.</p>
-        </div>
-      </div>
+</section>
 
-      <div class="section-card">
-        <form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
-          <input type="text" name="name" placeholder="Name" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="file" name="design">
-          <select name="size">
-            <option>Pocket</option>
-            <option>8 inch</option>
-            <option>10 inch</option>
-            <option>12 inch</option>
-            <option>Oversized</option>
-          </select>
-          <input type="number" name="quantity" placeholder="Quantity">
-          <textarea name="notes" placeholder="Tell us exactly what you need"></textarea>
-          <button class="btn btn-primary" type="submit">Request Quote</button>
-        </form>
-      </div>
-    </section>
+<section class="section" id="order">
 
-    <section class="section" id="press">
-      <div class="section-head">
-        <div>
-          <h3>DTF Press Instructions</h3>
-          <p>Add this page to help customers apply transfers properly. It also makes your business look more polished and trustworthy.</p>
-        </div>
-      </div>
+<h2>Request Custom Order</h2>
 
-      <div class="press-list">
-        <div class="press-step"><strong>Temperature</strong><span>305°F – 320°F</span></div>
-        <div class="press-step"><strong>Press Time</strong><span>10–15 seconds</span></div>
-        <div class="press-step"><strong>Pressure</strong><span>Medium to firm</span></div>
-        <div class="press-step"><strong>Step 1</strong><span>Pre-press garment for 5 seconds</span></div>
-        <div class="press-step"><strong>Step 2</strong><span>Place the transfer in position</span></div>
-        <div class="press-step"><strong>Step 3</strong><span>Press 10–15 seconds</span></div>
-        <div class="press-step"><strong>Step 4</strong><span>Let cool completely before peeling</span></div>
-        <div class="press-step"><strong>Step 5</strong><span>Cover and re-press for 5 seconds</span></div>
-      </div>
-    </section>
+<form action="https://formspree.io/f/yourformid" method="POST">
 
-    <section class="section" id="contact">
-      <div class="section-head">
-        <div>
-          <h3>Contact</h3>
-          <p>Add your social links here when you’re ready. You can also turn this into a clickable button section later.</p>
-        </div>
-      </div>
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
 
-      <div class="section-card">
-        <p style="margin-top:0;color:var(--muted);line-height:1.7">
-          Instagram: manic_madhouse_dtf_designs<br>
-          Facebook: Manic Madhouse DTF Designs
-        </p>
-      </div>
-    </section>
-  </main>
+<select name="size">
+<option>Pocket</option>
+<option>8 inch</option>
+<option>10 inch</option>
+<option>12 inch</option>
+<option>Oversized</option>
+</select>
 
-  <footer>
-    © 2026 Manic Madhouse DTF Designs
-  </footer>
+<input type="number" name="quantity" placeholder="Quantity">
+
+<textarea name="notes" placeholder="Details"></textarea>
+
+<button type="submit">Request Quote</button>
+
+</form>
+
+</section>
+
+<section class="section" id="press">
+
+<h2>DTF Press Instructions</h2>
+
+<p>305°F - 320°F | 10-15 seconds | Medium Pressure</p>
+
+<p>Pre-press → Apply → Cool → Peel → Re-press</p>
+
+</section>
+
+<footer>
+
+<p>© Manic Madhouse DTF Designs</p>
+
+</footer>
 
 </body>
 </html>
