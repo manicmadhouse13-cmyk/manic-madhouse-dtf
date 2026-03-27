@@ -14,10 +14,12 @@ background:#0a0a0f;
 color:white;
 }
 
+/* HEADER */
 header{
 background:linear-gradient(90deg,#ff007a,#7b2cff);
-padding:15px;
+padding:20px;
 text-align:center;
+box-shadow:0 0 15px rgba(255,0,122,0.4);
 }
 
 .logo{
@@ -32,50 +34,58 @@ font-weight:bold;
 font-size:14px;
 }
 
+nav a:hover{
+color:#ff007a;
+}
+
+/* HERO */
 .hero{
-padding:50px 20px;
+padding:60px 20px;
 text-align:center;
 }
 
 .hero h2{
-font-size:26px;
+font-size:30px;
+margin-bottom:10px;
 }
 
+/* SECTIONS */
 .section{
-padding:40px 20px;
+padding:50px 20px;
 text-align:center;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-max-width:1000px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:1100px;
 margin:auto;
 }
 
+/* CARDS */
 .card{
 background:#151520;
-border-radius:10px;
+border-radius:12px;
 overflow:hidden;
 transition:0.3s;
+box-shadow:0 0 10px rgba(123,44,255,0.2);
 }
 
 .card:hover{
 transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,0,122,0.6);
 }
 
 .card img{
 width:100%;
-height:250px;
+height:260px;
 object-fit:cover;
 border-bottom:2px solid #ff007a;
 }
-}
-
 
 .card h4{
-margin:10px 0;
+margin:12px 0;
 }
 
 .card button{
@@ -88,14 +98,23 @@ border-radius:6px;
 cursor:pointer;
 }
 
+.card button:hover{
+background:#ff4da6;
+}
+
+/* FORM */
 form{
 max-width:500px;
 margin:auto;
+background:#151520;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(123,44,255,0.3);
 }
 
 input,select,textarea{
 width:100%;
-padding:10px;
+padding:12px;
 margin:8px 0;
 border-radius:6px;
 border:none;
@@ -108,8 +127,14 @@ padding:12px;
 border:none;
 border-radius:6px;
 width:100%;
+cursor:pointer;
 }
 
+button:hover{
+background:#9b4dff;
+}
+
+/* FOOTER */
 footer{
 padding:30px;
 text-align:center;
@@ -117,6 +142,7 @@ background:#111;
 margin-bottom:60px;
 }
 
+/* CTA BAR */
 .cta-bar{
 position:fixed;
 bottom:0;
@@ -152,7 +178,7 @@ text-decoration:none;
 
 <section class="hero">
 <h2>Custom DTF Transfers Made To Order</h2>
-<p>Upload your design or choose from our best sellers</p>
+<p>Upload your design or request a custom print</p>
 </section>
 
 <section class="section" id="designs">
@@ -160,89 +186,30 @@ text-decoration:none;
 
 <div class="grid">
 
-<div class="card">
-<img src="design1.png">
-<h4>Chaos But Make It Cute</h4>
-<button onclick="selectDesign('Chaos But Make It Cute')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design2.png">
-<h4>Hot Mess Express</h4>
-<button onclick="selectDesign('Hot Mess Express')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design3.png">
-<h4>Overstimulated Moms Club</h4>
-<button onclick="selectDesign('Overstimulated Moms Club')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design4.png">
-<h4>Speed demon</h4>
-<button onclick="selectDesign('Speed demon')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design6.png">
-<h4>Nitrous Power</h4>
-<button onclick="selectDesign('Nitrous Power')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design7.png">
-<h4>Jdm Legend</h4>
-<button onclick="selectDesign('Jdm Legend')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design8.png">
-<h4>In My mom era</h4>
-<button onclick="selectDesign('In My mom era')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design9.png">
-<h4>Welcome to the Madhouse</h4>
-<button onclick="selectDesign('Welcome to the Madhouse')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design10.png">
-<h4>Support Cowgirl</h4>
-<button onclick="selectDesign('Support Cowgirl')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design11.png">
-<h4>Running on Coffee</h4>
-<button onclick="selectDesign('Running on Coffee')">Request Quote</button>
-</div>
-
-<div class="card">
-<img src="design12.png">
-<h4>F-bomb mom</h4>
-<button onclick="selectDesign('F-bomb mom')">Request Quote</button>
-</div>
+<!-- KEEPING ALL YOUR DESIGNS -->
+<div class="card"><img src="design1.png"><h4>Chaos But Make It Cute</h4><button onclick="selectDesign('Chaos But Make It Cute')">Request Quote</button></div>
+<div class="card"><img src="design2.png"><h4>Hot Mess Express</h4><button onclick="selectDesign('Hot Mess Express')">Request Quote</button></div>
+<div class="card"><img src="design3.png"><h4>Overstimulated Moms Club</h4><button onclick="selectDesign('Overstimulated Moms Club')">Request Quote</button></div>
+<div class="card"><img src="design4.png"><h4>Speed demon</h4><button onclick="selectDesign('Speed demon')">Request Quote</button></div>
+<div class="card"><img src="design6.png"><h4>Nitrous Power</h4><button onclick="selectDesign('Nitrous Power')">Request Quote</button></div>
+<div class="card"><img src="design7.png"><h4>Jdm Legend</h4><button onclick="selectDesign('Jdm Legend')">Request Quote</button></div>
+<div class="card"><img src="design8.png"><h4>In My mom era</h4><button onclick="selectDesign('In My mom era')">Request Quote</button></div>
+<div class="card"><img src="design9.png"><h4>Welcome to the Madhouse</h4><button onclick="selectDesign('Welcome to the Madhouse')">Request Quote</button></div>
+<div class="card"><img src="design10.png"><h4>Support Cowgirl</h4><button onclick="selectDesign('Support Cowgirl')">Request Quote</button></div>
+<div class="card"><img src="design11.png"><h4>Running on Coffee</h4><button onclick="selectDesign('Running on Coffee')">Request Quote</button></div>
+<div class="card"><img src="design12.png"><h4>F-bomb mom</h4><button onclick="selectDesign('F-bomb mom')">Request Quote</button></div>
 
 </div>
-</div>
-
 </section>
 
 <section class="section" id="order">
 <h2>Request Your Quote</h2>
 
 <form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
-
 <input type="text" name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
-
 <input type="text" id="design" name="design" placeholder="Selected Design">
-
 <input type="file" name="designfile">
-
 <select name="size">
 <option>Pocket</option>
 <option>8 inch</option>
@@ -250,26 +217,20 @@ text-decoration:none;
 <option>12 inch</option>
 <option>Oversized</option>
 </select>
-
 <input type="number" name="quantity" placeholder="Quantity">
-
 <textarea name="notes" placeholder="Tell us what you need"></textarea>
-
 <button type="submit">Request Quote</button>
-
 </form>
 
 </section>
 
 <section class="section" id="contact">
 <h2>Order Direct</h2>
-
 <p>
 <a href="https://www.instagram.com/manic_madhouse_dtf_designs" target="_blank">
 Message us on Instagram
 </a>
 </p>
-
 </section>
 
 <footer>
@@ -283,12 +244,10 @@ Message us on Instagram
 </div>
 
 <script>
-
 function selectDesign(name){
 document.getElementById('design').value = name;
 location.href='#order';
 }
-
 </script>
 
 </body>
