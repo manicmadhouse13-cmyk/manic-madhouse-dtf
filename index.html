@@ -133,12 +133,6 @@ cursor:pointer;
 button:hover{
 background:#9b4dff;
 }
-<section class="section">
-<h2>⭐ Customer Reviews</h2>
-
-<p>⭐⭐⭐⭐⭐ “Amazing quality prints! Will order again.”</p>
-<p>⭐⭐⭐⭐⭐ “Fast turnaround and great communication!”</p>
-<p>⭐⭐⭐⭐⭐ “Designs are 🔥 and press perfectly.”</p>
 
 </section>
 /* FOOTER */
@@ -270,43 +264,6 @@ Message us on Instagram
 💬 Order via Instagram DM
 </a>
 </div>
-
-<script>
-function selectDesign(name){
-document.getElementById('design').value = name;
-location.href='#order';
-}
-<div id="cart" style="position:fixed; right:10px; top:80px; background:#111; padding:15px; border-radius:10px; width:250px; border:1px solid #333;">
-<h3>🛒 Cart</h3>
-<ul id="cart-items"></ul>
-<button onclick="checkout()">Checkout</button>
-</div>
-
-<script>
-let cart = [];
-
-function addToCart(item){
-cart.push(item);
-updateCart();
-}
-
-function updateCart(){
-let list = document.getElementById("cart-items");
-list.innerHTML = "";
-cart.forEach((item, index)=>{
-list.innerHTML += `<li>${item} <button onclick="removeItem(${index})">x</button></li>`;
-});
-}
-
-function removeItem(index){
-cart.splice(index,1);
-updateCart();
-}
-
-function checkout(){
-alert("Send us a message on Instagram to complete your order!");
-}
-</script>
 </body>
 </html>
 
