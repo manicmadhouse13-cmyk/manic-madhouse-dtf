@@ -6,37 +6,7 @@
 <title>Manic Madhouse DTF Designs</title>
 
 <style>
-<div id="cart" style="position:fixed; right:10px; top:80px; background:#111; padding:15px; border-radius:10px; width:250px; border:1px solid #333;">
-<h3>🛒 Cart</h3>
-<ul id="cart-items"></ul>
-<button onclick="checkout()">Checkout</button>
-</div>
 
-<script>
-let cart = [];
-
-function addToCart(item){
-cart.push(item);
-updateCart();
-}
-
-function updateCart(){
-let list = document.getElementById("cart-items");
-list.innerHTML = "";
-cart.forEach((item, index)=>{
-list.innerHTML += `<li>${item} <button onclick="removeItem(${index})">x</button></li>`;
-});
-}
-
-function removeItem(index){
-cart.splice(index,1);
-updateCart();
-}
-
-function checkout(){
-alert("Send us a message on Instagram to complete your order!");
-}
-</script>
 body{
 font-family:Arial;
 margin:0;
@@ -306,7 +276,37 @@ function selectDesign(name){
 document.getElementById('design').value = name;
 location.href='#order';
 }
+<div id="cart" style="position:fixed; right:10px; top:80px; background:#111; padding:15px; border-radius:10px; width:250px; border:1px solid #333;">
+<h3>🛒 Cart</h3>
+<ul id="cart-items"></ul>
+<button onclick="checkout()">Checkout</button>
+</div>
 
+<script>
+let cart = [];
+
+function addToCart(item){
+cart.push(item);
+updateCart();
+}
+
+function updateCart(){
+let list = document.getElementById("cart-items");
+list.innerHTML = "";
+cart.forEach((item, index)=>{
+list.innerHTML += `<li>${item} <button onclick="removeItem(${index})">x</button></li>`;
+});
+}
+
+function removeItem(index){
+cart.splice(index,1);
+updateCart();
+}
+
+function checkout(){
+alert("Send us a message on Instagram to complete your order!");
+}
+</script>
 </body>
 </html>
 
