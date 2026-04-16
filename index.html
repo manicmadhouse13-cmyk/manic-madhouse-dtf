@@ -6,29 +6,25 @@
 <title>Manic Madhouse DTF Designs</title>
 
 <style>
-
 body{
 font-family:Arial;
 margin:0;
 background:#0a0a0f;
 color:white;
 }
-<style>
 
-body{
-...
-}
-</style>
 /* HEADER */
 header{
 background:linear-gradient(90deg,#ff007a,#7b2cff);
-padding:20px;
+padding:15px;
 text-align:center;
-box-shadow:0 0 15px rgba(255,0,122,0.4);
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .logo{
-height:80px;
+height:70px;
 }
 
 nav a{
@@ -39,10 +35,6 @@ font-weight:bold;
 font-size:14px;
 }
 
-nav a:hover{
-color:#ff007a;
-}
-
 /* HERO */
 .hero{
 padding:60px 20px;
@@ -51,7 +43,6 @@ text-align:center;
 
 .hero h2{
 font-size:30px;
-margin-bottom:10px;
 }
 
 /* SECTIONS */
@@ -74,12 +65,11 @@ background:#151520;
 border-radius:12px;
 overflow:hidden;
 transition:0.3s;
-box-shadow: 0 0 10px rgba(123,44,255,0.2);
 }
 
 .card:hover{
 transform:scale(1.05);
-box-shadow:0 0 20px rgba(255,0,122,0.6);
+box-shadow:0 0 20px rgba(255,0,122,0.5);
 }
 
 .card img{
@@ -90,7 +80,7 @@ border-bottom:2px solid #ff007a;
 }
 
 .card h4{
-margin:12px 0;
+margin:10px 0;
 }
 
 .card button{
@@ -103,10 +93,6 @@ border-radius:6px;
 cursor:pointer;
 }
 
-.card button:hover{
-background:#ff4da6;
-}
-
 /* FORM */
 form{
 max-width:500px;
@@ -114,41 +100,17 @@ margin:auto;
 background:#151520;
 padding:20px;
 border-radius:10px;
-box-shadow:0 0 15px rgba(123,44,255,0.3);
 }
 
 input,select,textarea{
 width:100%;
-padding:12px;
+padding:10px;
 margin:8px 0;
 border-radius:6px;
 border:none;
 }
 
-button{
-background:#7b2cff;
-color:white;
-padding:12px;
-border:none;
-border-radius:6px;
-width:100%;
-cursor:pointer;
-}
-
-button:hover{
-background:#9b4dff;
-}
-
-</section>
-/* FOOTER */
-footer{
-padding:30px;
-text-align:center;
-background:#111;
-margin-bottom:60px;
-}
-
-/* CTA BAR */
+/* CTA */
 .cta-bar{
 position:fixed;
 bottom:0;
@@ -156,17 +118,36 @@ width:100%;
 background:#ff007a;
 text-align:center;
 padding:12px;
-z-index:999;
 }
 
 .cta-bar a{
 color:white;
-font-weight:bold;
 text-decoration:none;
+font-weight:bold;
 }
 
-</style>
+/* CART */
+#cart-toggle{
+position:fixed;
+right:15px;
+bottom:70px;
+background:#7b2cff;
+padding:12px;
+border-radius:50%;
+cursor:pointer;
+}
 
+#cart{
+position:fixed;
+right:15px;
+bottom:130px;
+background:#111;
+padding:15px;
+border-radius:10px;
+display:none;
+width:250px;
+}
+</style>
 </head>
 
 <body>
@@ -174,115 +155,120 @@ text-decoration:none;
 <header>
 <img src="logo.png" class="logo">
 <h1>Manic Madhouse DTF Designs</h1>
-
 <nav>
 <a href="#designs">Designs</a>
-<a href="#order">Get Quote</a>
+<a href="#order">Order</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
 
 <section class="hero">
-<h2><h2>Premium Custom DTF Transfers & Stickers</h2>
-<p>Fast turnaround • High quality • Built for brands & businesses</p>
+<h2>🔥 Premium Custom DTF Transfers & Stickers</h2>
+<p>Australia Wide Shipping • Fast Turnaround • High Quality Prints</p>
 </section>
 
 <section class="section" id="designs">
-<h2>Featured Designs</h2>
-<div class="card"><img src="design21.png"><h4>Stay Wild</h4><button onclick="selectDesign('Stay Wild')">Request Quote</button></div>
-<div class="grid">
-<div class="card"><img src="design22.png"><h4>Lucky 13</h4><button onclick="selectDesign('Lucky13')">Request Quote</button></div>
-<section class="section">
-<div class="card"><img src="design23.png"><h4>Keep Tripping</h4><button onclick="selectDesign('Keep Tripping')">Request Quote</button></div>
-<div class="card"><img src="design24.png"><h4></h4>Unlucky 13<button onclick="selectDesign('Unlucky 13')">Request Quote</button></div>
-<h2>Why Choose Us</h2>
+<h2>🔥 Featured Designs</h2>
 
 <div class="grid">
 
-<div class="card"><h4>🔥 High Quality Prints</h4></div>
-<div class="card"><h4>⚡ Fast Turnaround</h4></div>
-<div class="card"><h4>🎯 Custom Designs Welcome</h4></div>
-<div class="card"><h4>💰 Bulk Pricing Available</h4></div>
-<p style="opacity:0.8; font-size:14px;">
-🇦🇺 Based in Australia • Fast Turnaround • Shipping Nationwide
-</p>
-<div class="card"><h4>📨 Email us at manicmadhouse13@gmail.com</h4>
+<!-- PRODUCTS -->
+<div class="card">
+<img src="design1.png">
+<h4>Chaos But Make It Cute</h4>
+<button onclick="addToCart('Chaos But Make It Cute')">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="design2.png">
+<h4>Hot Mess Express</h4>
+<button onclick="addToCart('Hot Mess Express')">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="design3.png">
+<h4>Overstimulated Moms Club</h4>
+<button onclick="addToCart('Overstimulated Moms Club')">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="design4.png">
+<h4>IDGAF</h4>
+<button onclick="addToCart('IDGAF')">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="design14.png">
+<h4>Not Here To Fck Spiders</h4>
+<button onclick="addToCart('Not Here To Fck Spiders')">Add to Cart</button>
+</div>
+
 </div>
 </section>
-<!-- KEEPING ALL YOUR DESIGNS -->
-<div class="card"><img src="design1.png"><h4>Chaos But Make It Cute</h4><button onclick="selectDesign('Chaos But Make It Cute')">Request Quote</button></div>
-<div class="card"><img src="design2.png"><h4>Hot Mess Express</h4><button onclick="selectDesign('Hot Mess Express')">Request Quote</button></div>
-<div class="card"><img src="design3.png"><h4>Overstimulated Moms Club</h4><button onclick="selectDesign('Overstimulated Moms Club')">Request Quote</button></div>
-<div class="card"><img src="design4.png"><h4>IDGAF</h4><button onclick="selectDesign('Speed demon')">Request Quote</button></div>
-<div class="card"><img src="design6.png"><h4>Built different</h4><button onclick="selectDesign('Nitrous Power')">Request Quote</button></div>
-<div class="card"><img src="design7.png"><h4>Jdm Legend</h4><button onclick="selectDesign('Jdm Legend')">Request Quote</button></div>
-<div class="card"><img src="design8.png"><h4>In My mom era</h4><button onclick="selectDesign('In My mom era')">Request Quote</button></div>
-<div class="card"><img src="design9.png"><h4>Welcome to the Madhouse</h4><button onclick="selectDesign('Welcome to the Madhouse')">Request Quote</button></div>
-<div class="card"><img src="design10.png"><h4>Support Cowgirl</h4><button onclick="selectDesign('Support Cowgirl')">Request Quote</button></div>
-<div class="card"><img src="design11.png"><h4>Running on Coffee</h4><button onclick="selectDesign('Running on Coffee')">Request Quote</button></div>
-<div class="card"><img src="design12.png"><h4>F-bomb mom</h4><button onclick="selectDesign('F-bomb mom')">Request Quote</button></div>
-<div class="card"><img src="design13.png"><h4>Zero Fcks Given</h4><button onclick="selectDesign('Zero Fcks Given')">Request Quote</button></div>
-<div class="card"><img src="design14.png"><h4>Not Here To Fck Spiders</h4><button onclick="selectDesign('Not Here To Fck Spiders')">Request Quote</button></div>
-<h2>🔥 Beach Collection</h2>
-<div class="card"><img src="design15.png"><h4>Good Times & Tan Lines</h4><button onclick="selectDesign('Good Time & Tan Lines')">Request Quote</button></div> 
-<div class="card"><img src="design16.png"><h4>Saltwater Therapy</h4><button onclick="selectDesign('Saltwater Therapy')">Request Quote</button></div>
-<div class="card"><img src="design17.png"><h4>Catch Waves Not Feelings</h4><button onclick="select Design('Catch Waves Not Feelings')">Request Quote</button></div>
-</div>
+
+<section class="section">
+<h2>⭐ Reviews</h2>
+<p>⭐⭐⭐⭐⭐ Amazing quality!</p>
+<p>⭐⭐⭐⭐⭐ Fast turnaround!</p>
+<p>⭐⭐⭐⭐⭐ Highly recommend!</p>
 </section>
 
 <section class="section" id="order">
-<h2>Request Your Quote</h2>
+<h2>📩 Request Quote</h2>
 
-<form action="https://formspree.io/f/yourformid" method="POST" enctype="multipart/form-data">
-<input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<input type="text" id="design" name="design" placeholder="Selected Design">
-<input type="file" name="designfile">
-<select name="size">
-<option>Pocket</option>
-<option>8 inch</option>
-<option>10 inch</option>
-<option>12 inch</option>
-<option>Oversized</option>
-</select>
-<input type="number" name="quantity" placeholder="Quantity">
-<textarea name="notes" placeholder="Tell us what you need"></textarea>
-<button type="submit">Request Quote</button>
+<form>
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea placeholder="What do you need?"></textarea>
+<button>Send</button>
 </form>
 
 </section>
 
 <section class="section" id="contact">
-<h2>Order Direct</h2>
-<p>
+<h2>💬 Contact</h2>
 <a href="https://www.instagram.com/manic_madhouse_dtf_designs" target="_blank">
-Message us on Instagram
+Message on Instagram
 </a>
-</p>
 </section>
-<section class="section">
-<h2>⭐ Customer Reviews</h2>
 
-<p>⭐⭐⭐⭐⭐ “Amazing quality prints! Will order again.”</p>
-<p>⭐⭐⭐⭐⭐ “Fast turnaround and great communication!”</p>
-<p>⭐⭐⭐⭐⭐ “Designs are 🔥 and press perfectly.”</p>
-
-</section>
 <footer>
 <p>© Manic Madhouse DTF Designs</p>
 </footer>
 
 <div class="cta-bar">
-<a href="https://www.instagram.com/manic_madhouse_dtf_designs" target="_blank">
-💬 Order via Instagram DM
-</a>
+<a href="https://www.instagram.com/manic_madhouse_dtf_designs">Order via Instagram</a>
+</div>
+
 <div id="cart-toggle" onclick="toggleCart()">🛒</div>
 
-<div id="cart" style="display:none;">
-<h3>🛒 Cart</h3>
+<div id="cart">
+<h3>Cart</h3>
 <ul id="cart-items"></ul>
-<button onclick="checkout()">Checkout</button>
 </div>
+
+<script>
+let cart=[];
+
+function addToCart(item){
+cart.push(item);
+updateCart();
+}
+
+function updateCart(){
+let list=document.getElementById("cart-items");
+list.innerHTML="";
+cart.forEach(item=>{
+list.innerHTML+=`<li>${item}</li>`;
+});
+}
+
+function toggleCart(){
+let cartBox=document.getElementById("cart");
+cartBox.style.display=cartBox.style.display==="none"?"block":"none";
+}
+</script>
+
 </body>
 </html>
 
