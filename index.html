@@ -264,12 +264,14 @@ Message on Instagram
 <div id="cart-toggle" onclick="toggleCart()">🛒</div>
 
 <div id="cart">
-<h3>Cart</h3>
+<h3>🛒 Cart</h3>
 <ul id="cart-items"></ul>
+
+<button onclick="checkout()">Checkout with PayPal</button>
 </div>
 
 <script>
-let cart=[];
+let cart = [];
 
 function addToCart(item){
 cart.push(item);
@@ -277,16 +279,40 @@ updateCart();
 }
 
 function updateCart(){
-let list=document.getElementById("cart-items");
-list.innerHTML="";
+let list = document.getElementById("cart-items");
+list.innerHTML = "";
+
 cart.forEach(item=>{
-list.innerHTML+=`<li>${item}</li>`;
+list.innerHTML += `<li>${item}</li>`;
 });
 }
 
 function toggleCart(){
-let cartBox=document.getElementById("cart");
-cartBox.style.display=cartBox.style.display==="none"?"block":"none";
+let cartBox = document.getElementById("cart");
+cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
+}
+
+function checkout(){
+if(cart.length === 0){
+alert("Your cart is empty!");
+return;
+}
+
+// 👉 PUT YOUR PAYPAL LINK HERE
+let paypalLink = "https://www.https://paypal.me/manicmadhousedtfdesi";
+
+// Create order message
+let orderDetails = "Order: " + cart.join(", ");
+
+// Open PayPal
+window.open(paypalLink, "_blank");
+
+// Show instructions
+alert("After payment, please include your design names in PayPal notes:\n\n" + orderDetails);
+
+// Clear cart
+cart = [];
+updateCart();
 }
 </script>
 
