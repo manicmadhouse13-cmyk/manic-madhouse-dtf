@@ -338,23 +338,37 @@ Message on Instagram
 </div>
 
 <script>
-let cart = [];
+<script>
+function getCart(){
+return JSON.parse(localStorage.getItem("cart")) || [];
+}
 
-function addToCart(name, price){
-let existing = cart.find(item => item.name === name);
+function saveCart(cart){
+localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function addToCart(name, price, size){
+let cart = getCart();
+
+let existing = cart.find(item => item.name === name && item.size === size);
 
 if(existing){
 existing.qty++;
 } else {
-cart.push({name, price, qty:1});
+cart.push({name, price, size, qty:1});
 }
 
+saveCart(cart);
 updateCart();
 }
 
 function updateCart(){
+let cart = getCart();
+
 let list = document.getElementById("cart-items");
 let totalDisplay = document.getElementById("cart-total");
+
+if(!list || !totalDisplay) return;
 
 list.innerHTML = "";
 let total = 0;
@@ -365,12 +379,12 @@ total += itemTotal;
 
 list.innerHTML += `
 <li>
-${item.name} ($${item.price})
+${item.name} (${item.size}) - $${item.price}
 <div>
-<button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+<button onclick="changeQty(${index}, -1)">-</button>
 ${item.qty}
-<button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
-<button class="remove-btn" onclick="removeItem(${index})">x</button>
+<button onclick="changeQty(${index}, 1)">+</button>
+<button onclick="removeItem(${index})">x</button>
 </div>
 </li>
 `;
@@ -380,17 +394,21 @@ totalDisplay.innerText = total;
 }
 
 function changeQty(index, amount){
+let cart = getCart();
 cart[index].qty += amount;
 
 if(cart[index].qty <= 0){
 cart.splice(index,1);
 }
 
+saveCart(cart);
 updateCart();
 }
 
 function removeItem(index){
+let cart = getCart();
 cart.splice(index,1);
+saveCart(cart);
 updateCart();
 }
 
@@ -401,8 +419,10 @@ cartBox.style.display === "none" ? "block" : "none";
 }
 
 function checkout(){
+let cart = getCart();
+
 if(cart.length === 0){
-alert("Your cart is empty!");
+alert("Cart is empty!");
 return;
 }
 
@@ -411,22 +431,22 @@ let summary = "";
 
 cart.forEach(item=>{
 total += item.price * item.qty;
-summary += `${item.name} x${item.qty}, `;
+summary += `${item.name} (${item.size}) x${item.qty}, `;
 });
 
 let paypalLink = "https://paypal.me/manicmadhousedtfdesi/" + total;
 
 window.open(paypalLink, "_blank");
 
-alert("Order:\n" + summary + "\nTotal: $" + total + "\n\nAdd this in PayPal notes.");
+alert("Order:\n" + summary + "\nTotal: $" + total);
 
-cart = [];
+localStorage.removeItem("cart");
 updateCart();
 }
-function viewProduct(name, image, price){
-window.location.href =
-`product.html?name=${encodeURIComponent(name)}&image=${image}&price=${price}`;
-}  
+
+// Load cart on page load
+window.onload = updateCart;
+</script>
   </script>
 
 </body>
