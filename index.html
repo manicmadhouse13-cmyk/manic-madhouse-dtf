@@ -282,6 +282,7 @@ let cart = [];
 let total = 0;
 
 function addToCart(name, price){
+console.log("Adding:", name); // debug
 cart.push({name, price});
 total += price;
 updateCart();
@@ -290,6 +291,11 @@ updateCart();
 function updateCart(){
 let list = document.getElementById("cart-items");
 let totalDisplay = document.getElementById("cart-total");
+
+if(!list || !totalDisplay){
+console.error("Cart elements missing!");
+return;
+}
 
 list.innerHTML = "";
 
@@ -302,7 +308,10 @@ totalDisplay.innerText = total;
 
 function toggleCart(){
 let cartBox = document.getElementById("cart");
-cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
+if(!cartBox) return;
+
+cartBox.style.display =
+cartBox.style.display === "none" ? "block" : "none";
 }
 
 function checkout(){
@@ -311,19 +320,10 @@ alert("Your cart is empty!");
 return;
 }
 
-// 👉 PUT YOUR PAYPAL LINK HERE
 let paypalLink = "https://www.https://paypal.me/manicmadhousedtfdesi";/" + total;
 
-// Order summary
-let orderDetails = cart.map(item => item.name).join(", ");
-
-// Open PayPal with amount
 window.open(paypalLink, "_blank");
 
-// Instructions
-alert("Order:\n" + orderDetails + "\n\nTotal: $" + total + "\n\nAdd this in PayPal notes.");
-
-// Reset cart
 cart = [];
 total = 0;
 updateCart();
