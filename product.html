@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product - Manic Madhouse</title>
+<title>Product</title>
 
 <style>
 body{
@@ -21,11 +21,19 @@ padding:40px 20px;
 img{
 max-width:90%;
 border-radius:12px;
-box-shadow:0 0 20px rgba(255,0,122,0.5);
+cursor:pointer;
+transition:0.3s;
 }
 
-h2{
-margin-top:20px;
+img:hover{
+transform:scale(1.05);
+}
+
+select{
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+border:none;
 }
 
 button{
@@ -39,9 +47,9 @@ cursor:pointer;
 }
 
 a{
-color:#ff007a;
 display:block;
 margin-top:20px;
+color:#ff007a;
 }
 </style>
 </head>
@@ -52,37 +60,44 @@ margin-top:20px;
 
 <img id="product-image">
 <h2 id="product-name"></h2>
-<p id="product-price"></p>
+
+<p>Select Size:</p>
+
+<select id="size">
+<option value="10">Pocket - $10</option>
+<option value="15">Medium - $15</option>
+<option value="20">Large - $20</option>
+<option value="25">Oversize - $25</option>
+</select>
 
 <button onclick="addToCart()">Add to Cart</button>
 
-<a href="index.html">⬅ Back to shop</a>
+<a href="index.html">⬅ Back</a>
 
 </div>
 
 <script>
-// GET URL DATA
 const params = new URLSearchParams(window.location.search);
 
 const name = params.get("name");
 const image = params.get("image");
-const price = params.get("price");
 
-// DISPLAY
 document.getElementById("product-name").innerText = name;
 document.getElementById("product-image").src = image;
-document.getElementById("product-price").innerText = "$" + price;
 
-// ADD TO CART (simple local storage)
 function addToCart(){
+let sizeSelect = document.getElementById("size");
+let price = Number(sizeSelect.value);
+let sizeText = sizeSelect.options[sizeSelect.selectedIndex].text;
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let existing = cart.find(item => item.name === name);
+let existing = cart.find(item => item.name === name && item.size === sizeText);
 
 if(existing){
 existing.qty++;
 } else {
-cart.push({name, price: Number(price), qty:1});
+cart.push({name, price, size: sizeText, qty:1});
 }
 
 localStorage.setItem("cart", JSON.stringify(cart));
