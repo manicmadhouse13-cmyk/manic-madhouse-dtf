@@ -306,11 +306,16 @@ Message on Instagram
 
 <script>
 let cart = [];
-let total = 0;
 
 function addToCart(name, price){
-cart.push({name, price});
-total += price;
+let existing = cart.find(item => item.name === name);
+
+if(existing){
+existing.qty++;
+} else {
+cart.push({name, price, qty:1});
+}
+
 updateCart();
 }
 
@@ -319,12 +324,41 @@ let list = document.getElementById("cart-items");
 let totalDisplay = document.getElementById("cart-total");
 
 list.innerHTML = "";
+let total = 0;
 
-cart.forEach(item=>{
-list.innerHTML += `<li>${item.name} - $${item.price}</li>`;
+cart.forEach((item, index)=>{
+let itemTotal = item.price * item.qty;
+total += itemTotal;
+
+list.innerHTML += `
+<li>
+${item.name} ($${item.price})
+<div>
+<button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+${item.qty}
+<button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+<button class="remove-btn" onclick="removeItem(${index})">x</button>
+</div>
+</li>
+`;
 });
 
 totalDisplay.innerText = total;
+}
+
+function changeQty(index, amount){
+cart[index].qty += amount;
+
+if(cart[index].qty <= 0){
+cart.splice(index,1);
+}
+
+updateCart();
+}
+
+function removeItem(index){
+cart.splice(index,1);
+updateCart();
 }
 
 function toggleCart(){
@@ -339,15 +373,24 @@ alert("Your cart is empty!");
 return;
 }
 
+let total = 0;
+let summary = "";
+
+cart.forEach(item=>{
+total += item.price * item.qty;
+summary += `${item.name} x${item.qty}, `;
+});
+
 let paypalLink = "https://paypal.me/manicmadhousedtfdesi/" + total;
 
 window.open(paypalLink, "_blank");
 
+alert("Order:\n" + summary + "\nTotal: $" + total + "\n\nAdd this in PayPal notes.");
+
 cart = [];
-total = 0;
 updateCart();
 }
-</script>
+  </script>
 
 </body>
 </html>
