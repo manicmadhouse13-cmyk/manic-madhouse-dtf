@@ -279,19 +279,25 @@ Message on Instagram
 
 <script>
 let cart = [];
+let total = 0;
 
-function addToCart(item){
-cart.push(item);
+function addToCart(name, price){
+cart.push({name, price});
+total += price;
 updateCart();
 }
 
 function updateCart(){
 let list = document.getElementById("cart-items");
+let totalDisplay = document.getElementById("cart-total");
+
 list.innerHTML = "";
 
 cart.forEach(item=>{
-list.innerHTML += `<li>${item}</li>`;
+list.innerHTML += `<li>${item.name} - $${item.price}</li>`;
 });
+
+totalDisplay.innerText = total;
 }
 
 function toggleCart(){
@@ -306,19 +312,20 @@ return;
 }
 
 // 👉 PUT YOUR PAYPAL LINK HERE
-let paypalLink = "https://www.https://paypal.me/manicmadhousedtfdesi";
+let paypalLink = "https://www.https://paypal.me/manicmadhousedtfdesi";/" + total;
 
-// Create order message
-let orderDetails = "Order: " + cart.join(", ");
+// Order summary
+let orderDetails = cart.map(item => item.name).join(", ");
 
-// Open PayPal
+// Open PayPal with amount
 window.open(paypalLink, "_blank");
 
-// Show instructions
-alert("After payment, please include your design names in PayPal notes:\n\n" + orderDetails);
+// Instructions
+alert("Order:\n" + orderDetails + "\n\nTotal: $" + total + "\n\nAdd this in PayPal notes.");
 
-// Clear cart
+// Reset cart
 cart = [];
+total = 0;
 updateCart();
 }
 </script>
