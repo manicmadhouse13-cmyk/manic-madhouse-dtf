@@ -423,6 +423,10 @@ alert("Order:\n" + summary + "\nTotal: $" + total + "\n\nAdd this in PayPal note
 cart = [];
 updateCart();
 }
+function viewProduct(name, image, price){
+window.location.href =
+`product.html?name=${encodeURIComponent(name)}&image=${image}&price=${price}`;
+}  
   </script>
 
 </body>
