@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product - Manic Madhouse</title>
 
+<style>
+body{
+font-family:Arial;
+background:#0a0a0f;
+color:white;
+margin:0;
+text-align:center;
+}
+
+.container{
+padding:40px 20px;
+}
+
+img{
+max-width:90%;
+border-radius:12px;
+box-shadow:0 0 20px rgba(255,0,122,0.5);
+}
+
+h2{
+margin-top:20px;
+}
+
+button{
+background:linear-gradient(90deg,#ff007a,#7b2cff);
+border:none;
+color:white;
+padding:12px 20px;
+margin-top:15px;
+border-radius:8px;
+cursor:pointer;
+}
+
+a{
+color:#ff007a;
+display:block;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img id="product-image">
+<h2 id="product-name"></h2>
+<p id="product-price"></p>
+
+<button onclick="addToCart()">Add to Cart</button>
+
+<a href="index.html">⬅ Back to shop</a>
+
+</div>
+
+<script>
+// GET URL DATA
+const params = new URLSearchParams(window.location.search);
+
+const name = params.get("name");
+const image = params.get("image");
+const price = params.get("price");
+
+// DISPLAY
+document.getElementById("product-name").innerText = name;
+document.getElementById("product-image").src = image;
+document.getElementById("product-price").innerText = "$" + price;
+
+// ADD TO CART (simple local storage)
+function addToCart(){
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let existing = cart.find(item => item.name === name);
+
+if(existing){
+existing.qty++;
+} else {
+cart.push({name, price: Number(price), qty:1});
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+alert("Added to cart!");
+}
+</script>
+
+</body>
+</html>
