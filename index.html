@@ -151,9 +151,43 @@ right:15px;
 bottom:130px;
 background:#111;
 padding:15px;
-border-radius:10px;
-display:none;
-width:250px;
+border-radius:12px;
+width:260px;
+box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
+
+#cart ul{
+list-style:none;
+padding:0;
+max-height:200px;
+overflow-y:auto;
+}
+
+#cart li{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:8px;
+font-size:14px;
+}
+
+.qty-btn{
+background:#7b2cff;
+border:none;
+color:white;
+padding:3px 8px;
+margin:0 3px;
+border-radius:4px;
+cursor:pointer;
+}
+
+.remove-btn{
+background:red;
+border:none;
+color:white;
+padding:3px 6px;
+border-radius:4px;
+cursor:pointer;
 }
 </style>
 </head>
