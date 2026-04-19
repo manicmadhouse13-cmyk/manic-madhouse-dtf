@@ -180,8 +180,6 @@ width:250px;
 
 <div class="grid">
 
-<div class="grid">
-
 <div class="card"><img src="design1.png"><h4>Chaos But Make It Cute</h4><button onclick="addToCart('Chaos But Make It Cute', 20)">Add to Cart</button></div>
 
 <div class="card"><img src="design2.png"><h4>Hot Mess Express</h4><button onclick="addToCart('Hot Mess Express', 20)">Add to Cart</button></div>
@@ -261,14 +259,9 @@ Message on Instagram
 <a href="https://www.instagram.com/manic_madhouse_dtf_designs">Order via Instagram</a>
 </div>
 
-<div id="cart">
-<h3>🛒 Cart</h3>
-<ul id="cart-items"></ul>
 <div id="cart-toggle" onclick="toggleCart()">🛒</div>
-<p><strong>Total: $<span id="cart-total">0</span></strong></p>
 
-<button onclick="checkout()">Checkout with PayPal</button>
-</div><div id="cart">
+<div id="cart">
 <h3>🛒 Cart</h3>
 <ul id="cart-items"></ul>
 
@@ -282,7 +275,6 @@ let cart = [];
 let total = 0;
 
 function addToCart(name, price){
-console.log("Adding:", name); // debug
 cart.push({name, price});
 total += price;
 updateCart();
@@ -291,11 +283,6 @@ updateCart();
 function updateCart(){
 let list = document.getElementById("cart-items");
 let totalDisplay = document.getElementById("cart-total");
-
-if(!list || !totalDisplay){
-console.error("Cart elements missing!");
-return;
-}
 
 list.innerHTML = "";
 
@@ -308,8 +295,6 @@ totalDisplay.innerText = total;
 
 function toggleCart(){
 let cartBox = document.getElementById("cart");
-if(!cartBox) return;
-
 cartBox.style.display =
 cartBox.style.display === "none" ? "block" : "none";
 }
@@ -320,7 +305,7 @@ alert("Your cart is empty!");
 return;
 }
 
-let paypalLink = "https://www.https://paypal.me/manicmadhousedtfdesi";/" + total;
+let paypalLink = "https://paypal.me/manicmadhousedtfdesi/" + total;
 
 window.open(paypalLink, "_blank");
 
