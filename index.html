@@ -446,8 +446,11 @@ updateCart();
 
 // Load cart on page load
 window.onload = updateCart;
+ function viewProduct(name, image){
+window.location.href =
+`product.html?name=${encodeURIComponent(name)}&image=${image}`;
+ } 
 </script>
-  </script>
 
 </body>
 </html>
