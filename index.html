@@ -4,452 +4,2160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manic Madhouse DTF Designs</title>
-<style>
-body{
-font-family: 'Segoe UI', Arial, sans-serif;
-margin:0;
-background:#0a0a0f;
-color:white;
-overflow-x:hidden;
+{
+  "name": "tanstack_start_ts",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-aspect-ratio": "^1.1.8",
+    "@radix-ui/react-avatar": "^1.1.11",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-hover-card": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-menubar": "^1.1.16",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-progress": "^1.1.8",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slider": "^1.3.6",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-query": "^5.83.0",
+    "@tanstack/react-router": "^1.168.25",
+    "@tanstack/react-start": "^1.167.50",
+    "@tanstack/router-plugin": "^1.167.28",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.1.0",
+    "embla-carousel-react": "^8.6.0",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^0.575.0",
+    "react": "^19.2.0",
+    "react-day-picker": "^9.14.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.71.2",
+    "react-resizable-panels": "^4.6.5",
+    "recharts": "^2.15.4",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.1",
+    "tw-animate-css": "^1.3.4",
+    "vaul": "^1.1.2",
+    "vite-tsconfig-paths": "^6.0.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@lovable.dev/vite-tanstack-config": "2.6.2",
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^15.15.0",
+    "nitro": "3.0.260603-beta",
+    "prettier": "^3.7.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.56.1",
+    "vite": "^7.3.1"
+  }
+}
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-purple: var(--neon-purple);
+  --color-acid: var(--acid);
+  --font-display: "Bungee", "Impact", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
 }
 
-/* HEADER */
-header{
-background:linear-gradient(90deg,#ff007a,#7b2cff);
-padding:20px;
-text-align:center;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 0 20px rgba(255,0,122,0.4);
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.12 0.05 275);
+  --foreground: oklch(0.97 0.01 90);
+  --card: oklch(0.17 0.06 275);
+  --card-foreground: oklch(0.97 0.01 90);
+  --popover: oklch(0.17 0.06 275);
+  --popover-foreground: oklch(0.97 0.01 90);
+  --primary: oklch(0.70 0.33 340);
+  --primary-foreground: oklch(0.13 0.02 290);
+  --secondary: oklch(0.82 0.20 210);
+  --secondary-foreground: oklch(0.13 0.02 290);
+  --muted: oklch(0.22 0.04 275);
+  --muted-foreground: oklch(0.78 0.05 280);
+  --accent: oklch(0.72 0.30 310);
+  --accent-foreground: oklch(0.13 0.02 290);
+  --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.97 0.01 90);
+  --border: oklch(0.30 0.08 290);
+  --input: oklch(0.22 0.04 275);
+  --ring: oklch(0.70 0.33 340);
+  --neon-pink: oklch(0.70 0.33 340);
+  --neon-cyan: oklch(0.82 0.20 210);
+  --neon-purple: oklch(0.62 0.28 305);
+  --acid: oklch(0.92 0.22 105);
 }
 
-.logo{
-height:70px;
-margin-bottom:5px;
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(ellipse at 20% 0%, color-mix(in oklab, var(--neon-pink) 22%, transparent), transparent 55%),
+      radial-gradient(ellipse at 80% 100%, color-mix(in oklab, var(--neon-cyan) 18%, transparent), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
 }
 
-nav a{
-color:white;
-margin:0 12px;
-text-decoration:none;
-font-weight:600;
-letter-spacing:1px;
-transition:0.3s;
+@utility text-glitch {
+  text-shadow:
+    2px 0 0 var(--neon-pink),
+    -2px 0 0 var(--neon-cyan);
 }
 
-nav a:hover{
-color:#ff007a;
+@utility neon-border {
+  border: 2px solid var(--neon-pink);
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px var(--neon-cyan),
+    0 0 30px -5px color-mix(in oklab, var(--neon-pink) 60%, transparent);
 }
 
-/* HERO */
-.hero{
-padding:80px 20px;
-text-align:center;
-background: radial-gradient(circle at top, rgba(123,44,255,0.2), transparent);
+@utility halftone-bg {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in oklab, var(--foreground) 14%, transparent) 1px,
+    transparent 1.5px
+  );
+  background-size: 8px 8px;
 }
 
-.hero h2{
-font-size:36px;
-margin-bottom:10px;
+@utility gradient-neon {
+  background-image: linear-gradient(
+    100deg,
+    var(--neon-pink),
+    var(--neon-purple) 55%,
+    var(--neon-cyan)
+  );
 }
 
-.hero p{
-opacity:0.8;
+@utility text-gradient-neon {
+  background-image: linear-gradient(
+    100deg,
+    var(--neon-pink),
+    var(--neon-purple) 55%,
+    var(--neon-cyan)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-/* SECTION */
-.section{
-padding:60px 20px;
-text-align:center;
+@utility tape-strip {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 80px;
+    height: 22px;
+    background: color-mix(in oklab, var(--acid) 75%, transparent);
+    transform: translateX(-50%) rotate(-3deg);
+    z-index: 1;
+  }
+}
+import { Link } from "@tanstack/react-router";
+import { useState, type ReactNode } from "react";
+import { Menu, X, Instagram, Facebook, Mail, ShoppingCart } from "lucide-react";
+import logo from "@/assets/logo.png.asset.json";
+import { useCart } from "@/lib/cart";
+import { CartDrawer } from "@/components/CartDrawer";
+
+const NAV = [
+  { to: "/", label: "Home" },
+  { to: "/shop", label: "DTF Designs" },
+  { to: "/stickers", label: "Stickers" },
+  { to: "/mockup", label: "Mockup Tool" },
+  { to: "/custom", label: "Custom Orders" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
+export function SiteLayout({ children }: { children: ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const { count, setOpen: setCartOpen } = useCart();
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 group shrink-0" onClick={() => setOpen(false)}>
+            <div className="bg-white rounded-md p-1 group-hover:scale-105 transition-transform">
+              <img
+                src={logo.url}
+                alt="Manic Madhouse DTF Designs"
+                className="h-9 sm:h-11 w-auto block"
+              />
+            </div>
+          </Link>
+
+          <nav className="hidden lg:flex items-center gap-1">
+            {NAV.map((n) => (
+              <Link
+                key={n.to}
+                to={n.to}
+                className="px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                activeProps={{ className: "px-3 py-2 text-sm font-medium text-primary" }}
+              >
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setCartOpen(true)}
+              className="relative p-2 text-foreground hover:text-primary transition-colors"
+              aria-label={`Cart (${count} items)`}
+            >
+              <ShoppingCart className="size-6" />
+              {count > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 rounded-full gradient-neon text-primary-foreground text-[11px] font-display flex items-center justify-center">
+                  {count}
+                </span>
+              )}
+            </button>
+
+            <button
+              onClick={() => setOpen((o) => !o)}
+              className="lg:hidden p-2 -mr-2 text-foreground"
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="size-6" /> : <Menu className="size-6" />}
+            </button>
+          </div>
+        </div>
+
+        {open && (
+          <nav className="lg:hidden border-t border-border bg-background">
+            <div className="px-4 py-2 flex flex-col">
+              {NAV.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="py-3 text-base font-medium border-b border-border/50 text-foreground/90 hover:text-primary"
+                  activeProps={{ className: "py-3 text-base font-medium border-b border-border/50 text-primary" }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        )}
+      </header>
+
+      <main className="flex-1">{children}</main>
+
+      <footer className="mt-24 border-t border-border bg-card/40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <div className="inline-block bg-white rounded-md p-2">
+              <img src={logo.url} alt="Manic Madhouse DTF Designs" className="h-14 w-auto block" />
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              DTF transfers &amp; die-cut stickers with attitude. Printed loud, shipped fast.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-display text-sm mb-3">Shop</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link to="/shop" className="hover:text-primary">DTF Designs</Link></li>
+              <li><Link to="/stickers" className="hover:text-primary">Stickers</Link></li>
+              <li><Link to="/custom" className="hover:text-primary">Custom Orders</Link></li>
+              <li><Link to="/mockup" className="hover:text-primary">Mockup Tool</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display text-sm mb-3">Help</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+              <li><Link to="/custom" className="hover:text-primary">Pressing Guide</Link></li>
+              <li><Link to="/custom" className="hover:text-primary">Shipping &amp; Returns</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display text-sm mb-3">Follow the chaos</h4>
+            <div className="flex gap-3">
+              <a href="#" aria-label="Instagram" className="p-2 border border-border hover:border-primary hover:text-primary transition-colors">
+                <Instagram className="size-5" />
+              </a>
+              <a href="#" aria-label="Facebook" className="p-2 border border-border hover:border-primary hover:text-primary transition-colors">
+                <Facebook className="size-5" />
+              </a>
+              <a href="mailto:hello@manicmadhouse.com" aria-label="Email" className="p-2 border border-border hover:border-primary hover:text-primary transition-colors">
+                <Mail className="size-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Manic Madhouse DTF Designs &amp; Stickers. Stay loud.
+        </div>
+      </footer>
+
+      <CartDrawer />
+    </div>
+  );
+}
+import { X, Trash2, ShoppingBag } from "lucide-react";
+import { useCart } from "@/lib/cart";
+
+export function CartDrawer() {
+  const { items, open, setOpen, setQty, remove, subtotal, clear } = useCart();
+
+  const checkoutBody = items
+    .map((i) => `• ${i.name} (${i.size}) x${i.qty} — $${(i.price * i.qty).toFixed(2)}`)
+    .join("%0A");
+
+  const checkoutHref = `mailto:orders@manicmadhouse.com?subject=${encodeURIComponent(
+    "New Order — Manic Madhouse",
+  )}&body=Hey Manic Madhouse,%0A%0AI'd like to order:%0A${checkoutBody}%0A%0ASubtotal: $${subtotal.toFixed(
+    2,
+  )}%0A%0AName:%0AAddress:%0A`;
+
+  return (
+    <>
+      {open && (
+        <div
+          className="fixed inset-0 z-[60] bg-background/70 backdrop-blur-sm"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+      <aside
+        className={`fixed top-0 right-0 z-[70] h-full w-full sm:max-w-md bg-card border-l-2 border-primary shadow-2xl transition-transform duration-300 ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+        aria-hidden={!open}
+      >
+        <div className="h-full flex flex-col">
+          <div className="flex items-center justify-between p-4 border-b border-border gradient-neon">
+            <div className="flex items-center gap-2 text-primary-foreground">
+              <ShoppingBag className="size-5" />
+              <span className="font-display tracking-widest">YOUR CART</span>
+            </div>
+
+            <button
+              onClick={() => setOpen(false)}
+              className="p-1 text-primary-foreground hover:opacity-80"
+              aria-label="Close cart"
+            >
+              <X className="size-5" />
+            </button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            {items.length === 0 ? (
+              <div className="text-center py-16 text-muted-foreground">
+                <ShoppingBag className="size-10 mx-auto mb-3 opacity-50" />
+                <p className="font-display tracking-widest text-sm">CART IS EMPTY</p>
+                <p className="text-xs mt-2">Go grab some chaos.</p>
+              </div>
+            ) : (
+              items.map((i) => {
+                const k = `${i.id}__${i.size}`;
+
+                return (
+                  <div key={k} className="flex gap-3 border border-border bg-background p-3">
+                    <div className="size-16 shrink-0 halftone-bg flex items-center justify-center bg-background border border-border">
+                      <img src={i.image} alt={i.name} className="max-w-full max-h-full object-contain" />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between gap-2">
+                        <div className="font-display text-sm truncate">{i.name}</div>
+                        <button
+                          onClick={() => remove(k)}
+                          className="text-muted-foreground hover:text-primary"
+                          aria-label="Remove"
+                        >
+                          <Trash2 className="size-4" />
+                        </button>
+                      </div>
+
+                      <div className="text-xs text-muted-foreground">{i.size}</div>
+
+                      <div className="mt-2 flex items-center justify-between">
+                        <div className="flex items-center border border-border">
+                          <button
+                            onClick={() => setQty(k, i.qty - 1)}
+                            className="px-2 py-0.5 hover:text-primary"
+                            aria-label="Decrease"
+                          >
+                            −
+                          </button>
+
+                          <span className="px-3 text-sm font-display">{i.qty}</span>
+
+                          <button
+                            onClick={() => setQty(k, i.qty + 1)}
+                            className="px-2 py-0.5 hover:text-primary"
+                            aria-label="Increase"
+                          >
+                            +
+                          </button>
+                        </div>
+
+                        <div className="font-display text-primary">
+                          ${(i.price * i.qty).toFixed(2)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+
+          {items.length > 0 && (
+            <div className="border-t border-border p-4 space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Subtotal</span>
+                <span className="font-display text-lg text-primary">${subtotal.toFixed(2)}</span>
+              </div>
+
+              <p className="text-[11px] text-muted-foreground">
+                Shipping calculated at checkout. We'll confirm by email.
+              </p>
+
+              <a
+                href={checkoutHref}
+                className="block text-center gradient-neon text-primary-foreground py-3 font-display tracking-widest hover:opacity-90"
+              >
+                CHECKOUT →
+              </a>
+
+              <button
+                onClick={clear}
+                className="w-full text-xs text-muted-foreground hover:text-primary"
+              >
+                Clear cart
+              </button>
+            </div>
+          )}
+        </div>
+      </aside>
+    </>
+  );
+}
+import { Star, Quote } from "lucide-react";
+
+const REVIEWS = [
+  {
+    name: "Jess T.",
+    location: "Verified buyer · Melbourne, VIC",
+    stars: 5,
+    body: "These transfers are insane. Colours stayed vivid through 20+ washes. The neon skull is a bestseller in my shop now.",
+  },
+  {
+    name: "Marco R.",
+    location: "Verified buyer · Sydney, NSW",
+    stars: 5,
+    body: "Ordered a custom run on Monday, had them Wednesday. Soft hand, stretchy, exactly what they promised. Manic Madhouse is my go-to.",
+  },
+  {
+    name: "Amber K.",
+    location: "Verified buyer · Brisbane, QLD",
+    stars: 5,
+    body: "The holographic stickers are unreal in person. My laptop looks like a punk show. Already came back for the bulk pack.",
+  },
+  {
+    name: "Devon L.",
+    location: "Verified buyer · Perth, WA",
+    stars: 5,
+    body: "Mockup tool sold me — saw exactly what my logo would look like before ordering. Came out perfect on black hoodies.",
+  },
+  {
+    name: "Priya S.",
+    location: "Verified buyer · Adelaide, SA",
+    stars: 5,
+    body: "Crisp detail, no cracking, no peeling. Customer service answered me at 10pm. Genuine small-business gold.",
+  },
+  {
+    name: "Kai M.",
+    location: "Verified buyer · Gold Coast, QLD",
+    stars: 5,
+    body: "The wolf design is metal. Pressed cleanly first try, washed cold, looks brand new. Ten outta ten.",
+  },
+];
+
+export function Reviews() {
+  return (
+    <section className="border-y border-border bg-card/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-display tracking-widest gradient-neon text-primary-foreground">
+            <Star className="size-3 fill-current" /> 4.9 / 5 · 600+ HAPPY CUSTOMERS
+          </span>
+
+          <h2 className="mt-4 text-3xl sm:text-5xl font-display uppercase">
+            What the <span className="text-gradient-neon">madhouse</span> says
+          </h2>
+
+          <div className="mt-3 flex items-center justify-center gap-1 text-acid">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="size-5 fill-current" />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {REVIEWS.map((r) => (
+            <article
+              key={r.name}
+              className="relative bg-background border border-border p-6 hover:border-primary transition-colors"
+            >
+              <Quote className="absolute -top-3 -left-3 size-7 text-primary fill-primary" />
+
+              <div className="flex gap-0.5 text-acid mb-3">
+                {Array.from({ length: r.stars }).map((_, i) => (
+                  <Star key={i} className="size-4 fill-current" />
+                ))}
+              </div>
+
+              <p className="text-sm text-foreground/90 leading-relaxed">"{r.body}"</p>
+
+              <div className="mt-4 pt-4 border-t border-border">
+                <div className="font-display text-sm">{r.name}</div>
+                <div className="text-xs text-muted-foreground">{r.location}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+import design1 from "@/assets/design-1.png";
+import design2 from "@/assets/design-2.png";
+import design3 from "@/assets/design-3.png";
+import design4 from "@/assets/design-4.png";
+import design5 from "@/assets/design-5.png";
+import design6 from "@/assets/design-6.png";
+
+export type Product = {
+  id: string;
+  name: string;
+  category: "dtf" | "sticker";
+  price: number;
+  sizes: string[];
+  image: string;
+  description: string;
+  tag?: string;
+};
+
+export const DTF_DESIGNS: Product[] = [
+  {
+    id: "neon-skull",
+    name: "Neon Skull Bolt",
+    category: "dtf",
+    price: 8.5,
+    sizes: ['Pocket 4"', 'Standard 10"', 'Oversize 14"'],
+    image: design1,
+    description: "High-voltage neon skull DTF transfer. Press at 305°F for 12 sec, hot peel.",
+    tag: "Bestseller",
+  },
+  {
+    id: "flaming-heart",
+    name: "Flaming Heart Dagger",
+    category: "dtf",
+    price: 9,
+    sizes: ['Standard 10"', 'Oversize 14"'],
+    image: design2,
+    description: "Old-school tattoo flash, full-color DTF. Stretchy, soft hand, washes brutal.",
+  },
+  {
+    id: "wolf-howl",
+    name: "Snarl Wolf",
+    category: "dtf",
+    price: 9.5,
+    sizes: ['Standard 10"', 'Oversize 14"'],
+    image: design3,
+    description: "Big-back-print energy. Built for hoodies and oversize tees.",
+    tag: "New",
+  },
+  {
+    id: "neon-skull-mini",
+    name: "Skull Bolt Mini Pack",
+    category: "dtf",
+    price: 12,
+    sizes: ['Mini 3" x6'],
+    image: design1,
+    description: "Six small skulls per gang sheet — sleeves, hats, pockets.",
+  },
+  {
+    id: "heart-mini",
+    name: "Heart Dagger Sleeve",
+    category: "dtf",
+    price: 6,
+    sizes: ['Sleeve 3"x11"'],
+    image: design2,
+    description: "Long sleeve runner for arms and side prints.",
+  },
+  {
+    id: "wolf-patch",
+    name: "Wolf Patch DTF",
+    category: "dtf",
+    price: 5.5,
+    sizes: ['Pocket 4"'],
+    image: design3,
+    description: "Small but mean. Perfect for chest hits and hat fronts.",
+  },
+  {
+    id: "neon-butterfly",
+    name: "Skull Butterfly",
+    category: "dtf",
+    price: 9,
+    sizes: ['Standard 10"', 'Oversize 14"'],
+    image: design4,
+    description: "Iridescent skull-winged butterfly. Pure neon pop on dark tees.",
+    tag: "Hot",
+  },
+  {
+    id: "neon-rose",
+    name: "Neon Drip Rose",
+    category: "dtf",
+    price: 8.5,
+    sizes: ['Standard 10"', 'Oversize 14"'],
+    image: design5,
+    description: "Dripping purple/cyan rose with thorns. Pure tattoo flash energy.",
+  },
+  {
+    id: "eye-bolt",
+    name: "Eye of the Bolt",
+    category: "dtf",
+    price: 7.5,
+    sizes: ['Pocket 4"', 'Standard 10"'],
+    image: design6,
+    description: "All-seeing eye in a hot pink lightning bolt. Stares back.",
+    tag: "New",
+  },
+];
+
+export const STICKERS: Product[] = [
+  {
+    id: "skull-sticker",
+    name: "Neon Skull Die-Cut",
+    category: "sticker",
+    price: 4,
+    sizes: ['3"', '4"', '6"'],
+    image: design1,
+    description: "Holographic vinyl, waterproof, dishwasher safe.",
+    tag: "Holo",
+  },
+  {
+    id: "heart-sticker",
+    name: "Flame Heart Sticker",
+    category: "sticker",
+    price: 4,
+    sizes: ['3"', '4"'],
+    image: design2,
+    description: "Glossy white vinyl. Slap it on everything.",
+  },
+  {
+    id: "wolf-sticker",
+    name: "Snarl Wolf Sticker",
+    category: "sticker",
+    price: 5,
+    sizes: ['4"', '6"'],
+    image: design3,
+    description: "Matte printed vinyl, made to last.",
+  },
+  {
+    id: "butterfly-sticker",
+    name: "Skull Butterfly Sticker",
+    category: "sticker",
+    price: 4.5,
+    sizes: ['3"', '4"', '6"'],
+    image: design4,
+    description: "Glossy printed vinyl, vivid neon finish.",
+    tag: "Hot",
+  },
+  {
+    id: "rose-sticker",
+    name: "Drip Rose Sticker",
+    category: "sticker",
+    price: 4,
+    sizes: ['3"', '4"'],
+    image: design5,
+    description: "Holographic vinyl, dripping neon roses.",
+  },
+  {
+    id: "eye-sticker",
+    name: "Eye Bolt Sticker",
+    category: "sticker",
+    price: 4,
+    sizes: ['3"', '4"'],
+    image: design6,
+    description: "Matte printed vinyl. Slap it on your laptop.",
+  },
+];
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import type { Product } from "@/lib/catalog";
+
+export type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+  size: string;
+  image: string;
+  qty: number;
+};
+
+type CartCtx = {
+  items: CartItem[];
+  count: number;
+  subtotal: number;
+  add: (product: Product, size: string, qty?: number) => void;
+  remove: (key: string) => void;
+  setQty: (key: string, qty: number) => void;
+  clear: () => void;
+  open: boolean;
+  setOpen: (o: boolean) => void;
+};
+
+const Ctx = createContext<CartCtx | null>(null);
+const KEY = "mm_cart_v1";
+
+const itemKey = (id: string, size: string) => `${id}__${size}`;
+
+export function CartProvider({ children }: { children: ReactNode }) {
+  const [items, setItems] = useState<CartItem[]>([]);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      if (raw) setItems(JSON.parse(raw));
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      window.localStorage.setItem(KEY, JSON.stringify(items));
+    } catch {}
+  }, [items]);
+
+  const value = useMemo<CartCtx>(() => {
+    const count = items.reduce((s, i) => s + i.qty, 0);
+    const subtotal = items.reduce((s, i) => s + i.qty * i.price, 0);
+
+    return {
+      items,
+      count,
+      subtotal,
+      open,
+      setOpen,
+      add: (product, size, qty = 1) => {
+        setItems((prev) => {
+          const k = itemKey(product.id, size);
+          const idx = prev.findIndex((i) => itemKey(i.id, i.size) === k);
+
+          if (idx >= 0) {
+            const next = [...prev];
+            next[idx] = { ...next[idx], qty: next[idx].qty + qty };
+            return next;
+          }
+
+          return [
+            ...prev,
+            { id: product.id, name: product.name, price: product.price, size, image: product.image, qty },
+          ];
+        });
+
+        setOpen(true);
+      },
+      remove: (key) => setItems((prev) => prev.filter((i) => itemKey(i.id, i.size) !== key)),
+      setQty: (key, qty) =>
+        setItems((prev) =>
+          prev
+            .map((i) => (itemKey(i.id, i.size) === key ? { ...i, qty: Math.max(0, qty) } : i))
+            .filter((i) => i.qty > 0),
+        ),
+      clear: () => setItems([]),
+    };
+  }, [items, open]);
+
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
-.section h2{
-margin-bottom:25px;
-font-size:26px;
+export function useCart() {
+  const ctx = useContext(Ctx);
+  if (!ctx) throw new Error("useCart must be used inside CartProvider");
+  return ctx;
+}
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Palette, Sparkles, Truck, Zap } from "lucide-react";
+import { SiteLayout } from "@/components/SiteLayout";
+import { DTF_DESIGNS } from "@/lib/catalog";
+import { Reviews } from "@/components/Reviews";
+import hero from "@/assets/hero.jpg";
+import stickers from "@/assets/stickers.jpg";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Manic Madhouse DTF Designs & Stickers — Loud Prints, Fast Shipping" },
+      {
+        name: "description",
+        content:
+          "Ready-to-press DTF transfers and die-cut vinyl stickers with attitude. Bold designs, soft hand, fast turnaround. Mock up your design before you buy.",
+      },
+      { property: "og:title", content: "Manic Madhouse DTF Designs & Stickers" },
+      { property: "og:description", content: "Ready-to-press DTF transfers and die-cut vinyl stickers with attitude." },
+      { property: "og:url", content: "/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
+  component: Index,
+});
+
+function Index() {
+  const featured = DTF_DESIGNS.slice(0, 6);
+
+  return (
+    <SiteLayout>
+      <section className="relative overflow-hidden border-b border-border">
+        <img
+          src={hero}
+          alt="Stack of vibrant DTF transfers"
+          width={1600}
+          height={1200}
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-neon-pink/30 via-background/70 to-neon-cyan/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-20 pb-28 sm:pt-28 sm:pb-36">
+          <span className="inline-flex items-center gap-2 px-3 py-1 text-xs font-display tracking-widest gradient-neon text-primary-foreground">
+            <Zap className="size-3" /> READY-TO-PRESS DTF + STICKERS
+          </span>
+
+          <h1 className="mt-6 text-5xl sm:text-7xl lg:text-8xl font-display leading-[0.9] uppercase">
+            Print it<br />
+            <span className="text-gradient-neon text-glitch">LOUD.</span><br />
+            Wear it <span className="text-secondary">PROUD.</span>
+          </h1>
+
+          <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
+            Manic Madhouse is your punk-rock print plug. Full-color DTF transfers
+            and die-cut vinyl stickers — pressed by you, designed by us.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-2 gradient-neon text-primary-foreground px-6 py-3 font-display text-sm tracking-wider hover:opacity-90 transition-opacity shadow-[0_0_30px_-5px_var(--neon-pink)]"
+            >
+              SHOP DTF <ArrowRight className="size-4" />
+            </Link>
+
+            <Link
+              to="/mockup"
+              className="inline-flex items-center gap-2 border-2 border-secondary text-secondary px-6 py-3 font-display text-sm tracking-wider hover:bg-secondary hover:text-secondary-foreground transition-colors"
+            >
+              TRY THE MOCKUP TOOL
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-card/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 grid gap-6 sm:grid-cols-3">
+          {[
+            { icon: Palette, title: "Bold & Vivid", body: "High-saturation colour, sharp detail, soft hand. Built to last." },
+            { icon: Truck, title: "Fast Turnaround", body: "Most orders ship in 1–3 business days from our shop." },
+            { icon: Sparkles, title: "Mock It First", body: "Drop your art on a tee in seconds with our free mockup tool." },
+          ].map(({ icon: Icon, title, body }) => (
+            <div key={title} className="flex gap-4">
+              <div className="shrink-0 size-10 bg-primary/10 text-primary flex items-center justify-center">
+                <Icon className="size-5" />
+              </div>
+
+              <div>
+                <div className="font-display text-sm tracking-wider">{title}</div>
+                <p className="text-sm text-muted-foreground mt-1">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
+        <div className="flex items-end justify-between mb-8">
+          <h2 className="text-3xl sm:text-5xl font-display uppercase">
+            Fresh <span className="text-gradient-neon">Transfers</span>
+          </h2>
+
+          <Link to="/shop" className="text-sm font-display tracking-wider text-secondary hover:text-primary">
+            VIEW ALL →
+          </Link>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((p) => (
+            <Link
+              key={p.id}
+              to="/shop"
+              className="group block border border-border bg-card hover:border-primary transition-colors"
+            >
+              <div className="aspect-square halftone-bg flex items-center justify-center p-6 bg-background">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  loading="lazy"
+                  className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform"
+                />
+              </div>
+
+              <div className="p-4 flex items-center justify-between">
+                <div>
+                  <div className="font-display text-sm tracking-wide">{p.name}</div>
+                  <div className="text-xs text-muted-foreground">From ${p.price.toFixed(2)}</div>
+                </div>
+
+                {p.tag && (
+                  <span className="text-[10px] bg-acid text-accent-foreground px-2 py-1 font-display tracking-widest">
+                    {p.tag}
+                  </span>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <Reviews />
+
+      <section className="relative overflow-hidden border-y border-border">
+        <img
+          src={stickers}
+          alt="Pile of punk vinyl stickers"
+          width={1600}
+          height={1200}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
+          <div className="max-w-xl">
+            <span className="text-xs font-display tracking-widest text-secondary">STICKER PACKS</span>
+
+            <h2 className="mt-3 text-4xl sm:text-6xl font-display uppercase">
+              Slap 'em on<br /><span className="text-acid">everything.</span>
+            </h2>
+
+            <p className="mt-4 text-muted-foreground">
+              Every sticker is custom made to order. Holographic, glossy or matte —
+              waterproof, durable printed vinyl in any size you need.
+            </p>
+
+            <Link
+              to="/stickers"
+              className="mt-6 inline-flex items-center gap-2 bg-acid text-accent-foreground px-6 py-3 font-display text-sm tracking-wider hover:opacity-90"
+            >
+              ORDER CUSTOM STICKERS <ArrowRight className="size-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24">
+        <div className="border-2 border-primary p-6 sm:p-12 bg-card relative">
+          <div className="absolute -top-3 left-6 bg-primary text-primary-foreground px-3 py-1 font-display text-xs tracking-widest">
+            FREE TOOL
+          </div>
+
+          <div>
+            <h2 className="text-3xl sm:text-5xl font-display uppercase">
+              See it on a <span className="text-secondary">shirt</span> first.
+            </h2>
+
+            <p className="mt-4 text-muted-foreground">
+              Upload your design, pick a shirt color, drag it where you want it.
+              Download the mockup or send it to us for custom DTF printing.
+            </p>
+
+            <Link
+              to="/mockup"
+              className="mt-6 inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3 font-display text-sm tracking-wider hover:opacity-90"
+            >
+              LAUNCH MOCKUP TOOL <ArrowRight className="size-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+}
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { SiteLayout } from "@/components/SiteLayout";
+import { DTF_DESIGNS } from "@/lib/catalog";
+import { useCart } from "@/lib/cart";
+import { ShoppingCart } from "lucide-react";
+
+export const Route = createFileRoute("/shop")({
+  head: () => ({
+    meta: [
+      { title: "DTF Transfer Designs — Manic Madhouse" },
+      {
+        name: "description",
+        content:
+          "Browse ready-to-press DTF transfer designs. Skulls, hearts, wolves and more. Pocket to oversize sizes. Fast shipping.",
+      },
+      { property: "og:title", content: "DTF Transfer Designs — Manic Madhouse" },
+      { property: "og:description", content: "Browse ready-to-press DTF transfer designs. Skulls, hearts, wolves and more." },
+      { property: "og:url", content: "/shop" },
+    ],
+    links: [{ rel: "canonical", href: "/shop" }],
+  }),
+  component: ShopPage,
+});
+
+function ShopPage() {
+  const [active, setActive] = useState<string | null>(null);
+  const product = DTF_DESIGNS.find((p) => p.id === active) ?? null;
+  const [size, setSize] = useState<string>("");
+  const { add } = useCart();
+
+  const openProduct = (id: string) => {
+    const p = DTF_DESIGNS.find((x) => x.id === id);
+    setActive(id);
+    setSize(p?.sizes[0] ?? "");
+  };
+
+  return (
+    <SiteLayout>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 pb-10">
+          <p className="text-xs font-display tracking-widest text-secondary">SHOP / DTF TRANSFERS</p>
+
+          <h1 className="mt-3 text-4xl sm:text-6xl font-display uppercase">
+            DTF <span className="text-primary">Transfers</span>
+          </h1>
+
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            Full-color, ready-to-press direct-to-film transfers. Press at 305°F for 12 seconds,
+            hot peel. Soft hand, stretchy, made to outlast the shirt.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {DTF_DESIGNS.map((p) => (
+            <button
+              key={p.id}
+              onClick={() => openProduct(p.id)}
+              className="group text-left border border-border bg-card hover:border-primary transition-colors"
+            >
+              <div className="aspect-square halftone-bg bg-background p-6 flex items-center justify-center relative">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  loading="lazy"
+                  className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform"
+                />
+
+                {p.tag && (
+                  <span className="absolute top-3 left-3 text-[10px] bg-acid text-accent-foreground px-2 py-1 font-display tracking-widest">
+                    {p.tag}
+                  </span>
+                )}
+              </div>
+
+              <div className="p-4 flex items-center justify-between">
+                <div>
+                  <div className="font-display text-sm">{p.name}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{p.sizes.join(" · ")}</div>
+                </div>
+
+                <div className="font-display text-primary">${p.price.toFixed(2)}</div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {product && (
+        <div
+          className="fixed inset-0 z-50 bg-background/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setActive(null)}
+        >
+          <div
+            className="bg-card border-2 border-primary max-w-lg w-full p-6 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setActive(null)}
+              className="absolute top-3 right-3 text-muted-foreground hover:text-primary"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+
+            <div className="aspect-square halftone-bg bg-background flex items-center justify-center p-8">
+              <img src={product.image} alt={product.name} className="max-w-full max-h-full object-contain" />
+            </div>
+
+            <h3 className="mt-4 text-2xl font-display">{product.name}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
+
+            <div className="mt-4 flex items-center justify-between">
+              <span className="text-2xl font-display text-gradient-neon">${product.price.toFixed(2)}</span>
+            </div>
+
+            <div className="mt-4">
+              <div className="text-xs font-display tracking-widest text-muted-foreground mb-2">SIZE</div>
+
+              <div className="flex flex-wrap gap-2">
+                {product.sizes.map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setSize(s)}
+                    className={`px-3 py-1.5 text-xs font-display border transition-colors ${
+                      size === s
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border text-foreground/80 hover:border-primary"
+                    }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={() => {
+                add(product, size || product.sizes[0]);
+                setActive(null);
+              }}
+              className="mt-5 w-full inline-flex items-center justify-center gap-2 gradient-neon text-primary-foreground py-3 font-display tracking-wider hover:opacity-90"
+            >
+              <ShoppingCart className="size-4" /> ADD TO CART
+            </button>
+          </div>
+        </div>
+      )}
+    </SiteLayout>
+  );
+}
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteLayout } from "@/components/SiteLayout";
+import stickersImg from "@/assets/stickers.jpg";
+import { Mail, Sparkles, Droplets, Ruler } from "lucide-react";
+
+export const Route = createFileRoute("/stickers")({
+  head: () => ({
+    meta: [
+      { title: "Custom Vinyl Stickers — Manic Madhouse" },
+      {
+        name: "description",
+        content:
+          "Custom made-to-order die-cut vinyl stickers. Holographic, glossy or matte. Send your art, we print it.",
+      },
+      { property: "og:title", content: "Custom Vinyl Stickers — Manic Madhouse" },
+      { property: "og:description", content: "Custom made-to-order vinyl stickers. Send your art, we print it." },
+      { property: "og:url", content: "/stickers" },
+      { property: "og:image", content: "/og-stickers.jpg" },
+    ],
+    links: [{ rel: "canonical", href: "/stickers" }],
+  }),
+  component: StickersPage,
+});
+
+function StickersPage() {
+  return (
+    <SiteLayout>
+      <section className="relative overflow-hidden border-b border-border">
+        <img src={stickersImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-background" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-20 pb-16">
+          <p className="text-xs font-display tracking-widest text-secondary">SHOP / STICKERS</p>
+
+          <h1 className="mt-3 text-4xl sm:text-6xl font-display uppercase">
+            Custom <span className="text-acid">Stickers</span>
+          </h1>
+
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            Every sticker is custom made to order. Send us your artwork or idea —
+            we'll print it on premium vinyl in the finish and size you want.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid gap-6 sm:grid-cols-3">
+        {[
+          { icon: Sparkles, title: "Any Finish", body: "Holographic, glossy, matte, glitter, clear — your call." },
+          { icon: Ruler, title: "Any Size", body: "From tiny laptop badges to giant car decals." },
+          { icon: Droplets, title: "Waterproof", body: "Premium vinyl that handles weather, washes and abuse." },
+        ].map(({ icon: Icon, title, body }) => (
+          <div key={title} className="border border-border bg-card p-6">
+            <div className="size-10 bg-acid/15 text-acid flex items-center justify-center">
+              <Icon className="size-5" />
+            </div>
+
+            <div className="mt-4 font-display tracking-wider">{title}</div>
+            <p className="mt-2 text-sm text-muted-foreground">{body}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 pb-20">
+        <div className="border-2 border-primary p-8 sm:p-12 bg-card text-center">
+          <span className="inline-block text-xs font-display tracking-widest gradient-neon text-primary-foreground px-3 py-1">
+            MADE TO ORDER
+          </span>
+
+          <h3 className="mt-4 text-3xl sm:text-4xl font-display uppercase">
+            Start your <span className="text-gradient-neon">custom sticker</span> order
+          </h3>
+
+          <p className="mt-3 max-w-xl mx-auto text-muted-foreground">
+            Send us your artwork or just an idea, the size, finish and quantity.
+            We'll quote you back fast and get them printed.
+          </p>
+
+          <a
+            href="mailto:orders@manicmadhouse.com?subject=Custom sticker order"
+            className="mt-6 inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 font-display tracking-wider hover:opacity-90"
+          >
+            <Mail className="size-4" /> REQUEST A QUOTE
+          </a>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+}
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { SiteLayout } from "@/components/SiteLayout";
+import { Mail, MapPin, Clock, Instagram } from "lucide-react";
+
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: [
+      { title: "Contact — Manic Madhouse DTF" },
+      { name: "description", content: "Got a question, custom order, or wholesale inquiry? Get in touch with Manic Madhouse." },
+      { property: "og:title", content: "Contact — Manic Madhouse" },
+      { property: "og:description", content: "Got a question or custom order? Get in touch." },
+      { property: "og:url", content: "/contact" },
+    ],
+    links: [{ rel: "canonical", href: "/contact" }],
+  }),
+  component: ContactPage,
+});
+
+function ContactPage() {
+  const [sent, setSent] = useState(false);
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const fd = new FormData(e.currentTarget);
+    const subject = encodeURIComponent(`[Manic Madhouse] ${fd.get("subject") ?? "Inquiry"}`);
+    const body = encodeURIComponent(
+      `Name: ${fd.get("name")}\nEmail: ${fd.get("email")}\n\n${fd.get("message")}`,
+    );
+
+    window.location.href = `mailto:hello@manicmadhouse.com?subject=${subject}&body=${body}`;
+    setSent(true);
+  }
+
+  return (
+    <SiteLayout>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 pb-10">
+          <p className="text-xs font-display tracking-widest text-secondary">CONTACT</p>
+
+          <h1 className="mt-3 text-4xl sm:text-6xl font-display uppercase">
+            Holler at <span className="text-primary">us.</span>
+          </h1>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid gap-10 lg:grid-cols-[1fr_360px]">
+        <form onSubmit={onSubmit} className="space-y-4">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <label className="block">
+              <span className="text-xs font-display tracking-widest text-muted-foreground">NAME</span>
+              <input
+                required
+                name="name"
+                className="mt-1 w-full bg-input border border-border px-3 py-2.5 focus:border-primary outline-none"
+              />
+            </label>
+
+            <label className="block">
+              <span className="text-xs font-display tracking-widest text-muted-foreground">EMAIL</span>
+              <input
+                required
+                type="email"
+                name="email"
+                className="mt-1 w-full bg-input border border-border px-3 py-2.5 focus:border-primary outline-none"
+              />
+            </label>
+          </div>
+
+          <label className="block">
+            <span className="text-xs font-display tracking-widest text-muted-foreground">SUBJECT</span>
+            <input name="subject" className="mt-1 w-full bg-input border border-border px-3 py-2.5 focus:border-primary outline-none" />
+          </label>
+
+          <label className="block">
+            <span className="text-xs font-display tracking-widest text-muted-foreground">MESSAGE</span>
+            <textarea
+              required
+              name="message"
+              rows={6}
+              className="mt-1 w-full bg-input border border-border px-3 py-2.5 focus:border-primary outline-none resize-y"
+            />
+          </label>
+
+          <button type="submit" className="bg-primary text-primary-foreground px-6 py-3 font-display tracking-wider hover:bg-primary/90">
+            SEND IT
+          </button>
+
+          {sent && (
+            <p className="text-sm text-acid">
+              Your mail client should've opened — if not, email us at hello@manicmadhouse.com.
+            </p>
+          )}
+        </form>
+
+        <aside className="space-y-5">
+          <div className="border border-border p-5">
+            <Mail className="size-5 text-primary" />
+            <div className="mt-2 font-display">EMAIL</div>
+            <a href="mailto:hello@manicmadhouse.com" className="text-sm text-muted-foreground hover:text-primary">
+              hello@manicmadhouse.com
+            </a>
+          </div>
+
+          <div className="border border-border p-5">
+            <Clock className="size-5 text-secondary" />
+            <div className="mt-2 font-display">HOURS</div>
+            <p className="text-sm text-muted-foreground">
+              Mon–Fri · 10a–6p<br />
+              Orders ship within 1–3 business days
+            </p>
+          </div>
+
+          <div className="border border-border p-5">
+            <MapPin className="size-5 text-acid" />
+            <div className="mt-2 font-display">SHOP</div>
+            <p className="text-sm text-muted-foreground">Online only · ships worldwide</p>
+          </div>
+
+          <div className="border border-border p-5">
+            <Instagram className="size-5 text-primary" />
+            <div className="mt-2 font-display">SOCIAL</div>
+            <p className="text-sm text-muted-foreground">@manicmadhouse</p>
+          </div>
+        </aside>
+      </section>
+    </SiteLayout>
+  );
+}
+import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { Download, Upload, RotateCcw } from "lucide-react";
+import { SiteLayout } from "@/components/SiteLayout";
+import tshirtWhite from "@/assets/tshirt-white.jpg";
+import tshirtBlack from "@/assets/tshirt-black.jpg";
+
+export const Route = createFileRoute("/mockup")({
+  head: () => ({
+    meta: [
+      { title: "Free DTF Mockup Tool — Manic Madhouse" },
+      {
+        name: "description",
+        content:
+          "Free t-shirt mockup tool. Upload your design, place it on a tee, download the preview. No signup, mobile-friendly.",
+      },
+      { property: "og:title", content: "Free DTF Mockup Tool — Manic Madhouse" },
+      { property: "og:description", content: "Upload your design, place it on a tee, download the preview. Free, no signup." },
+      { property: "og:url", content: "/mockup" },
+    ],
+    links: [{ rel: "canonical", href: "/mockup" }],
+  }),
+  component: MockupPage,
+});
+
+type ShirtColor = "white" | "black";
+
+const SHIRTS: Record<ShirtColor, string> = {
+  white: tshirtWhite,
+  black: tshirtBlack,
+};
+
+function MockupPage() {
+  const stageRef = useRef<HTMLDivElement>(null);
+  const designRef = useRef<HTMLImageElement>(null);
+  const [shirt, setShirt] = useState<ShirtColor>("white");
+  const [design, setDesign] = useState<string | null>(null);
+  const [size, setSize] = useState(35);
+  const [pos, setPos] = useState({ x: 50, y: 38 });
+  const dragging = useRef<{ startX: number; startY: number; baseX: number; baseY: number } | null>(null);
+
+  function onFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0];
+    if (!f) return;
+
+    const url = URL.createObjectURL(f);
+    setDesign(url);
+  }
+
+  function reset() {
+    setSize(35);
+    setPos({ x: 50, y: 38 });
+  }
+
+  function startDrag(clientX: number, clientY: number) {
+    dragging.current = { startX: clientX, startY: clientY, baseX: pos.x, baseY: pos.y };
+  }
+
+  function moveDrag(clientX: number, clientY: number) {
+    const stage = stageRef.current;
+    if (!stage || !dragging.current) return;
+
+    const rect = stage.getBoundingClientRect();
+    const dx = ((clientX - dragging.current.startX) / rect.width) * 100;
+    const dy = ((clientY - dragging.current.startY) / rect.height) * 100;
+
+    setPos({
+      x: Math.max(10, Math.min(90, dragging.current.baseX + dx)),
+      y: Math.max(10, Math.min(90, dragging.current.baseY + dy)),
+    });
+  }
+
+  function endDrag() {
+    dragging.current = null;
+  }
+
+  useEffect(() => {
+    const mm = (e: MouseEvent) => moveDrag(e.clientX, e.clientY);
+    const tm = (e: TouchEvent) => {
+      if (e.touches[0]) {
+        e.preventDefault();
+        moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+    const up = () => endDrag();
+
+    window.addEventListener("mousemove", mm);
+    window.addEventListener("mouseup", up);
+    window.addEventListener("touchmove", tm, { passive: false });
+    window.addEventListener("touchend", up);
+
+    return () => {
+      window.removeEventListener("mousemove", mm);
+      window.removeEventListener("mouseup", up);
+      window.removeEventListener("touchmove", tm);
+      window.removeEventListener("touchend", up);
+    };
+  }, [pos]);
+
+  async function downloadMockup() {
+    const shirtImg = new Image();
+    shirtImg.crossOrigin = "anonymous";
+    shirtImg.src = SHIRTS[shirt];
+
+    await new Promise((r) => (shirtImg.onload = r));
+
+    const W = 1200;
+    const H = 1200;
+    const canvas = document.createElement("canvas");
+    canvas.width = W;
+    canvas.height = H;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    ctx.drawImage(shirtImg, 0, 0, W, H);
+
+    if (design) {
+      const d = new Image();
+      d.crossOrigin = "anonymous";
+      d.src = design;
+
+      await new Promise((r) => (d.onload = r));
+
+      const dw = (size / 100) * W;
+      const ratio = d.height / d.width;
+      const dh = dw * ratio;
+      const cx = (pos.x / 100) * W;
+      const cy = (pos.y / 100) * H;
+
+      ctx.drawImage(d, cx - dw / 2, cy - dh / 2, dw, dh);
+    }
+
+    const a = document.createElement("a");
+    a.download = `manic-madhouse-mockup-${Date.now()}.png`;
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+  }
+
+  return (
+    <SiteLayout>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 pb-8">
+          <p className="text-xs font-display tracking-widest text-secondary">FREE TOOL</p>
+
+          <h1 className="mt-3 text-4xl sm:text-6xl font-display uppercase">
+            DTF <span className="text-primary">Mockup</span> Tool
+          </h1>
+
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            Upload your art, drop it on a shirt, drag to place, scale to fit. Download the
+            preview or email it to us for custom DTF printing.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-10 grid gap-8 lg:grid-cols-[1fr_320px]">
+        <div
+          ref={stageRef}
+          className="relative aspect-square bg-card border border-border select-none touch-none overflow-hidden"
+          style={{ touchAction: "none" }}
+        >
+          <img
+            src={SHIRTS[shirt]}
+            alt={`${shirt} t-shirt`}
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            draggable={false}
+          />
+
+          {design ? (
+            <img
+              ref={designRef}
+              src={design}
+              alt="Your design"
+              draggable={false}
+              onMouseDown={(e) => startDrag(e.clientX, e.clientY)}
+              onTouchStart={(e) => {
+                if (e.touches[0]) startDrag(e.touches[0].clientX, e.touches[0].clientY);
+              }}
+              className="absolute cursor-grab active:cursor-grabbing"
+              style={{
+                left: `${pos.x}%`,
+                top: `${pos.y}%`,
+                width: `${size}%`,
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <label className="cursor-pointer border-2 border-dashed border-primary bg-background/80 backdrop-blur p-6 text-center hover:bg-primary/10 transition-colors">
+                <Upload className="size-8 mx-auto text-primary" />
+                <div className="mt-2 font-display tracking-wider">UPLOAD DESIGN</div>
+                <div className="text-xs text-muted-foreground mt-1">PNG with transparent background works best</div>
+                <input type="file" accept="image/*" onChange={onFile} className="hidden" />
+              </label>
+            </div>
+          )}
+        </div>
+
+        <aside className="space-y-6">
+          <div>
+            <div className="font-display text-xs tracking-widest text-muted-foreground mb-2">SHIRT COLOR</div>
+
+            <div className="grid grid-cols-2 gap-2">
+              {(["white", "black"] as ShirtColor[]).map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setShirt(c)}
+                  className={`py-3 font-display text-sm tracking-wider border-2 transition-colors ${
+                    shirt === c ? "border-primary text-primary" : "border-border text-muted-foreground hover:border-foreground"
+                  }`}
+                >
+                  {c.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="font-display text-xs tracking-widest text-muted-foreground mb-2 block">
+              SIZE — {size}%
+            </label>
+
+            <input
+              type="range"
+              min={10}
+              max={70}
+              value={size}
+              onChange={(e) => setSize(Number(e.target.value))}
+              className="w-full accent-primary"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <label className="cursor-pointer flex items-center justify-center gap-2 py-3 border-2 border-secondary text-secondary font-display text-sm tracking-wider hover:bg-secondary hover:text-secondary-foreground transition-colors">
+              <Upload className="size-4" /> {design ? "REPLACE" : "UPLOAD"}
+              <input type="file" accept="image/*" onChange={onFile} className="hidden" />
+            </label>
+
+            <button
+              onClick={reset}
+              className="flex items-center justify-center gap-2 py-3 border-2 border-border text-muted-foreground hover:text-foreground font-display text-sm tracking-wider"
+            >
+              <RotateCcw className="size-4" /> RESET
+            </button>
+          </div>
+
+          <button
+            onClick={downloadMockup}
+            disabled={!design}
+            className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-4 font-display tracking-wider hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <Download className="size-4" /> DOWNLOAD MOCKUP
+          </button>
+
+          <div className="border border-border p-4 text-xs text-muted-foreground">
+            <div className="font-display text-foreground tracking-widest mb-2">TIPS</div>
+
+            <ul className="space-y-1 list-disc pl-4">
+              <li>Use PNGs with transparent backgrounds for cleanest results.</li>
+              <li>Drag the design on the shirt to reposition.</li>
+              <li>For print, send us your original file, 300dpi PNG.</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </SiteLayout>
+  );
+}
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteLayout } from "@/components/SiteLayout";
+import { Check, ArrowRight } from "lucide-react";
+
+export const Route = createFileRoute("/custom")({
+  head: () => ({
+    meta: [
+      { title: "Custom DTF Orders & Pressing Guide — Manic Madhouse" },
+      { name: "description", content: "Send us your art, we'll print it on DTF. Gang sheets, bulk pricing, and full pressing instructions." },
+      { property: "og:title", content: "Custom DTF Orders — Manic Madhouse" },
+      { property: "og:description", content: "Send us your art, we'll print it on DTF. Gang sheets, bulk pricing." },
+      { property: "og:url", content: "/custom" },
+    ],
+    links: [{ rel: "canonical", href: "/custom" }],
+  }),
+  component: CustomPage,
+});
+
+function CustomPage() {
+  return (
+    <SiteLayout>
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 pb-10">
+          <p className="text-xs font-display tracking-widest text-secondary">CUSTOM</p>
+
+          <h1 className="mt-3 text-4xl sm:text-6xl font-display uppercase">
+            Your Art. <span className="text-primary">Our Press.</span>
+          </h1>
+
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            Gang sheets, single prints, bulk drops for bands, brands, shops, and anyone with
+            a vision and a hot press. Send your file — we'll handle the rest.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid gap-6 sm:grid-cols-3">
+        {[
+          { title: "Single Transfer", price: "from $5", body: "Drop one design, we'll size and ship. Min order: 1." },
+          { title: "Gang Sheet", price: "$11 / sqft", body: 'Pack a 22" sheet however you want. Best price per print.' },
+          { title: "Bulk / Wholesale", price: "Get a quote", body: "50+ transfers? Bands, shops, fundraisers. We've got you." },
+        ].map((t) => (
+          <div key={t.title} className="border border-border bg-card p-6 hover:border-primary transition-colors">
+            <div className="font-display text-xl">{t.title}</div>
+            <div className="text-primary font-display text-2xl mt-2">{t.price}</div>
+            <p className="text-sm text-muted-foreground mt-3">{t.body}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid gap-10 lg:grid-cols-2">
+        <div>
+          <h2 className="text-3xl font-display uppercase">Pressing Guide</h2>
+
+          <ul className="mt-4 space-y-3 text-sm">
+            {[
+              "Heat press to 305°F (150°C)",
+              "Press firm pressure for 12 seconds",
+              "Hot peel — pull while warm",
+              "Cover with parchment, press again 5 sec",
+              "Wait 24 hours before first wash",
+              "Wash inside-out, cold, tumble low",
+            ].map((step) => (
+              <li key={step} className="flex gap-3">
+                <Check className="size-4 text-acid mt-0.5 shrink-0" />
+                <span>{step}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-3xl font-display uppercase">File Specs</h2>
+
+          <ul className="mt-4 space-y-3 text-sm">
+            {[
+              "PNG with transparent background",
+              "300 DPI at final print size",
+              "RGB color, not CMYK",
+              "Min line weight 2px to stay crisp",
+              "Send via email or use the mockup tool",
+            ].map((step) => (
+              <li key={step} className="flex gap-3">
+                <Check className="size-4 text-acid mt-0.5 shrink-0" />
+                <span>{step}</span>
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            to="/mockup"
+            className="mt-6 inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-5 py-3 font-display tracking-wider hover:opacity-90"
+          >
+            TRY THE MOCKUP TOOL <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16">
+        <div className="border-2 border-primary bg-card p-8 text-center">
+          <h2 className="text-3xl font-display uppercase">Ready to print?</h2>
+
+          <p className="mt-2 text-muted-foreground">
+            Email us your file and we'll send a quote within 24 hours.
+          </p>
+
+          <a
+            href="mailto:orders@manicmadhouse.com?subject=Custom DTF Order"
+            className="mt-4 inline-block bg-primary text-primary-foreground px-6 py-3 font-display tracking-wider"
+          >
+            EMAIL THE MADHOUSE
+          </a>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+}
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  Outlet,
+  Link,
+  createRootRouteWithContext,
+  useRouter,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
+
+import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CartProvider } from "../lib/cart";
+
+function NotFoundComponent() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div className="mt-6">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Go home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-max-width:1200px;
-margin:auto;
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  console.error(error);
+  const router = useRouter();
+
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn't load
+        </h1>
+
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
+
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Try again
+          </button>
+
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Go home
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-/* PRODUCT CARDS */
-.card{
-background:#12121a;
-border-radius:14px;
-overflow:hidden;
-transition:0.3s;
-box-shadow:0 0 10px rgba(0,0,0,0.4);
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Lovable App" },
+      { name: "description", content: "Lovable Generated Project" },
+      { name: "author", content: "Lovable" },
+      { property: "og:title", content: "Lovable App" },
+      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:site", content: "@Lovable" },
+    ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&display=swap",
+      },
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+    ],
+  }),
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
+});
+
+function RootShell({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
 }
 
-.card:hover{
-transform:translateY(-8px) scale(1.02);
-box-shadow:0 0 25px rgba(255,0,122,0.6);
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <CartProvider>
+        <Outlet />
+      </CartProvider>
+    </QueryClientProvider>
+  );
+}
+import { QueryClient } from "@tanstack/react-query";
+import { createRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+
+export const getRouter = () => {
+  const queryClient = new QueryClient();
+
+  const router = createRouter({
+    routeTree,
+    context: { queryClient },
+    scrollRestoration: true,
+    defaultPreloadStaleTime: 0,
+  });
+
+  return router;
+};
+import { createStart, createMiddleware } from "@tanstack/react-start";
+
+import { renderErrorPage } from "./lib/error-page";
+
+const errorMiddleware = createMiddleware().server(async ({ next }) => {
+  try {
+    return await next();
+  } catch (error) {
+    if (error != null && typeof error === "object" && "statusCode" in error) {
+      throw error;
+    }
+
+    console.error(error);
+
+    return new Response(renderErrorPage(), {
+      status: 500,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    });
+  }
+});
+
+export const startInstance = createStart(() => ({
+  requestMiddleware: [errorMiddleware],
+}));
+import "./lib/error-capture";
+
+import { consumeLastCapturedError } from "./lib/error-capture";
+import { renderErrorPage } from "./lib/error-page";
+
+type ServerEntry = {
+  fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
+};
+
+let serverEntryPromise: Promise<ServerEntry> | undefined;
+
+async function getServerEntry(): Promise<ServerEntry> {
+  if (!serverEntryPromise) {
+    serverEntryPromise = import("@tanstack/react-start/server-entry").then(
+      (m) => (m.default ?? m) as ServerEntry,
+    );
+  }
+
+  return serverEntryPromise;
 }
 
-.card img{
-width:100%;
-height:260px;
-object-fit:cover;
+async function normalizeCatastrophicSsrResponse(response: Response): Promise<Response> {
+  if (response.status < 500) return response;
+
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("application/json")) return response;
+
+  const body = await response.clone().text();
+
+  if (!body.includes('"unhandled":true') || !body.includes('"message":"HTTPError"')) {
+    return response;
+  }
+
+  console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
+
+  return new Response(renderErrorPage(), {
+    status: 500,
+    headers: { "content-type": "text/html; charset=utf-8" },
+  });
 }
 
-.card h4{
-margin:15px 0 5px;
-font-size:16px;
-}
+export default {
+  async fetch(request: Request, env: unknown, ctx: unknown) {
+    try {
+      const handler = await getServerEntry();
+      const response = await handler.fetch(request, env, ctx);
+      return await normalizeCatastrophicSsrResponse(response);
+    } catch (error) {
+      console.error(error);
 
-.card button{
-background:linear-gradient(90deg,#ff007a,#7b2cff);
-border:none;
-color:white;
-padding:10px;
-margin:10px;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
-}
+      return new Response(renderErrorPage(), {
+        status: 500,
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+    }
+  },
+};
+import { createFileRoute } from "@tanstack/react-router";
+import type {} from "@tanstack/react-start";
 
-.card button:hover{
-opacity:0.85;
-}
+const BASE_URL = "";
 
-/* CART ICON */
-#cart-toggle{
-position:fixed;
-right:20px;
-bottom:80px;
-background:linear-gradient(90deg,#ff007a,#7b2cff);
-padding:14px;
-border-radius:50%;
-cursor:pointer;
-box-shadow:0 0 15px rgba(123,44,255,0.6);
-}
+export const Route = createFileRoute("/sitemap.xml")({
+  server: {
+    handlers: {
+      GET: async () => {
+        const entries = [
+          { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/shop", changefreq: "weekly", priority: "0.9" },
+          { path: "/stickers", changefreq: "weekly", priority: "0.9" },
+          { path: "/mockup", changefreq: "monthly", priority: "0.8" },
+          { path: "/custom", changefreq: "monthly", priority: "0.7" },
+          { path: "/contact", changefreq: "yearly", priority: "0.5" },
+        ];
 
-/* CART BOX */
-#cart{
-position:fixed;
-right:20px;
-bottom:140px;
-background:#12121a;
-padding:15px;
-border-radius:12px;
-width:270px;
-box-shadow:0 0 25px rgba(0,0,0,0.8);
-}
+        const urls = entries
+          .map(
+            (e) =>
+              `  <url><loc>${BASE_URL}${e.path}</loc><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
+          )
+          .join("\n");
 
-/* CART ITEMS */
-#cart li{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-font-size:14px;
-}
+        const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
 
-/* BUTTONS */
-.qty-btn{
-background:#7b2cff;
-border:none;
-color:white;
-padding:4px 8px;
-border-radius:5px;
-cursor:pointer;
-}
+        return new Response(xml, {
+          headers: { "Content-Type": "application/xml", "Cache-Control": "public, max-age=3600" },
+        });
+      },
+    },
+  },
+});
+import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-.remove-btn{
-background:#ff004c;
-border:none;
-color:white;
-padding:4px 8px;
-border-radius:5px;
-cursor:pointer;
+export default defineConfig({
+  tanstackStart: {
+    server: { entry: "server" },
+  },
+});
+{
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "eslint.config.js"],
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
 }
+User-agent: *
+Allow: /
 
-/* CTA BAR */
-.cta-bar{
-position:fixed;
-bottom:0;
-width:100%;
-background:#ff007a;
-text-align:center;
-padding:14px;
-font-weight:bold;
-}
+Sitemap: /sitemap.xml
 
-.cta-bar a{
-color:white;
-text-decoration:none;
-}
-</style>
-</head>
-
-<body>
 
 <header>
 <img src="logo.png" class="logo">
 <h1>Manic Madhouse DTF Designs</h1>
 <nav>
-<a href="#designs">Designs</a>
-<a href="#order">Order</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
 
 <section class="hero">
 <h2>🔥 Premium Custom DTF Transfers & Stickers</h2>
 <p>Australia Wide Shipping • Fast Turnaround • High Quality Prints</p>
 </section>
-
-<section class="section" id="designs">
-<h2>🔥 Featured Designs</h2>
-
-<div class="grid">
-
-<div class="card"><img src="design1.png"><h4>Chaos But Make It Cute</h4><<button onclick="viewProduct('Chaos But Make It Cute','design1.png')">
-View Product
-</button>
-
-<div class="card"><img src="design2.png"><h4>Hot Mess Express</h4><<button onclick="viewProduct('Hot Mess Express','design2.png')">
-View Product
-</button>
-
-<div class="card"><img src="design3.png"><h4>Overstimulated Moms Club</h4><<button onclick="viewProduct('Overstimulated Moms Club','design3.png')">
-View Product
-</button>
-
-<div class="card"><img src="design4.png"><h4>IDGAF</h4><<button onclick="viewProduct('IDGAF','design4.png')">
-View Product
-</button>
-
-<div class="card"><img src="design6.png"><h4>Built Different</h4><<button onclick="viewProduct('Built Different','design6.png')">
-View Product
-</button>
-
-<div class="card"><img src="design7.png"><h4>JDM Legend</h4><<button onclick="viewProduct('JDM Legend','design7.png')">
-View Product
-</button>
-
-<div class="card"><img src="design8.png"><h4>In My Mom Era</h4><<button onclick="viewProduct('In My Mom Era','design8.png')">
-View Product
-</button>
-
-<div class="card"><img src="design9.png"><h4>Welcome to the Madhouse</h4><<button onclick="viewProduct('Welcome To The Madhouse','design9.png')">
-View Product
-</button>
-
-<div class="card"><img src="design10.png"><h4>Support Cowgirl</h4><<button onclick="viewProduct('Support Cowgirl','design10.png')">
-View Product
-</button>
-
-<div class="card"><img src="design11.png"><h4>Running on Coffee</h4><<button onclick="viewProduct('Running on Coffee','design11.png')">
-View Product
-</button>
-
-<div class="card"><img src="design12.png"><h4>F-Bomb Mom</h4><<button onclick="viewProduct('F-Bomb Mom','design12.png')">
-View Product
-</button>
-
-<div class="card"><img src="design13.png"><h4>Zero Fcks Given</h4><<button onclick="viewProduct('Zero Fcks Given','design13.png')">
-View Product
-</button>
-
-<div class="card"><img src="design14.png"><h4>Not Here To Fck Spiders</h4><<button onclick="viewProduct('Not Here To Fck Spiders','design14.png')">
-View Product
-</button>
-
-<div class="card"><img src="design15.png"><h4>Good Times & Tan Lines</h4><<button onclick="viewProduct('Good Times & Tan Lines','design15.png')">
-View Product
-</button>
-
-<div class="card"><img src="design16.png"><h4>Saltwater Therapy</h4><<button onclick="viewProduct('Saltwater Therapy','design16.png')">
-View Product
-</button>
-
-<div class="card"><img src="design17.png"><h4>Catch Waves Not Feelings</h4><<button onclick="viewProduct('Catch Waves Not Feelings','design17.png')">
-View Product
-
-<div class="card"><img src="design21.png"><h4>Stay Wild</h4><<button onclick="viewProduct('Stay Wild','design21.png')">
-View Product
-</button>
-
-<div class="card"><img src="design22.png"><h4>Lucky 13</h4><<button onclick="viewProduct('Luck 13','design22.png')">
-View Product
-</button>
-
-<div class="card"><img src="design23.png"><h4>Keep Tripping</h4><<button onclick="viewProduct('Keep Trippin','design23.png')">
-View Product
-</button>
-
-<div class="card"><img src="design24.png"><h4>Unlucky 13</h4><<button onclick="viewProduct('Unlucky 13','design24.png')">
-View Product
-</button>
-
-</div>
-</section>
-
-<section class="section">
-<h2>⭐ Reviews</h2>
-<p>⭐⭐⭐⭐⭐ Amazing quality!</p>
-<p>⭐⭐⭐⭐⭐ Fast turnaround!</p>
-<p>⭐⭐⭐⭐⭐ Highly recommend!</p>
-</section>
-
-<section class="section" id="order">
-<h2>📩 Request Quote</h2>
-
-<form>
-<input type="text" placeholder="Name">
-<input type="email" placeholder="Email">
-<textarea placeholder="What do you need?"></textarea>
-<button>Send</button>
-</form>
-
-</section>
-
-<section class="section" id="contact">
-<h2>💬 Contact</h2>
-<a href="https://www.instagram.com/manic_madhouse_dtf_designs" target="_blank">
-Message on Instagram
-</a>
-</section>
-
-<footer>
-<p>© Manic Madhouse DTF Designs</p>
-</footer>
-
-<div class="cta-bar">
-<a href="https://www.instagram.com/manic_madhouse_dtf_designs">Order via Instagram</a>
-</div>
-
-<div id="cart-toggle" onclick="toggleCart()">🛒</div>
-
-<div id="cart">
-<h3>🛒 Your Cart</h3>
-<ul id="cart-items"></ul>
-
-<p><strong>Total: $<span id="cart-total">0</span></strong></p>
-
-<button onclick="checkout()">Checkout with PayPal</button>
-</div>
-
-<script>
-function getCart(){
-return JSON.parse(localStorage.getItem("cart")) || [];
-}
-
-function saveCart(cart){
-localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function addToCart(name, price, size){
-let cart = getCart();
-
-let existing = cart.find(item => item.name === name && item.size === size);
-
-if(existing){
-existing.qty++;
-} else {
-cart.push({name, price, size, qty:1});
-}
-
-saveCart(cart);
-updateCart();
-}
-
-function updateCart(){
-let cart = getCart();
-
-let list = document.getElementById("cart-items");
-let totalDisplay = document.getElementById("cart-total");
-
-if(!list || !totalDisplay) return;
-
-list.innerHTML = "";
-let total = 0;
-
-cart.forEach((item, index)=>{
-let itemTotal = item.price * item.qty;
-total += itemTotal;
-
-list.innerHTML += `
-<li>
-${item.name} (${item.size}) - $${item.price}
-<div>
-<button onclick="changeQty(${index}, -1)">-</button>
-${item.qty}
-<button onclick="changeQty(${index}, 1)">+</button>
-<button onclick="removeItem(${index})">x</button>
-</div>
-</li>
-`;
-});
-
-totalDisplay.innerText = total;
-}
-
-function changeQty(index, amount){
-let cart = getCart();
-cart[index].qty += amount;
-
-if(cart[index].qty <= 0){
-cart.splice(index,1);
-}
-
-saveCart(cart);
-updateCart();
-}
-
-function removeItem(index){
-let cart = getCart();
-cart.splice(index,1);
-saveCart(cart);
-updateCart();
-}
-
-function toggleCart(){
-let cartBox = document.getElementById("cart");
-cartBox.style.display =
-cartBox.style.display === "none" ? "block" : "none";
-}
-
-function checkout(){
-let cart = getCart();
-
-if(cart.length === 0){
-alert("Cart is empty!");
-return;
-}
-
-let total = 0;
-let summary = "";
-
-cart.forEach(item=>{
-total += item.price * item.qty;
-summary += `${item.name} (${item.size}) x${item.qty}, `;
-});
-
-let paypalLink = "https://paypal.me/manicmadhousedtfdesi/" + total;
-
-window.open(paypalLink, "_blank");
-
-alert("Order:\n" + summary + "\nTotal: $" + total);
-
-localStorage.removeItem("cart");
-updateCart();
-}
-
-// Load cart on page load
-window.onload = updateCart;
- function viewProduct(name, image){
-window.location.href =
-`product.html?name=${encodeURIComponent(name)}&image=${image}`;
- } 
-</script>
 
 </body>
 </html>
