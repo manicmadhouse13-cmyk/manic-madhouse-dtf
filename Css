@@ -1083,3 +1083,34 @@ border-color:var(--pink);
 box-shadow:0 0 20px rgba(255,0,122,.35);
 
 }
+/* ======================
+SHOPPING CART
+====================== */
+
+.cart-card{
+
+background:#171721;
+
+padding:25px;
+
+margin-bottom:20px;
+
+border-radius:20px;
+
+transition:.3s;
+
+}
+
+.cart-card:hover{
+
+box-shadow:0 0 35px rgba(255,0,122,.25);
+
+transform:translateY(-4px);
+
+}
+
+.cart-card img{
+
+border-radius:15px;
+
+}
