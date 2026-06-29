@@ -627,3 +627,85 @@ PRODUCTS
 .product-info .btn{
     width:100%;
 }
+/* ===========================
+WHY CHOOSE US
+=========================== */
+
+.why-us{
+    background:#0d0d13;
+}
+
+.feature-box{
+    background:#171721;
+    border-radius:20px;
+    padding:40px 30px;
+    transition:.3s;
+    height:100%;
+}
+
+.feature-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 35px rgba(255,0,122,.35);
+}
+
+.feature-box h1{
+    font-size:3.5rem;
+    margin-bottom:20px;
+}
+
+.feature-box h4{
+    margin-bottom:15px;
+}
+
+.feature-box p{
+    color:#cfcfcf;
+}
+
+/* ===========================
+WEDDINGS
+=========================== */
+
+.wedding-section{
+    background:#12121a;
+}
+
+.section-tag{
+    display:inline-block;
+    padding:8px 16px;
+    background:#ff007a;
+    border-radius:40px;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.service-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:30px;
+}
+
+.service-list div{
+    background:#1b1b25;
+    padding:15px;
+    border-radius:12px;
+}
+
+/* ===========================
+BUSINESS
+=========================== */
+
+.business-card{
+    background:#171721;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    transition:.3s;
+    height:100%;
+    font-size:1.1rem;
+}
+
+.business-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(0,212,255,.35);
+}
