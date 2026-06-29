@@ -1114,3 +1114,38 @@ transform:translateY(-4px);
 border-radius:15px;
 
 }
+/* ======================
+CHECKOUT
+====================== */
+
+.checkout-box{
+
+background:#171721;
+
+padding:40px;
+
+border-radius:20px;
+
+}
+
+.checkout-summary{
+
+background:#12121a;
+
+padding:35px;
+
+border-radius:20px;
+
+position:sticky;
+
+top:120px;
+
+}
+
+.checkout-summary h2{
+
+color:var(--pink);
+
+margin-top:25px;
+
+}
