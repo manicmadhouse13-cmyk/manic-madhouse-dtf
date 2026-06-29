@@ -1252,3 +1252,98 @@ font-size:12px;
 font-weight:bold;
 
 }
+/* ===========================
+BACKGROUND EFFECT
+=========================== */
+
+body{
+
+position:relative;
+
+overflow-x:hidden;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-400px;
+
+left:-300px;
+
+width:900px;
+
+height:900px;
+
+background:radial-gradient(circle,
+rgba(255,0,122,.18),
+transparent 70%);
+
+animation:blobOne 18s infinite alternate;
+
+pointer-events:none;
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+bottom:-450px;
+
+right:-350px;
+
+width:900px;
+
+height:900px;
+
+background:radial-gradient(circle,
+rgba(123,44,255,.18),
+transparent 70%);
+
+animation:blobTwo 20s infinite alternate;
+
+pointer-events:none;
+
+z-index:-2;
+
+}
+
+@keyframes blobOne{
+
+0%{
+
+transform:translate(0,0);
+
+}
+
+100%{
+
+transform:translate(180px,120px);
+
+}
+
+}
+
+@keyframes blobTwo{
+
+0%{
+
+transform:translate(0,0);
+
+}
+
+100%{
+
+transform:translate(-160px,-120px);
+
+}
+
+}
