@@ -129,3 +129,86 @@ counter.innerText=target;
 update();
 
 });
+const products=[
+
+{
+id:1,
+name:"Chaos But Make It Cute",
+price:15,
+category:"Funny",
+image:"images/products/design1.png"
+},
+
+{
+id:2,
+name:"Hot Mess Express",
+price:15,
+category:"Funny",
+image:"images/products/design2.png"
+},
+
+{
+id:3,
+name:"Overstimulated Moms Club",
+price:15,
+category:"Mums",
+image:"images/products/design3.png"
+},
+
+{
+id:4,
+name:"IDGAF",
+price:15,
+category:"Funny",
+image:"images/products/design4.png"
+},
+
+{
+id:5,
+name:"Built Different",
+price:15,
+category:"JDM",
+image:"images/products/design6.png"
+},
+
+{
+id:6,
+name:"JDM Legend",
+price:15,
+category:"JDM",
+image:"images/products/design7.png"
+},
+
+{
+id:7,
+name:"Stay Wild",
+price:15,
+category:"Country",
+image:"images/products/design21.png"
+},
+
+{
+id:8,
+name:"Lucky 13",
+price:15,
+category:"Tattoo",
+image:"images/products/design22.png"
+},
+
+{
+id:9,
+name:"Keep Trippin'",
+price:15,
+category:"Tattoo",
+image:"images/products/design23.png"
+},
+
+{
+id:10,
+name:"Unlucky 13",
+price:15,
+category:"Tattoo",
+image:"images/products/design24.png"
+}
+
+];
