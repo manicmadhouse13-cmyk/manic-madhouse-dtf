@@ -973,7 +973,53 @@ box-shadow:0 0 20px rgba(255,0,122,.35);
 .form-select option{
 
 background:#181824;
+/* ===========================
+MOCKUP DESIGNER
+=========================== */
 
+#mockupArea{
+
+position:relative;
+
+max-width:650px;
+
+margin:auto;
+
+}
+
+#shirt{
+
+width:100%;
+
+display:block;
+
+}
+
+#design{
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+width:180px;
+
+transform:translate(-50%,-50%);
+
+cursor:move;
+
+display:none;
+
+transition:.15s;
+
+}
+
+.form-range{
+
+accent-color:#ff007a;
+
+}
 color:white;
 
 }
