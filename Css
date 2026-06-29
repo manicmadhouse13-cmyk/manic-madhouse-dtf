@@ -1028,3 +1028,58 @@ z-index:0;
 filter:blur(25px);
 
 }
+/* ===========================
+PRODUCT PAGE
+=========================== */
+
+#productImage{
+
+border-radius:20px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+
+}
+
+#productName{
+
+font-size:3rem;
+
+font-weight:800;
+
+margin-bottom:15px;
+
+}
+
+#productPrice{
+
+color:var(--pink);
+
+font-size:2rem;
+
+margin-bottom:25px;
+
+}
+
+.form-control,
+.form-select{
+
+background:#181824;
+
+border:1px solid rgba(255,255,255,.08);
+
+color:white;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+background:#181824;
+
+color:white;
+
+border-color:var(--pink);
+
+box-shadow:0 0 20px rgba(255,0,122,.35);
+
+}
