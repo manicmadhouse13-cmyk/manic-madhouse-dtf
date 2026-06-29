@@ -1373,3 +1373,36 @@ transform:translate(-160px,-120px);
 }
 
 }
+.card{
+
+border:none;
+
+border-radius:24px;
+
+overflow:hidden;
+
+background:#171721;
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 30px 60px rgba(0,0,0,.45);
+
+}
+
+.card img{
+
+transition:.6s;
+
+}
+
+.card:hover img{
+
+transform:scale(1.08);
+
+}
