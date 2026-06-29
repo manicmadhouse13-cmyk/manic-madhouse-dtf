@@ -936,7 +936,47 @@ transparent 70%);
 pointer-events:none;
 
 transform:translate(-50%,-50%);
+.small-hero{
 
+padding-top:170px;
+
+padding-bottom:70px;
+
+text-align:center;
+
+}
+
+.form-control,
+.form-select{
+
+background:#181824;
+
+border:none;
+
+color:white;
+
+padding:16px;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+background:#181824;
+
+color:white;
+
+box-shadow:0 0 20px rgba(255,0,122,.35);
+
+}
+
+.form-select option{
+
+background:#181824;
+
+color:white;
+
+}
 z-index:0;
 
 filter:blur(25px);
