@@ -212,3 +212,92 @@ image:"images/products/design24.png"
 }
 
 ];
+let filteredProducts=[...products];
+
+const grid=document.getElementById("productGrid");
+
+function displayProducts(items){
+
+grid.innerHTML="";
+
+items.forEach(product=>{
+
+grid.innerHTML+=`
+
+<div class="col-lg-3 col-md-6 mb-4">
+
+<div class="product-card">
+
+<div class="product-image">
+
+<img src="${product.image}">
+
+</div>
+
+<div class="product-info">
+
+<h4>${product.name}</h4>
+
+<p>$${product.price}</p>
+
+<a href="product.html?id=${product.id}"
+
+class="btn btn-primary">
+
+View Product
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+displayProducts(products);
+
+document.getElementById("search").addEventListener("keyup",filterProducts);
+
+document.getElementById("category").addEventListener("change",filterProducts);
+
+document.getElementById("sort").addEventListener("change",filterProducts);
+
+function filterProducts(){
+
+const search=document.getElementById("search").value.toLowerCase();
+
+const category=document.getElementById("category").value;
+
+const sort=document.getElementById("sort").value;
+
+filteredProducts=products.filter(product=>{
+
+const matchesSearch=product.name.toLowerCase().includes(search);
+
+const matchesCategory=category==="All"||product.category===category;
+
+return matchesSearch&&matchesCategory;
+
+});
+
+if(sort==="low"){
+
+filteredProducts.sort((a,b)=>a.price-b.price);
+
+}
+
+if(sort==="high"){
+
+filteredProducts.sort((a,b)=>b.price-a.price);
+
+}
+
+displayProducts(filteredProducts);
+
+}
