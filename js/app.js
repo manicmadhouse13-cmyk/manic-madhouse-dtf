@@ -301,3 +301,28 @@ filteredProducts.sort((a,b)=>b.price-a.price);
 displayProducts(filteredProducts);
 
 }
+// Update Cart Counter
+
+function updateCartCount(){
+
+const cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+let total=0;
+
+cart.forEach(item=>{
+
+total+=item.qty;
+
+});
+
+const badge=document.getElementById("cart-count");
+
+if(badge){
+
+badge.innerText=total;
+
+}
+
+}
+
+updateCartCount();
