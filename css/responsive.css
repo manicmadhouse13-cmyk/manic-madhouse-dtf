@@ -1,1 +1,59 @@
+@media(max-width:991px){
 
+.hero{
+padding-top:140px;
+text-align:center;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero p{
+font-size:1rem;
+}
+
+.hero-collage{
+display:none;
+}
+
+.navbar-brand img{
+height:55px;
+}
+
+.service-list{
+grid-template-columns:1fr;
+}
+
+.section-title h2{
+font-size:2.3rem;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-buttons{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.newsletter-form{
+flex-direction:column;
+align-items:center;
+}
+
+.upload-box{
+padding:35px;
+}
+
+.section-title h2{
+font-size:2rem;
+}
+
+.product-image img{
+height:260px;
+}
+
+}
