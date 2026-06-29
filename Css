@@ -347,6 +347,60 @@ max-width:600px;
 
 margin-bottom:40px;
 
+.btn-primary{
+
+background:linear-gradient(135deg,#ff007a,#7b2cff);
+
+border:none;
+
+border-radius:50px;
+
+padding:16px 38px;
+
+font-weight:700;
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.btn-primary::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:100%;
+
+height:100%;
+
+background:rgba(255,255,255,.18);
+
+transform:skewX(-30deg);
+
+transition:.6s;
+
+}
+
+.btn-primary:hover::before{
+
+left:120%;
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 40px rgba(255,0,122,.45);
+
 }
 
 /* Buttons */
@@ -363,35 +417,7 @@ transition:.35s;
 
 border:none;
 
-}
 
-.btn-primary{
-
-background:linear-gradient(90deg,var(--pink),var(--purple));
-
-}
-
-.btn-primary:hover{
-
-transform:translateY(-5px);
-
-box-shadow:0 0 35px rgba(255,0,122,.55);
-
-}
-
-.btn-outline-light{
-
-border:2px solid white;
-
-}
-
-.btn-outline-light:hover{
-
-background:white;
-
-color:#111;
-
-}
 
 /* Hero Images */
 
