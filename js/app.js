@@ -326,3 +326,31 @@ badge.innerText=total;
 }
 
 updateCartCount();
+{
+    id:1,
+    name:"Chaos But Make It Cute",
+
+    category:"Funny",
+
+    description:"Premium full colour DTF transfer.",
+
+    images:[
+        "design1.png",
+        "design1-back.png",
+        "design1-closeup.png"
+    ],
+
+    sizes:[
+        {name:"Pocket",price:8},
+        {name:"A6",price:10},
+        {name:"A5",price:12},
+        {name:"A4",price:15},
+        {name:"A3",price:20}
+    ],
+
+    featured:true,
+
+    bestseller:true,
+
+    newArrival:false
+}
