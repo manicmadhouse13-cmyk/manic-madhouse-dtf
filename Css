@@ -709,3 +709,193 @@ BUSINESS
     transform:translateY(-10px);
     box-shadow:0 0 35px rgba(0,212,255,.35);
 }
+/* ===========================
+UPLOAD SECTION
+=========================== */
+
+.upload-section{
+    background:linear-gradient(135deg,#12121b,#1d1d2a);
+    text-align:center;
+}
+
+.upload-box{
+    max-width:800px;
+    margin:50px auto;
+    padding:60px;
+    border:2px dashed rgba(255,255,255,.2);
+    border-radius:25px;
+    background:rgba(255,255,255,.03);
+    transition:.3s;
+}
+
+.upload-box:hover{
+    border-color:var(--pink);
+    box-shadow:0 0 40px rgba(255,0,122,.25);
+}
+
+.upload-box i{
+    font-size:4rem;
+    color:var(--pink);
+    display:block;
+    margin-bottom:20px;
+}
+
+.upload-box h3{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.upload-box p{
+    color:var(--grey);
+    margin-bottom:30px;
+}
+
+/* ===========================
+REVIEWS
+=========================== */
+
+.reviews{
+    background:#101018;
+}
+
+.review-card{
+    background:#181824;
+    padding:35px;
+    border-radius:20px;
+    height:100%;
+    transition:.3s;
+}
+
+.review-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(123,44,255,.35);
+}
+
+.review-card p{
+    margin:20px 0;
+    color:#d0d0d0;
+    line-height:1.8;
+}
+
+.review-card strong{
+    color:var(--pink);
+}
+
+/* ===========================
+INSTAGRAM
+=========================== */
+
+.instagram{
+    background:#09090b;
+}
+
+.instagram-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.instagram-grid img{
+    border-radius:18px;
+    transition:.35s;
+    cursor:pointer;
+}
+
+.instagram-grid img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px rgba(255,0,122,.35);
+}
+
+/* ===========================
+NEWSLETTER
+=========================== */
+
+.newsletter{
+    background:linear-gradient(90deg,var(--pink),var(--purple));
+    text-align:center;
+}
+
+.newsletter h2{
+    color:white;
+    font-size:3rem;
+}
+
+.newsletter p{
+    color:white;
+    margin:20px auto;
+    max-width:600px;
+}
+
+.newsletter-form{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.newsletter-form input{
+    width:350px;
+    max-width:100%;
+    padding:18px;
+    border:none;
+    border-radius:50px;
+    font-size:1rem;
+}
+
+.newsletter-form button{
+    border:none;
+    padding:18px 35px;
+    border-radius:50px;
+    background:#111;
+    color:white;
+    font-weight:700;
+    transition:.3s;
+}
+
+.newsletter-form button:hover{
+    background:white;
+    color:#111;
+}
+
+/* ===========================
+FOOTER
+=========================== */
+
+footer{
+    background:#060606;
+    padding:70px 0 30px;
+}
+
+footer h3,
+footer h4{
+    margin-bottom:20px;
+}
+
+footer p,
+footer li{
+    color:#bdbdbd;
+    line-height:2;
+}
+
+footer ul{
+    list-style:none;
+    padding:0;
+}
+
+footer a{
+    color:#bdbdbd;
+}
+
+footer a:hover{
+    color:var(--pink);
+}
+
+footer hr{
+    border-color:rgba(255,255,255,.1);
+    margin:40px 0;
+}
+
+footer .text-center{
+    color:#888;
+}
