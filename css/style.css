@@ -272,3 +272,57 @@ justify-content:center;
 }
 
 }
+/* ===================================
+FIX HORIZONTAL SCROLL
+=================================== */
+
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+*{
+    max-width:100%;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+.hero{
+    overflow:hidden;
+}
+
+.hero-images{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+}
+
+.hero-img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+@media (max-width:900px){
+
+.hero-grid{
+    grid-template-columns:1fr;
+}
+
+.hero-images{
+    margin-top:40px;
+}
+
+}
