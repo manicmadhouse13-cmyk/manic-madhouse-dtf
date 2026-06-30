@@ -361,3 +361,61 @@ transition:.3s;
 transform:scale(1.03);
 
 }
+/* ===========================
+HERO BANNER
+=========================== */
+
+.hero-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero-banner{
+    width:100%;
+    max-width:700px;
+    display:block;
+    margin:auto;
+    border-radius:25px;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.hero-left h1{
+    font-size:60px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-left p{
+    font-size:20px;
+    line-height:1.7;
+    margin:25px 0;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+@media(max-width:900px){
+
+.hero-content{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.hero-banner{
+    margin-top:40px;
+}
+
+.buttons{
+    justify-content:center;
+}
+
+.hero-left h1{
+    font-size:42px;
+}
+
+}
