@@ -199,4 +199,68 @@ nav ul{
 }
 
 }
+/* ==========================
+   SHOP BY COLLECTION
+========================== */
 
+.collections{
+    padding:100px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-heading h2{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.section-heading p{
+    color:#bfbfbf;
+}
+
+.collection-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.collection-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.collection-card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.collection-card:hover img{
+    transform:scale(1.08);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.15));
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:30px;
+}
+
+.overlay h3{
+    font-size:1.8rem;
+    margin-bottom:10px;
+}
+
+.overlay a{
+    color:#fff;
+    font-weight:700;
+}
