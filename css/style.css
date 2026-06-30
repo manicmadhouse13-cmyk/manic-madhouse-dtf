@@ -264,3 +264,100 @@ nav ul{
     color:#fff;
     font-weight:700;
 }
+/* =====================================
+BEST SELLERS
+===================================== */
+
+.best-sellers{
+
+padding:100px 0;
+
+background:#101018;
+
+}
+
+.products{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:30px;
+
+}
+
+.product-card{
+
+background:#181824;
+
+border-radius:22px;
+
+overflow:hidden;
+
+transition:.35s;
+
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.product-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 35px rgba(255,0,122,.35);
+
+}
+
+.product-card img{
+
+height:320px;
+
+width:100%;
+
+object-fit:cover;
+
+}
+
+.product-card h3{
+
+padding:20px 20px 8px;
+
+font-size:1.3rem;
+
+}
+
+.product-card p{
+
+padding:0 20px 20px;
+
+color:#bdbdbd;
+
+}
+
+.product-btn{
+
+display:block;
+
+margin:0 20px 25px;
+
+padding:14px;
+
+text-align:center;
+
+border-radius:50px;
+
+background:linear-gradient(90deg,#ff007a,#7b2cff);
+
+color:white;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+.product-btn:hover{
+
+transform:scale(1.03);
+
+}
