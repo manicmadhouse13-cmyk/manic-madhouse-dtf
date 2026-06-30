@@ -153,3 +153,35 @@ font-size:2.8rem;
 }
 
 }
+.nav-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo img{
+height:70px;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+list-style:none;
+margin:0;
+padding:0;
+}
+
+.nav-links a{
+color:#fff;
+font-weight:600;
+}
+
+.nav-links a:hover{
+color:#ff007a;
+}
+
+.cart-btn{
+font-size:24px;
+color:white;
+text-decoration:none;
+}
