@@ -562,7 +562,115 @@ width:100%;
 grid-template-columns:1fr;
 
 }
+/* ===========================
+WEDDING SECTION
+=========================== */
 
+.wedding-section{
+
+padding:120px 0;
+
+background:#12121b;
+
+}
+
+.wedding-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+.wedding-image img{
+
+width:100%;
+
+border-radius:25px;
+
+box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.wedding-content h2{
+
+font-size:3rem;
+
+margin:20px 0;
+
+}
+
+.wedding-content p{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+margin-bottom:35px;
+
+}
+
+.service-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+margin-bottom:35px;
+
+}
+
+.service-grid div{
+
+background:#1c1c27;
+
+padding:18px;
+
+border-radius:15px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.service-grid div:hover{
+
+background:linear-gradient(135deg,#ff007a,#7b2cff);
+
+transform:translateY(-4px);
+
+}
+
+@media(max-width:900px){
+
+.wedding-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.wedding-content{
+
+text-align:center;
+
+}
+
+.service-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
 }
 /*=========================
 BUSINESS
