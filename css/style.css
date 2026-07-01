@@ -927,3 +927,64 @@ grid-template-columns:1fr;
 }
 
 }
+/*=========================
+CONTACT CTA
+=========================*/
+
+.contact-section{
+
+padding:120px 0;
+
+background:linear-gradient(135deg,#ff007a,#7b2cff);
+
+}
+
+.contact-box{
+
+text-align:center;
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+.contact-box h2{
+
+font-size:54px;
+
+margin-bottom:20px;
+
+}
+
+.contact-box p{
+
+font-size:20px;
+
+line-height:1.8;
+
+margin-bottom:40px;
+
+color:white;
+
+}
+
+.contact-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.contact-section .btn-secondary{
+
+background:white;
+
+color:#111;
+
+}
