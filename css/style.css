@@ -854,3 +854,76 @@ color:#fff;
 font-weight:700;
 
 }
+/*=========================
+INSTAGRAM
+=========================*/
+
+.instagram{
+
+padding:120px 0;
+
+background:#0d0d14;
+
+}
+
+.instagram-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+margin-top:50px;
+
+}
+
+.instagram-grid img{
+
+width:100%;
+
+border-radius:20px;
+
+transition:.35s;
+
+cursor:pointer;
+
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.instagram-grid img:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 25px 45px rgba(255,0,122,.35);
+
+}
+
+.instagram-button{
+
+text-align:center;
+
+margin-top:45px;
+
+}
+
+@media(max-width:900px){
+
+.instagram-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:600px){
+
+.instagram-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
