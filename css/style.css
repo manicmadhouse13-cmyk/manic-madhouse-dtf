@@ -781,3 +781,76 @@ grid-template-columns:1fr;
 }
 
 }
+/*=========================
+REVIEWS
+=========================*/
+
+.reviews{
+
+padding:120px 0;
+
+background:#12121b;
+
+}
+
+.reviews-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:30px;
+
+margin-top:50px;
+
+}
+
+.review-card{
+
+background:#191925;
+
+padding:35px;
+
+border-radius:25px;
+
+transition:.35s;
+
+border:1px solid rgba(255,255,255,.06);
+
+}
+
+.review-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 25px 45px rgba(255,0,122,.25);
+
+}
+
+.stars{
+
+font-size:28px;
+
+color:#FFD700;
+
+margin-bottom:20px;
+
+}
+
+.review-card p{
+
+color:#d0d0d0;
+
+line-height:1.8;
+
+margin-bottom:25px;
+
+}
+
+.review-card h4{
+
+color:#fff;
+
+font-weight:700;
+
+}
