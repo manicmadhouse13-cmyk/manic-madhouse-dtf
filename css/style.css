@@ -564,3 +564,112 @@ grid-template-columns:1fr;
 }
 
 }
+/*=========================
+BUSINESS
+=========================*/
+
+.business-section{
+
+padding:120px 0;
+
+background:#101017;
+
+}
+
+.business-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+.business-image img{
+
+width:100%;
+
+border-radius:25px;
+
+box-shadow:0 30px 60px rgba(0,0,0,.45);
+
+}
+
+.business-content h2{
+
+font-size:52px;
+
+margin:20px 0;
+
+}
+
+.business-content p{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d2d2d2;
+
+margin-bottom:35px;
+
+}
+
+.business-services{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+margin-bottom:35px;
+
+}
+
+.business-services div{
+
+background:#191925;
+
+padding:18px;
+
+border-radius:15px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.business-services div:hover{
+
+background:linear-gradient(135deg,#00d4ff,#7b2cff);
+
+transform:translateY(-5px);
+
+}
+
+@media(max-width:900px){
+
+.business-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.business-content{
+
+text-align:center;
+
+}
+
+.business-services{
+
+grid-template-columns:1fr;
+
+}
+
+}
