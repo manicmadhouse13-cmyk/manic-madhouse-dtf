@@ -1296,3 +1296,105 @@ nav a:hover{
 color:#ff007a;
 
 }
+/*=========================
+SHOP PAGE
+=========================*/
+
+.shop-hero{
+
+padding:180px 0 80px;
+
+text-align:center;
+
+background:linear-gradient(135deg,#111,#191925);
+
+}
+
+.shop-search{
+
+padding:60px 0;
+
+background:#101018;
+
+}
+
+#searchInput{
+
+width:100%;
+
+max-width:650px;
+
+display:block;
+
+margin:0 auto 40px;
+
+padding:18px 25px;
+
+border:none;
+
+border-radius:50px;
+
+background:#191925;
+
+color:white;
+
+font-size:18px;
+
+}
+
+.category-buttons{
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+}
+
+.category-buttons button{
+
+padding:14px 25px;
+
+border:none;
+
+border-radius:40px;
+
+background:#191925;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.category-buttons button:hover,
+.category-buttons .active{
+
+background:linear-gradient(135deg,#ff007a,#7b2cff);
+
+}
+
+.product-badge{
+
+position:absolute;
+
+top:15px;
+
+left:15px;
+
+background:#ff007a;
+
+padding:8px 14px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:700;
+
+}
