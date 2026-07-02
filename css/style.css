@@ -1475,3 +1475,58 @@ grid-template-columns:1fr;
 }
 
 }
+/*=========================
+QUOTE PAGE
+=========================*/
+
+.contact-page{
+
+padding:180px 0 100px;
+
+}
+
+.quote-form{
+
+max-width:800px;
+
+margin:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.quote-form input,
+.quote-form select,
+.quote-form textarea{
+
+padding:18px;
+
+border:none;
+
+border-radius:15px;
+
+background:#191925;
+
+color:white;
+
+font-size:16px;
+
+}
+
+.quote-form textarea{
+
+resize:vertical;
+
+min-height:180px;
+
+}
+
+.quote-form button{
+
+margin-top:20px;
+
+}
