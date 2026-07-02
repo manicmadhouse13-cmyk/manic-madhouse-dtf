@@ -1241,3 +1241,58 @@ transition:.3s;
 transform:scale(1.1);
 
 }
+/*=========================
+STICKY NAVIGATION
+=========================*/
+
+header{
+
+position:sticky;
+
+top:40px;
+
+z-index:1000;
+
+backdrop-filter:blur(18px);
+
+background:rgba(10,10,15,.85);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+nav{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 0;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:30px;
+
+list-style:none;
+
+}
+
+nav a{
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ff007a;
+
+}
