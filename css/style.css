@@ -1530,3 +1530,64 @@ min-height:180px;
 margin-top:20px;
 
 }
+/*=========================
+FAQ
+=========================*/
+
+.faq-section{
+
+padding:100px 0;
+
+background:#101018;
+
+}
+
+.faq-container{
+
+max-width:900px;
+
+margin:50px auto 0;
+
+display:flex;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.faq-item{
+
+background:#191925;
+
+padding:30px;
+
+border-radius:20px;
+
+transition:.3s;
+
+}
+
+.faq-item:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 30px rgba(255,0,122,.25);
+
+}
+
+.faq-item h3{
+
+margin-bottom:15px;
+
+color:#fff;
+
+}
+
+.faq-item p{
+
+color:#cfcfcf;
+
+line-height:1.8;
+
+}
