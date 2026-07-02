@@ -1198,3 +1198,46 @@ margin:auto auto 20px;
 }
 
 }
+/*=========================
+SCROLL BUTTON
+=========================*/
+
+#topBtn{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ff007a,#7b2cff);
+
+color:white;
+
+font-size:24px;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+box-shadow:0 10px 25px rgba(255,0,122,.4);
+
+transition:.3s;
+
+}
+
+#topBtn:hover{
+
+transform:scale(1.1);
+
+}
