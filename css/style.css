@@ -988,3 +988,108 @@ background:white;
 color:#111;
 
 }
+/*=========================
+FOOTER
+=========================*/
+
+footer{
+
+background:#08080d;
+
+padding:80px 0 30px;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr 1fr;
+
+gap:50px;
+
+}
+
+.footer-logo{
+
+width:220px;
+
+margin-bottom:20px;
+
+}
+
+footer h3{
+
+margin-bottom:20px;
+
+}
+
+footer p{
+
+color:#bfbfbf;
+
+line-height:1.8;
+
+}
+
+footer ul{
+
+list-style:none;
+
+padding:0;
+
+}
+
+footer li{
+
+margin-bottom:12px;
+
+}
+
+footer a{
+
+color:#bfbfbf;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+footer a:hover{
+
+color:#ff007a;
+
+}
+
+.footer-bottom{
+
+margin-top:60px;
+
+padding-top:25px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+color:#999;
+
+}
+
+@media(max-width:900px){
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.footer-logo{
+
+margin:auto auto 20px;
+
+}
+
+}
