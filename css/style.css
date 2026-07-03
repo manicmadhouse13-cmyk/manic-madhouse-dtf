@@ -752,6 +752,9 @@ DESIGN YOUR OWN
 
 #shirt{
     width:100%;
+    border-radius:25px;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
 }
 
 #designPreview{
