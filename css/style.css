@@ -728,3 +728,261 @@ order:-1;
 }
 
 }
+/*==================================================
+DESIGN YOUR OWN
+==================================================*/
+
+.design-builder{
+    background:#111118;
+}
+
+.builder-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.shirt-preview{
+    position:relative;
+    max-width:550px;
+    margin:auto;
+}
+
+#shirt{
+    width:100%;
+}
+
+#designPreview{
+    position:absolute;
+    left:50%;
+    top:38%;
+    transform:translate(-50%,-50%);
+    width:180px;
+    display:none;
+    pointer-events:none;
+}
+
+.builder-controls{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.builder-controls label{
+    font-size:18px;
+    font-weight:700;
+}
+
+.builder-controls input[type=file],
+.builder-controls input[type=text],
+.builder-controls textarea{
+
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:15px;
+    background:#1b1b26;
+    color:white;
+    font-size:16px;
+
+}
+
+.builder-controls input[type=range]{
+    width:100%;
+    accent-color:#ff007a;
+}
+
+.builder-controls textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+
+/*==================================================
+CUSTOMER REVIEWS
+==================================================*/
+
+.reviews{
+    background:#12121b;
+}
+
+.reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.review-card{
+
+    background:#191925;
+    padding:35px;
+    border-radius:25px;
+    transition:.35s;
+    border:1px solid rgba(255,255,255,.05);
+
+}
+
+.review-card:hover{
+
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(255,0,122,.25);
+
+}
+
+.stars{
+
+    font-size:28px;
+    color:#FFD700;
+    margin-bottom:18px;
+
+}
+
+.review-card p{
+
+    color:#d0d0d0;
+    line-height:1.8;
+    margin-bottom:20px;
+
+}
+
+.review-card h4{
+
+    font-size:18px;
+    color:white;
+
+}
+
+
+/*==================================================
+FAQ
+==================================================*/
+
+.faq-section{
+    background:#101018;
+}
+
+.faq-container{
+
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+}
+
+.faq-item{
+
+    background:#191925;
+    padding:30px;
+    border-radius:20px;
+    transition:.3s;
+
+}
+
+.faq-item:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.faq-item h3{
+
+    margin-bottom:15px;
+    color:white;
+
+}
+
+.faq-item p{
+
+    color:#cfcfcf;
+    line-height:1.8;
+
+}
+
+
+/*==================================================
+HOW IT WORKS
+==================================================*/
+
+.process-section{
+
+    background:#09090d;
+
+}
+
+.process-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+
+}
+
+.process-card{
+
+    background:#191925;
+    border-radius:25px;
+    padding:40px 30px;
+    text-align:center;
+    transition:.35s;
+
+}
+
+.process-card:hover{
+
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(123,44,255,.25);
+
+}
+
+.process-number{
+
+    width:70px;
+    height:70px;
+    margin:auto auto 25px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:800;
+    background:linear-gradient(135deg,#ff007a,#7b2cff);
+    color:white;
+
+}
+
+.process-card h3{
+
+    margin-bottom:15px;
+
+}
+
+.process-card p{
+
+    color:#d0d0d0;
+    line-height:1.8;
+
+}
+
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:900px){
+
+.builder-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.builder-controls{
+
+margin-top:40px;
+
+}
+
+}
