@@ -1077,3 +1077,56 @@ font-size:18px;
 }
 
 }
+/*==================================================
+SOCIAL ICONS
+==================================================*/
+
+.social-icons{
+
+display:flex;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.social-icons a{
+
+width:45px;
+
+height:45px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#191925;
+
+border-radius:50%;
+
+font-size:22px;
+
+transition:.3s;
+
+}
+
+.social-icons a:hover{
+
+background:linear-gradient(135deg,#ff007a,#7b2cff);
+
+transform:translateY(-5px);
+
+}
+
+@media(max-width:900px){
+
+.social-icons{
+
+justify-content:center;
+
+}
+
+}
