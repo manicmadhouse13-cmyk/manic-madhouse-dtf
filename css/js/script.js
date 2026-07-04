@@ -98,3 +98,43 @@ designPreview.style.top =
 (e.clientY - rect.top - offsetY) + "px";
 
 });
+// =====================================
+// QUOTE BASKET
+// =====================================
+
+const quoteButtons = document.querySelectorAll(".quote-btn");
+const quoteList = document.getElementById("quoteList");
+
+let quotes = [];
+
+quoteButtons.forEach(button => {
+
+button.addEventListener("click", () => {
+
+const design = button.dataset.name;
+
+quotes.push(design);
+
+displayQuotes();
+
+});
+
+});
+
+function displayQuotes(){
+
+if(!quoteList) return;
+
+quoteList.innerHTML="";
+
+quotes.forEach(item=>{
+
+const p=document.createElement("p");
+
+p.innerText="✔ " + item;
+
+quoteList.appendChild(p);
+
+});
+
+}
