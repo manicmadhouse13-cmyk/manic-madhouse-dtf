@@ -1170,3 +1170,47 @@ FEATURED SHOP CATEGORIES
     color:#fff;
     font-size:22px;
 }
+/*==================================================
+CUSTOM ORDER CTA
+==================================================*/
+
+.custom-order{
+    padding:120px 0;
+    background:#12121b;
+}
+
+.custom-order-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.custom-order-image img{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.custom-list{
+    list-style:none;
+    padding:30px 0;
+}
+
+.custom-list li{
+    margin-bottom:18px;
+    font-size:18px;
+    color:#d0d0d0;
+}
+
+@media(max-width:900px){
+
+.custom-order-grid{
+    grid-template-columns:1fr;
+}
+
+.custom-order-content{
+    text-align:center;
+}
+
+}
