@@ -1,64 +1,66 @@
-const upload = document.getElementById("uploadImage");
-const preview = document.getElementById("designPreview");
+// ===============================
+// DESIGN STUDIO
+// ===============================
+
+const uploadImage = document.getElementById("uploadImage");
+const designPreview = document.getElementById("designPreview");
+const shirtImage = document.getElementById("shirtImage");
 
 const sizeSlider = document.getElementById("sizeSlider");
 const rotateSlider = document.getElementById("rotateSlider");
+const shirtColour = document.getElementById("shirtColour");
 
-upload.addEventListener("change", function(){
+// Upload artwork
+if(uploadImage){
 
-const file = this.files[0];
-
-if(!file) return;
+uploadImage.addEventListener("change", function(e){
 
 const reader = new FileReader();
 
-reader.onload = function(e){
+reader.onload = function(){
 
-preview.src = e.target.result;
-preview.style.display = "block";
+designPreview.src = reader.result;
+designPreview.style.display = "block";
 
 }
 
-reader.readAsDataURL(file);
+reader.readAsDataURL(e.target.files[0]);
 
 });
 
-sizeSlider.addEventListener("input",function(){
+}
 
-preview.style.width = this.value + "px";
+// Resize
+if(sizeSlider){
+
+sizeSlider.addEventListener("input", function(){
+
+designPreview.style.width = this.value + "px";
 
 });
 
-rotateSlider.addEventListener("input",function(){
+}
 
-preview.style.transform =
+// Rotate
+if(rotateSlider){
+
+rotateSlider.addEventListener("input", function(){
+
+designPreview.style.transform =
 `translate(-50%,-50%) rotate(${this.value}deg)`;
 
 });
-const topBtn = document.getElementById("topBtn");
-
-window.onscroll = function(){
-
-if(document.documentElement.scrollTop > 400){
-
-topBtn.style.display = "block";
-
-}else{
-
-topBtn.style.display = "none";
 
 }
 
-};
+// Shirt colours
+if(shirtColour){
 
-topBtn.onclick = function(){
+shirtColour.addEventListener("change", function(){
 
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
+shirtImage.src =
+"images/shirt-" + this.value + ".png";
 
 });
 
-};
+}
