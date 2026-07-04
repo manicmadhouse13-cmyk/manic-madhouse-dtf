@@ -1214,3 +1214,44 @@ CUSTOM ORDER CTA
 }
 
 }
+/*==================================================
+QUOTE FORM EXTRAS
+==================================================*/
+
+.quote-form label{
+
+font-weight:700;
+
+margin-top:10px;
+
+display:block;
+
+}
+
+.checkbox{
+
+display:flex;
+
+align-items:flex-start;
+
+gap:12px;
+
+margin:20px 0;
+
+font-size:15px;
+
+color:#d0d0d0;
+
+}
+
+.checkbox input{
+
+margin-top:4px;
+
+}
+
+.quote-form select{
+
+cursor:pointer;
+
+}
