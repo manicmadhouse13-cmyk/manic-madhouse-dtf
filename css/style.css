@@ -1447,3 +1447,42 @@ grid-template-columns:1fr;
 }
 
 }
+/*=========================
+QUOTE BASKET
+=========================*/
+
+.quote-basket{
+
+padding:100px 0;
+
+background:#101018;
+
+text-align:center;
+
+}
+
+#quoteList{
+
+background:#191925;
+
+padding:30px;
+
+border-radius:20px;
+
+margin:40px auto;
+
+max-width:800px;
+
+min-height:120px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#d0d0d0;
+
+font-size:18px;
+
+}
