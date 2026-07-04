@@ -58,8 +58,7 @@ if(shirtColour){
 
 shirtColour.addEventListener("change", function(){
 
-shirtImage.src =
-"images/shirt-" + this.value + ".png";
+shirtImage.src = "shirt-" + this.value + ".png";
 
 });
 
