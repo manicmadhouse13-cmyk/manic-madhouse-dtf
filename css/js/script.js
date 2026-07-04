@@ -64,3 +64,38 @@ shirtImage.src =
 });
 
 }
+let dragging = false;
+
+let offsetX = 0;
+
+let offsetY = 0;
+
+designPreview.addEventListener("mousedown", function(e){
+
+dragging = true;
+
+offsetX = e.offsetX;
+
+offsetY = e.offsetY;
+
+});
+
+document.addEventListener("mouseup", function(){
+
+dragging = false;
+
+});
+
+document.addEventListener("mousemove", function(e){
+
+if(!dragging) return;
+
+const rect = shirtImage.getBoundingClientRect();
+
+designPreview.style.left =
+(e.clientX - rect.left - offsetX) + "px";
+
+designPreview.style.top =
+(e.clientY - rect.top - offsetY) + "px";
+
+});
