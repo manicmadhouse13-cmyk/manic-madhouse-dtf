@@ -2574,6 +2574,277 @@ footer{
 .mb-3{margin-bottom:30px;}
 .mb-4{margin-bottom:40px;}
 
+/*======================================
+  RESPONSIVE DESIGN
+  VERSION 4.0
+======================================*/
+
+/* ---------- Large Tablets ---------- */
+
+@media (max-width: 1100px){
+
+    .hero-content,
+    .builder-grid,
+    .wedding-grid,
+    .business-grid,
+    .custom-order-grid,
+    .quote-grid{
+
+        grid-template-columns:1fr;
+        gap:40px;
+
+    }
+
+    .hero-left{
+        text-align:center;
+    }
+
+    .hero-left p{
+        margin:25px auto;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .hero-right{
+        order:-1;
+    }
+
+    .quote-summary{
+        position:static;
+    }
+
+}
+
+/* ---------- Tablets ---------- */
+
+@media (max-width:900px){
+
+    nav{
+
+        flex-direction:column;
+
+        padding:20px 0;
+
+        gap:20px;
+
+    }
+
+    nav ul{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:16px;
+
+    }
+
+    .service-grid,
+    .business-services,
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    section{
+
+        padding:70px 0;
+
+    }
+
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width:768px){
+
+    h1{
+
+        font-size:2.4rem;
+
+    }
+
+    h2{
+
+        font-size:2rem;
+
+    }
+
+    .container{
+
+        width:94%;
+
+    }
+
+    .collection-grid,
+    .products,
+    .featured-grid,
+    .reviews-grid,
+    .why-grid,
+    .process-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .shirt-preview{
+
+        min-height:380px;
+
+    }
+
+    #shirt{
+
+        max-width:320px;
+
+    }
+
+    #designPreview{
+
+        max-width:140px;
+
+    }
+
+    .builder-controls,
+    .quote-form-wrapper,
+    .quote-summary{
+
+        padding:25px;
+
+    }
+
+    .announcement-bar{
+
+        font-size:.85rem;
+
+        padding:10px;
+
+    }
+
+}
+
+/* ---------- Small Phones ---------- */
+
+@media (max-width:480px){
+
+    nav{
+
+        gap:15px;
+
+    }
+
+    nav ul{
+
+        flex-direction:column;
+
+        gap:12px;
+
+    }
+
+    .logo img{
+
+        width:150px;
+
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .product-btn,
+    .quote-btn,
+    .cart-btn{
+
+        width:100%;
+
+    }
+
+    .buttons{
+
+        flex-direction:column;
+
+    }
+
+    .builder-controls input,
+    .builder-controls select,
+    .builder-controls textarea,
+    .quote-form input,
+    .quote-form select,
+    .quote-form textarea{
+
+        font-size:16px;
+
+    }
+
+    .product-card,
+    .collection-card,
+    .why-card,
+    .review-card,
+    .process-card{
+
+        border-radius:14px;
+
+    }
+
+}
+
+/*======================================
+  SCROLLBAR
+======================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f1f1f1;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/*======================================
+  TEXT SELECTION
+======================================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*======================================
+  IMAGE LOADING
+======================================*/
+
+img{
+
+    height:auto;
+
+}
+
+/*======================================
+  END OF STYLESHEET
+======================================*/
+
 .wedding-content p,
 .business-content p{
 
