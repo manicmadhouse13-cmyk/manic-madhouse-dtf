@@ -502,6 +502,62 @@ if (addToQuoteBtn) {
     addToQuoteBtn.addEventListener("click", addToQuoteBasket);
 }
 /*==================================================
+QUOTE FORM SUBMISSION
+FINAL STEP
+==================================================*/
+
+const sendQuoteBtn = document.getElementById("sendQuoteBtn");
+
+if (sendQuoteBtn) {
+
+    sendQuoteBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("quoteName")?.value.trim();
+        const email = document.getElementById("quoteEmail")?.value.trim();
+        const message = document.getElementById("quoteMessage")?.value.trim();
+
+        if (!name || !email || !message) {
+            alert("Please fill in your name, email and message.");
+            return;
+        }
+
+        if (quoteBasket.length === 0) {
+            alert("Your quote basket is empty.");
+            return;
+        }
+
+        // Build final quote object
+        const quoteRequest = {
+            customer: {
+                name,
+                email
+            },
+            message,
+            items: quoteBasket,
+            submittedAt: new Date().toISOString()
+        };
+
+        // Store final request (for now localStorage simulation)
+        localStorage.setItem("finalQuoteRequest", JSON.stringify(quoteRequest));
+
+        // Clear basket after submission
+        localStorage.removeItem("quoteBasket");
+        quoteBasket = [];
+        renderQuoteBasket();
+
+        // Feedback to user
+        alert("Your quote request has been sent! We will contact you soon.");
+
+        // Reset form
+        document.getElementById("quoteName").value = "";
+        document.getElementById("quoteEmail").value = "";
+        document.getElementById("quoteMessage").value = "";
+
+    });
+
+}
+/*==================================================
 LOAD QUOTE BASKET ON QUOTE PAGE
 ==================================================*/
 
