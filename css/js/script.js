@@ -465,3 +465,39 @@ if (shirt && shirtColour) {
     });
 
 }
+/*==================================================
+QUOTE BASKET SYSTEM
+SAVE + ADD DESIGN
+==================================================*/
+
+let quoteBasket = JSON.parse(localStorage.getItem("quoteBasket")) || [];
+
+// Save current design to basket
+function addToQuoteBasket() {
+
+    if (!designPreview || designPreview.style.display === "none") {
+        alert("Please upload a design first.");
+        return;
+    }
+
+    const item = {
+        image: designPreview.src,
+        size: designScale,
+        rotation: designRotation,
+        shirt: document.getElementById("shirtColour")?.value || "white",
+        text: document.getElementById("customText")?.value || "",
+        timestamp: Date.now()
+    };
+
+    quoteBasket.push(item);
+    localStorage.setItem("quoteBasket", JSON.stringify(quoteBasket));
+
+    alert("Design added to quote request!");
+}
+
+// Hook button
+const addToQuoteBtn = document.getElementById("addToQuoteBtn");
+
+if (addToQuoteBtn) {
+    addToQuoteBtn.addEventListener("click", addToQuoteBasket);
+}
