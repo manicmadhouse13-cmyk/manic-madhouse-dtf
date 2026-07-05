@@ -1045,3 +1045,148 @@ DESIGN PREVIEW STUDIO V3
     border-radius:50%;
     filter:blur(22px);
 }
+/*==================================================
+DESIGN STUDIO FINAL POLISH
+VERSION 5.0
+==================================================*/
+
+.builder-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.builder-toolbar button{
+    background:#101018;
+    color:#fff;
+    border:2px solid #2b2b38;
+    border-radius:12px;
+    padding:12px 18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.builder-toolbar button:hover{
+    background:linear-gradient(135deg,#ff007a,#7b2cff);
+    border-color:#ff007a;
+    transform:translateY(-3px);
+}
+
+.builder-toolbar button:active{
+    transform:scale(.96);
+}
+
+.design-info{
+    margin-top:25px;
+    background:#101018;
+    border:2px solid #2b2b38;
+    border-radius:18px;
+    padding:20px;
+}
+
+.design-info h3{
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+.design-info ul{
+    list-style:none;
+    display:grid;
+    gap:10px;
+}
+
+.design-info li{
+    display:flex;
+    justify-content:space-between;
+    color:#d0d0d0;
+}
+
+.design-info span{
+    color:#ff007a;
+    font-weight:700;
+}
+
+.preview-badge{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:linear-gradient(135deg,#ff007a,#7b2cff);
+    color:#fff;
+    padding:8px 16px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:700;
+    z-index:10;
+    box-shadow:0 10px 25px rgba(255,0,122,.35);
+}
+
+.drag-handle{
+    position:absolute;
+    width:14px;
+    height:14px;
+    background:#ff007a;
+    border:2px solid #fff;
+    border-radius:50%;
+    z-index:20;
+    display:none;
+}
+
+#designPreview.selected + .drag-handle{
+    display:block;
+}
+
+.builder-note{
+    margin-top:20px;
+    font-size:14px;
+    color:#a9a9a9;
+    text-align:center;
+    line-height:1.6;
+}
+
+@media(max-width:900px){
+
+    .shirt-preview{
+        min-height:500px;
+    }
+
+    #shirt{
+        max-width:360px;
+    }
+
+    #designPreview{
+        max-width:140px;
+    }
+
+    .builder-toolbar{
+        justify-content:center;
+    }
+
+    .design-info li{
+        flex-direction:column;
+        gap:4px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .builder-toolbar{
+        flex-direction:column;
+    }
+
+    .builder-toolbar button{
+        width:100%;
+    }
+
+    .preview-badge{
+        top:12px;
+        right:12px;
+        font-size:12px;
+        padding:6px 12px;
+    }
+
+}
