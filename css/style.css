@@ -1464,6 +1464,320 @@ a:hover{
     margin-top:35px;
 }
 
+/*======================================
+  CONTACT PAGE
+======================================*/
+
+.contact-page{
+    background:var(--light);
+}
+
+.quote-grid{
+    display:grid;
+    grid-template-columns:380px 1fr;
+    gap:40px;
+    align-items:start;
+}
+
+.quote-summary{
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    position:sticky;
+
+    top:120px;
+
+}
+
+.quote-summary h2{
+    margin-bottom:15px;
+}
+
+#quoteList{
+
+    margin-top:25px;
+
+}
+
+#quoteList p{
+
+    padding:12px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.quote-form-wrapper{
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:35px;
+
+}
+
+.quote-form h2{
+
+    margin-bottom:25px;
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+.form-grid textarea,
+.form-grid input[type="file"],
+.form-grid label,
+.form-grid select:last-of-type{
+
+    grid-column:1 / -1;
+
+}
+
+.quote-form input,
+.quote-form select,
+.quote-form textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border:2px solid var(--border);
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.quote-form input:focus,
+.quote-form select:focus,
+.quote-form textarea:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+.quote-form textarea{
+
+    resize:vertical;
+
+    min-height:160px;
+
+}
+
+.checkbox{
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:flex-start;
+
+    margin:30px 0;
+
+    font-size:.95rem;
+
+}
+
+.checkbox input{
+
+    width:auto;
+
+    margin-top:4px;
+
+}
+
+#sendQuoteBtn{
+
+    width:100%;
+
+}
+
+/*======================================
+  PROCESS SECTION
+======================================*/
+
+.process-section{
+
+    background:#fff;
+
+}
+
+.process-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:30px;
+
+}
+
+.process-card{
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    text-align:center;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.process-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.process-number{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:0 auto 20px;
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+}
+
+/*======================================
+  REVIEWS
+======================================*/
+
+.reviews{
+
+    background:var(--light);
+
+}
+
+.reviews-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.review-card{
+
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.review-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.stars{
+
+    color:#ffb400;
+
+    font-size:1.3rem;
+
+    margin-bottom:15px;
+
+}
+
+.review-card h4{
+
+    margin-top:20px;
+
+    color:var(--primary);
+
+}
+
+/*======================================
+  FAQ
+======================================*/
+
+.faq-section{
+
+    background:#fff;
+
+}
+
+.faq-container{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+.faq-item{
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:var(--radius);
+
+    margin-bottom:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.faq-item h3{
+
+    margin-bottom:12px;
+
+    color:var(--primary);
+
+}
+
 .wedding-content p,
 .business-content p{
 
