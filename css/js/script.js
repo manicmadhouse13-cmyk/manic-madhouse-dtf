@@ -330,3 +330,72 @@ if (uploadInput && designPreview) {
     });
 
 }
+/*==================================================
+DESIGN BUILDER
+DRAG & DROP
+==================================================*/
+
+if (designPreview) {
+
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    function startDrag(e) {
+
+        if (designPreview.style.display === "none") return;
+
+        isDragging = true;
+
+        const rect = designPreview.getBoundingClientRect();
+
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        offsetX = clientX - rect.left;
+        offsetY = clientY - rect.top;
+
+        designPreview.style.cursor = "grabbing";
+    }
+
+    function drag(e) {
+
+        if (!isDragging) return;
+
+        e.preventDefault();
+
+        const parent = designPreview.parentElement;
+        const parentRect = parent.getBoundingClientRect();
+
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        const left = clientX - parentRect.left - offsetX;
+        const top = clientY - parentRect.top - offsetY;
+
+        designPreview.style.left = left + "px";
+        designPreview.style.top = top + "px";
+        designPreview.style.transform = "rotate(0deg)";
+    }
+
+    function stopDrag() {
+
+        isDragging = false;
+        designPreview.style.cursor = "move";
+    }
+
+    designPreview.addEventListener("mousedown", startDrag);
+    document.addEventListener("mousemove", drag);
+    document.addEventListener("mouseup", stopDrag);
+
+    designPreview.addEventListener("touchstart", startDrag, {
+        passive: false
+    });
+
+    document.addEventListener("touchmove", drag, {
+        passive: false
+    });
+
+    document.addEventListener("touchend", stopDrag);
+
+}
