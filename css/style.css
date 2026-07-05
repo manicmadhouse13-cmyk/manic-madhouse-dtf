@@ -873,3 +873,70 @@ CATEGORY BUTTONS
     );
 
 }
+/*==================================================
+DESIGN BUILDER CONTROLS V2
+==================================================*/
+
+.builder-controls{
+    background:#191925;
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.builder-controls h2{
+    margin-bottom:10px;
+    font-size:34px;
+}
+
+.builder-controls p{
+    color:#bfbfbf;
+    margin-bottom:30px;
+}
+
+.builder-controls label{
+    display:block;
+    margin:20px 0 8px;
+    font-weight:600;
+    color:#fff;
+}
+
+.builder-controls input,
+.builder-controls select,
+.builder-controls textarea{
+    width:100%;
+    background:#101018;
+    color:#fff;
+    border:2px solid #2b2b38;
+    border-radius:14px;
+    padding:15px;
+    transition:.3s;
+}
+
+.builder-controls input:focus,
+.builder-controls select:focus,
+.builder-controls textarea:focus{
+    outline:none;
+    border-color:#ff007a;
+    box-shadow:0 0 0 4px rgba(255,0,122,.15);
+}
+
+.builder-controls textarea{
+    resize:vertical;
+    min-height:130px;
+}
+
+.builder-controls input[type="range"]{
+    padding:0;
+    cursor:pointer;
+    accent-color:#ff007a;
+}
+
+.builder-controls input[type="file"]{
+    cursor:pointer;
+}
+
+.builder-controls .btn-primary{
+    width:100%;
+    margin-top:30px;
+}
