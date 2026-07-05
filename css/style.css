@@ -524,7 +524,6 @@ HERO ANIMATION
         transform:translateY(0px);
     }
 
-}
 /*==================================================
 SHOP BY COLLECTION
 ==================================================*/
@@ -1170,7 +1169,6 @@ VERSION 5.0
         gap:4px;
     }
 
-}
 
 @media(max-width:600px){
 
@@ -1189,4 +1187,3 @@ VERSION 5.0
         padding:6px 12px;
     }
 
-}
