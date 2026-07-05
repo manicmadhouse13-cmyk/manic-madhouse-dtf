@@ -373,3 +373,155 @@ BACK TO TOP BUTTON
     transform:translateY(-5px);
 
 }
+/*==================================================
+HERO
+==================================================*/
+
+.hero{
+
+    padding:90px 0;
+
+    background:
+        radial-gradient(circle at top right,
+        rgba(123,44,255,.18),
+        transparent 35%),
+
+        radial-gradient(circle at bottom left,
+        rgba(255,0,122,.15),
+        transparent 40%),
+
+        var(--dark);
+
+}
+
+.hero-content{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+
+}
+
+/*--------------------------------------------------
+LEFT SIDE
+--------------------------------------------------*/
+
+.tag{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border-radius:40px;
+
+    background:var(--dark3);
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+.hero-left h1{
+
+    font-size:64px;
+
+    font-weight:800;
+
+    line-height:1.08;
+
+    margin-bottom:25px;
+
+}
+
+.hero-left h1 span{
+
+    display:block;
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--accent)
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+
+.hero-left p{
+
+    font-size:20px;
+
+    color:var(--text);
+
+    line-height:1.9;
+
+    margin-bottom:40px;
+
+    max-width:620px;
+
+}
+
+.buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+/*--------------------------------------------------
+RIGHT SIDE
+--------------------------------------------------*/
+
+.hero-right{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hero-banner{
+
+    width:100%;
+
+    max-width:650px;
+
+    border-radius:28px;
+
+    box-shadow:0 30px 70px rgba(0,0,0,.45);
+
+    animation:floatHero 6s ease-in-out infinite;
+
+}
+
+/*==================================================
+HERO ANIMATION
+==================================================*/
+
+@keyframes floatHero{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
