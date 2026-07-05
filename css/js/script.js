@@ -219,3 +219,73 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+/*==================================================
+GLOBAL WEBSITE FUNCTIONS
+==================================================*/
+
+// Back To Top Button
+
+const topBtn = document.getElementById("topBtn");
+
+if (topBtn) {
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 300) {
+            topBtn.style.display = "flex";
+        } else {
+            topBtn.style.display = "none";
+        }
+
+    });
+
+    topBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
+
+// Active Navigation
+
+const currentPage = window.location.pathname.split("/").pop();
+
+document.querySelectorAll("nav a").forEach(link => {
+
+    const href = link.getAttribute("href");
+
+    if (href === currentPage) {
+
+        link.classList.add("active");
+
+    }
+
+});
+
+// Fade In Cards
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+}, {
+    threshold: 0.2
+});
+
+document.querySelectorAll(".product-card,.collection-card,.why-card,.review-card,.process-card,.faq-item").forEach(card => {
+
+    observer.observe(card);
+
+});
