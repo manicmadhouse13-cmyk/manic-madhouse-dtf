@@ -446,3 +446,22 @@ if (rotateSlider) {
     });
 
 }
+/*==================================================
+DESIGN BUILDER
+SHIRT COLOUR CHANGER
+==================================================*/
+
+const shirt = document.getElementById("shirt");
+const shirtColour = document.getElementById("shirtColour");
+
+if (shirt && shirtColour) {
+
+    shirtColour.addEventListener("change", function () {
+
+        const colour = this.value;
+
+        shirt.src = "images/shirts/" + colour + ".png";
+
+    });
+
+}
