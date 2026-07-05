@@ -925,6 +925,330 @@ a:hover{
 
 }
 
+/*======================================
+  COLLECTIONS
+======================================*/
+
+.collections{
+    background:var(--white);
+}
+
+.collection-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.collection-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    background:#fff;
+}
+
+.collection-card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    transition:.45s;
+}
+
+.collection-card:hover img{
+    transform:scale(1.08);
+}
+
+.collection-card .overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:30px;
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.78)
+    );
+}
+
+.collection-card h3{
+    color:#fff;
+    margin-bottom:15px;
+}
+
+.collection-card .overlay a{
+    width:max-content;
+    padding:12px 24px;
+    border-radius:50px;
+    background:var(--primary);
+    color:#fff;
+    font-weight:600;
+    transition:.3s;
+}
+
+.collection-card .overlay a:hover{
+    background:var(--primary-dark);
+}
+
+/*======================================
+  FEATURED CATEGORIES
+======================================*/
+
+.featured-categories{
+    background:#f9fafc;
+}
+
+.featured-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+}
+
+.featured-grid > div,
+.featured-card{
+    background:#fff;
+    border-radius:var(--radius);
+    overflow:hidden;
+    text-align:center;
+    padding:20px;
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.featured-grid > div:hover,
+.featured-card:hover{
+    transform:translateY(-8px);
+}
+
+.featured-grid img,
+.featured-card img{
+    height:220px;
+    width:100%;
+    object-fit:cover;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.featured-grid h3,
+.featured-card h3{
+    margin-bottom:20px;
+}
+
+/*======================================
+  PRODUCTS
+======================================*/
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.product-card{
+
+    position:relative;
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.product-card img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+}
+
+.product-card h3{
+
+    margin-bottom:10px;
+
+}
+
+.product-card p{
+
+    margin-bottom:20px;
+
+}
+
+/*======================================
+  PRODUCT BADGES
+======================================*/
+
+.product-badge{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:7px 16px;
+
+    border-radius:50px;
+
+    font-size:.75rem;
+
+    text-transform:uppercase;
+
+    font-weight:700;
+
+    letter-spacing:.6px;
+
+}
+
+/*======================================
+  SHOP SEARCH
+======================================*/
+
+.shop-search{
+
+    background:#fff;
+
+    padding:60px 0;
+
+}
+
+#searchInput{
+
+    width:100%;
+
+    padding:18px 24px;
+
+    border:2px solid var(--border);
+
+    border-radius:50px;
+
+    margin-bottom:30px;
+
+    transition:.3s;
+
+}
+
+#searchInput:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+/*======================================
+  CATEGORY BUTTONS
+======================================*/
+
+.category-buttons{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+.category-buttons button{
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    background:#fff;
+
+    border:2px solid var(--border);
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.category-buttons button:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.category-buttons button.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+
+/*======================================
+  CARD ANIMATION
+======================================*/
+
+.collection-card,
+.product-card,
+.featured-card,
+.why-card,
+.process-card,
+.review-card,
+.faq-item{
+
+    animation:fadeUp .7s ease both;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
 .wedding-content p,
 .business-content p{
 
