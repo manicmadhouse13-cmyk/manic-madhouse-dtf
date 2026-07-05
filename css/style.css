@@ -940,3 +940,108 @@ DESIGN BUILDER CONTROLS V2
     width:100%;
     margin-top:30px;
 }
+/*==================================================
+DESIGN PREVIEW STUDIO V3
+==================================================*/
+
+.shirt-preview{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:700px;
+    background:linear-gradient(145deg,#0d0d14,#1b1b26);
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.shirt-preview::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:radial-gradient(
+        rgba(255,255,255,.12),
+        transparent 70%
+    );
+    filter:blur(20px);
+    z-index:1;
+}
+
+#shirt{
+    position:relative;
+    width:100%;
+    max-width:520px;
+    z-index:2;
+    user-select:none;
+    pointer-events:none;
+    filter:
+        drop-shadow(0 25px 50px rgba(0,0,0,.55));
+}
+
+#designPreview{
+    position:absolute;
+    left:50%;
+    top:38%;
+    width:180px;
+    transform:translate(-50%,-50%);
+    display:none;
+    z-index:5;
+    cursor:move;
+    transition:
+        box-shadow .25s,
+        transform .15s;
+}
+
+#designPreview:hover{
+    box-shadow:0 0 25px rgba(255,0,122,.45);
+}
+
+.preview-outline{
+    outline:2px dashed rgba(255,255,255,.45);
+}
+
+.preview-grid{
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+    opacity:.45;
+}
+
+.preview-crosshair{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:2px;
+    height:100%;
+    background:rgba(255,255,255,.08);
+    transform:translateX(-50%);
+}
+
+.preview-crosshair::after{
+    content:"";
+    position:absolute;
+    left:-50vw;
+    top:50%;
+    width:100vw;
+    height:2px;
+    background:rgba(255,255,255,.08);
+}
+
+.preview-shadow{
+    position:absolute;
+    bottom:60px;
+    width:280px;
+    height:40px;
+    background:rgba(0,0,0,.45);
+    border-radius:50%;
+    filter:blur(22px);
+}
