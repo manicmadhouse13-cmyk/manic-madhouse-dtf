@@ -1249,6 +1249,221 @@ a:hover{
 
 }
 
+/*======================================
+  WHY CHOOSE US
+======================================*/
+
+.why-us{
+    background:var(--light);
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.why-card{
+    background:#fff;
+    padding:35px;
+    text-align:center;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    transition:.35s;
+}
+
+.why-card:hover{
+    transform:translateY(-10px);
+}
+
+.why-card .icon{
+    width:75px;
+    height:75px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:rgba(255,61,0,.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+}
+
+.why-card h3{
+    margin-bottom:15px;
+}
+
+/*======================================
+  WEDDING SECTION
+======================================*/
+
+.wedding-section,
+.business-section{
+    background:#fff;
+}
+
+.wedding-grid,
+.business-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.wedding-image img,
+.business-image img{
+    width:100%;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.service-grid,
+.business-services{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin:30px 0;
+}
+
+.service-grid div,
+.business-services div{
+    background:#f8f8f8;
+    padding:16px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+/*======================================
+  CUSTOM ORDER
+======================================*/
+
+.custom-order{
+    background:linear-gradient(
+        135deg,
+        #fff,
+        #f5f6fa
+    );
+}
+
+.custom-order-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.custom-order-image img{
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.custom-list{
+    margin:30px 0;
+}
+
+.custom-list li{
+    margin-bottom:14px;
+    font-weight:600;
+}
+
+/*======================================
+  DESIGN BUILDER
+======================================*/
+
+.design-builder{
+    background:#f7f8fb;
+}
+
+.builder-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+}
+
+.shirt-preview{
+
+    position:relative;
+
+    background:#fff;
+
+    min-height:520px;
+
+    border-radius:var(--radius);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+#shirt{
+    width:100%;
+    max-width:450px;
+}
+
+#designPreview{
+
+    position:absolute;
+
+    max-width:180px;
+
+    cursor:grab;
+
+    transform-origin:center;
+
+}
+
+.builder-controls{
+
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+
+.builder-controls label{
+
+    display:block;
+
+    margin:25px 0 10px;
+
+    font-weight:600;
+
+}
+
+.builder-controls input,
+.builder-controls select,
+.builder-controls textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:2px solid var(--border);
+
+    border-radius:12px;
+
+}
+
+.builder-controls input[type="range"]{
+    padding:0;
+}
+
+.builder-controls button{
+    width:100%;
+    margin-top:35px;
+}
+
 .wedding-content p,
 .business-content p{
 
