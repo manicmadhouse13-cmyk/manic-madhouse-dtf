@@ -289,3 +289,44 @@ document.querySelectorAll(".product-card,.collection-card,.why-card,.review-card
     observer.observe(card);
 
 });
+/*==================================================
+DESIGN BUILDER
+UPLOAD & LIVE PREVIEW
+==================================================*/
+
+const uploadInput = document.getElementById("designUpload");
+const designPreview = document.getElementById("designPreview");
+
+if (uploadInput && designPreview) {
+
+    uploadInput.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+            alert("Please upload an image file.");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+
+            designPreview.src = e.target.result;
+            designPreview.style.display = "block";
+
+            // Reset default position
+            designPreview.style.left = "50%";
+            designPreview.style.top = "38%";
+            designPreview.style.width = "180px";
+            designPreview.style.transform = "translate(-50%,-50%) rotate(0deg)";
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
