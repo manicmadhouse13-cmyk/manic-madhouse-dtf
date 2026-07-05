@@ -501,3 +501,50 @@ const addToQuoteBtn = document.getElementById("addToQuoteBtn");
 if (addToQuoteBtn) {
     addToQuoteBtn.addEventListener("click", addToQuoteBasket);
 }
+/*==================================================
+LOAD QUOTE BASKET ON QUOTE PAGE
+==================================================*/
+
+const quoteList = document.getElementById("quoteList");
+
+function renderQuoteBasket() {
+
+    if (!quoteList) return;
+
+    quoteList.innerHTML = "";
+
+    if (quoteBasket.length === 0) {
+        quoteList.innerHTML = "<p>No designs selected yet.</p>";
+        return;
+    }
+
+    quoteBasket.forEach((item, index) => {
+
+        const div = document.createElement("div");
+        div.className = "quote-item";
+
+        div.innerHTML = `
+            <img src="${item.image}" style="width:60px;border-radius:10px;">
+            <div>
+                <strong>${item.shirt}</strong><br>
+                Size: ${item.size}px | Rotation: ${item.rotation}°
+            </div>
+            <button onclick="removeQuoteItem(${index})">Remove</button>
+        `;
+
+        quoteList.appendChild(div);
+
+    });
+
+}
+
+function removeQuoteItem(index) {
+
+    quoteBasket.splice(index, 1);
+    localStorage.setItem("quoteBasket", JSON.stringify(quoteBasket));
+    renderQuoteBasket();
+
+}
+
+// Run on page load
+renderQuoteBasket();
