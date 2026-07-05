@@ -399,3 +399,50 @@ if (designPreview) {
     document.addEventListener("touchend", stopDrag);
 
 }
+/*==================================================
+DESIGN BUILDER
+RESIZE & ROTATE
+==================================================*/
+
+const sizeSlider = document.getElementById("sizeSlider");
+const rotateSlider = document.getElementById("rotateSlider");
+
+let designScale = 180;
+let designRotation = 0;
+
+function updateDesignTransform() {
+
+    if (!designPreview) return;
+
+    designPreview.style.width = designScale + "px";
+    designPreview.style.transform = `rotate(${designRotation}deg)`;
+
+}
+
+// Resize
+
+if (sizeSlider) {
+
+    sizeSlider.addEventListener("input", function () {
+
+        designScale = this.value;
+
+        updateDesignTransform();
+
+    });
+
+}
+
+// Rotate
+
+if (rotateSlider) {
+
+    rotateSlider.addEventListener("input", function () {
+
+        designRotation = this.value;
+
+        updateDesignTransform();
+
+    });
+
+}
