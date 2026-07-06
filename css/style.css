@@ -395,135 +395,132 @@ BUTTONS
 HERO
 ==================================================*/
 
+/*==================================================
+PREMIUM HERO V6
+==================================================*/
+
 .hero{
+    position:relative;
+    overflow:hidden;
+    padding:120px 0;
 
     background:
+        radial-gradient(circle at top right,rgba(123,44,255,.22),transparent 35%),
+        radial-gradient(circle at bottom left,rgba(255,0,122,.18),transparent 40%),
+        linear-gradient(180deg,#0b0b11,#111118);
+}
 
-    radial-gradient(circle at top right,
-    rgba(123,44,255,.20),
-    transparent 35%),
+.hero::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    right:-220px;
+    top:-220px;
+    border-radius:50%;
+    background:radial-gradient(rgba(255,0,122,.18),transparent 70%);
+    filter:blur(40px);
+}
 
-    radial-gradient(circle at bottom left,
-    rgba(255,0,122,.16),
-    transparent 40%),
-
-    var(--dark);
-
+.hero::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    left:-180px;
+    bottom:-180px;
+    border-radius:50%;
+    background:radial-gradient(rgba(0,212,255,.12),transparent 70%);
+    filter:blur(50px);
 }
 
 .hero-content{
-
+    position:relative;
+    z-index:2;
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
-    gap:70px;
-
+    gap:80px;
     align-items:center;
-
 }
 
 .tag{
-
-    display:inline-block;
-
-    padding:10px 22px;
-
-    background:var(--dark3);
-
-    border-radius:40px;
-
-    margin-bottom:25px;
-
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 24px;
+    border-radius:50px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
     font-size:14px;
-
     font-weight:700;
-
+    margin-bottom:28px;
 }
 
 .hero-left h1{
-
-    font-size:64px;
-
+    font-size:68px;
+    line-height:1.05;
     font-weight:800;
-
-    margin-bottom:25px;
-
+    margin-bottom:28px;
 }
 
 .hero-left h1 span{
-
     display:block;
-
-    background:linear-gradient(
-        90deg,
-        var(--primary),
-        var(--accent)
-    );
-
+    background:linear-gradient(90deg,var(--primary),var(--accent));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-
 }
 
 .hero-left p{
-
     font-size:20px;
-
-    margin-bottom:40px;
-
+    color:var(--text);
+    line-height:1.9;
     max-width:620px;
-
+    margin-bottom:40px;
 }
 
 .buttons{
-
     display:flex;
-
     gap:20px;
-
     flex-wrap:wrap;
-
+    margin-bottom:40px;
 }
 
 .hero-right{
-
     display:flex;
-
     justify-content:center;
-
+    align-items:center;
 }
 
 .hero-banner{
-
     width:100%;
-
-    max-width:620px;
-
-    border-radius:28px;
-
+    max-width:650px;
+    border-radius:30px;
     box-shadow:
-        0 30px 70px rgba(0,0,0,.45);
-
-    animation:floatHero 6s ease-in-out infinite;
-
+        0 35px 80px rgba(0,0,0,.55);
+    animation:heroFloat 6s ease-in-out infinite;
 }
 
-@keyframes floatHero{
+.hero-banner:hover{
+    transform:scale(1.02);
+}
+
+@keyframes heroFloat{
 
     0%{
-        transform:translateY(0);
+        transform:translateY(0px);
     }
 
     50%{
-        transform:translateY(-12px);
+        transform:translateY(-14px);
     }
 
     100%{
-        transform:translateY(0);
+        transform:translateY(0px);
     }
 
 }
+
 /*==================================================
 SHOP BY COLLECTION
 ==================================================*/
