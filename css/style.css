@@ -474,5 +474,294 @@ HERO
     }
 
 }
+/*==================================================
+SHOP BY COLLECTION
+==================================================*/
 
+.collections{
+    background:var(--dark2);
+}
+
+.collection-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+
+}
+
+.collection-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:var(--radius);
+
+    background:var(--dark3);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.collection-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 30px 60px rgba(255,0,122,.18);
+
+}
+
+.collection-card img{
+
+    width:100%;
+
+    height:340px;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.collection-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.collection-card .overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    padding:30px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.90)
+        );
+
+}
+
+.collection-card h3{
+
+    font-size:30px;
+
+    margin-bottom:12px;
+
+}
+
+.collection-card .overlay a{
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.collection-card .overlay a:hover{
+
+    color:var(--accent);
+
+}
+
+
+/*==================================================
+BEST SELLERS
+==================================================*/
+
+.best-sellers{
+
+    background:var(--dark);
+
+}
+
+
+/*==================================================
+PRODUCT GRID
+==================================================*/
+
+.products{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.product-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:var(--dark3);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 25px 60px rgba(255,0,122,.25);
+
+}
+
+.product-card img{
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.product-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+.product-card h3{
+
+    padding:22px 22px 10px;
+
+    font-size:24px;
+
+}
+
+.product-card p{
+
+    padding:0 22px;
+
+    color:var(--text);
+
+}
+
+.product-btn{
+
+    margin:25px 22px 22px;
+
+}
+
+
+/*==================================================
+PRODUCT BADGES
+==================================================*/
+
+.product-badge{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.6px;
+
+}
+
+
+/*==================================================
+IMAGE HOVER EFFECT
+==================================================*/
+
+.collection-card img,
+.product-card img{
+
+    will-change:transform;
+
+}
+
+
+/*==================================================
+CARD HOVER GLOW
+==================================================*/
+
+.collection-card::after,
+.product-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    border:1px solid rgba(255,255,255,.04);
+
+    pointer-events:none;
+
+    transition:.35s;
+
+}
+
+.collection-card:hover::after,
+.product-card:hover::after{
+
+    border-color:rgba(255,0,122,.35);
+
+}
+
+
+/*==================================================
+SECTION SPACING POLISH
+==================================================*/
+
+.collections .section-heading,
+.best-sellers .section-heading{
+
+    margin-bottom:70px;
+
+}
 
