@@ -150,79 +150,90 @@ ANNOUNCEMENT BAR
 
 }
 
-
 /*==================================================
-HEADER
+PREMIUM HEADER V6
 ==================================================*/
 
 header{
-
     position:sticky;
-
     top:0;
+    z-index:9999;
 
-    z-index:1000;
-
-    backdrop-filter:blur(16px);
-
-    background:rgba(11,11,17,.92);
+    background:rgba(11,11,17,.82);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
     border-bottom:1px solid rgba(255,255,255,.08);
 
+    transition:.35s ease;
 }
-
-
-/*==================================================
-NAVIGATION
-==================================================*/
 
 nav{
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    min-height:90px;
+    min-height:95px;
+}
 
+/* Logo */
+
+.logo{
+    display:flex;
+    align-items:center;
 }
 
 .logo img{
 
-    height:70px;
+    height:78px;
 
-    transition:var(--transition);
-
+    transition:.35s;
 }
 
 .logo:hover img{
 
-    transform:scale(1.05);
+    transform:scale(1.06) rotate(-1deg);
 
 }
+
+/* Navigation */
 
 nav ul{
 
     display:flex;
-
     align-items:center;
+    gap:38px;
 
-    gap:34px;
+}
+
+nav ul li{
+
+    position:relative;
 
 }
 
 nav ul li a{
 
-    position:relative;
+    color:#fff;
 
     font-weight:600;
 
-    transition:var(--transition);
+    letter-spacing:.3px;
+
+    transition:.3s;
+
+    padding:8px 0;
 
 }
 
 nav ul li a:hover{
+
+    color:var(--accent);
+
+}
+
+nav ul li a.active{
 
     color:var(--primary);
 
@@ -235,12 +246,13 @@ nav ul li a::after{
     position:absolute;
 
     left:0;
-
     bottom:-8px;
 
     width:0;
 
     height:3px;
+
+    border-radius:20px;
 
     background:linear-gradient(
         90deg,
@@ -248,21 +260,59 @@ nav ul li a::after{
         var(--accent)
     );
 
-    border-radius:20px;
-
-    transition:var(--transition);
+    transition:.35s;
 
 }
 
-nav ul li a:hover::after{
+nav ul li a:hover::after,
+nav ul li a.active::after{
 
     width:100%;
 
 }
 
-nav ul li a.active{
+/* Cart Button */
 
-    color:var(--primary);
+.cart-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.cart-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.18),
+        transparent
+    );
+
+    transform:translateX(-150%);
+
+}
+
+.cart-btn:hover::before{
+
+    animation:shine 1s linear;
+
+}
+
+@keyframes shine{
+
+    100%{
+
+        transform:translateX(160%);
+
+    }
 
 }
 
