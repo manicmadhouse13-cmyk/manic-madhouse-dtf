@@ -887,3 +887,358 @@ DESIGN BUILDER
     gap:50px;
     align-items:start;
 }
+/*==================================================
+DESIGN BUILDER
+==================================================*/
+
+.builder-controls{
+    background:var(--dark3);
+    padding:35px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.builder-controls h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.builder-controls p{
+    margin-bottom:30px;
+}
+
+.builder-controls label{
+    display:block;
+    margin:20px 0 8px;
+    font-weight:600;
+}
+
+.builder-controls input,
+.builder-controls select,
+.builder-controls textarea{
+    width:100%;
+    padding:16px;
+    background:var(--dark2);
+    border:2px solid #2a2a38;
+    border-radius:14px;
+    color:#fff;
+}
+
+.builder-controls textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+.builder-controls input:focus,
+.builder-controls select:focus,
+.builder-controls textarea:focus{
+    outline:none;
+    border-color:var(--primary);
+}
+
+.builder-controls .btn-primary{
+    width:100%;
+    margin-top:30px;
+}
+
+.shirt-preview{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:700px;
+    border-radius:30px;
+    overflow:hidden;
+    background:linear-gradient(145deg,#0d0d14,#1b1b26);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+#shirt{
+    max-width:520px;
+    width:100%;
+    z-index:2;
+}
+
+#designPreview{
+    position:absolute;
+    left:50%;
+    top:38%;
+    width:180px;
+    transform:translate(-50%,-50%);
+    display:none;
+    cursor:move;
+    z-index:5;
+}
+
+.preview-grid,
+.preview-crosshair,
+.preview-shadow,
+.preview-badge{
+    position:absolute;
+}
+
+/*==================================================
+REVIEWS
+==================================================*/
+
+.reviews{
+    background:var(--dark2);
+}
+
+.reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.review-card{
+    background:var(--dark3);
+    padding:35px;
+    border-radius:var(--radius);
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:var(--transition);
+}
+
+.review-card:hover{
+    transform:translateY(-8px);
+}
+
+.stars{
+    color:#ffd700;
+    font-size:26px;
+    margin-bottom:20px;
+}
+
+.review-card h4{
+    margin-top:20px;
+}
+
+/*==================================================
+FAQ
+==================================================*/
+
+.faq-section{
+    background:var(--dark);
+}
+
+.faq-container{
+    max-width:900px;
+    margin:auto;
+}
+
+.faq-item{
+    background:var(--dark3);
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:18px;
+}
+
+.faq-item h3{
+    margin-bottom:12px;
+}
+
+/*==================================================
+PROCESS
+==================================================*/
+
+.process-section{
+    background:var(--dark2);
+}
+
+.process-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+}
+
+.process-card{
+    background:var(--dark3);
+    padding:35px;
+    border-radius:var(--radius);
+    text-align:center;
+    transition:var(--transition);
+}
+
+.process-card:hover{
+    transform:translateY(-8px);
+}
+
+.process-number{
+    width:70px;
+    height:70px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:700;
+}
+
+/*==================================================
+INSTAGRAM
+==================================================*/
+
+.instagram{
+    background:var(--dark);
+}
+
+.instagram-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.instagram-grid img{
+    width:100%;
+    border-radius:20px;
+    transition:.4s;
+}
+
+.instagram-grid img:hover{
+    transform:scale(1.04);
+}
+
+.instagram-button{
+    margin-top:45px;
+    text-align:center;
+}
+
+/*==================================================
+FOOTER
+==================================================*/
+
+footer{
+    background:#06060a;
+    padding-top:70px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:45px;
+}
+
+.footer-logo{
+    width:170px;
+    margin-bottom:20px;
+}
+
+footer h3{
+    margin-bottom:20px;
+}
+
+footer li{
+    margin-bottom:12px;
+}
+
+footer li a:hover{
+    color:var(--primary);
+}
+
+.social-icons{
+    display:flex;
+    gap:16px;
+    margin-top:20px;
+    font-size:26px;
+}
+
+.footer-bottom{
+    margin-top:60px;
+    padding:25px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#999;
+}
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:991px){
+
+    .hero-content,
+    .wedding-grid,
+    .business-grid,
+    .builder-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .hero-left h1{
+        font-size:48px;
+    }
+
+    nav{
+        flex-direction:column;
+        padding:20px 0;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        margin:20px 0;
+    }
+
+    section{
+        padding:80px 0;
+    }
+}
+
+@media(max-width:768px){
+
+    .section-heading h2{
+        font-size:36px;
+    }
+
+    .hero-left h1{
+        font-size:40px;
+    }
+
+    .service-grid,
+    .business-services{
+        grid-template-columns:1fr;
+    }
+
+    .shirt-preview{
+        min-height:500px;
+    }
+
+    #shirt{
+        max-width:340px;
+    }
+}
+
+@media(max-width:480px){
+
+    .container{
+        width:94%;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .cart-btn{
+        width:100%;
+    }
+
+    nav ul{
+        gap:15px;
+    }
+
+    .logo img{
+        height:60px;
+    }
+
+    .hero-left h1{
+        font-size:34px;
+    }
+}
