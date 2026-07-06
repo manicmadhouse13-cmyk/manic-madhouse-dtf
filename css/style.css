@@ -764,4 +764,126 @@ SECTION SPACING POLISH
     margin-bottom:70px;
 
 }
+/*==================================================
+WHY CHOOSE US
+==================================================*/
 
+.why-us{
+    background:var(--dark);
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.why-card{
+    background:var(--dark3);
+    padding:40px 30px;
+    border-radius:var(--radius);
+    text-align:center;
+    transition:var(--transition);
+    box-shadow:var(--shadow);
+}
+
+.why-card:hover{
+    transform:translateY(-10px);
+    border:1px solid rgba(255,0,122,.35);
+}
+
+.why-card .icon{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.why-card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.why-card p{
+    color:var(--text);
+}
+
+/*==================================================
+WEDDING + BUSINESS SECTIONS
+==================================================*/
+
+.wedding-section,
+.business-section{
+    background:var(--dark2);
+}
+
+.business-section{
+    background:var(--dark);
+}
+
+.wedding-grid,
+.business-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.wedding-image img,
+.business-image img{
+    width:100%;
+    border-radius:28px;
+    box-shadow:var(--shadow);
+}
+
+.section-tag{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:40px;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.wedding-content h2,
+.business-content h2{
+    font-size:46px;
+    margin-bottom:25px;
+}
+
+.service-grid,
+.business-services{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin:35px 0;
+}
+
+.service-grid div,
+.business-services div{
+    background:var(--dark3);
+    padding:16px 18px;
+    border-radius:14px;
+    font-weight:600;
+    transition:var(--transition);
+}
+
+.service-grid div:hover,
+.business-services div:hover{
+    transform:translateY(-4px);
+    background:#242437;
+}
+
+/*==================================================
+DESIGN BUILDER
+==================================================*/
+
+.design-builder{
+    background:#0a0a10;
+}
+
+.builder-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:50px;
+    align-items:start;
+}
