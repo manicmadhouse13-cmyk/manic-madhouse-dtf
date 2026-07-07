@@ -1361,56 +1361,88 @@ footer{
 RESPONSIVE
 ==================================================*/
 
-@media(max-width:991px){
+@media (max-width:1100px){
 
     .hero-content,
+    .builder-grid,
     .wedding-grid,
-    .business-grid,
-    .builder-grid{
+    .business-grid{
         grid-template-columns:1fr;
+        text-align:center;
     }
 
-    .hero{
-        text-align:center;
+    .hero-left p{
+        margin:0 auto 40px;
     }
 
     .buttons{
         justify-content:center;
     }
 
-    .hero-left h1{
-        font-size:48px;
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:40px;
     }
 
     nav{
         flex-direction:column;
+        gap:20px;
         padding:20px 0;
     }
 
     nav ul{
         flex-wrap:wrap;
         justify-content:center;
-        margin:20px 0;
     }
 
-    section{
-        padding:80px 0;
+    .hero-left h1{
+        font-size:52px;
     }
+
 }
 
-@media(max-width:768px){
+@media (max-width:768px){
+
+    section{
+        padding:70px 0;
+    }
 
     .section-heading h2{
         font-size:36px;
     }
 
     .hero-left h1{
-        font-size:40px;
+        font-size:42px;
     }
 
-    .service-grid,
-    .business-services{
+    .hero-left p{
+        font-size:18px;
+    }
+
+    .collection-grid,
+    .products,
+    .reviews-grid,
+    .process-grid,
+    .instagram-grid,
+    .why-grid{
         grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .footer-about p{
+        margin:auto;
+    }
+
+    .social-icons{
+        justify-content:center;
+    }
+
+    .builder-controls{
+        padding:25px;
     }
 
     .shirt-preview{
@@ -1418,31 +1450,42 @@ RESPONSIVE
     }
 
     #shirt{
-        max-width:340px;
+        max-width:350px;
     }
+
 }
 
-@media(max-width:480px){
+@media (max-width:480px){
 
     .container{
         width:94%;
     }
 
+    .hero-left h1{
+        font-size:34px;
+    }
+
     .btn-primary,
     .btn-secondary,
+    .product-btn,
     .cart-btn{
         width:100%;
     }
 
-    nav ul{
-        gap:15px;
+    .buttons{
+        flex-direction:column;
     }
 
     .logo img{
         height:60px;
     }
 
-    .hero-left h1{
-        font-size:34px;
+    .hero-banner{
+        border-radius:18px;
     }
+
+    .section-heading h2{
+        font-size:30px;
+    }
+
 }
