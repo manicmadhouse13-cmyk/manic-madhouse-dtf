@@ -1143,18 +1143,32 @@ FAQ
 
 .faq-container{
     max-width:900px;
-    margin:auto;
+    margin:0 auto;
 }
 
 .faq-item{
     background:var(--dark3);
-    padding:25px;
-    margin-bottom:20px;
     border-radius:18px;
+    padding:28px 30px;
+    margin-bottom:20px;
+    box-shadow:var(--shadow);
+    transition:var(--transition);
+}
+
+.faq-item:hover{
+    transform:translateY(-5px);
+    border-left:4px solid var(--primary);
 }
 
 .faq-item h3{
+    font-size:22px;
     margin-bottom:12px;
+    color:#fff;
+}
+
+.faq-item p{
+    color:var(--text);
+    line-height:1.8;
 }
 
 /*==================================================
