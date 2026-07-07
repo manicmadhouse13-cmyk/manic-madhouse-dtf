@@ -1489,3 +1489,100 @@ RESPONSIVE
     }
 
 }
+/*==================================================
+SHOP PAGE
+==================================================*/
+
+.shop-hero{
+
+    background:
+        radial-gradient(circle at top right,
+        rgba(123,44,255,.18),
+        transparent 35%),
+
+        radial-gradient(circle at bottom left,
+        rgba(255,0,122,.15),
+        transparent 40%),
+
+        var(--dark);
+
+    text-align:center;
+
+}
+
+.shop-hero h1{
+
+    font-size:58px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+}
+
+.shop-hero p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    font-size:20px;
+
+}
+
+.shop-products{
+
+    background:var(--dark2);
+
+}
+
+.product-price{
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+    padding:18px 22px 0;
+
+}
+
+.product-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:22px;
+
+}
+
+.product-buttons .product-btn,
+.product-buttons .cart-btn{
+
+    flex:1;
+
+    padding:14px;
+
+    font-size:15px;
+
+}
+
+.product-card{
+
+    overflow:hidden;
+
+}
+
+.product-card img{
+
+    transition:.45s;
+
+}
+
+.product-card:hover img{
+
+    transform:scale(1.05);
+
+}
