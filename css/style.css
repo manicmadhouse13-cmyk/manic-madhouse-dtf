@@ -878,47 +878,71 @@ WHY CHOOSE US
 }
 
 /*==================================================
-WEDDING + BUSINESS SECTIONS
+PREMIUM WEDDING & BUSINESS V6
 ==================================================*/
 
 .wedding-section,
 .business-section{
-    background:var(--dark2);
+    position:relative;
+    overflow:hidden;
+    padding:120px 0;
+}
+
+.wedding-section{
+    background:linear-gradient(180deg,var(--dark2),#0d0d14);
 }
 
 .business-section{
-    background:var(--dark);
+    background:linear-gradient(180deg,#0d0d14,var(--dark));
 }
 
 .wedding-grid,
 .business-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:70px;
+    gap:80px;
     align-items:center;
 }
 
 .wedding-image img,
 .business-image img{
     width:100%;
-    border-radius:28px;
-    box-shadow:var(--shadow);
+    border-radius:30px;
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45);
+    transition:.4s ease;
+}
+
+.wedding-image img:hover,
+.business-image img:hover{
+    transform:scale(1.03);
 }
 
 .section-tag{
-    display:inline-block;
-    padding:10px 18px;
-    border-radius:40px;
-    background:linear-gradient(135deg,var(--primary),var(--secondary));
-    font-size:14px;
+    display:inline-flex;
+    align-items:center;
+    padding:12px 24px;
+    border-radius:50px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    color:#fff;
     font-weight:700;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .wedding-content h2,
 .business-content h2{
-    font-size:46px;
+    font-size:48px;
     margin-bottom:25px;
+}
+
+.wedding-content p,
+.business-content p{
+    font-size:18px;
+    line-height:1.9;
 }
 
 .service-grid,
@@ -926,22 +950,25 @@ WEDDING + BUSINESS SECTIONS
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
-    margin:35px 0;
+    margin:40px 0;
 }
 
 .service-grid div,
 .business-services div{
-    background:var(--dark3);
-    padding:16px 18px;
-    border-radius:14px;
+    padding:18px 22px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:18px;
+    transition:.35s ease;
+    backdrop-filter:blur(10px);
     font-weight:600;
-    transition:var(--transition);
 }
 
 .service-grid div:hover,
 .business-services div:hover{
-    transform:translateY(-4px);
-    background:#242437;
+    transform:translateY(-6px);
+    border-color:var(--primary);
+    background:rgba(255,0,122,.08);
 }
 
 /*==================================================
