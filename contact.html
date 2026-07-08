@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Request a Quote | Manic Madhouse DTF Designs</title>
+    <title>Contact Us | Manic Madhouse DTF Designs</title>
 
     <meta name="description"
-        content="Request a personalised quote for DTF transfers, custom stickers, wedding printing, business branding and custom apparel.">
+        content="Contact Manic Madhouse DTF Designs for DTF Transfers, Wedding Printing, Business Branding and Custom Printing.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,461 +23,61 @@
 
 <body>
 
-    <div class="announcement-bar">
-        🚚 FREE Australia Wide Shipping on Orders Over $150
+<div class="announcement-bar">
+    🚚 FREE Australia Wide Shipping on Orders Over $150
+</div>
+
+<header>
+
+    <div class="container">
+
+        <nav>
+
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Manic Madhouse DTF Designs">
+            </a>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html#wedding">Wedding Printing</a></li>
+                <li><a href="index.html#business">Business Printing</a></li>
+                <li><a href="index.html#design-builder">Design Your Own</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+
+            <a href="#" class="cart-btn">
+                🛒 Cart
+            </a>
+
+        </nav>
+
     </div>
 
-    <header>
+</header>
 
-        <div class="container">
+<section class="contact-hero">
 
-            <nav>
+    <div class="container">
 
-                <a href="index.html" class="logo">
-                    <img src="logo.png" alt="Manic Madhouse DTF Designs">
-                </a>
+        <span class="tag">
+            WE'D LOVE TO HEAR FROM YOU
+        </span>
 
-                <ul>
+        <h1>
+            Contact
+            <span>Manic Madhouse</span>
+        </h1>
 
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Browse Designs</a></li>
-                    <li><a href="index.html#design-builder">Design Your Own</a></li>
-                    <li><a href="contact.html" class="active">Request Quote</a></li>
+        <p>
 
-                </ul>
+            Whether you're ordering DTF Transfers,
+            Wedding Printing,
+            Business Branding or Custom Apparel,
+            we're here to help.
 
-            </nav>
+        </p>
 
-        </div>
+    </div>
 
-    </header>
-
-    <!-- HERO -->
-
-    <section class="contact-page">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <h1>Request Your Custom Quote</h1>
-
-                <p>
-
-                    Tell us about your project and we'll prepare a personalised quote.
-                    Whether it's DTF transfers, wedding stationery, business branding,
-                    apparel or stickers, every order is custom made to suit your needs.
-
-                </p>
-
-            </div>
-
-            <div class="quote-grid">
-
-                <!-- LEFT SIDE -->
-
-                <div class="quote-summary">
-
-                    <h2>Your Quote Basket</h2>
-
-                    <p>
-
-                        The designs you've selected from the shop will appear below.
-
-                    </p>
-
-                    <div id="quoteList">
-
-                        <p>No designs selected yet.</p>
-
-                    </div>
-
-                </div>
-
-                <!-- RIGHT SIDE -->
-
-                <div class="quote-form-wrapper">
-
-                    <form id="quoteForm" class="quote-form">
-
-                        <h2>Your Details</h2>
-
-                        <div class="form-grid">
-
-                            <input
-                                type="text"
-                                id="quoteName"
-                                placeholder="Full Name"
-                                required>
-
-                            <input
-                                type="email"
-                                id="quoteEmail"
-                                placeholder="Email Address"
-                                required>
-
-                            <input
-                                type="tel"
-                                id="quotePhone"
-                                placeholder="Phone Number">
-
-                            <select id="quoteService" required>
-
-                                <option value="">Select Service</option>
-                                <option>DTF Transfers</option>
-                                <option>Custom Stickers</option>
-                                <option>Wedding Printing</option>
-                                <option>Business Branding</option>
-                                <option>Custom Apparel</option>
-
-                            </select>
-
-                            <input
-                                type="text"
-                                placeholder="Required Size (Optional)">
-
-                            <input
-                                type="number"
-                                placeholder="Estimated Quantity">
-
-                            <label>Artwork Ready?</label>
-
-                            <select>
-
-                                <option>Yes - I'll upload it</option>
-                                <option>No - I need artwork created</option>
-
-                            </select>
-
-                            <label>Required By</label>
-
-                            <input type="date">
-
-                            <label>Preferred Contact Method</label>
-
-                            <select>
-
-                                <option>Email</option>
-                                <option>Phone</option>
-                                <option>Facebook Messenger</option>
-
-                            </select>
-
-                            <label>Print Location</label>
-
-                            <select>
-
-                                <option>Front Only</option>
-                                <option>Back Only</option>
-                                <option>Front & Back</option>
-                                <option>Left Chest</option>
-                                <option>Sleeve</option>
-                                <option>Other</option>
-
-                            </select>
-
-                            <label>Upload Artwork</label>
-
-                            <input
-                                type="file"
-                                accept=".png,.jpg,.jpeg,.pdf,.svg,.ai,.eps">
-
-                            <textarea
-                                id="quoteMessage"
-                                rows="6"
-                                placeholder="Tell us everything about your project, garment colours, sizes, quantities and any special requirements."></textarea>
-
-                        </div>
-
-                        <label class="checkbox">
-
-                            <input
-                                type="checkbox"
-                                required>
-
-                            I understand this is a quote request only and not a confirmed order.
-
-                        </label>
-
-                        <button
-                            type="button"
-                            id="sendQuoteBtn"
-                            class="btn-primary">
-
-                            Send Quote Request
-
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-    <!-- HOW IT WORKS -->
-
-    <section class="process-section">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <h2>How It Works</h2>
-
-                <p>
-                    Getting your custom order is quick, easy and completely obligation free.
-                </p>
-
-            </div>
-
-            <div class="process-grid">
-
-                <div class="process-card">
-
-                    <div class="process-number">1</div>
-
-                    <h3>Browse or Design</h3>
-
-                    <p>
-                        Browse our ready-made designs or upload your own artwork using our Design Builder.
-                    </p>
-
-                </div>
-
-                <div class="process-card">
-
-                    <div class="process-number">2</div>
-
-                    <h3>Request Your Quote</h3>
-
-                    <p>
-                        Complete the quote form with quantities, sizes and any project details.
-                    </p>
-
-                </div>
-
-                <div class="process-card">
-
-                    <div class="process-number">3</div>
-
-                    <h3>We Prepare Everything</h3>
-
-                    <p>
-                        We'll review your artwork, answer any questions and send you a personalised quote.
-                    </p>
-
-                </div>
-
-                <div class="process-card">
-
-                    <div class="process-number">4</div>
-
-                    <h3>Print & Deliver</h3>
-
-                    <p>
-                        Once approved, we professionally print your order and ship Australia wide.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- FAQ -->
-
-    <section class="faq-section">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <h2>Frequently Asked Questions</h2>
-
-                <p>
-                    Everything you need to know before requesting a quote.
-                </p>
-
-            </div>
-
-            <div class="faq-container">
-
-                <div class="faq-item">
-                    <h3>How long do orders take?</h3>
-                    <p>Most jobs are completed within a few business days depending on artwork approval and order size.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Can I supply my own artwork?</h3>
-                    <p>Yes. We accept PNG, PDF, AI, EPS and SVG files.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Do you ship Australia wide?</h3>
-                    <p>Absolutely. Every order is shipped with tracking anywhere in Australia.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Can you create artwork for me?</h3>
-                    <p>Yes. If you don't have artwork yet, we'll help bring your idea to life.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Why don't you show prices?</h3>
-                    <p>Every order is customised, so we provide personalised quotes based on your requirements.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Can businesses order in bulk?</h3>
-                    <p>Yes. We regularly supply businesses, sports clubs, schools and events with bulk printing.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CONTACT INFO -->
-
-    <section class="contact-info">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <h2>Need Help?</h2>
-
-                <p>
-                    Have questions before requesting a quote? Get in touch and we'll be happy to help.
-                </p>
-
-            </div>
-
-            <div class="why-grid">
-
-                <div class="why-card">
-
-                    <div class="icon">📧</div>
-
-                    <h3>Email Us</h3>
-
-                    <p>info@manicmadhouse.com.au</p>
-
-                </div>
-
-                <div class="why-card">
-
-                    <div class="icon">💬</div>
-
-                    <h3>Fast Responses</h3>
-
-                    <p>Message us via Facebook Messenger for quick support.</p>
-
-                </div>
-
-                <div class="why-card">
-
-                    <div class="icon">🚚</div>
-
-                    <h3>Australia Wide Shipping</h3>
-
-                    <p>Fast tracked delivery across Australia.</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div class="container footer-grid">
-
-            <div class="footer-about">
-
-                <img src="logo.png"
-                     class="footer-logo"
-                     alt="Manic Madhouse DTF Designs">
-
-                <p>
-
-                    Premium Australian DTF Transfers, Wedding Printing,
-                    Business Branding, Custom Apparel and Stickers.
-
-                </p>
-
-            </div>
-
-            <div>
-
-                <h3>Quick Links</h3>
-
-                <ul>
-
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="index.html#design-builder">Design Your Own</a></li>
-                    <li><a href="contact.html">Request Quote</a></li>
-
-                </ul>
-
-            </div>
-
-            <div>
-
-                <h3>Services</h3>
-
-                <ul>
-
-                    <li><a href="#">DTF Transfers</a></li>
-                    <li><a href="#">Wedding Printing</a></li>
-                    <li><a href="#">Business Branding</a></li>
-                    <li><a href="#">Custom Stickers</a></li>
-
-                </ul>
-
-            </div>
-
-            <div>
-
-                <h3>Follow Us</h3>
-
-                <div class="social-icons">
-
-                    <a href="#">📘</a>
-                    <a href="#">📸</a>
-                    <a href="#">🎵</a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 Manic Madhouse DTF Designs • All Rights Reserved
-            </p>
-
-        </div>
-
-    </footer>
-
-    <button id="topBtn">⬆</button>
-
-    <script src="js/script.js"></script>
-
-</body>
-
-</html>
+</section>
