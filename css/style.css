@@ -1738,3 +1738,160 @@ SHOP PAGE ENHANCEMENTS
     min-width:180px;
 
 }
+/*==================================================
+SHOP PAGE FINISHING TOUCHES
+==================================================*/
+
+.load-more-section{
+
+    background:var(--dark2);
+
+    padding:40px 0 90px;
+
+}
+
+.load-more-section .btn-primary{
+
+    min-width:240px;
+
+}
+
+.newsletter{
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,0,122,.12),
+        rgba(123,44,255,.12)
+    );
+
+    padding:90px 0;
+
+}
+
+.newsletter-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    background:var(--dark3);
+
+    border-radius:30px;
+
+    padding:60px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.newsletter-box h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.newsletter-box p{
+
+    max-width:650px;
+
+    margin:0 auto 35px;
+
+    font-size:18px;
+
+}
+
+.newsletter-form{
+
+    display:flex;
+
+    gap:18px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.newsletter-form input{
+
+    flex:1;
+
+    min-width:280px;
+
+    max-width:500px;
+
+    padding:18px 22px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:var(--dark2);
+
+    color:#fff;
+
+    font-size:16px;
+
+}
+
+.newsletter-form input:focus{
+
+    outline:2px solid var(--primary);
+
+}
+
+.newsletter-form button{
+
+    min-width:180px;
+
+}
+
+@media (max-width:768px){
+
+    .shop-hero h1{
+
+        font-size:42px;
+
+    }
+
+    .product-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .newsletter-box{
+
+        padding:40px 25px;
+
+    }
+
+    .newsletter-box h2{
+
+        font-size:32px;
+
+    }
+
+    .newsletter-form{
+
+        flex-direction:column;
+
+    }
+
+    .newsletter-form input{
+
+        max-width:100%;
+
+    }
+
+    .newsletter-form button{
+
+        width:100%;
+
+    }
+
+}
