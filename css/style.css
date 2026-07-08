@@ -1586,3 +1586,155 @@ SHOP PAGE
     transform:scale(1.05);
 
 }
+/*==================================================
+SHOP PAGE ENHANCEMENTS
+==================================================*/
+
+.product-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+}
+
+.product-card h3{
+
+    min-height:60px;
+
+}
+
+.product-price{
+
+    margin-top:auto;
+
+}
+
+.product-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:22px;
+
+}
+
+.product-buttons .product-btn,
+.product-buttons .cart-btn{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.load-more-section{
+
+    background:var(--dark2);
+
+    text-align:center;
+
+    padding:30px 0 80px;
+
+}
+
+.load-more-section .btn-primary{
+
+    min-width:240px;
+
+    font-size:18px;
+
+}
+
+.newsletter{
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,0,122,.12),
+        rgba(123,44,255,.12)
+    );
+
+}
+
+.newsletter-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:var(--dark3);
+
+    border-radius:30px;
+
+    padding:60px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+.newsletter-box h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.newsletter-box p{
+
+    max-width:650px;
+
+    margin:0 auto 35px;
+
+}
+
+.newsletter-form{
+
+    display:flex;
+
+    gap:18px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.newsletter-form input{
+
+    flex:1;
+
+    min-width:280px;
+
+    max-width:500px;
+
+    padding:18px 22px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:var(--dark2);
+
+    color:#fff;
+
+    font-size:16px;
+
+}
+
+.newsletter-form input:focus{
+
+    outline:2px solid var(--primary);
+
+}
+
+.newsletter-form button{
+
+    min-width:180px;
+
+}
