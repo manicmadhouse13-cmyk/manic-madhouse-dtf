@@ -245,6 +245,74 @@ function initialiseDesignBuilder() {
     );
 /*==================================================
 MANIC MADHOUSE DESIGN BUILDER
+CHUNK 2
+INITIAL PREVIEW SETUP
+==================================================*/
+
+const designPreview = document.getElementById("designPreview");
+const uploadImage = document.getElementById("uploadImage");
+
+let uploadedDesign = null;
+
+
+if(uploadImage && designPreview){
+
+    uploadImage.addEventListener("change", function(e){
+
+        const file = e.target.files[0];
+
+        if(!file) return;
+
+
+        if(!file.type.startsWith("image/")){
+
+            alert("Please upload an image file.");
+
+            return;
+
+        }
+
+
+        const reader = new FileReader();
+
+
+        reader.onload = function(event){
+
+            uploadedDesign = event.target.result;
+
+
+            designPreview.src = uploadedDesign;
+
+
+            designPreview.style.display = "block";
+
+            designPreview.style.position = "absolute";
+
+            designPreview.style.left = "50%";
+
+            designPreview.style.top = "38%";
+
+            designPreview.style.width = "180px";
+
+            designPreview.style.zIndex = "5";
+
+
+            designPreview.style.transform =
+                "translate(-50%, -50%) rotate(0deg)";
+
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+
+    });
+
+}
+
+/*==================================================
+MANIC MADHOUSE DESIGN BUILDER
 CHUNK 3
 RESIZE + ROTATE CONTROLS
 ==================================================*/
