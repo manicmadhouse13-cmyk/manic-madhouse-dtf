@@ -466,7 +466,9 @@ if(designImage){
         startDrag,
         {passive:false}
     );
-
+document.addEventListener("DOMContentLoaded", function(){
+    initialiseDesignBuilder();
+});
 
     document.addEventListener(
         "touchmove",
