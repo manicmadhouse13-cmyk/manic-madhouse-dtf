@@ -4,6 +4,11 @@ STYLE.CSS
 VERSION 6.0
 ==================================================*/
 
+@import url("variables.css");
+@import url("layout.css");
+@import url("components.css");
+@import url("pages.css");
+@import url("responsive.css");
 
 /*==================================================
 RESET
