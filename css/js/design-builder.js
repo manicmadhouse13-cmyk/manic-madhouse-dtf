@@ -243,3 +243,59 @@ function initialiseDesignBuilder() {
         "touchend",
         stopDrag
     );
+/*==================================================
+MANIC MADHOUSE DESIGN BUILDER
+CHUNK 3
+RESIZE + ROTATE CONTROLS
+==================================================*/
+
+const designImage = document.getElementById("designPreview");
+const sizeControl = document.getElementById("sizeSlider");
+const rotateControl = document.getElementById("rotateSlider");
+
+let designSize = 180;
+let designAngle = 0;
+
+
+/* UPDATE DESIGN */
+
+function updateDesign(){
+
+    if(!designImage) return;
+
+    designImage.style.width = designSize + "px";
+
+    designImage.style.transform =
+        `translate(-50%, -50%) rotate(${designAngle}deg)`;
+
+}
+
+
+/* SIZE SLIDER */
+
+if(sizeControl){
+
+    sizeControl.addEventListener("input", function(){
+
+        designSize = this.value;
+
+        updateDesign();
+
+    });
+
+}
+
+
+/* ROTATION SLIDER */
+
+if(rotateControl){
+
+    rotateControl.addEventListener("input", function(){
+
+        designAngle = this.value;
+
+        updateDesign();
+
+    });
+
+}
