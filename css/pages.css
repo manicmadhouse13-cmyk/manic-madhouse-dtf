@@ -525,3 +525,273 @@ PRODUCT CARDS
     font-size:15px;
 
 }
+/*==================================================
+WHY CHOOSE US
+==================================================*/
+
+.why-us{
+
+    background:var(--dark2);
+
+}
+
+
+.why-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+}
+
+
+.why-card{
+
+    background:var(--dark3);
+
+    border-radius:var(--radius);
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+.why-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 25px 50px rgba(255,0,122,.25);
+
+}
+
+
+.why-card .icon{
+
+    width:80px;
+
+    height:80px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:34px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(255,0,122,.35);
+
+}
+
+
+.why-card h3{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+
+.why-card p{
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
+
+
+/*==================================================
+WEDDING & BUSINESS SECTIONS
+==================================================*/
+
+.wedding-section,
+.business-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:120px 0;
+
+}
+
+
+.wedding-section{
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--dark2),
+            #0d0d14
+        );
+
+}
+
+
+.business-section{
+
+    background:
+        linear-gradient(
+            180deg,
+            #0d0d14,
+            var(--dark)
+        );
+
+}
+
+
+.wedding-grid,
+.business-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+
+}
+
+
+.wedding-image img,
+.business-image img{
+
+    width:100%;
+
+    border-radius:30px;
+
+    box-shadow:
+
+        0 30px 70px rgba(0,0,0,.45);
+
+    transition:.4s ease;
+
+}
+
+
+.wedding-image img:hover,
+.business-image img:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+.section-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color:#fff;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+
+.wedding-content h2,
+.business-content h2{
+
+    font-size:48px;
+
+    margin-bottom:25px;
+
+}
+
+
+.wedding-content p,
+.business-content p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+
+.service-grid,
+.business-services{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin:40px 0;
+
+}
+
+
+.service-grid div,
+.business-services div{
+
+    padding:18px 22px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    transition:.35s ease;
+
+    backdrop-filter:blur(10px);
+
+    font-weight:600;
+
+}
+
+
+.service-grid div:hover,
+.business-services div:hover{
+
+    transform:translateY(-6px);
+
+    border-color:var(--primary);
+
+    background:
+        rgba(255,0,122,.08);
+
+}
