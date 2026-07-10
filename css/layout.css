@@ -1,1 +1,102 @@
+ /*==================================================
+MANIC MADHOUSE DTF DESIGNS
+LAYOUT.CSS
+VERSION 6.0
+==================================================*/
 
+
+/*==================================================
+RESET
+==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0b0b11;
+    color:#fff;
+    overflow-x:hidden;
+    line-height:1.6;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
+}
+
+
+/*==================================================
+CONTAINER & SECTIONS
+==================================================*/
+
+.container{
+    width:90%;
+    max-width:1280px;
+    margin:auto;
+}
+
+section{
+    padding:100px 0;
+}
+
+
+/*==================================================
+GLOBAL TYPOGRAPHY
+==================================================*/
+
+.section-heading{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-heading h2{
+
+    font-size:48px;
+    font-weight:800;
+    margin-bottom:18px;
+
+}
+
+.section-heading p{
+
+    max-width:760px;
+    margin:auto;
+    color:var(--text);
+    font-size:18px;
+
+}
+
+p{
+    color:var(--text);
+}
+
+h1,
+h2,
+h3,
+h4{
+    line-height:1.2;
+}
