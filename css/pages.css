@@ -795,3 +795,325 @@ WEDDING & BUSINESS SECTIONS
         rgba(255,0,122,.08);
 
 }
+/*==================================================
+DESIGN BUILDER
+==================================================*/
+
+.design-builder{
+
+    background:#0a0a10;
+
+}
+
+
+.builder-grid{
+
+    display:grid;
+
+    grid-template-columns:1.2fr 1fr;
+
+    gap:50px;
+
+    align-items:start;
+
+}
+
+
+.builder-controls{
+
+    background:var(--dark3);
+
+    padding:35px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+.builder-controls h2{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+}
+
+
+.builder-controls p{
+
+    margin-bottom:30px;
+
+}
+
+
+.builder-controls label{
+
+    display:block;
+
+    margin:20px 0 8px;
+
+    font-weight:600;
+
+}
+
+
+.builder-controls input,
+.builder-controls select,
+.builder-controls textarea{
+
+    width:100%;
+
+    padding:16px;
+
+    background:var(--dark2);
+
+    border:2px solid #2a2a38;
+
+    border-radius:14px;
+
+    color:#fff;
+
+}
+
+
+.builder-controls textarea{
+
+    min-height:140px;
+
+    resize:vertical;
+
+}
+
+
+.builder-controls input:focus,
+.builder-controls select:focus,
+.builder-controls textarea:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+
+.builder-controls .btn-primary{
+
+    width:100%;
+
+    margin-top:30px;
+
+}
+
+
+.shirt-preview{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:700px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d0d14,
+            #1b1b26
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5);
+
+}
+
+
+#shirt{
+
+    max-width:520px;
+
+    width:100%;
+
+    z-index:2;
+
+}
+
+
+#designPreview{
+
+    position:absolute;
+
+    left:50%;
+
+    top:38%;
+
+    width:180px;
+
+    transform:
+        translate(-50%,-50%);
+
+    display:none;
+
+    cursor:move;
+
+    z-index:5;
+
+}
+
+
+/*==================================================
+REVIEWS
+==================================================*/
+
+.reviews{
+
+    background:var(--dark2);
+
+}
+
+
+.reviews-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+}
+
+
+.review-card{
+
+    background:var(--dark3);
+
+    padding:40px 35px;
+
+    border-radius:var(--radius);
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+
+.review-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+
+.stars{
+
+    font-size:28px;
+
+    color:#ffd700;
+
+    margin-bottom:20px;
+
+    letter-spacing:4px;
+
+}
+
+
+.review-card p{
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    font-style:italic;
+
+}
+
+
+/*==================================================
+HOW IT WORKS
+==================================================*/
+
+.process-section{
+
+    background:var(--dark2);
+
+}
+
+
+.process-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+
+.process-card{
+
+    background:var(--dark3);
+
+    border-radius:var(--radius);
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+
+.process-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+
+.process-number{
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+}
