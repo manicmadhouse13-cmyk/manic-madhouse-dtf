@@ -282,7 +282,7 @@ if(uploadImage && designPreview){
 
 
             designPreview.src = uploadedDesign;
-
+console.log("Design preview activated", designPreview);
 
             designPreview.style.display = "block";
 
