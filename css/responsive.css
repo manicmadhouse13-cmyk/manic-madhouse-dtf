@@ -1,1 +1,169 @@
+/*==================================================
+MANIC MADHOUSE DTF DESIGNS
+RESPONSIVE.CSS
+VERSION 6.0
+==================================================*/
 
+
+/*==================================================
+TABLET RESPONSIVE
+==================================================*/
+
+@media (max-width:1100px){
+
+    .hero-content,
+    .builder-grid,
+    .wedding-grid,
+    .business-grid{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+
+    .hero-left p{
+
+        margin:0 auto 40px;
+
+    }
+
+
+    .buttons{
+
+        justify-content:center;
+
+    }
+
+
+    .footer-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:40px;
+
+    }
+
+
+    nav{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:20px 0;
+
+    }
+
+
+    nav ul{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+
+    .hero-left h1{
+
+        font-size:52px;
+
+    }
+
+
+}
+
+
+/*==================================================
+MOBILE RESPONSIVE
+==================================================*/
+
+@media (max-width:768px){
+
+    section{
+
+        padding:70px 0;
+
+    }
+
+
+    .section-heading h2{
+
+        font-size:36px;
+
+    }
+
+
+    .hero-left h1{
+
+        font-size:42px;
+
+    }
+
+
+    .hero-left p{
+
+        font-size:18px;
+
+    }
+
+
+    .collection-grid,
+    .products,
+    .reviews-grid,
+    .process-grid,
+    .instagram-grid,
+    .why-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+
+    .footer-about p{
+
+        margin:auto;
+
+    }
+
+
+    .social-icons{
+
+        justify-content:center;
+
+    }
+
+
+    .builder-controls{
+
+        padding:25px;
+
+    }
+
+
+    .shirt-preview{
+
+        min-height:500px;
+
+    }
+
+
+    #shirt{
+
+        max-width:350px;
+
+    }
+
+
+}
