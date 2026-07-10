@@ -1244,3 +1244,256 @@ footer{
     color:#9b9b9b;
     font-size:15px;
 }
+/*==================================================
+SHOP PAGE
+==================================================*/
+
+.shop-hero{
+
+    background:
+        radial-gradient(circle at top right,
+        rgba(123,44,255,.18),
+        transparent 35%),
+
+        radial-gradient(circle at bottom left,
+        rgba(255,0,122,.15),
+        transparent 40%),
+
+        var(--dark);
+
+    text-align:center;
+
+}
+
+.shop-hero h1{
+
+    font-size:58px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+}
+
+.shop-hero p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    font-size:20px;
+
+}
+
+.shop-products{
+
+    background:var(--dark2);
+
+}
+
+.product-price{
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+    padding:18px 22px 0;
+
+}
+
+.product-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:22px;
+
+}
+
+.product-buttons .product-btn,
+.product-buttons .cart-btn{
+
+    flex:1;
+
+    padding:14px;
+
+    font-size:15px;
+
+}
+
+.product-card{
+
+    overflow:hidden;
+
+}
+
+.product-card img{
+
+    transition:.45s;
+
+}
+
+.product-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+
+/*==================================================
+SHOP PAGE ENHANCEMENTS
+==================================================*/
+
+.product-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+}
+
+.product-card h3{
+
+    min-height:60px;
+
+}
+
+.product-price{
+
+    margin-top:auto;
+
+}
+
+.product-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:22px;
+
+}
+
+.product-buttons .product-btn,
+.product-buttons .cart-btn{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.load-more-section{
+
+    background:var(--dark2);
+
+    text-align:center;
+
+    padding:40px 0 90px;
+
+}
+
+.load-more-section .btn-primary{
+
+    min-width:240px;
+
+}
+
+.newsletter{
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,0,122,.12),
+        rgba(123,44,255,.12)
+    );
+
+    padding:90px 0;
+
+}
+
+.newsletter-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    background:var(--dark3);
+
+    border-radius:30px;
+
+    padding:60px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.newsletter-box h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.newsletter-box p{
+
+    max-width:650px;
+
+    margin:0 auto 35px;
+
+    font-size:18px;
+
+}
+
+.newsletter-form{
+
+    display:flex;
+
+    gap:18px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.newsletter-form input{
+
+    flex:1;
+
+    min-width:280px;
+
+    max-width:500px;
+
+    padding:18px 22px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:var(--dark2);
+
+    color:#fff;
+
+    font-size:16px;
+
+}
+
+.newsletter-form input:focus{
+
+    outline:2px solid var(--primary);
+
+}
+
+.newsletter-form button{
+
+    min-width:180px;
+
+}
