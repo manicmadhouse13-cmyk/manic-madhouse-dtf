@@ -55,6 +55,10 @@ function initialiseDesignBuilder() {
         designPreview.src = design.image;
 
         designPreview.style.position = "absolute";
+        designPreview.style.display = "block";
+designPreview.style.visibility = "visible";
+designPreview.style.opacity = "1";
+designPreview.style.zIndex = "99";
 
         designPreview.style.left = design.x + "%";
         designPreview.style.top = design.y + "%";
