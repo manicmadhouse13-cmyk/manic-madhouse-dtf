@@ -1,1 +1,407 @@
+/*==================================================
+MANIC MADHOUSE DTF DESIGNS
+COMPONENTS.CSS
+VERSION 6.0
+==================================================*/
 
+
+/*==================================================
+ANNOUNCEMENT BAR
+==================================================*/
+
+.announcement-bar{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    text-align:center;
+
+    color:#fff;
+
+    padding:12px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+
+/*==================================================
+HEADER
+==================================================*/
+
+header{
+
+    position:sticky;
+    top:0;
+    z-index:9999;
+
+    background:rgba(11,11,17,.82);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    transition:.35s ease;
+
+}
+
+
+nav{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    min-height:95px;
+
+}
+
+
+/*==================================================
+LOGO
+==================================================*/
+
+.logo{
+
+    display:flex;
+    align-items:center;
+
+}
+
+
+.logo img{
+
+    height:78px;
+
+    transition:.35s;
+
+}
+
+
+.logo:hover img{
+
+    transform:scale(1.06) rotate(-1deg);
+
+}
+
+
+/*==================================================
+NAVIGATION
+==================================================*/
+
+nav ul{
+
+    display:flex;
+    align-items:center;
+    gap:38px;
+
+}
+
+
+nav ul li{
+
+    position:relative;
+
+}
+
+
+nav ul li a{
+
+    color:#fff;
+
+    font-weight:600;
+
+    letter-spacing:.3px;
+
+    transition:.3s;
+
+    padding:8px 0;
+
+}
+
+
+nav ul li a:hover{
+
+    color:var(--accent);
+
+}
+
+
+nav ul li a.active{
+
+    color:var(--primary);
+
+}
+
+
+nav ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--accent)
+    );
+
+    transition:.35s;
+
+}
+
+
+nav ul li a:hover::after,
+nav ul li a.active::after{
+
+    width:100%;
+
+}
+
+
+/*==================================================
+BUTTONS
+==================================================*/
+
+.btn-primary,
+.btn-secondary,
+.product-btn,
+.cart-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+    cursor:pointer;
+
+}
+
+
+.btn-primary,
+.product-btn,
+.cart-btn{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    color:#fff;
+
+    box-shadow:
+        0 15px 35px rgba(255,0,122,.30);
+
+}
+
+
+.btn-primary:hover,
+.product-btn:hover,
+.cart-btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 20px 45px rgba(255,0,122,.45);
+
+}
+
+
+.btn-secondary{
+
+    border:2px solid var(--primary);
+
+    background:transparent;
+
+    color:#fff;
+
+}
+
+
+.btn-secondary:hover{
+
+    background:var(--primary);
+
+    transform:translateY(-5px);
+
+}
+
+
+/*==================================================
+PRODUCT BADGES
+==================================================*/
+
+.product-badge{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.6px;
+
+}
+
+
+/*==================================================
+IMAGE EFFECTS
+==================================================*/
+
+.collection-card img,
+.product-card img{
+
+    will-change:transform;
+
+}
+
+
+.collection-card::after,
+.product-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    border:1px solid rgba(255,255,255,.04);
+
+    pointer-events:none;
+
+    transition:.35s;
+
+}
+
+
+.collection-card:hover::after,
+.product-card:hover::after{
+
+    border-color:rgba(255,0,122,.35);
+
+}
+
+
+/*==================================================
+FOOTER
+==================================================*/
+
+footer{
+
+    background:#08080d;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding-top:80px;
+
+}
+
+
+.footer-logo{
+
+    max-width:180px;
+
+    margin-bottom:20px;
+
+}
+
+
+.footer-links a,
+.footer-services a{
+
+    color:var(--text);
+
+    transition:var(--transition);
+
+}
+
+
+.footer-links a:hover,
+.footer-services a:hover{
+
+    color:var(--primary);
+
+    padding-left:6px;
+
+}
+
+
+.social-icons a{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--dark3);
+
+    font-size:22px;
+
+    transition:var(--transition);
+
+}
+
+
+.social-icons a:hover{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    transform:translateY(-5px);
+
+}
