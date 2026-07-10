@@ -299,3 +299,118 @@ if(rotateControl){
     });
 
 }
+/*==================================================
+MANIC MADHOUSE DESIGN BUILDER
+CHUNK 4
+DRAG & DROP POSITIONING
+==================================================*/
+
+if(designImage){
+
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+
+
+    function startDrag(e){
+
+        if(designImage.style.display === "none") return;
+
+        dragging = true;
+
+        const rect = designImage.getBoundingClientRect();
+
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+
+        startX = x - rect.left;
+        startY = y - rect.top;
+
+
+        designImage.style.cursor = "grabbing";
+
+    }
+
+
+
+    function moveDrag(e){
+
+        if(!dragging) return;
+
+        e.preventDefault();
+
+
+        const container = designImage.parentElement;
+
+        const containerRect = container.getBoundingClientRect();
+
+
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+
+
+        const left = x - containerRect.left - startX;
+        const top = y - containerRect.top - startY;
+
+
+        designImage.style.left = left + "px";
+        designImage.style.top = top + "px";
+
+        designImage.style.transform =
+            `translate(0,0) rotate(${designAngle}deg)`;
+
+    }
+
+
+
+    function stopDrag(){
+
+        dragging = false;
+
+        designImage.style.cursor = "move";
+
+    }
+
+
+
+    designImage.addEventListener(
+        "mousedown",
+        startDrag
+    );
+
+
+    document.addEventListener(
+        "mousemove",
+        moveDrag
+    );
+
+
+    document.addEventListener(
+        "mouseup",
+        stopDrag
+    );
+
+
+
+    designImage.addEventListener(
+        "touchstart",
+        startDrag,
+        {passive:false}
+    );
+
+
+    document.addEventListener(
+        "touchmove",
+        moveDrag,
+        {passive:false}
+    );
+
+
+    document.addEventListener(
+        "touchend",
+        stopDrag
+    );
+
+
+}
