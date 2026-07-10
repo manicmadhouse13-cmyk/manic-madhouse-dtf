@@ -13,7 +13,7 @@ function initialiseDesignBuilder() {
 
     const uploadImage = document.getElementById("uploadImage");
     const designPreview = document.getElementById("designPreview");
-    const shirtImage = document.getElementById("shirtImage");
+    const shirtImage = document.getElementById("shirt");
     const shirtColour = document.getElementById("shirtColour");
     const sizeSlider = document.getElementById("sizeSlider");
     const rotateSlider = document.getElementById("rotateSlider");
