@@ -153,7 +153,7 @@ function initialiseDesignBuilder() {
 
     applyDesign();
 
-}
+
     /*==============================
     DRAG & TOUCH SUPPORT
     ==============================*/
