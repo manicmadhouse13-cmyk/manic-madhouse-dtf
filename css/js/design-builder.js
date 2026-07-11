@@ -152,3 +152,92 @@ function initialiseDesignBuilder() {
         });
 
     }
+    /*==============================
+    DRAG SUPPORT
+    ==============================*/
+
+    let dragging = false;
+
+    function pointerPosition(event) {
+
+        if (event.touches && event.touches.length) {
+
+            return {
+                x: event.touches[0].clientX,
+                y: event.touches[0].clientY
+            };
+
+        }
+
+        return {
+            x: event.clientX,
+            y: event.clientY
+        };
+
+    }
+
+    function startDrag(event) {
+
+        if (!design.image) return;
+
+        dragging = true;
+
+        designPreview.style.cursor = "grabbing";
+
+        event.preventDefault();
+
+    }
+
+    function stopDrag() {
+
+        dragging = false;
+
+        designPreview.style.cursor = "move";
+
+    }
+
+    function drag(event) {
+
+        if (!dragging) return;
+
+        const rect = shirt.parentElement.getBoundingClientRect();
+
+        const pointer = pointerPosition(event);
+
+        design.x =
+            ((pointer.x - rect.left) / rect.width) * 100;
+
+        design.y =
+            ((pointer.y - rect.top) / rect.height) * 100;
+
+        design.x = Math.max(5, Math.min(95, design.x));
+        design.y = Math.max(5, Math.min(95, design.y));
+
+        drawDesign();
+
+        event.preventDefault();
+
+    }
+
+    designPreview.addEventListener("mousedown", startDrag);
+
+    document.addEventListener("mousemove", drag);
+
+    document.addEventListener("mouseup", stopDrag);
+
+    designPreview.addEventListener(
+        "touchstart",
+        startDrag,
+        { passive: false }
+    );
+
+    document.addEventListener(
+        "touchmove",
+        drag,
+        { passive: false }
+    );
+
+    document.addEventListener(
+        "touchend",
+        stopDrag
+    );
