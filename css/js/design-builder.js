@@ -1,3 +1,4 @@
+alert("design-builder.js loaded");
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 DESIGN BUILDER
