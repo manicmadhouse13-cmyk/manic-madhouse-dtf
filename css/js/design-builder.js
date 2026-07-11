@@ -76,3 +76,79 @@ function initialiseDesignBuilder() {
 
     }
 
+    /*==============================
+    IMAGE UPLOAD
+    ==============================*/
+
+    uploadImage.addEventListener("change", function (event) {
+
+        const file = event.target.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+
+            alert("Please upload an image file.");
+
+            return;
+
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+
+            design.image = e.target.result;
+
+            design.x = 50;
+            design.y = 38;
+            design.size = 180;
+            design.rotation = 0;
+
+            if (sizeSlider) {
+                sizeSlider.value = 180;
+            }
+
+            if (rotateSlider) {
+                rotateSlider.value = 0;
+            }
+
+            drawDesign();
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+    /*==============================
+    SIZE SLIDER
+    ==============================*/
+
+    if (sizeSlider) {
+
+        sizeSlider.addEventListener("input", function () {
+
+            design.size = Number(this.value);
+
+            drawDesign();
+
+        });
+
+    }
+
+    /*==============================
+    ROTATION SLIDER
+    ==============================*/
+
+    if (rotateSlider) {
+
+        rotateSlider.addEventListener("input", function () {
+
+            design.rotation = Number(this.value);
+
+            drawDesign();
+
+        });
+
+    }
