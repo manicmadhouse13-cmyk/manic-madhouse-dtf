@@ -99,6 +99,7 @@ function initialiseDesignBuilder() {
         reader.onload = function (e) {
 
             design.image = e.target.result;
+            console.log("Image loaded successfully");
 
             design.x = 50;
             design.y = 38;
