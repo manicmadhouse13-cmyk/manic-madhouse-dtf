@@ -1,15 +1,11 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 SCRIPT.JS
-VERSION 6.1
+TEST
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    initialiseNavigation();
-    initialiseShop();
-    initialiseQuote();
     initialiseDesignBuilder();
-    initialiseAnimations();
 
 });
