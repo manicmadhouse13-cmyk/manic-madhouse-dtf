@@ -241,3 +241,29 @@ function initialiseDesignBuilder() {
         "touchend",
         stopDrag
     );
+    /*==============================
+    SHIRT COLOUR (READY FOR FUTURE)
+    ==============================*/
+
+    if (shirtColour) {
+
+        shirtColour.addEventListener("change", function () {
+
+            shirt.src =
+                "images/shirts/" + this.value + ".png";
+
+        });
+
+    }
+
+    /*==============================
+    INITIAL DRAW
+    ==============================*/
+
+    drawDesign();
+
+}
+
+/*==================================================
+END OF DESIGN BUILDER
+==================================================*/
