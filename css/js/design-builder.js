@@ -470,22 +470,24 @@ if(designImage){
         startDrag,
         {passive:false}
     );
-document.addEventListener("DOMContentLoaded", function(){
-    initialiseDesignBuilder();
-});
+document.addEventListener(
+    "touchmove",
+    drag,
+    {passive:false}
+);
 
-    document.addEventListener(
-        "touchmove",
-        moveDrag,
-        {passive:false}
-    );
-
-
-    document.addEventListener(
-        "touchend",
-        stopDrag
-    );
+document.addEventListener(
+    "touchend",
+    stopDrag
+);
 
 
 }
+
+
+// START DESIGN BUILDER
+
+document.addEventListener("DOMContentLoaded", function(){
+    initialiseDesignBuilder();
+});
 
