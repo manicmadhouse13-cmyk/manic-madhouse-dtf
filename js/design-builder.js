@@ -269,3 +269,6 @@ function initialiseDesignBuilder() {
 /*==================================================
 END OF DESIGN BUILDER
 ==================================================*/
+document.addEventListener("DOMContentLoaded", function () {
+    initialiseDesignBuilder();
+});
