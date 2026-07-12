@@ -1,4 +1,10 @@
-alert("design-builder.js loaded");
+function initialiseDesignBuilder() {
+
+    alert("initialiseDesignBuilder() started");
+
+    /*==============================
+    ELEMENTS
+    ==============================*/
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 DESIGN BUILDER
