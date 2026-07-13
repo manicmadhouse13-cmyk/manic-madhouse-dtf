@@ -1054,33 +1054,104 @@ DESIGN BUILDER
     margin-top:30px;
 }
 
+/*==================================================
+DESIGN BUILDER PREVIEW V8.0
+==================================================*/
+
 .shirt-preview{
+
     position:relative;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    min-height:700px;
-    border-radius:30px;
+
+    width:100%;
+
+    min-height:750px;
+
+    border-radius:25px;
+
+    background:linear-gradient(
+        180deg,
+        #242424,
+        #171717
+    );
+
     overflow:hidden;
-    background:linear-gradient(145deg,#0d0d14,#1b1b26);
-    box-shadow:0 30px 80px rgba(0,0,0,.5);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.shirt-stage{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:650px;
+
+    margin:auto;
+
 }
 
 #shirt{
-    max-width:520px;
+
+    display:block;
+
     width:100%;
-    z-index:2;
+
+    height:auto;
+
+    user-select:none;
+
+    pointer-events:none;
+
 }
 
 #designPreview{
+
     position:absolute;
+
     left:50%;
-    top:38%;
-    width:180px;
+
+    top:34%;
+
+    width:130px;
+
     transform:translate(-50%,-50%);
+
     display:none;
+
     cursor:move;
-    z-index:5;
+
+    z-index:20;
+
+}
+
+.preview-badge{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:#ff0088;
+
+    color:#fff;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    z-index:100;
+
 }
 
 .preview-grid,
