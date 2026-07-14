@@ -1122,9 +1122,13 @@ DESIGN BUILDER PREVIEW V8.0
 
     left:50%;
 
-    top:34%;
+    top:42%;
 
-    width:130px;
+    width:80px;
+
+    max-width:22%;
+
+    height:auto;
 
     transform:translate(-50%,-50%);
 
