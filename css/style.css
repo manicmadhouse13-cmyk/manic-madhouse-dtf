@@ -1087,10 +1087,19 @@ DESIGN BUILDER PREVIEW V8.0
 }
 
 .shirt-stage{
+
     position:relative;
-    width:95%;
-    max-width:900px;
-    margin:auto;
+
+    width:100%;
+
+    max-width:1000px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
 }
 
 #shirt{
