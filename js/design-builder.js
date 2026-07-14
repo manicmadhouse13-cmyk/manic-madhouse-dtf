@@ -251,8 +251,7 @@ function initialiseDesignBuilder() {
 
         shirtColour.addEventListener("change", function () {
 
-            shirt.src =
-                "images/shirts/" + this.value + ".png";
+            shirt.src = this.value + ".png";
 
         });
 
