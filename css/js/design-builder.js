@@ -32,7 +32,7 @@ function initialiseDesignBuilder() {
         x: 50,
         y: 38,
 
-        size: 180,
+        size: 70,
 
         rotation: 0,
 
