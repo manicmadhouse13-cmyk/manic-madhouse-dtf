@@ -30,7 +30,7 @@ function initialiseDesignBuilder() {
         image: null,
 
         x: 50,
-        y: 38,
+        y: 42,
 
         size: 80,
 
