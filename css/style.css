@@ -1099,17 +1099,10 @@ DESIGN BUILDER PREVIEW V8.0
 }
 
 #shirt{
-
     display:block;
-
     width:100%;
-
-    height:auto;
-
-    user-select:none;
-
-    pointer-events:none;
-
+    max-width:900px;
+    margin:auto;
 }
 
 #designPreview{
