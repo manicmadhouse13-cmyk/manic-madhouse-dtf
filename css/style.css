@@ -2419,3 +2419,308 @@ PRIVACY POLICY
     }
 
 }
+/*==================================================
+MANIC MADHOUSE DESIGN BUILDER V8.0
+==================================================*/
+
+
+.builder-container{
+
+    display:grid;
+
+    grid-template-columns: 1.4fr .8fr;
+
+    gap:40px;
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:60px auto;
+
+    padding:20px;
+
+}
+
+
+/* PREVIEW AREA */
+
+.builder-preview{
+
+    position:relative;
+
+    background:#15151d;
+
+    border-radius:30px;
+
+    min-height:750px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.5);
+
+}
+
+
+.preview-label{
+
+    position:absolute;
+
+    top:25px;
+
+    left:25px;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ff007a,
+    #00d4ff
+    );
+
+    color:white;
+
+    font-weight:700;
+
+    z-index:10;
+
+}
+
+
+
+.shirt-stage{
+
+    position:relative;
+
+    width:90%;
+
+    max-width:850px;
+
+}
+
+
+
+#shirt{
+
+    width:100%;
+
+    height:auto;
+
+    display:block;
+
+}
+
+
+
+.print-area{
+
+    position:absolute;
+
+    top:32%;
+
+    left:50%;
+
+    width:32%;
+
+    aspect-ratio:1/1;
+
+    transform:translate(-50%,-50%);
+
+    z-index:5;
+
+}
+
+
+
+#designPreview{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    display:none;
+
+    cursor:move;
+
+}
+
+
+
+/* CONTROLS */
+
+.builder-controls{
+
+    background:#111118;
+
+    border-radius:30px;
+
+    padding:40px;
+
+}
+
+
+.builder-controls h2{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.builder-controls p{
+
+    color:#bbb;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.upload-box{
+
+    display:block;
+
+    padding:25px;
+
+    border:2px dashed #7b2cff;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    margin-bottom:25px;
+
+}
+
+
+.upload-box input{
+
+    display:none;
+
+}
+
+
+
+.builder-controls label{
+
+    display:block;
+
+    margin-top:20px;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+
+
+.builder-controls input[type="range"]{
+
+    width:100%;
+
+}
+
+
+
+.builder-controls select,
+.builder-controls textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:#1a1a24;
+
+    color:white;
+
+    border:1px solid #333;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.builder-controls textarea{
+
+    min-height:120px;
+
+}
+
+
+
+.quote-button{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ff007a,
+    #7b2cff
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .builder-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .builder-preview{
+
+        min-height:500px;
+
+    }
+
+
+    .builder-controls h2{
+
+        font-size:32px;
+
+    }
+
+}
