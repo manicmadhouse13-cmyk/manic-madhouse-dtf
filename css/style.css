@@ -1103,10 +1103,17 @@ DESIGN BUILDER PREVIEW V8.0
 }
 
 #shirt{
+
+    width:85%;
+
+    max-width:700px;
+
+    height:auto;
+
     display:block;
-    width:100%;
-    max-width:900px;
+
     margin:auto;
+
 }
 
 #designPreview{
