@@ -32,7 +32,7 @@ function initialiseDesignBuilder() {
         x: 50,
         y: 38,
 
-        size: 70,
+        size: 80,
 
         rotation: 0,
 
@@ -253,7 +253,7 @@ const designImage = document.getElementById("designPreview");
 const sizeControl = document.getElementById("sizeSlider");
 const rotateControl = document.getElementById("rotateSlider");
 
-let designSize = 70;
+let designSize = 80;
 let designAngle = 0;
 
 
