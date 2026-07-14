@@ -253,7 +253,7 @@ const designImage = document.getElementById("designPreview");
 const sizeControl = document.getElementById("sizeSlider");
 const rotateControl = document.getElementById("rotateSlider");
 
-let designSize = 180;
+let designSize = 70;
 let designAngle = 0;
 
 
