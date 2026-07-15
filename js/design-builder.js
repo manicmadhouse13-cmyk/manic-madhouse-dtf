@@ -194,3 +194,240 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
+/*==================================================
+CHUNK 2
+DRAGGING + SHIRT COLOURS
+==================================================*/
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    const shirt = document.getElementById("shirt");
+    const designPreview = document.getElementById("designPreview");
+    const shirtColour = document.getElementById("shirtColour");
+
+
+    if (!shirt || !designPreview) {
+
+        return;
+
+    }
+
+
+
+    let dragging = false;
+
+
+
+    function getPointer(event) {
+
+
+        if (event.touches && event.touches.length) {
+
+
+            return {
+
+                x: event.touches[0].clientX,
+
+                y: event.touches[0].clientY
+
+            };
+
+
+        }
+
+
+        return {
+
+            x: event.clientX,
+
+            y: event.clientY
+
+        };
+
+
+    }
+
+
+
+
+    designPreview.addEventListener("mousedown", function(e){
+
+
+        dragging = true;
+
+        e.preventDefault();
+
+
+    });
+
+
+
+    designPreview.addEventListener("touchstart", function(e){
+
+
+        dragging = true;
+
+        e.preventDefault();
+
+
+    }, {passive:false});
+
+
+
+
+
+    document.addEventListener("mouseup", function(){
+
+
+        dragging = false;
+
+
+    });
+
+
+
+    document.addEventListener("touchend", function(){
+
+
+        dragging = false;
+
+
+    });
+
+
+
+
+
+
+    document.addEventListener("mousemove", function(e){
+
+
+        if (!dragging) return;
+
+
+
+        moveDesign(e);
+
+
+    });
+
+
+
+
+    document.addEventListener("touchmove", function(e){
+
+
+        if (!dragging) return;
+
+
+
+        moveDesign(e);
+
+
+    }, {passive:false});
+
+
+
+
+
+    function moveDesign(event){
+
+
+        const point = getPointer(event);
+
+
+        const stage =
+        shirt.parentElement.getBoundingClientRect();
+
+
+
+        let x =
+        ((point.x - stage.left) / stage.width) * 100;
+
+
+
+        let y =
+        ((point.y - stage.top) / stage.height) * 100;
+
+
+
+        x = Math.max(5, Math.min(95,x));
+
+        y = Math.max(5, Math.min(95,y));
+
+
+
+        designPreview.style.left = x + "%";
+
+        designPreview.style.top = y + "%";
+
+
+
+        event.preventDefault();
+
+
+    }
+
+
+
+
+
+
+    /*==============================
+    SHIRT COLOUR
+    ==============================*/
+
+
+    if (shirtColour){
+
+
+        shirtColour.addEventListener("change", function(){
+
+
+            const shirts = {
+
+
+                black:
+                "shirt-black.png",
+
+
+                white:
+                "shirt-white.png",
+
+
+                grey:
+                "shirt-grey.png",
+
+
+                navy:
+                "shirt-navy.png",
+
+
+                red:
+                "shirt-red.png"
+
+
+            };
+
+
+
+            if(shirts[this.value]){
+
+
+                shirt.src = shirts[this.value];
+
+
+            }
+
+
+
+        });
+
+
+    }
+
+
+
+});
