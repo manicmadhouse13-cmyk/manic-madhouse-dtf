@@ -108,16 +108,21 @@ function initialiseDesignBuilder() {
 
     if (shirtColour && shirtImage) {
 
-        shirtColour.addEventListener("change", () => {
+    shirtColour.addEventListener("change", function () {
 
-            design.shirt = shirtColour.value;
+    const shirts = {
 
-            shirtImage.src =
-                `images/shirts/${design.shirt}.png`;
+        black: "shirt-black.png",
+        white: "shirt-white.png",
+        grey: "shirt-grey.png",
+        navy: "shirt-navy.png",
+        red: "shirt-red.png"
 
-        });
+    };
 
-    }
+    shirt.src = shirts[this.value];
+
+});
 
     /*==============================
     SLIDERS
