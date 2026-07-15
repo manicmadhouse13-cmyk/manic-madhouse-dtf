@@ -271,3 +271,41 @@ END OF DESIGN BUILDER
 document.addEventListener("DOMContentLoaded", function () {
     initialiseDesignBuilder();
 });
+/*========================================
+ADD DESIGN TO QUOTE
+========================================*/
+
+const addToQuote = document.getElementById("addToQuote");
+
+if (addToQuote) {
+
+    addToQuote.addEventListener("click", function () {
+
+        const quoteItem = {
+
+            image: design.image,
+
+            shirtColour: document.getElementById("shirtColour")?.value || "black",
+
+            shirtSize: document.getElementById("shirtSize")?.value || "M",
+
+            printLocation: document.getElementById("printLocation")?.value || "front",
+
+            quantity: document.getElementById("quantity")?.value || "1",
+
+            notes: document.getElementById("designNotes")?.value || ""
+
+        };
+
+
+        localStorage.setItem(
+            "designQuote",
+            JSON.stringify(quoteItem)
+        );
+
+
+        alert("Design added to quote!");
+
+    });
+
+}
