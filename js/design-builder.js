@@ -616,6 +616,34 @@ initialiseBuilder();
 
             quoteBasket.appendChild(basketItem);
 
+            /*==================================================
+  SHIRT COLOUR SELECTOR
+==================================================*/
+
+if (shirtColourSelect) {
+
+    shirtColourSelect.addEventListener(
+        "change",
+        function () {
+
+            design.shirtColour = this.value;
+
+
+            if (shirt) {
+
+                shirt.className =
+                    "shirt-" + this.value;
+
+            }
+
+
+            saveBuilder();
+
+        }
+    );
+
+}
+
     updateQuoteBasketDisplay();
 initialiseBuilder();
         });
