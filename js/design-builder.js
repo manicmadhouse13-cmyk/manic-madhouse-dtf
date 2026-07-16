@@ -617,6 +617,7 @@ initialiseBuilder();
             quoteBasket.appendChild(basketItem);
 
     updateQuoteBasketDisplay();
+initialiseBuilder();
         });
 
 
