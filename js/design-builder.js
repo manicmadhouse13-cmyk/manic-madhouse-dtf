@@ -438,6 +438,202 @@ initialiseBuilder();
     }
 
     /*==================================================
+      QUOTE BASKET
+    ==================================================*/
+
+    let quoteItems = JSON.parse(
+        localStorage.getItem("manicQuoteBasket")
+    ) || [];
+
+
+
+    function saveQuoteBasket() {
+
+        localStorage.setItem(
+            "manicQuoteBasket",
+            JSON.stringify(quoteItems)
+        );
+
+    }
+
+
+
+    function createQuoteItem() {
+
+        return {
+
+            id: Date.now(),
+
+            image: uploadedImage,
+
+            size: design.scale,
+
+            rotation: design.rotation,
+
+            position: {
+                x: design.x,
+                y: design.y
+            },
+
+            quantity: quantitySelect
+                ? quantitySelect.value
+                : "1",
+
+            notes: extraNotes
+                ? extraNotes.value
+                : "",
+
+            shirtColour: design.shirtColour,
+
+            dateAdded: new Date().toISOString()
+
+        };
+
+    }
+
+
+
+    function addToQuoteBasket() {
+
+        if (!uploadedImage) {
+
+            alert("Please upload your artwork before adding to your quote.");
+
+            return;
+
+        }
+
+
+        const item = createQuoteItem();
+
+
+        quoteItems.push(item);
+
+
+        saveQuoteBasket();
+
+
+        updateQuoteBasketDisplay();
+
+
+        alert("Design added to quote!");
+
+    }
+
+
+
+    function removeQuoteItem(id) {
+
+        quoteItems = quoteItems.filter(
+            item => item.id !== id
+        );
+
+
+        saveQuoteBasket();
+
+
+        updateQuoteBasketDisplay();
+
+    }
+
+
+
+    function clearQuoteBasket() {
+
+        quoteItems = [];
+
+        saveQuoteBasket();
+
+        updateQuoteBasketDisplay();
+
+    }
+
+
+
+    function updateQuoteBasketDisplay() {
+
+        if (!quoteBasket) return;
+
+
+        quoteBasket.innerHTML = "";
+
+
+        if (quoteItems.length === 0) {
+
+            quoteBasket.innerHTML =
+                "<p>No designs added yet.</p>";
+
+            return;
+
+        }
+
+
+        quoteItems.forEach(item => {
+
+
+            const basketItem =
+                document.createElement("div");
+
+
+            basketItem.className =
+                "quote-item";
+
+
+            basketItem.innerHTML = `
+
+                <img src="${item.image}" alt="Design Preview">
+
+                <div class="quote-details">
+
+                    <strong>Custom DTF Design</strong>
+
+                    <span>
+                        Quantity: ${item.quantity}
+                    </span>
+
+                    <span>
+                        Size: ${item.size}px
+                    </span>
+
+                </div>
+
+
+                <button class="remove-quote"
+                    data-id="${item.id}">
+                    Remove
+                </button>
+
+            `;
+
+
+            quoteBasket.appendChild(basketItem);
+
+
+        });
+
+
+        document
+        .querySelectorAll(".remove-quote")
+        .forEach(button => {
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    removeQuoteItem(
+                        Number(button.dataset.id)
+                    );
+
+                }
+            );
+
+
+        });
+
+    }
+
+    /*==================================================
       CENTRE DESIGN
     ==================================================*/
 
