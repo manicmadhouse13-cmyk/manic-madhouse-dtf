@@ -117,7 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 }
 
-loadBuilder();
+initialiseBuilder();
+
+});
 
 
 
