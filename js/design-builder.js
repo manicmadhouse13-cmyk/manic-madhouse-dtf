@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Quote Basket (optional)
     const quoteBasket = document.getElementById("quoteBasket");
 
-
+const shirtColourSelect = document.getElementById("shirtColour");
 
     /*==================================================
       BUILDER STATE
