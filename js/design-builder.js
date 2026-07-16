@@ -336,3 +336,54 @@ document.addEventListener("DOMContentLoaded", () => {
         stopDrag();
 
     });
+        /*==================================================
+      DESIGN BOUNDARIES
+    ==================================================*/
+
+    function clampDesignPosition() {
+
+        if (!previewWrapper || !designPreview) return;
+
+        const wrapperRect = previewWrapper.getBoundingClientRect();
+
+        const maxX = (wrapperRect.width / 2) - (design.scale / 2);
+        const maxY = (wrapperRect.height / 2) - (design.scale / 2);
+
+        design.x = Math.max(-maxX, Math.min(maxX, design.x));
+        design.y = Math.max(-maxY, Math.min(maxY, design.y));
+
+    }
+
+
+
+    /*==================================================
+      CENTRE DESIGN
+    ==================================================*/
+
+    function centreDesign() {
+
+        design.x = 0;
+        design.y = 0;
+
+        updatePreview();
+
+    }
+
+
+
+    function updatePreview() {
+
+    if (!designPreview) return;
+
+    clampDesignPosition();
+
+    designPreview.style.width = design.scale + "px";
+
+    designPreview.style.left = `calc(50% + ${design.x}px)`;
+
+    designPreview.style.top = `calc(50% + ${design.y}px)`;
+
+    designPreview.style.transform =
+        `translate(-50%, -50%) rotate(${design.rotation}deg)`;
+
+    }
