@@ -354,7 +354,86 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    /*==================================================
+      LOCAL STORAGE
+    ==================================================*/
 
+    function saveBuilder() {
+
+        const builderData = {
+
+            x: design.x,
+            y: design.y,
+            scale: design.scale,
+            rotation: design.rotation,
+            shirtColour: design.shirtColour,
+            quantity: quantitySelect ? quantitySelect.value : "1",
+            notes: extraNotes ? extraNotes.value : ""
+
+        };
+
+        localStorage.setItem(
+            "manicBuilder",
+            JSON.stringify(builderData)
+        );
+
+    }
+
+
+
+    function loadBuilder() {
+
+        const saved = localStorage.getItem("manicBuilder");
+
+        if (!saved) return;
+
+        try {
+
+            const data = JSON.parse(saved);
+
+            design.x = data.x ?? 0;
+            design.y = data.y ?? 0;
+            design.scale = data.scale ?? 180;
+            design.rotation = data.rotation ?? 0;
+            design.shirtColour = data.shirtColour ?? "white";
+
+            if (sizeSlider)
+                sizeSlider.value = design.scale;
+
+            if (rotateSlider)
+                rotateSlider.value = design.rotation;
+
+            if (sizeValue)
+                sizeValue.textContent = design.scale + " px";
+
+            if (rotateValue)
+                rotateValue.textContent = design.rotation + "°";
+
+            if (quantitySelect)
+                quantitySelect.value = data.quantity ?? "1";
+
+            if (extraNotes)
+                extraNotes.value = data.notes ?? "";
+
+            updatePreview();
+
+        }
+
+        catch (error) {
+
+            console.error("Unable to load saved builder.", error);
+
+        }
+
+    }
+
+
+
+    function clearBuilderStorage() {
+
+        localStorage.removeItem("manicBuilder");
+
+    }
 
     /*==================================================
       CENTRE DESIGN
