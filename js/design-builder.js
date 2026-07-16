@@ -463,6 +463,6 @@ document.addEventListener("DOMContentLoaded", () => {
     designPreview.style.top = `calc(50% + ${design.y}px)`;
 
     designPreview.style.transform =
-        `translate(-50%, -50%) rotate(${design.rotation}deg)`;
+    `translate(-50%, -50%) rotate(${design.rotation}deg)`;
 
-    }
+saveBuilder();
