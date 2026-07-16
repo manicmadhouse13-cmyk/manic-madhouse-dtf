@@ -631,8 +631,8 @@ if (shirtColourSelect) {
 
             if (shirt) {
 
-                shirt.className =
-                    "shirt-" + this.value;
+    shirt.src =
+        "images/shirts/shirt-" + this.value + ".png";
 
             }
 
