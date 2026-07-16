@@ -229,3 +229,110 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+        /*==================================================
+      DRAG & DROP
+    ==================================================*/
+
+    function startDrag(clientX, clientY) {
+
+        if (!uploadedImage) return;
+
+        design.dragging = true;
+
+        design.startX = clientX - design.x;
+        design.startY = clientY - design.y;
+
+        designPreview.style.cursor = "grabbing";
+
+    }
+
+    function drag(clientX, clientY) {
+
+        if (!design.dragging) return;
+
+        design.x = clientX - design.startX;
+        design.y = clientY - design.startY;
+
+        updatePreview();
+
+    }
+
+    function stopDrag() {
+
+        design.dragging = false;
+
+        if (designPreview) {
+
+            designPreview.style.cursor = "grab";
+
+        }
+
+    }
+
+
+
+    /*-----------------------------
+      Mouse Support
+    ------------------------------*/
+
+    if (designPreview) {
+
+        designPreview.addEventListener("mousedown", (e) => {
+
+            e.preventDefault();
+
+            startDrag(e.clientX, e.clientY);
+
+        });
+
+    }
+
+    document.addEventListener("mousemove", (e) => {
+
+        drag(e.clientX, e.clientY);
+
+    });
+
+    document.addEventListener("mouseup", () => {
+
+        stopDrag();
+
+    });
+
+
+
+    /*-----------------------------
+      Touch Support
+    ------------------------------*/
+
+    if (designPreview) {
+
+        designPreview.addEventListener("touchstart", (e) => {
+
+            if (!e.touches.length) return;
+
+            const touch = e.touches[0];
+
+            startDrag(touch.clientX, touch.clientY);
+
+        }, { passive: true });
+
+    }
+
+    document.addEventListener("touchmove", (e) => {
+
+        if (!design.dragging) return;
+
+        if (!e.touches.length) return;
+
+        const touch = e.touches[0];
+
+        drag(touch.clientX, touch.clientY);
+
+    }, { passive: true });
+
+    document.addEventListener("touchend", () => {
+
+        stopDrag();
+
+    });
