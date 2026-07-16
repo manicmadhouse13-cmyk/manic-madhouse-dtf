@@ -113,11 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (extraNotes) {
 
-            extraNotes.value = "";
+    extraNotes.value = "";
 
-        }
+}
 
-    }
+loadBuilder();
 
 
 
