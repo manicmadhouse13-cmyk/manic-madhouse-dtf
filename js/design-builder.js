@@ -536,14 +536,7 @@ initialiseBuilder();
 
     }
 
-    if (addQuoteBtn) {
-
-        addQuoteBtn.addEventListener(
-            "click",
-            addToQuoteBasket
-        );
-
-            }
+    
 
     function clearQuoteBasket() {
 
@@ -573,7 +566,15 @@ initialiseBuilder();
             return;
 
         }
+        
+    if (addQuoteBtn) {
 
+        addQuoteBtn.addEventListener(
+            "click",
+            addToQuoteBasket
+        );
+
+    }
 
         quoteItems.forEach(item => {
 
