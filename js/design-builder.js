@@ -177,5 +177,161 @@ function saveBuilder() {
 
 
 }
+/*==================================================
+IMAGE UPLOAD
+==================================================*/
 
+
+if (uploadImage) {
+
+
+    uploadImage.addEventListener(
+        "change",
+        function(event) {
+
+
+            const file =
+            event.target.files[0];
+
+
+            if (!file) return;
+
+
+            if (!file.type.startsWith("image/")) {
+
+
+                alert(
+                    "Please upload an image file."
+                );
+
+
+                return;
+
+            }
+
+
+
+            const reader =
+            new FileReader();
+
+
+
+            reader.onload =
+            function(e) {
+
+
+                uploadedImage =
+                e.target.result;
+
+
+                designPreview.src =
+                uploadedImage;
+
+
+                designPreview.style.display =
+                "block";
+
+
+                updatePreview();
+
+
+            };
+
+
+
+            reader.readAsDataURL(file);
+
+
+        }
+
+    );
+
+
+}
+
+
+
+
+
+/*==================================================
+SIZE SLIDER
+==================================================*/
+
+
+if (sizeSlider) {
+
+
+    sizeSlider.addEventListener(
+        "input",
+        function() {
+
+
+            design.scale =
+            Number(this.value);
+
+
+
+            if (sizeValue) {
+
+
+                sizeValue.textContent =
+                this.value + " px";
+
+
+            }
+
+
+
+            updatePreview();
+
+
+        }
+
+    );
+
+
+}
+
+
+
+
+
+/*==================================================
+ROTATION SLIDER
+==================================================*/
+
+
+if (rotateSlider) {
+
+
+    rotateSlider.addEventListener(
+        "input",
+        function() {
+
+
+            design.rotation =
+            Number(this.value);
+
+
+
+            if (rotateValue) {
+
+
+                rotateValue.textContent =
+                this.value + "°";
+
+
+            }
+
+
+
+            updatePreview();
+
+
+        }
+
+    );
+
+
+}
 
