@@ -631,8 +631,27 @@ if (shirtColourSelect) {
 
             if (shirt) {
 
-    shirt.src =
-        "images/shirts/shirt-" + this.value + ".png";
+                if (this.value === "black") {
+
+                    shirt.src = "design-your-own.png";
+
+                }
+
+                else {
+
+                    // Placeholder until colour mockups are added
+
+                    alert(
+                        "This shirt colour mockup will be added soon."
+                    );
+
+                    shirt.src = "design-your-own.png";
+
+                    shirtColourSelect.value = "black";
+
+                    design.shirtColour = "black";
+
+                }
 
             }
 
