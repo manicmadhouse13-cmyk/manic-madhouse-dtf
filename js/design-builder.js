@@ -823,3 +823,322 @@ if (addQuoteBtn) {
 
 
 }
+/*==================================================
+RESET BUILDER
+==================================================*/
+
+
+function resetBuilder() {
+
+
+    uploadedImage = null;
+
+
+    design.x = 0;
+
+    design.y = 0;
+
+    design.scale = 180;
+
+    design.rotation = 0;
+
+    design.shirtColour = "black";
+
+
+
+    if (designPreview) {
+
+
+        designPreview.src = "";
+
+        designPreview.style.display =
+        "none";
+
+
+    }
+
+
+
+    if (sizeSlider) {
+
+
+        sizeSlider.value = 180;
+
+
+    }
+
+
+
+    if (rotateSlider) {
+
+
+        rotateSlider.value = 0;
+
+
+    }
+
+
+
+    if (sizeValue) {
+
+
+        sizeValue.textContent =
+        "180 px";
+
+
+    }
+
+
+
+    if (rotateValue) {
+
+
+        rotateValue.textContent =
+        "0°";
+
+
+    }
+
+
+
+    if (quantitySelect) {
+
+
+        quantitySelect.value =
+        "1";
+
+
+    }
+
+
+
+    if (extraNotes) {
+
+
+        extraNotes.value =
+        "";
+
+
+    }
+
+
+
+    if (shirtColourSelect) {
+
+
+        shirtColourSelect.value =
+        "black";
+
+
+    }
+
+
+
+    if (shirt) {
+
+
+        shirt.src =
+        "design-your-own.png";
+
+
+    }
+
+
+
+    localStorage.removeItem(
+        "manicBuilder"
+    );
+
+
+    updatePreview();
+
+
+}
+
+
+
+
+
+if (resetBtn) {
+
+
+    resetBtn.addEventListener(
+        "click",
+        resetBuilder
+    );
+
+
+}
+
+
+
+
+
+
+
+/*==================================================
+SHIRT COLOUR
+==================================================*/
+
+
+if (shirtColourSelect) {
+
+
+    shirtColourSelect.addEventListener(
+        "change",
+        function() {
+
+
+            design.shirtColour =
+            this.value;
+
+
+
+            // Only black exists currently
+
+            shirt.src =
+            "design-your-own.png";
+
+
+
+            saveBuilder();
+
+
+        }
+
+    );
+
+
+}
+
+
+
+
+
+
+
+/*==================================================
+LOAD SAVED SETTINGS
+==================================================*/
+
+
+function loadBuilder() {
+
+
+    const saved =
+    localStorage.getItem(
+        "manicBuilder"
+    );
+
+
+
+    if (!saved) return;
+
+
+
+    const data =
+    JSON.parse(saved);
+
+
+
+    design.x =
+    data.x ?? 0;
+
+
+    design.y =
+    data.y ?? 0;
+
+
+    design.scale =
+    data.scale ?? 180;
+
+
+    design.rotation =
+    data.rotation ?? 0;
+
+
+
+    design.shirtColour =
+    data.shirtColour ?? "black";
+
+
+
+    if (sizeSlider) {
+
+        sizeSlider.value =
+        design.scale;
+
+    }
+
+
+
+    if (rotateSlider) {
+
+        rotateSlider.value =
+        design.rotation;
+
+    }
+
+
+
+    if (sizeValue) {
+
+        sizeValue.textContent =
+        design.scale + " px";
+
+    }
+
+
+
+    if (rotateValue) {
+
+        rotateValue.textContent =
+        design.rotation + "°";
+
+    }
+
+
+
+    if (quantitySelect) {
+
+        quantitySelect.value =
+        data.quantity ?? "1";
+
+    }
+
+
+
+    if (extraNotes) {
+
+        extraNotes.value =
+        data.notes ?? "";
+
+    }
+
+
+
+    updatePreview();
+
+
+}
+
+
+
+
+
+
+/*==================================================
+START BUILDER
+==================================================*/
+
+
+updateQuoteBasketDisplay();
+
+
+loadBuilder();
+
+
+updatePreview();
+
+
+});
