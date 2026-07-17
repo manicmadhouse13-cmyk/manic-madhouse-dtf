@@ -334,4 +334,211 @@ if (rotateSlider) {
 
 
 }
+/*==================================================
+DRAG SYSTEM
+==================================================*/
 
+
+function startDrag(x, y) {
+
+
+    if (!uploadedImage) return;
+
+
+    design.dragging = true;
+
+
+    design.startX =
+    x - design.x;
+
+
+    design.startY =
+    y - design.y;
+
+
+
+}
+
+
+
+
+function dragMove(x, y) {
+
+
+    if (!design.dragging) return;
+
+
+
+    design.x =
+    x - design.startX;
+
+
+    design.y =
+    y - design.startY;
+
+
+
+    updatePreview();
+
+
+
+}
+
+
+
+
+function stopDrag() {
+
+
+    design.dragging = false;
+
+
+}
+
+
+
+
+
+/*==================================================
+MOUSE SUPPORT
+==================================================*/
+
+
+if (designPreview) {
+
+
+    designPreview.addEventListener(
+        "mousedown",
+        function(e) {
+
+
+            e.preventDefault();
+
+
+            startDrag(
+                e.clientX,
+                e.clientY
+            );
+
+
+        }
+
+    );
+
+
+}
+
+
+
+document.addEventListener(
+    "mousemove",
+    function(e) {
+
+
+        dragMove(
+            e.clientX,
+            e.clientY
+        );
+
+
+    }
+
+);
+
+
+
+document.addEventListener(
+    "mouseup",
+    function() {
+
+
+        stopDrag();
+
+
+    }
+
+);
+
+
+
+
+
+
+/*==================================================
+TOUCH SUPPORT
+==================================================*/
+
+
+if (designPreview) {
+
+
+    designPreview.addEventListener(
+        "touchstart",
+        function(e) {
+
+
+            if (!e.touches.length) return;
+
+
+
+            const touch =
+            e.touches[0];
+
+
+            startDrag(
+                touch.clientX,
+                touch.clientY
+            );
+
+
+        },
+        {passive:true}
+
+    );
+
+
+}
+
+
+
+document.addEventListener(
+    "touchmove",
+    function(e) {
+
+
+        if (!design.dragging) return;
+
+
+        if (!e.touches.length) return;
+
+
+
+        const touch =
+        e.touches[0];
+
+
+
+        dragMove(
+            touch.clientX,
+            touch.clientY
+        );
+
+
+    },
+    {passive:true}
+
+);
+
+
+
+document.addEventListener(
+    "touchend",
+    function() {
+
+
+        stopDrag();
+
+
+    }
+
+);
