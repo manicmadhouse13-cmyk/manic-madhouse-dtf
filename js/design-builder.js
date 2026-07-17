@@ -542,3 +542,284 @@ document.addEventListener(
     }
 
 );
+/*==================================================
+QUOTE BASKET
+==================================================*/
+
+
+let quoteItems =
+JSON.parse(
+    localStorage.getItem("manicQuoteBasket")
+) || [];
+
+
+
+
+function saveQuoteBasket() {
+
+
+    localStorage.setItem(
+        "manicQuoteBasket",
+        JSON.stringify(quoteItems)
+    );
+
+
+}
+
+
+
+
+
+function createQuoteItem() {
+
+
+    return {
+
+
+        id: Date.now(),
+
+
+        image: uploadedImage,
+
+
+        size: design.scale,
+
+
+        rotation: design.rotation,
+
+
+        position: {
+
+            x: design.x,
+
+            y: design.y
+
+        },
+
+
+        quantity:
+        quantitySelect
+        ? quantitySelect.value
+        : "1",
+
+
+        notes:
+        extraNotes
+        ? extraNotes.value
+        : "",
+
+
+        shirtColour:
+        design.shirtColour,
+
+
+        dateAdded:
+        new Date().toISOString()
+
+
+    };
+
+
+}
+
+
+
+
+
+function addToQuoteBasket() {
+
+
+    if (!uploadedImage) {
+
+
+        alert(
+            "Please upload your artwork before adding to your quote."
+        );
+
+
+        return;
+
+
+    }
+
+
+
+    quoteItems.push(
+        createQuoteItem()
+    );
+
+
+
+    saveQuoteBasket();
+
+
+    updateQuoteBasketDisplay();
+
+
+
+    alert(
+        "Design added to quote!"
+    );
+
+
+}
+
+
+
+
+
+function removeQuoteItem(id) {
+
+
+    quoteItems =
+    quoteItems.filter(
+        item => item.id !== id
+    );
+
+
+    saveQuoteBasket();
+
+
+    updateQuoteBasketDisplay();
+
+
+}
+
+
+
+
+
+function updateQuoteBasketDisplay() {
+
+
+    if (!quoteBasket) return;
+
+
+
+    quoteBasket.innerHTML = "";
+
+
+
+    if (quoteItems.length === 0) {
+
+
+        quoteBasket.innerHTML =
+        "<p>No designs added yet.</p>";
+
+
+        return;
+
+
+    }
+
+
+
+
+    quoteItems.forEach(
+        function(item) {
+
+
+
+            const div =
+            document.createElement("div");
+
+
+
+            div.className =
+            "quote-item";
+
+
+
+            div.innerHTML = `
+
+                <img src="${item.image}"
+                alt="Design Preview">
+
+
+                <div>
+
+                    <strong>
+                    Custom DTF Design
+                    </strong>
+
+
+                    <span>
+                    Quantity: ${item.quantity}
+                    </span>
+
+
+                    <span>
+                    Size: ${item.size}px
+                    </span>
+
+
+                </div>
+
+
+                <button
+                class="remove-quote"
+                data-id="${item.id}">
+                Remove
+                </button>
+
+            `;
+
+
+
+            quoteBasket.appendChild(div);
+
+
+
+        }
+
+    );
+
+
+
+
+
+    document
+    .querySelectorAll(".remove-quote")
+    .forEach(
+        button => {
+
+
+            button.addEventListener(
+                "click",
+                function() {
+
+
+                    removeQuoteItem(
+                        Number(
+                            this.dataset.id
+                        )
+                    );
+
+
+                }
+
+            );
+
+
+        }
+
+    );
+
+
+
+}
+
+
+
+
+
+if (addQuoteBtn) {
+
+
+    addQuoteBtn.addEventListener(
+        "click",
+        addToQuoteBasket
+    );
+
+
+}
