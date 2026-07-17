@@ -537,7 +537,7 @@ const shirtColourSelect = document.getElementById("shirtColour");
                 "<p>No designs added yet.</p>";
 
             return;
-
+function updateQuoteBasketDisplay() {
         }
         
     if (addQuoteBtn) {
