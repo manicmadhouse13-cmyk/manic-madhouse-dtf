@@ -117,10 +117,6 @@ const shirtColourSelect = document.getElementById("shirtColour");
 
 }
 
-initialiseBuilder();
-
-});
-
 
 
     /*==================================================
