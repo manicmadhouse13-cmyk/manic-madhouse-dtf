@@ -576,6 +576,103 @@ initialiseBuilder();
 
     }
 
+        /*==================================================
+  RESET BUILDER
+==================================================*/
+
+function resetBuilder() {
+
+
+    uploadedImage = null;
+
+
+    design.x = 0;
+    design.y = 0;
+    design.scale = 180;
+    design.rotation = 0;
+    design.shirtColour = "black";
+
+
+    if (designPreview) {
+
+        designPreview.src = "";
+        designPreview.style.display = "none";
+
+    }
+
+
+    if (sizeSlider) {
+
+        sizeSlider.value = 180;
+
+    }
+
+
+    if (rotateSlider) {
+
+        rotateSlider.value = 0;
+
+    }
+
+
+    if (sizeValue) {
+
+        sizeValue.textContent = "180 px";
+
+    }
+
+
+    if (rotateValue) {
+
+        rotateValue.textContent = "0°";
+
+    }
+
+
+    if (quantitySelect) {
+
+        quantitySelect.value = "1";
+
+    }
+
+
+    if (extraNotes) {
+
+        extraNotes.value = "";
+
+    }
+
+
+    if (shirtColourSelect) {
+
+        shirtColourSelect.value = "black";
+
+    }
+
+
+    if (shirt) {
+
+        shirt.src = "design-your-own.png";
+
+    }
+
+
+    clearBuilderStorage();
+
+
+    updatePreview();
+
+}
+
+if (resetBtn) {
+
+    resetBtn.addEventListener(
+        "click",
+        resetBuilder
+    );
+
+}
+
         quoteItems.forEach(item => {
 
 
