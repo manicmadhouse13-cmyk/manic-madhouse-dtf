@@ -549,30 +549,6 @@ function updateQuoteBasketDisplay() {
 
     }
 
-        /*==================================================
-  RESET BUILDER
-==================================================*/
-
-function resetBuilder() {
-
-
-    uploadedImage = null;
-
-
-    design.x = 0;
-    design.y = 0;
-    design.scale = 180;
-    design.rotation = 0;
-    design.shirtColour = "black";
-
-
-    if (designPreview) {
-
-        designPreview.src = "";
-        designPreview.style.display = "none";
-
-    }
-
 
     if (sizeSlider) {
 
@@ -681,57 +657,12 @@ if (resetBtn) {
                     Remove
                 </button>
 
-            `;
 
 
-            quoteBasket.appendChild(basketItem);
-
-            /*==================================================
-  SHIRT COLOUR SELECTOR
-==================================================*/
-
-if (shirtColourSelect) {
-
-    shirtColourSelect.addEventListener(
-        "change",
-        function () {
-
-            design.shirtColour = this.value;
+         quoteBasket.appendChild(basketItem);
 
 
-            if (shirt) {
 
-                if (this.value === "black") {
-
-                    shirt.src = "design-your-own.png";
-
-                }
-
-                else {
-
-                    // Placeholder until colour mockups are added
-
-                    alert(
-                        "This shirt colour mockup will be added soon."
-                    );
-
-                    shirt.src = "design-your-own.png";
-
-                    shirtColourSelect.value = "black";
-
-                    design.shirtColour = "black";
-
-                }
-
-            }
-
-
-            saveBuilder();
-
-        }
-    );
-
-}
 
     updateQuoteBasketDisplay();
 initialiseBuilder();
