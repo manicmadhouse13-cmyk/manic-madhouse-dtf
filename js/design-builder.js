@@ -115,29 +115,6 @@ const shirtColourSelect = document.getElementById("shirtColour");
 
     extraNotes.value = "";
 
-}
-
-
-
-    /*==================================================
-      UPDATE PREVIEW
-    ==================================================*/
-
-    function updatePreview() {
-
-        if (!designPreview) return;
-
-        designPreview.style.width = design.scale + "px";
-
-        designPreview.style.left = `calc(50% + ${design.x}px)`;
-
-        designPreview.style.top = `calc(50% + ${design.y}px)`;
-
-        designPreview.style.transform =
-            `translate(-50%, -50%) rotate(${design.rotation}deg)`;
-
-    }
-
 
 
     /*==================================================
