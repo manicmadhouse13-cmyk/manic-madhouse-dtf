@@ -444,6 +444,7 @@ document.addEventListener(
     }
 
 );
+}
 
 
 
@@ -458,6 +459,7 @@ document.addEventListener(
     }
 
 );
+}
 
 
 
@@ -542,6 +544,7 @@ document.addEventListener(
     }
 
 );
+}
 /*==================================================
 QUOTE BASKET
 ==================================================*/
@@ -773,6 +776,7 @@ function updateQuoteBasketDisplay() {
         }
 
     );
+}
 
 
 
@@ -1132,3 +1136,4 @@ updatePreview();
 
 
 });
+}
