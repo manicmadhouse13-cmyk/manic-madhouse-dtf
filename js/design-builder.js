@@ -603,19 +603,31 @@ function createQuoteItem() {
 
 
         quantity:
-        quantitySelect
-        ? quantitySelect.value
-        : "1",
+quantitySelect
+? quantitySelect.value
+: "1",
 
 
-        notes:
-        extraNotes
-        ? extraNotes.value
-        : "",
+shirtSize:
+shirtSizeSelect
+? shirtSizeSelect.value
+: "M",
 
 
-        shirtColour:
-        design.shirtColour,
+printLocation:
+printLocationSelect
+? printLocationSelect.value
+: "front",
+
+
+notes:
+extraNotes
+? extraNotes.value
+: "",
+
+
+shirtColour:
+design.shirtColour,
 
 
         dateAdded:
