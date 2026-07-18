@@ -111,9 +111,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    let quoteItems = JSON.parse(
-        localStorage.getItem("manicQuoteBasket")
-    ) || [];
+    let quoteItems = [];
+
+try {
+
+    quoteItems =
+        JSON.parse(
+            localStorage.getItem("manicQuoteBasket")
+        ) || [];
+
+}
+catch(error){
+
+    console.log(
+        "Quote basket loading error",
+        error
+    );
+
+    quoteItems = [];
+
+}
 
 
 
