@@ -556,3 +556,465 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     }
+    /*==================================================
+    RESET BUILDER
+    ==================================================*/
+
+
+    if (resetBuilder) {
+
+
+        resetBuilder.addEventListener(
+            "click",
+            function () {
+
+
+                builderData = {
+
+
+                    image: "",
+
+
+                    size: 180,
+
+
+                    rotation: 0,
+
+
+                    x: 0,
+
+
+                    y: 0,
+
+
+                    colour: "Black",
+
+
+                    shirtSize: "M",
+
+
+                    location: "Front",
+
+
+                    quantity: 1,
+
+
+                    notes: ""
+
+
+                };
+
+
+
+                if (designPreview) {
+
+
+                    designPreview.src = "";
+
+
+                    designPreview.style.display =
+                        "none";
+
+
+                }
+
+
+
+                if (uploadImage) {
+
+
+                    uploadImage.value = "";
+
+
+                }
+
+
+
+                if (sizeSlider) {
+
+
+                    sizeSlider.value =
+                        builderData.size;
+
+
+                }
+
+
+
+                if (sizeValue) {
+
+
+                    sizeValue.textContent =
+                        builderData.size + "px";
+
+
+                }
+
+
+
+                if (rotateSlider) {
+
+
+                    rotateSlider.value =
+                        builderData.rotation;
+
+
+                }
+
+
+
+                if (rotateValue) {
+
+
+                    rotateValue.textContent =
+                        builderData.rotation + "°";
+
+
+                }
+
+
+
+                if (quantity) {
+
+
+                    quantity.value =
+                        builderData.quantity;
+
+
+                }
+
+
+
+                updatePreview();
+
+
+
+            }
+        );
+
+
+    }
+
+
+
+
+    /*==================================================
+    ADD TO QUOTE BASKET
+    ==================================================*/
+
+
+    if (addQuoteBtn) {
+
+
+        addQuoteBtn.addEventListener(
+            "click",
+            function () {
+
+
+
+                if (!builderData.image) {
+
+
+                    alert(
+                        "Please upload your artwork before adding to quote."
+                    );
+
+
+                    return;
+
+
+                }
+
+
+
+                builderData.notes =
+                    extraNotes ?
+                    extraNotes.value :
+                    "";
+
+
+
+                const quoteItem = {
+
+
+                    id:
+                        Date.now(),
+
+
+
+                    image:
+                        builderData.image,
+
+
+
+                    size:
+                        builderData.size,
+
+
+
+                    rotation:
+                        builderData.rotation,
+
+
+
+                    colour:
+                        builderData.colour,
+
+
+
+                    shirtSize:
+                        builderData.shirtSize,
+
+
+
+                    location:
+                        builderData.location,
+
+
+
+                    quantity:
+                        builderData.quantity,
+
+
+
+                    notes:
+                        builderData.notes
+
+
+                };
+
+
+
+                quoteItems.push(
+                    quoteItem
+                );
+
+
+
+                saveQuoteBasket();
+
+
+
+                updateQuoteBasketDisplay();
+
+
+
+                alert(
+                    "Design added to quote."
+                );
+
+
+            }
+        );
+
+
+    }
+
+
+
+
+    /*==================================================
+    SAVE QUOTE BASKET
+    ==================================================*/
+
+
+    function saveQuoteBasket() {
+
+
+        localStorage.setItem(
+            "manicQuoteBasket",
+            JSON.stringify(
+                quoteItems
+            )
+        );
+
+
+    }
+
+
+
+
+    /*==================================================
+    DISPLAY QUOTE BASKET
+    ==================================================*/
+
+
+    function updateQuoteBasketDisplay() {
+
+
+        if (!quoteBasket) return;
+
+
+
+        quoteBasket.innerHTML = "";
+
+
+
+        if (quoteItems.length === 0) {
+
+
+            quoteBasket.innerHTML =
+                "<p>No designs added yet.</p>";
+
+
+
+            return;
+
+
+        }
+
+
+
+        quoteItems.forEach(
+            function(item){
+
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+
+                card.className =
+                    "quote-item";
+
+
+
+                card.innerHTML = `
+
+
+                    <img 
+                    src="${item.image}"
+                    class="quote-image"
+                    >
+
+
+                    <div class="quote-details">
+
+
+                    <strong>
+                    Custom DTF Design
+                    </strong>
+
+
+                    <span>
+                    Colour: ${item.colour}
+                    </span>
+
+
+                    <span>
+                    Size: ${item.shirtSize}
+                    </span>
+
+
+                    <span>
+                    Location: ${item.location}
+                    </span>
+
+
+                    <span>
+                    Quantity: ${item.quantity}
+                    </span>
+
+
+                    <span>
+                    Notes: ${item.notes}
+                    </span>
+
+
+                    </div>
+
+
+
+                    <button
+                    class="remove-quote"
+                    data-id="${item.id}">
+                    Remove
+                    </button>
+
+
+                `;
+
+
+
+                quoteBasket.appendChild(
+                    card
+                );
+
+
+            }
+        );
+
+
+
+        attachRemoveButtons();
+
+
+    }
+
+
+
+
+    /*==================================================
+    REMOVE QUOTE ITEMS
+    ==================================================*/
+
+
+    function attachRemoveButtons(){
+
+
+        const buttons =
+            document.querySelectorAll(
+                ".remove-quote"
+            );
+
+
+
+        buttons.forEach(
+            function(button){
+
+
+
+                button.addEventListener(
+                    "click",
+                    function(){
+
+
+                        const id =
+                            Number(
+                                this.dataset.id
+                            );
+
+
+
+                        quoteItems =
+                            quoteItems.filter(
+                                function(item){
+
+
+                                    return item.id !== id;
+
+
+                                }
+                            );
+
+
+
+                        saveQuoteBasket();
+
+
+                        updateQuoteBasketDisplay();
+
+
+                    }
+                );
+
+
+
+            }
+        );
+
+
+    }
