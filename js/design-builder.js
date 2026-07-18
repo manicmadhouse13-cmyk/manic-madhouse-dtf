@@ -778,36 +778,22 @@ function updateQuoteBasketDisplay() {
 
 
 
-    document
-    .querySelectorAll(".remove-quote")
-    .forEach(
-        button => {
+    quoteBasket
+.querySelectorAll(".remove-quote")
+.forEach(button => {
 
+    button.addEventListener(
+        "click",
+        () => {
 
-            button.addEventListener(
-                "click",
-                function() {
-
-
-                    removeQuoteItem(
-                        Number(
-                            this.dataset.id
-                        )
-                    );
-
-
-                }
-
+            removeQuoteItem(
+                Number(button.dataset.id)
             );
 
-
         }
-
     );
 
-
-
-}
+});
 
 
 
