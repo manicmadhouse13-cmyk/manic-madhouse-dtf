@@ -1018,3 +1018,152 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     }
+    /*==================================================
+    LOAD EXISTING QUOTE BASKET
+    ==================================================*/
+
+
+    updateQuoteBasketDisplay();
+
+
+
+    /*==================================================
+    INITIAL VALUES
+    ==================================================*/
+
+
+    if (sizeValue) {
+
+
+        sizeValue.textContent =
+            builderData.size + "px";
+
+
+    }
+
+
+
+    if (rotateValue) {
+
+
+        rotateValue.textContent =
+            builderData.rotation + "°";
+
+
+    }
+
+
+
+    if (designPreview) {
+
+
+        designPreview.style.position =
+            "absolute";
+
+
+        designPreview.style.cursor =
+            "move";
+
+
+        designPreview.style.userSelect =
+            "none";
+
+
+        designPreview.style.display =
+            "none";
+
+
+    }
+
+
+
+
+    /*==================================================
+    MOBILE TOUCH SUPPORT
+    ==================================================*/
+
+
+    if (designPreview) {
+
+
+        designPreview.addEventListener(
+            "touchmove",
+            function(event){
+
+
+                if (!dragging) return;
+
+
+
+                event.preventDefault();
+
+
+
+            },
+            {
+                passive:false
+            }
+        );
+
+
+    }
+
+
+
+
+
+    /*==================================================
+    EXPOSE FUNCTIONS
+    FOR DEBUGGING / OTHER FILES
+    ==================================================*/
+
+
+    window.ManicMadhouseBuilder = {
+
+
+        getQuoteBasket:
+        function(){
+
+
+            return quoteItems;
+
+
+        },
+
+
+        clearQuoteBasket:
+        function(){
+
+
+            quoteItems = [];
+
+
+            saveQuoteBasket();
+
+
+            updateQuoteBasketDisplay();
+
+
+        },
+
+
+        refreshQuoteBasket:
+        function(){
+
+
+            updateQuoteBasketDisplay();
+
+
+        }
+
+
+    };
+
+
+
+    console.log(
+        "Manic Madhouse Design Builder V10 Ready"
+    );
+
+
+});
