@@ -76,7 +76,9 @@ document.getElementById("resetBuilder");
 const quoteBasket =
 document.getElementById("quoteBasket");
 
+const shirtSizeSelect = document.getElementById("shirtSize");
 
+const printLocationSelect = document.getElementById("printLocation");
 
 /*==================================================
 BUILDER STATE
