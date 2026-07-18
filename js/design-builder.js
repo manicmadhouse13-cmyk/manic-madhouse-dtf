@@ -789,7 +789,7 @@ Size: ${item.size}px
         }
 
     );
-
+}
 
 
 
