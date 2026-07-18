@@ -705,10 +705,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (addQuoteBtn) {
 
+    console.log("ADD QUOTE BUTTON CONNECTED");
 
-        addQuoteBtn.addEventListener(
-            "click",
-            function () {
+
+    addQuoteBtn.addEventListener(
+        "click",
+        function () {
+
+            console.log("ADD QUOTE CLICKED");
 
 
 
