@@ -789,7 +789,7 @@ Size: ${item.size}px
         }
 
     );
-}
+
 
 
 
@@ -815,7 +815,7 @@ Size: ${item.size}px
 
     }
 );
-}
+
 
 
 
