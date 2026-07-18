@@ -798,7 +798,7 @@ function updateQuoteBasketDisplay() {
 
     }
 );
-
+}
 
 
 
