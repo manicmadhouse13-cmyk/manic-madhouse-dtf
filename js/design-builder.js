@@ -760,34 +760,12 @@ function updateQuoteBasketDisplay() {
                     </strong>
 
 
-                    
-<span>
+                    <span>
 Quantity: ${item.quantity}
 </span>
 
-
 <span>
 Size: ${item.size}px
-</span>
-
-
-<span>
-Shirt Colour: ${item.shirtColour}
-</span>
-
-
-<span>
-Shirt Size: ${item.shirtSize}
-</span>
-
-
-<span>
-Print Location: ${item.printLocation}
-</span>
-
-
-<span>
-Notes: ${item.notes || "None"}
 </span>
 
 
