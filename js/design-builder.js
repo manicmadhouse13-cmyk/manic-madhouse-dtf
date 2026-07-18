@@ -842,12 +842,16 @@ catch(error){
     function saveQuoteBasket() {
 
 
-        localStorage.setItem(
-            "manicQuoteBasket",
-            JSON.stringify(
-                quoteItems
-            )
-        );
+    localStorage.setItem(
+        "manicQuoteBasket",
+        JSON.stringify(quoteItems)
+    );
+
+
+    console.log(
+        "Saved quote basket:",
+        quoteItems
+    );
 
 
     }
