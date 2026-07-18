@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const extraNotes = document.getElementById("extraNotes");
 
 
-    const addQuoteBtn = document.getElementById("addQuoteBtn");
+    const addQuoteBtn = document.getElementById("addQuote");
 
     const resetBuilder = document.getElementById("resetBuilder");
 
