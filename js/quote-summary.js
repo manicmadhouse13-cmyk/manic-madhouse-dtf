@@ -1,29 +1,49 @@
-document.addEventListener("DOMContentLoaded", function(){
+/*==================================================
+MANIC MADHOUSE DTF DESIGNS
+QUOTE SUMMARY
+VERSION 2.0
+==================================================*/
+
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
 
 
 const quoteSummary =
-document.getElementById("quoteSummary");
+document.getElementById(
+"quoteSummary"
+);
 
 
-if(!quoteSummary) return;
+const clearQuotes =
+document.getElementById(
+"clearQuotes"
+);
 
 
 
-const quoteItems =
+const designSummary =
+document.getElementById(
+"designSummary"
+);
+
+
+
+
+let quoteItems =
 JSON.parse(
-localStorage.getItem("manicQuoteBasket")
+localStorage.getItem(
+"manicQuoteBasket"
+)
 ) || [];
 
 
 
-if(quoteItems.length === 0){
 
-quoteSummary.innerHTML =
-`
-<p>
-No designs selected yet.
-</p>
-`;
+
+if(!quoteSummary){
 
 return;
 
@@ -31,65 +51,185 @@ return;
 
 
 
+
+
+function saveQuotes(){
+
+
+localStorage.setItem(
+
+"manicQuoteBasket",
+
+JSON.stringify(
+quoteItems
+)
+
+);
+
+
+}
+
+
+
+
+
+function buildSummary(){
+
+
+
+if(
+quoteItems.length === 0
+){
+
+
+quoteSummary.innerHTML =
+
+`
+<p>
+No designs added yet.
+</p>
+`;
+
+
+
+if(designSummary){
+
+designSummary.value =
+"No designs selected.";
+
+}
+
+
+return;
+
+
+}
+
+
+
+
+
 quoteSummary.innerHTML = "";
 
 
 
-quoteItems.forEach(function(item,index){
+let emailText = "";
 
 
 
-const design =
-document.createElement("div");
 
 
-design.className =
+quoteItems.forEach(
+function(item,index){
+
+
+
+const card =
+document.createElement(
+"div"
+);
+
+
+
+card.className =
 "quote-summary-item";
 
 
 
-design.innerHTML =
+
+
+card.innerHTML =
+
 `
 
-<h4>
-Design ${index + 1}
-</h4>
+<img
 
-
-<img 
 src="${item.image}"
-style="max-width:150px;border-radius:10px;"
+
+class="quote-summary-image"
+
 >
 
 
+
+<h3>
+
+Design ${index + 1}
+
+</h3>
+
+
+
 <p>
-<strong>Shirt Colour:</strong>
+
+<strong>
+Colour:
+</strong>
+
 ${item.colour}
+
 </p>
 
 
+
 <p>
-<strong>Size:</strong>
+
+<strong>
+Shirt Size:
+</strong>
+
 ${item.shirtSize}
+
 </p>
 
 
+
 <p>
-<strong>Print Location:</strong>
+
+<strong>
+Print Location:
+</strong>
+
 ${item.location}
+
 </p>
 
 
+
 <p>
-<strong>Quantity:</strong>
+
+<strong>
+Quantity:
+</strong>
+
 ${item.quantity}
+
 </p>
+
 
 
 <p>
-<strong>Notes:</strong>
+
+<strong>
+Notes:
+</strong>
+
 ${item.notes || "None"}
+
 </p>
+
+
+
+<button
+
+class="remove-quote"
+
+data-id="${item.id}">
+
+Remove
+
+</button>
+
 
 
 <hr>
@@ -98,13 +238,175 @@ ${item.notes || "None"}
 
 
 
-quoteSummary.appendChild(design);
+
+quoteSummary.appendChild(
+card
+);
 
 
 
-});
 
-<script src="js/script.js"></script>
 
-<script src="js/quote-summary.js"></script>
+emailText +=
+
+`
+
+Design ${index + 1}
+
+Colour: ${item.colour}
+
+Size: ${item.shirtSize}
+
+Location: ${item.location}
+
+Quantity: ${item.quantity}
+
+Notes: ${item.notes || "None"}
+
+
+`;
+
+
+
+
+
+}
+
+);
+
+
+
+
+
+if(designSummary){
+
+designSummary.value =
+emailText;
+
+}
+
+
+
+
+
+attachRemoveButtons();
+
+
+
+}
+
+
+
+
+
+function attachRemoveButtons(){
+
+
+
+const buttons =
+document.querySelectorAll(
+".remove-quote"
+);
+
+
+
+
+buttons.forEach(
+function(button){
+
+
+
+button.addEventListener(
+"click",
+function(){
+
+
+
+const id =
+Number(
+this.dataset.id
+);
+
+
+
+quoteItems =
+quoteItems.filter(
+function(item){
+
+
+return item.id !== id;
+
+
+}
+
+);
+
+
+
+saveQuotes();
+
+
+
+buildSummary();
+
+
+
+}
+
+);
+
+
+
+}
+
+);
+
+
+
+}
+
+
+
+
+
+
+if(clearQuotes){
+
+
+clearQuotes.addEventListener(
+"click",
+function(){
+
+
+
+quoteItems = [];
+
+
+
+saveQuotes();
+
+
+
+buildSummary();
+
+
+
+}
+
+);
+
+
+}
+
+
+
+
+
+
+buildSummary();
+
+
+
+
+
 });
