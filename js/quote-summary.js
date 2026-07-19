@@ -8,6 +8,10 @@ VERSION 2.0
 document.addEventListener(
 "DOMContentLoaded",
 function(){
+  
+ console.log(
+localStorage.getItem("manicQuoteBasket")
+); 
 
 
 
