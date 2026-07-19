@@ -104,5 +104,7 @@ quoteSummary.appendChild(design);
 
 });
 
+<script src="js/script.js"></script>
 
+<script src="js/quote-summary.js"></script>
 });
