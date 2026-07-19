@@ -9,9 +9,7 @@ document.addEventListener(
 "DOMContentLoaded",
 function(){
   
- console.log(
-localStorage.getItem("manicQuoteBasket")
-); 
+ alert("quote-summary.js loaded");
 
 
 
