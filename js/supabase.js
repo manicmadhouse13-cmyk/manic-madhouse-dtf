@@ -17,4 +17,4 @@ window.supabase.createClient(
     SUPABASE_KEY
 );
 
-console.log("Supabase Connected");
+console.log(supabase);
