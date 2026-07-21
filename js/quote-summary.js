@@ -8,6 +8,118 @@ VERSION 2.0
 document.addEventListener(
 "DOMContentLoaded",
 function(){
+
+  const form = document.querySelector("form");
+
+if (form) {
+
+    form.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        try {
+
+            /*==============================
+            SAVE CUSTOMER
+            ==============================*/
+
+            const customerData = {
+
+                full_name: document.getElementById("fullName").value,
+
+                business_name: document.getElementById("businessName").value,
+
+                email: document.getElementById("email").value,
+
+                phone: document.getElementById("phone").value
+
+            };
+
+            const { data: customer, error: customerError } =
+                await supabase
+                    .from("customers")
+                    .insert(customerData)
+                    .select()
+                    .single();
+
+            if (customerError) throw customerError;
+
+            /*==============================
+            SAVE QUOTE
+            ==============================*/
+
+            const quoteData = {
+
+                customer_id: customer.id,
+
+                service: document.getElementById("service").value,
+
+                quantity: document.getElementById("quantity").value,
+
+                required_date: document.getElementById("requiredDate").value,
+
+                delivery: "Website",
+
+                notes: document.getElementById("notes").value
+
+            };
+
+            const { data: quote, error: quoteError } =
+                await supabase
+                    .from("quotes")
+                    .insert(quoteData)
+                    .select()
+                    .single();
+
+            if (quoteError) throw quoteError;
+
+            /*==============================
+            SAVE DESIGNS
+            ==============================*/
+
+            for (const item of quoteItems) {
+
+                await supabase
+                    .from("designs")
+                    .insert({
+
+                        quote_id: quote.id,
+
+                        image_url: item.image,
+
+                        shirt_colour: item.colour,
+
+                        shirt_size: item.shirtSize,
+
+                        print_location: item.location,
+
+                        design_size: item.size,
+
+                        rotation: item.rotation,
+
+                        quantity: item.quantity,
+
+                        notes: item.notes
+
+                    });
+
+            }
+
+            form.submit();
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            alert("There was a problem saving your quote.");
+
+        }
+
+    });
+
+}
   
  alert("quote-summary.js loaded");
 
