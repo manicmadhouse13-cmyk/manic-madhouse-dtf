@@ -188,3 +188,64 @@ Notes: ${item.notes || "None"}
         attachRemoveButtons();
 
     }
+    /*==================================================
+    REMOVE BUTTONS
+    ==================================================*/
+
+    function attachRemoveButtons() {
+
+        const buttons =
+            document.querySelectorAll(".remove-quote");
+
+        buttons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const id =
+                    Number(this.dataset.id);
+
+                quoteItems =
+                    quoteItems.filter(function (item) {
+
+                        return item.id !== id;
+
+                    });
+
+                saveQuotes();
+
+                buildSummary();
+
+            });
+
+        });
+
+    }
+
+    /*==================================================
+    CLEAR QUOTE BASKET
+    ==================================================*/
+
+    if (clearQuotes) {
+
+        clearQuotes.addEventListener(
+            "click",
+            function () {
+
+                if (!confirm(
+                    "Clear all designs from your quote?"
+                )) {
+
+                    return;
+
+                }
+
+                quoteItems = [];
+
+                saveQuotes();
+
+                buildSummary();
+
+            }
+        );
+
+    }
