@@ -249,3 +249,71 @@ Notes: ${item.notes || "None"}
         );
 
     }
+    /*==================================================
+    SUBMIT QUOTE
+    ==================================================*/
+
+    if (form) {
+
+        form.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+            console.log("Starting quote submission...");
+
+            try {
+
+                /*==============================
+                CHECK SUPABASE
+                ==============================*/
+
+                if (typeof supabase === "undefined") {
+
+                    throw new Error(
+                        "Supabase client not found. Check supabase.js is loaded."
+                    );
+
+                }
+
+                console.log("Supabase client found.");
+
+                /*==============================
+                SAVE CUSTOMER
+                ==============================*/
+
+                const customerData = {
+
+                    full_name:
+                        document.getElementById("fullName").value,
+
+                    business_name:
+                        document.getElementById("businessName").value,
+
+                    email:
+                        document.getElementById("email").value,
+
+                    phone:
+                        document.getElementById("phone").value
+
+                };
+
+                console.log("Saving customer...", customerData);
+
+                const {
+                    data: customer,
+                    error: customerError
+                } = await supabase
+                    .from("customers")
+                    .insert(customerData)
+                    .select()
+                    .single();
+
+                if (customerError) {
+
+                    console.error(customerError);
+
+                    throw customerError;
+
+                }
+
+                console.log("Customer saved.", customer);
