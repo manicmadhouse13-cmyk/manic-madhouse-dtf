@@ -113,7 +113,8 @@ if (form) {
 
     console.error(error);
 
-    alert(JSON.stringify(error));
+    alert(error.message || error.toString());
+console.error(error);
 
         }
 
