@@ -111,9 +111,9 @@ if (form) {
 
         catch (error) {
 
-            console.error(error);
+    console.error(error);
 
-            alert("There was a problem saving your quote.");
+    alert(JSON.stringify(error));
 
         }
 
