@@ -260,7 +260,13 @@ Notes: ${item.notes || "None"}
             event.preventDefault();
 
             alert("Starting quote submission...");
-console.log("Starting quote submission...");
+
+const test = await supabase
+    .from("customers")
+    .select("*")
+    .limit(1);
+
+alert(JSON.stringify(test));
 
             try {
 
