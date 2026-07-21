@@ -77,3 +77,114 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
+    /*==================================================
+    BUILD SUMMARY
+    ==================================================*/
+
+    function buildSummary() {
+
+        quoteSummary.innerHTML = "";
+
+        if (quoteItems.length === 0) {
+
+            quoteSummary.innerHTML = `
+                <p>No designs added yet.</p>
+            `;
+
+            if (designSummary) {
+
+                designSummary.value =
+                    "No designs selected.";
+
+            }
+
+            return;
+
+        }
+
+        let emailText = "";
+
+        quoteItems.forEach(function (item, index) {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "quote-summary-item";
+
+            card.innerHTML = `
+
+                <img
+                    src="${item.image}"
+                    class="quote-summary-image"
+                    alt="Design Preview">
+
+                <h3>
+                    Design ${index + 1}
+                </h3>
+
+                <p>
+                    <strong>Shirt Colour:</strong>
+                    ${item.colour}
+                </p>
+
+                <p>
+                    <strong>Shirt Size:</strong>
+                    ${item.shirtSize}
+                </p>
+
+                <p>
+                    <strong>Print Location:</strong>
+                    ${item.location}
+                </p>
+
+                <p>
+                    <strong>Design Size:</strong>
+                    ${item.size}px
+                </p>
+
+                <p>
+                    <strong>Quantity:</strong>
+                    ${item.quantity}
+                </p>
+
+                <p>
+                    <strong>Notes:</strong>
+                    ${item.notes || "None"}
+                </p>
+
+                <button
+                    class="remove-quote"
+                    data-id="${item.id}">
+                    Remove
+                </button>
+
+                <hr>
+
+            `;
+
+            quoteSummary.appendChild(card);
+
+            emailText +=
+`Design ${index + 1}
+Shirt Colour: ${item.colour}
+Shirt Size: ${item.shirtSize}
+Print Location: ${item.location}
+Design Size: ${item.size}px
+Quantity: ${item.quantity}
+Notes: ${item.notes || "None"}
+
+`;
+
+        });
+
+        if (designSummary) {
+
+            designSummary.value =
+                emailText;
+
+        }
+
+        attachRemoveButtons();
+
+    }
