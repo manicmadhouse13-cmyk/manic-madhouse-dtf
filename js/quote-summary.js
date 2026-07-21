@@ -259,7 +259,8 @@ Notes: ${item.notes || "None"}
 
             event.preventDefault();
 
-            console.log("Starting quote submission...");
+            alert("Starting quote submission...");
+console.log("Starting quote submission...");
 
             try {
 
