@@ -317,3 +317,113 @@ Notes: ${item.notes || "None"}
                 }
 
                 console.log("Customer saved.", customer);
+                /*==============================
+                SAVE QUOTE
+                ==============================*/
+
+                const quoteData = {
+
+                    customer_id: customer.id,
+
+                    service:
+                        document.getElementById("service").value,
+
+                    quantity:
+                        document.getElementById("quantity").value,
+
+                    required_date:
+                        document.getElementById("requiredDate").value || null,
+
+                    delivery: "Website",
+
+                    notes:
+                        document.getElementById("notes").value
+
+                };
+
+                console.log("Saving quote...", quoteData);
+
+                const {
+                    data: quote,
+                    error: quoteError
+                } = await supabase
+                    .from("quotes")
+                    .insert(quoteData)
+                    .select()
+                    .single();
+
+                if (quoteError) {
+
+                    console.error(quoteError);
+
+                    throw quoteError;
+
+                }
+
+                console.log("Quote saved.", quote);
+
+                /*==============================
+                SAVE DESIGNS
+                ==============================*/
+
+                for (const item of quoteItems) {
+
+                    const { error: designError } =
+                        await supabase
+                            .from("designs")
+                            .insert({
+
+                                quote_id: quote.id,
+
+                                image_url: item.image,
+
+                                shirt_colour: item.colour,
+
+                                shirt_size: item.shirtSize,
+
+                                print_location: item.location,
+
+                                design_size: item.size,
+
+                                rotation: item.rotation,
+
+                                quantity: item.quantity,
+
+                                notes: item.notes
+
+                            });
+
+                    if (designError) {
+
+                        console.error(designError);
+
+                        throw designError;
+
+                    }
+
+                }
+
+                console.log("All designs saved.");
+
+                alert("Quote saved successfully!");
+
+                localStorage.removeItem("manicQuoteBasket");
+
+                form.submit();
+
+            }
+
+            catch (error) {
+
+                console.error("SUBMIT ERROR:", error);
+
+                alert(
+                    error.message ||
+                    JSON.stringify(error)
+                );
+
+            }
+
+        });
+
+    }
