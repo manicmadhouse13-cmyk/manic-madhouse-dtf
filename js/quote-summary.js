@@ -1,4 +1,4 @@
-alert("QUOTE SUMMARY V4 LOADED"); 
+alert("THIS IS VERSION 4 - " + new Date().toLocaleTimeString());
 
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
