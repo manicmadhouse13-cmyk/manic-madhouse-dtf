@@ -186,4 +186,99 @@ Notes: ${item.notes || "None"}
                 emailSummary;
 
         }
+    /*==================================================
+    REMOVE BUTTONS
+    ==================================================*/
 
+    function attachRemoveButtons() {
+
+        const buttons =
+            document.querySelectorAll(".remove-quote");
+
+        buttons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const id = Number(this.dataset.id);
+
+                quoteItems =
+                    quoteItems.filter(function (item) {
+
+                        return item.id !== id;
+
+                    });
+
+                saveQuoteBasket();
+
+                buildSummary();
+
+            });
+
+        });
+
+    }
+
+
+    /*==================================================
+    CLEAR QUOTE BASKET
+    ==================================================*/
+
+    if (clearQuotes) {
+
+        clearQuotes.addEventListener("click", function () {
+
+            if (!confirm("Clear all designs from your quote?")) {
+
+                return;
+
+            }
+
+            quoteItems = [];
+
+            saveQuoteBasket();
+
+            buildSummary();
+
+        });
+
+    }
+
+
+    /*==================================================
+    SAVE CUSTOMER
+    ==================================================*/
+
+    async function saveCustomer() {
+
+        const customerData = {
+
+            full_name:
+                document.getElementById("fullName").value,
+
+            business_name:
+                document.getElementById("businessName").value,
+
+            email:
+                document.getElementById("email").value,
+
+            phone:
+                document.getElementById("phone").value
+
+        };
+
+        const { data, error } =
+            await supabase
+                .from("customers")
+                .insert(customerData)
+                .select()
+                .single();
+
+        if (error) {
+
+            throw error;
+
+        }
+
+        return data;
+
+    }
