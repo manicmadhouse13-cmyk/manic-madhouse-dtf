@@ -368,3 +368,79 @@ Notes: ${item.notes || "None"}
         }
 
     }
+    /*==================================================
+    SUBMIT QUOTE
+    ==================================================*/
+
+    if (form) {
+
+        form.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+            try {
+
+                console.log("Starting quote submission...");
+
+                if (!window.supabase || !supabase) {
+
+                    throw new Error(
+                        "Supabase is not connected."
+                    );
+
+                }
+
+                const customer =
+                    await saveCustomer();
+
+                console.log(
+                    "Customer saved:",
+                    customer
+                );
+
+                const quote =
+                    await saveQuote(customer.id);
+
+                console.log(
+                    "Quote saved:",
+                    quote
+                );
+
+                await saveDesigns(quote.id);
+
+                console.log(
+                    "Designs saved."
+                );
+
+                localStorage.removeItem(
+                    "manicQuoteBasket"
+                );
+
+                alert(
+                    "Quote saved successfully!"
+                );
+
+                form.submit();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Quote submission failed:",
+                    error
+                );
+
+                alert(
+
+                    error.message ||
+
+                    "There was a problem saving your quote."
+
+                );
+
+            }
+
+        });
+
+    }
