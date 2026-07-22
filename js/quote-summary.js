@@ -189,7 +189,7 @@ Notes: ${item.notes || "None"}
 
 }
 
-});
+
 
 attachRemoveButtons();
 
