@@ -282,3 +282,89 @@ Notes: ${item.notes || "None"}
         return data;
 
     }
+    /*==================================================
+    SAVE QUOTE
+    ==================================================*/
+
+    async function saveQuote(customerId) {
+
+        const quoteData = {
+
+            customer_id: customerId,
+
+            service:
+                document.getElementById("service").value,
+
+            quantity:
+                document.getElementById("quantity").value,
+
+            required_date:
+                document.getElementById("requiredDate").value || null,
+
+            delivery: "Website",
+
+            notes:
+                document.getElementById("notes").value
+
+        };
+
+        const { data, error } =
+            await supabase
+                .from("quotes")
+                .insert(quoteData)
+                .select()
+                .single();
+
+        if (error) {
+
+            throw error;
+
+        }
+
+        return data;
+
+    }
+
+
+    /*==================================================
+    SAVE DESIGNS
+    ==================================================*/
+
+    async function saveDesigns(quoteId) {
+
+        for (const item of quoteItems) {
+
+            const { error } =
+                await supabase
+                    .from("designs")
+                    .insert({
+
+                        quote_id: quoteId,
+
+                        image_url: item.image,
+
+                        shirt_colour: item.colour,
+
+                        shirt_size: item.shirtSize,
+
+                        print_location: item.location,
+
+                        design_size: item.size,
+
+                        rotation: item.rotation,
+
+                        quantity: item.quantity,
+
+                        notes: item.notes
+
+                    });
+
+            if (error) {
+
+                throw error;
+
+            }
+
+        }
+
+    }
