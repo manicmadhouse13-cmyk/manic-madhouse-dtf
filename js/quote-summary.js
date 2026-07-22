@@ -304,24 +304,24 @@ alert(JSON.stringify(test));
 
                 };
 
-                console.log("Saving customer...", customerData);
+                alert("About to save customer");
 
-                const {
-                    data: customer,
-                    error: customerError
-                } = await supabase
-                    .from("customers")
-                    .insert(customerData)
-                    .select()
-                    .single();
+const result = await supabase
+    .from("customers")
+    .insert(customerData)
+    .select()
+    .single();
 
-                if (customerError) {
+alert("Customer request finished");
 
-                    console.error(customerError);
+alert(JSON.stringify(result));
 
-                    throw customerError;
+const customer = result.data;
+const customerError = result.error;
 
-                }
+if (customerError) {
+    throw customerError;
+}
 
                 console.log("Customer saved.", customer);
                 /*==============================
