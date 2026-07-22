@@ -444,3 +444,12 @@ Notes: ${item.notes || "None"}
         });
 
     }
+    /*==================================================
+    INITIALISE PAGE
+    ==================================================*/
+
+    buildSummary();
+
+    console.log("QUOTE SUMMARY V4 READY");
+
+});
