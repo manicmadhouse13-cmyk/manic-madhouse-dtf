@@ -184,10 +184,16 @@ Notes: ${item.notes || "None"}
 
         if (designSummary) {
 
-            designSummary.value =
-                emailSummary;
+    designSummary.value =
+        emailSummary;
 
-        }
+}
+
+});
+
+attachRemoveButtons();
+
+}
     /*==================================================
     REMOVE BUTTONS
     ==================================================*/
