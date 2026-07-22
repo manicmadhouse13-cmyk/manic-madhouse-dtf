@@ -1,19 +1,20 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUMMARY
-VERSION 3.0
+VERSION 4.0
 CHUNK 1
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("QUOTE SUMMARY V3 LOADED");
+    console.log("QUOTE SUMMARY V4 LOADED");
 
     /*==================================================
     ELEMENTS
     ==================================================*/
 
-    const form = document.querySelector("form");
+    const form =
+        document.querySelector("form");
 
     const quoteSummary =
         document.getElementById("quoteSummary");
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const designSummary =
         document.getElementById("designSummary");
+
 
     /*==================================================
     LOAD QUOTE BASKET
@@ -50,26 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    console.log(
-        "Quote Items Loaded:",
-        quoteItems
-    );
-
-    if (!quoteSummary) {
-
-        console.error(
-            "quoteSummary element not found."
-        );
-
-        return;
-
-    }
 
     /*==================================================
-    SAVE QUOTES
+    SAVE QUOTE BASKET
     ==================================================*/
 
-    function saveQuotes() {
+    function saveQuoteBasket() {
 
         localStorage.setItem(
             "manicQuoteBasket",
@@ -77,11 +65,15 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
+
+
     /*==================================================
     BUILD SUMMARY
     ==================================================*/
 
     function buildSummary() {
+
+        if (!quoteSummary) return;
 
         quoteSummary.innerHTML = "";
 
@@ -102,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        let emailText = "";
+        let emailSummary = "";
 
         quoteItems.forEach(function (item, index) {
 
@@ -115,16 +107,16 @@ document.addEventListener("DOMContentLoaded", function () {
             card.innerHTML = `
 
                 <img
-                    src="${item.image}"
-                    class="quote-summary-image"
-                    alt="Design Preview">
+                src="${item.image}"
+                class="quote-summary-image"
+                alt="Design">
 
                 <h3>
                     Design ${index + 1}
                 </h3>
 
                 <p>
-                    <strong>Shirt Colour:</strong>
+                    <strong>Colour:</strong>
                     ${item.colour}
                 </p>
 
@@ -154,9 +146,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 </p>
 
                 <button
-                    class="remove-quote"
-                    data-id="${item.id}">
-                    Remove
+                class="remove-quote"
+                data-id="${item.id}">
+
+                Remove
+
                 </button>
 
                 <hr>
@@ -165,14 +159,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
             quoteSummary.appendChild(card);
 
-            emailText +=
+            emailSummary +=
+
 `Design ${index + 1}
-Shirt Colour: ${item.colour}
+
+Colour: ${item.colour}
+
 Shirt Size: ${item.shirtSize}
+
 Print Location: ${item.location}
+
 Design Size: ${item.size}px
+
 Quantity: ${item.quantity}
+
 Notes: ${item.notes || "None"}
+
 
 `;
 
@@ -181,272 +183,7 @@ Notes: ${item.notes || "None"}
         if (designSummary) {
 
             designSummary.value =
-                emailText;
+                emailSummary;
 
         }
 
-        attachRemoveButtons();
-
-    }
-    /*==================================================
-    REMOVE BUTTONS
-    ==================================================*/
-
-    function attachRemoveButtons() {
-
-        const buttons =
-            document.querySelectorAll(".remove-quote");
-
-        buttons.forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                const id =
-                    Number(this.dataset.id);
-
-                quoteItems =
-                    quoteItems.filter(function (item) {
-
-                        return item.id !== id;
-
-                    });
-
-                saveQuotes();
-
-                buildSummary();
-
-            });
-
-        });
-
-    }
-
-    /*==================================================
-    CLEAR QUOTE BASKET
-    ==================================================*/
-
-    if (clearQuotes) {
-
-        clearQuotes.addEventListener(
-            "click",
-            function () {
-
-                if (!confirm(
-                    "Clear all designs from your quote?"
-                )) {
-
-                    return;
-
-                }
-
-                quoteItems = [];
-
-                saveQuotes();
-
-                buildSummary();
-
-            }
-        );
-
-    }
-    /*==================================================
-    SUBMIT QUOTE
-    ==================================================*/
-
-    if (form) {
-
-        form.addEventListener("submit", async function (event) {
-
-            event.preventDefault();
-
-            alert("Starting quote submission...");
-
-
-                try {
-
-    alert("Inside try block");
-
-    const customerData = {
-
-        full_name: document.getElementById("fullName").value,
-        business_name: document.getElementById("businessName").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value
-
-    };
-
-    alert("About to save customer");
-
-    // ... the rest of your existing code
-
-                /*==============================
-                CHECK SUPABASE
-                ==============================*/
-
-                if (typeof supabase === "undefined") {
-
-                    throw new Error(
-                        "Supabase client not found. Check supabase.js is loaded."
-                    );
-
-                }
-
-                console.log("Supabase client found.");
-
-                /*==============================
-                SAVE CUSTOMER
-                ==============================*/
-
-                const customerData = {
-
-                    full_name:
-                        document.getElementById("fullName").value,
-
-                    business_name:
-                        document.getElementById("businessName").value,
-
-                    email:
-                        document.getElementById("email").value,
-
-                    phone:
-                        document.getElementById("phone").value
-
-                };
-
-                alert("About to save customer");
-
-const result = await supabase
-    .from("customers")
-    .insert(customerData)
-    .select()
-    .single();
-
-alert("Customer request finished");
-
-alert(JSON.stringify(result));
-
-const customer = result.data;
-const customerError = result.error;
-
-if (customerError) {
-    throw customerError;
-}
-
-                console.log("Customer saved.", customer);
-                /*==============================
-                SAVE QUOTE
-                ==============================*/
-
-                const quoteData = {
-
-                    customer_id: customer.id,
-
-                    service:
-                        document.getElementById("service").value,
-
-                    quantity:
-                        document.getElementById("quantity").value,
-
-                    required_date:
-                        document.getElementById("requiredDate").value || null,
-
-                    delivery: "Website",
-
-                    notes:
-                        document.getElementById("notes").value
-
-                };
-
-                console.log("Saving quote...", quoteData);
-
-                const {
-                    data: quote,
-                    error: quoteError
-                } = await supabase
-                    .from("quotes")
-                    .insert(quoteData)
-                    .select()
-                    .single();
-
-                if (quoteError) {
-
-                    console.error(quoteError);
-
-                    throw quoteError;
-
-                }
-
-                console.log("Quote saved.", quote);
-
-                /*==============================
-                SAVE DESIGNS
-                ==============================*/
-
-                for (const item of quoteItems) {
-
-                    const { error: designError } =
-                        await supabase
-                            .from("designs")
-                            .insert({
-
-                                quote_id: quote.id,
-
-                                image_url: item.image,
-
-                                shirt_colour: item.colour,
-
-                                shirt_size: item.shirtSize,
-
-                                print_location: item.location,
-
-                                design_size: item.size,
-
-                                rotation: item.rotation,
-
-                                quantity: item.quantity,
-
-                                notes: item.notes
-
-                            });
-
-                    if (designError) {
-
-                        console.error(designError);
-
-                        throw designError;
-
-                    }
-
-                }
-
-                console.log("All designs saved.");
-
-                alert("Quote saved successfully!");
-
-                localStorage.removeItem("manicQuoteBasket");
-
-                form.submit();
-
-            }
-
-            catch (error) {
-
-                console.error("SUBMIT ERROR:", error);
-
-                alert(
-                    error.message ||
-                    JSON.stringify(error)
-                );
-
-            }
-
-        });
-
-    }
-    /*==================================================
-    INITIALISE PAGE
-    ==================================================*/
-
-    buildSummary();
-
-});
