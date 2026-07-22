@@ -261,14 +261,23 @@ Notes: ${item.notes || "None"}
 
             alert("Starting quote submission...");
 
-const test = await supabase
-    .from("customers")
-    .select("*")
-    .limit(1);
 
-alert(JSON.stringify(test));
+                try {
 
-            try {
+    alert("Inside try block");
+
+    const customerData = {
+
+        full_name: document.getElementById("fullName").value,
+        business_name: document.getElementById("businessName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value
+
+    };
+
+    alert("About to save customer");
+
+    // ... the rest of your existing code
 
                 /*==============================
                 CHECK SUPABASE
