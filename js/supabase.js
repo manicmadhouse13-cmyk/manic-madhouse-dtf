@@ -17,5 +17,8 @@ window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
+console.log("window.supabase =", window.supabase);
+console.log("supabase =", supabase);
+console.log("typeof supabase.from =", typeof supabase.from);
 
 console.log("✅ Supabase Connected");
