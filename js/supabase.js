@@ -15,6 +15,8 @@ const supabaseClient = window.supabase.createClient(
 );
 
 window.db = supabaseClient;
+alert("window.db exists: " + (window.db !== undefined));
+alert("typeof window.db.from = " + typeof window.db.from);
 
 console.log("Supabase client:", window.db);
 console.log("typeof window.db.from =", typeof window.db.from);
