@@ -340,3 +340,188 @@ Notes: ${item.notes || "None"}
         return data;
 
     }
+    /*==================================================
+    SAVE DESIGNS
+    ==================================================*/
+
+    async function saveDesigns(quoteId) {
+
+        if (quoteItems.length === 0) {
+            return;
+        }
+
+        for (const item of quoteItems) {
+
+            const designData = {
+
+                quote_id: quoteId,
+
+                image_url: item.image || "",
+
+                shirt_colour: item.colour || "",
+
+                shirt_size: item.shirtSize || "",
+
+                print_location: item.location || "",
+
+                design_size: Number(item.size) || 0,
+
+                rotation: Number(item.rotation) || 0,
+
+                quantity: String(item.quantity || ""),
+
+                notes: item.notes || ""
+
+            };
+
+            const { error } =
+                await window.db
+                    .from("designs")
+                    .insert(designData);
+
+            if (error) {
+
+                throw error;
+
+            }
+
+        }
+
+    }
+
+    /*==================================================
+    CLEAR QUOTE AFTER SUCCESS
+    ==================================================*/
+
+    function clearQuoteBasket() {
+
+        quoteItems = [];
+
+        localStorage.removeItem(
+            "manicQuoteBasket"
+        );
+
+        if (designSummary) {
+
+            designSummary.value = "";
+
+        }
+
+        buildSummary();
+
+    }
+
+    /*==================================================
+    VALIDATE FORM
+    ==================================================*/
+
+    function validateForm() {
+
+        if (
+            document.getElementById("fullName").value.trim() === ""
+        ) {
+
+            throw new Error(
+                "Please enter your full name."
+            );
+
+        }
+
+        if (
+            document.getElementById("email").value.trim() === ""
+        ) {
+
+            throw new Error(
+                "Please enter your email address."
+            );
+
+        }
+
+        if (
+            document.getElementById("projectDescription").value.trim() === ""
+        ) {
+
+            throw new Error(
+                "Please describe your project."
+            );
+
+        }
+
+    }    /*==================================================
+    SUBMIT QUOTE
+    ==================================================*/
+
+    if (form) {
+
+        form.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+            try {
+
+                validateForm();
+
+                if (!window.db) {
+
+                    throw new Error(
+                        "Supabase database connection not found."
+                    );
+
+                }
+
+                console.log("Saving customer...");
+
+                const customer =
+                    await saveCustomer();
+
+                console.log("Customer Saved", customer);
+
+                console.log("Saving quote...");
+
+                const quote =
+                    await saveQuote(customer.id);
+
+                console.log("Quote Saved", quote);
+
+                console.log("Saving designs...");
+
+                await saveDesigns(quote.id);
+
+                console.log("Designs Saved");
+
+                clearQuoteBasket();
+
+                alert(
+                    "Your quote request has been submitted successfully!"
+                );
+
+                form.submit();
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                alert(
+                    error.message ||
+                    "There was a problem saving your quote."
+                );
+
+            }
+
+        });
+
+    }
+
+    /*==================================================
+    INITIALISE PAGE
+    ==================================================*/
+
+    buildSummary();
+
+    console.log(
+        "QUOTE SUMMARY VERSION 5.0 READY"
+    );
+
+});
