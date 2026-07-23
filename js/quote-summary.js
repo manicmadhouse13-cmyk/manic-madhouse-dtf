@@ -187,3 +187,156 @@ Notes: ${item.notes || "None"}
         attachRemoveButtons();
 
     }
+    /*==================================================
+    REMOVE BUTTONS
+    ==================================================*/
+
+    function attachRemoveButtons() {
+
+        const buttons =
+            document.querySelectorAll(".remove-quote");
+
+        buttons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const id =
+                    Number(this.dataset.id);
+
+                quoteItems =
+                    quoteItems.filter(function (item) {
+
+                        return item.id !== id;
+
+                    });
+
+                saveQuoteBasket();
+
+                buildSummary();
+
+            });
+
+        });
+
+    }
+
+    /*==================================================
+    CLEAR QUOTE BASKET
+    ==================================================*/
+
+    if (clearQuotes) {
+
+        clearQuotes.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    !confirm(
+                        "Clear all designs from your quote?"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+                quoteItems = [];
+
+                saveQuoteBasket();
+
+                buildSummary();
+
+            }
+        );
+
+    }
+
+    /*==================================================
+    SAVE CUSTOMER
+    ==================================================*/
+
+    async function saveCustomer() {
+
+        const customerData = {
+
+            full_name:
+                document.getElementById("fullName").value,
+
+            business_name:
+                document.getElementById("businessName").value,
+
+            email:
+                document.getElementById("email").value,
+
+            phone:
+                document.getElementById("phone").value
+
+        };
+
+        const {
+            data,
+            error
+        } =
+        await window.db
+            .from("customers")
+            .insert(customerData)
+            .select()
+            .single();
+
+        if (error) {
+
+            throw error;
+
+        }
+
+        return data;
+
+    }
+
+    /*==================================================
+    SAVE QUOTE
+    ==================================================*/
+
+    async function saveQuote(customerId) {
+
+        const quoteData = {
+
+            customer_id:
+                customerId,
+
+            service:
+                document.getElementById("service").value,
+
+            quantity:
+                document.getElementById("quantity").value,
+
+            required_date:
+                document.getElementById("requiredDate").value || null,
+
+            delivery:
+                "Website",
+
+            notes:
+                document.getElementById("notes").value
+
+        };
+
+        const {
+            data,
+            error
+        } =
+        await window.db
+            .from("quotes")
+            .insert(quoteData)
+            .select()
+            .single();
+
+        if (error) {
+
+            throw error;
+
+        }
+
+        return data;
+
+    }
