@@ -317,7 +317,7 @@ Notes: ${item.notes || "None"}
                 document.getElementById("notes").value
 
         };
-
+alert(JSON.stringify(quoteData));
         const {
             data,
             error
