@@ -555,3 +555,81 @@ Notes: ${item.notes || "None"}
         }
 
     }
+    /*==================================================
+    SUBMIT QUOTE
+    ==================================================*/
+
+    if (form) {
+
+        form.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+            try {
+
+                validateForm();
+
+                if (!window.db) {
+
+                    throw new Error(
+                        "Supabase database connection not found."
+                    );
+
+                }
+
+                console.log("Saving customer...");
+
+                const customer =
+                    await saveCustomer();
+
+                console.log("Customer Saved", customer);
+
+                console.log("Saving quote...");
+
+                const quote =
+                    await saveQuote(customer.id);
+
+                console.log("Quote Saved", quote);
+
+                console.log("Saving designs...");
+
+                await saveDesigns(quote.id);
+
+                console.log("Designs Saved");
+
+                clearQuoteBasket();
+
+                alert(
+                    "Your quote request has been submitted successfully!"
+                );
+
+                form.submit();
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                alert(
+                    error.message ||
+                    "There was a problem saving your quote."
+                );
+
+            }
+
+        });
+
+    }
+
+    /*==================================================
+    INITIALISE PAGE
+    ==================================================*/
+
+    buildSummary();
+
+    console.log(
+        "QUOTE SUMMARY VERSION 5.0 READY"
+    );
+
+});
