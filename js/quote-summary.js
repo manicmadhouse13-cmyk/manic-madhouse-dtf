@@ -282,7 +282,7 @@ attachRemoveButtons();
         };
 
         const { data, error } =
-            await supabase
+            await window.db
                 .from("customers")
                 .insert(customerData)
                 .select()
@@ -324,7 +324,7 @@ attachRemoveButtons();
         };
 
         const { data, error } =
-            await supabase
+            await window.db
                 .from("quotes")
                 .insert(quoteData)
                 .select()
@@ -350,7 +350,7 @@ attachRemoveButtons();
         for (const item of quoteItems) {
 
             const { error } =
-                await supabase
+                await window.db
                     .from("designs")
                     .insert({
 
