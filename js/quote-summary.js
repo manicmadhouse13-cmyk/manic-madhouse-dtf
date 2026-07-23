@@ -17,6 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const form =
         document.querySelector("form");
+    console.log("FORM FOUND:", form);
+
+alert("Form found: " + (form !== null));
+
+if (!form) {
+    alert("NO FORM FOUND");
+}
 
     const quoteSummary =
         document.getElementById("quoteSummary");
