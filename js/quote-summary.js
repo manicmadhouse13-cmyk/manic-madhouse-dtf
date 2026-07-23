@@ -1,15 +1,13 @@
-alert("THIS IS VERSION 4 - " + new Date().toLocaleTimeString());
-
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUMMARY
-VERSION 4.0
+VERSION 5.0
 CHUNK 1
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("QUOTE SUMMARY V4 LOADED");
+    console.log("QUOTE SUMMARY V5 LOADED");
 
     /*==================================================
     ELEMENTS
@@ -17,13 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const form =
         document.querySelector("form");
-    console.log("FORM FOUND:", form);
-
-alert("Form found: " + (form !== null));
-
-if (!form) {
-    alert("NO FORM FOUND");
-}
 
     const quoteSummary =
         document.getElementById("quoteSummary");
@@ -34,6 +25,10 @@ if (!form) {
     const designSummary =
         document.getElementById("designSummary");
 
+    if (!quoteSummary) {
+        console.error("Quote Summary element not found.");
+        return;
+    }
 
     /*==================================================
     LOAD QUOTE BASKET
@@ -61,7 +56,6 @@ if (!form) {
 
     }
 
-
     /*==================================================
     SAVE QUOTE BASKET
     ==================================================*/
@@ -75,14 +69,11 @@ if (!form) {
 
     }
 
-
     /*==================================================
     BUILD SUMMARY
     ==================================================*/
 
     function buildSummary() {
-
-        if (!quoteSummary) return;
 
         quoteSummary.innerHTML = "";
 
@@ -157,9 +148,7 @@ if (!form) {
                 <button
                 class="remove-quote"
                 data-id="${item.id}">
-
                 Remove
-
                 </button>
 
                 <hr>
@@ -168,9 +157,9 @@ if (!form) {
 
             quoteSummary.appendChild(card);
 
-            emailSummary +=
+            emailSummary += `
 
-`Design ${index + 1}
+Design ${index + 1}
 
 Colour: ${item.colour}
 
@@ -184,287 +173,17 @@ Quantity: ${item.quantity}
 
 Notes: ${item.notes || "None"}
 
-
 `;
 
         });
 
         if (designSummary) {
 
-    designSummary.value =
-        emailSummary;
-
-}
-
-
-
-attachRemoveButtons();
-
-}
-    /*==================================================
-    REMOVE BUTTONS
-    ==================================================*/
-
-    function attachRemoveButtons() {
-
-        const buttons =
-            document.querySelectorAll(".remove-quote");
-
-        buttons.forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                const id = Number(this.dataset.id);
-
-                quoteItems =
-                    quoteItems.filter(function (item) {
-
-                        return item.id !== id;
-
-                    });
-
-                saveQuoteBasket();
-
-                buildSummary();
-
-            });
-
-        });
-
-    }
-
-
-    /*==================================================
-    CLEAR QUOTE BASKET
-    ==================================================*/
-
-    if (clearQuotes) {
-
-        clearQuotes.addEventListener("click", function () {
-
-            if (!confirm("Clear all designs from your quote?")) {
-
-                return;
-
-            }
-
-            quoteItems = [];
-
-            saveQuoteBasket();
-
-            buildSummary();
-
-        });
-
-    }
-
-
-    /*==================================================
-    SAVE CUSTOMER
-    ==================================================*/
-
-    async function saveCustomer() {
-
-        const customerData = {
-
-            full_name:
-                document.getElementById("fullName").value,
-
-            business_name:
-                document.getElementById("businessName").value,
-
-            email:
-                document.getElementById("email").value,
-
-            phone:
-                document.getElementById("phone").value
-
-        };
-
-        const { data, error } =
-            await window.db
-                .from("customers")
-                .insert(customerData)
-                .select()
-                .single();
-
-        if (error) {
-
-            throw error;
+            designSummary.value =
+                emailSummary;
 
         }
 
-        return data;
+        attachRemoveButtons();
 
     }
-    /*==================================================
-    SAVE QUOTE
-    ==================================================*/
-
-    async function saveQuote(customerId) {
-
-        const quoteData = {
-
-            customer_id: customerId,
-
-            service:
-                document.getElementById("service").value,
-
-            quantity:
-                document.getElementById("quantity").value,
-
-            required_date:
-                document.getElementById("requiredDate").value || null,
-
-            delivery: "Website",
-
-            notes:
-                document.getElementById("notes").value
-
-        };
-
-        const { data, error } =
-            await window.db
-                .from("quotes")
-                .insert(quoteData)
-                .select()
-                .single();
-
-        if (error) {
-
-            throw error;
-
-        }
-
-        return data;
-
-    }
-
-
-    /*==================================================
-    SAVE DESIGNS
-    ==================================================*/
-
-    async function saveDesigns(quoteId) {
-
-        for (const item of quoteItems) {
-
-            const { error } =
-                await window.db
-                    .from("designs")
-                    .insert({
-
-                        quote_id: quoteId,
-
-                        image_url: item.image,
-
-                        shirt_colour: item.colour,
-
-                        shirt_size: item.shirtSize,
-
-                        print_location: item.location,
-
-                        design_size: item.size,
-
-                        rotation: item.rotation,
-
-                        quantity: item.quantity,
-
-                        notes: item.notes
-
-                    });
-
-            if (error) {
-
-                throw error;
-
-            }
-
-        }
-
-    }
-    /*==================================================
-    SUBMIT QUOTE
-    ==================================================*/
-
-    if (form) {
-
-        form.addEventListener("submit", async function (event) {
-
-            event.preventDefault();
-
-            try {
-
-                console.log("Starting quote submission...");
-
-                if (!window.supabase || !supabase) {
-
-                    throw new Error(
-                        "Supabase is not connected."
-                    );
-
-                }
-
-                const customer =
-                    await saveCustomer();
-
-                console.log(
-                    "Customer saved:",
-                    customer
-                );
-
-                const quote =
-                    await saveQuote(customer.id);
-
-                console.log(
-                    "Quote saved:",
-                    quote
-                );
-
-                await saveDesigns(quote.id);
-
-                console.log(
-                    "Designs saved."
-                );
-
-                localStorage.removeItem(
-                    "manicQuoteBasket"
-                );
-
-                alert(
-                    "Quote saved successfully!"
-                );
-
-                form.submit();
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Quote submission failed:",
-                    error
-                );
-
-                alert(
-
-                    error.message ||
-
-                    "There was a problem saving your quote."
-
-                );
-
-            }
-
-        });
-
-    }
-    /*==================================================
-    INITIALISE PAGE
-    ==================================================*/
-
-    buildSummary();
-
-    console.log("QUOTE SUMMARY V4 READY");
-
-});
