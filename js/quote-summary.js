@@ -307,9 +307,6 @@ Notes: ${item.notes || "None"}
             service:
                 document.getElementById("service").value,
 
-            quantity:
-                document.getElementById("quantity").value,
-
             required_date:
                 document.getElementById("requiredDate").value || null,
 
