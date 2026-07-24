@@ -500,8 +500,7 @@ alert(JSON.stringify(quoteData));
 
                 console.error(error);
 
-                alert(
-    "Your quote request has been submitted successfully!"
+            
 );
 
 clearQuoteBasket();
