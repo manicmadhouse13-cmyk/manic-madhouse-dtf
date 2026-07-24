@@ -481,6 +481,8 @@ alert(JSON.stringify(quoteData));
     if (form) {
 
         form.addEventListener("submit", async function (event) {
+            alert("Submit event intercepted");
+event.preventDefault();
 
             event.preventDefault();
 
