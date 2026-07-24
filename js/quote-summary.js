@@ -506,9 +506,14 @@ alert(JSON.stringify(quoteData));
                 console.log("Saving quote...");
 
                 const quote =
-                    await saveQuote(customer.id);
+    await saveQuote(customer.id);
 
-                console.log("Quote Saved", quote);
+console.log("Quote Saved", quote);
+
+alert(
+    "Your Quote Number is: " +
+    quote.quote_number
+);
 
                 console.log("Saving designs...");
 
