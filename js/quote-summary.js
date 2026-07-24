@@ -510,7 +510,6 @@ localStorage.removeItem("manicQuoteBasket");
 
 form.reset();
 
-// We'll replace this with a Thank You page next
 window.location.href = "thankyou.html";
 
     /*==================================================
