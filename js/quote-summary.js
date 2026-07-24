@@ -501,15 +501,17 @@ alert(JSON.stringify(quoteData));
                 console.error(error);
 
                 alert(
-                    error.message ||
-                    "There was a problem saving your quote."
-                );
+    "Your quote request has been submitted successfully!"
+);
 
-            }
+clearQuoteBasket();
 
-        });
+localStorage.removeItem("manicQuoteBasket");
 
-    }
+form.reset();
+
+// We'll replace this with a Thank You page next
+window.location.href = "thankyou.html";
 
     /*==================================================
     INITIALISE PAGE
