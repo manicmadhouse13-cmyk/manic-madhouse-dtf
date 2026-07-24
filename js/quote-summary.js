@@ -299,24 +299,54 @@ Notes: ${item.notes || "None"}
 
     async function saveQuote(customerId) {
 
-        const quoteData = {
+    /*=========================================
+    GET NEXT QUOTE NUMBER
+    =========================================*/
 
-            customer_id:
-                customerId,
+    const { data: lastQuote } = await window.db
+        .from("quotes")
+        .select("quote_number")
+        .order("id", { ascending: false })
+        .limit(1);
 
-            service:
-                document.getElementById("service").value,
+    let nextNumber = 1;
 
-            required_date:
-                document.getElementById("requiredDate").value || null,
+    if (
+        lastQuote &&
+        lastQuote.length > 0 &&
+        lastQuote[0].quote_number
+    ) {
 
-            delivery:
-                "Website",
+        nextNumber =
+            parseInt(
+                lastQuote[0].quote_number.replace("MM-", "")
+            ) + 1;
 
-            notes:
-                document.getElementById("notes").value
+    }
 
-        };
+    const quoteNumber =
+        "MM-" +
+        String(nextNumber).padStart(6, "0");
+
+    const quoteData = {
+
+        customer_id: customerId,
+
+        quote_number: quoteNumber,
+
+        service:
+            document.getElementById("service").value,
+
+        required_date:
+            document.getElementById("requiredDate").value || null,
+
+        delivery:
+            "Website",
+
+        notes:
+            document.getElementById("notes").value
+
+    };
 alert(JSON.stringify(quoteData));
         const {
             data,
