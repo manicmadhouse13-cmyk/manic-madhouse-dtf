@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const form =
         document.querySelector("form");
+    alert("FORM CHECK: " + form);
 
     const quoteSummary =
         document.getElementById("quoteSummary");
