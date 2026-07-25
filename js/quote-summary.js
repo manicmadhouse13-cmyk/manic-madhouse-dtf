@@ -49,31 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     catch (error) {
 
-    console.error(error);
-
-    alert(
-        error.message ||
-        "There was a problem saving your quote."
+    console.error(
+        "Failed loading quote basket",
+        error
     );
 
-}
+    quoteItems = [];
 
-});
-
-}
-
-
-/*==================================================
-INITIALISE PAGE
-==================================================*/
-
-buildSummary();
-
-console.log(
-    "QUOTE SUMMARY VERSION 5.0 READY"
-);
-
-});
+    }
 
     /*==================================================
     SAVE QUOTE BASKET
