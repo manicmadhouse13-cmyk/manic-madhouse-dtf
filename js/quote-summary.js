@@ -47,14 +47,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     catch (error) {
 
-        console.error(
-            "Failed loading quote basket",
-            error
-        );
+    console.error(error);
 
-        quoteItems = [];
+    alert(
+        error.message ||
+        "There was a problem saving your quote."
+    );
 
-    }
+}
+
+});
+
+}
+
+
+/*==================================================
+INITIALISE PAGE
+==================================================*/
+
+buildSummary();
+
+console.log(
+    "QUOTE SUMMARY VERSION 5.0 READY"
+);
+
+});
 
     /*==================================================
     SAVE QUOTE BASKET
