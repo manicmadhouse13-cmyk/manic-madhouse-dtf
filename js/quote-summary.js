@@ -534,12 +534,9 @@ alert(
 
             }
 
-            catch (error) {
-
-                console.error(error);
-
-            
-);
+            if (!quoteSummary) {
+    alert("NO QUOTE SUMMARY FOUND - SCRIPT STOPPED");
+            }
 
 clearQuoteBasket();
 
