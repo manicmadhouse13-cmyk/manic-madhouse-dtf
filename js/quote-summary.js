@@ -559,5 +559,4 @@ window.location.href = "thankyou.html";
         "QUOTE SUMMARY VERSION 5.0 READY"
     );
 
-});
-alert("V5 STARTED");
+
