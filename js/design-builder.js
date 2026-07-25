@@ -731,6 +731,8 @@ catch(error){
 
             console.log("ADD QUOTE CLICKED");
 
+            console.log("ADD QUOTE CLICKED");
+
 
 
                 if (!builderData.image) {
