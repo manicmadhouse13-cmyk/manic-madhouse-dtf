@@ -484,7 +484,6 @@ alert(JSON.stringify(quoteData));
             alert("Submit event intercepted");
 event.preventDefault();
 
-            event.preventDefault();
 
             try {
 
