@@ -1,3 +1,4 @@
+alert("QUOTE SUMMARY FILE LOADED");
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUMMARY
