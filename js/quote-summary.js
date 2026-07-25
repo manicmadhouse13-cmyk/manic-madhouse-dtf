@@ -28,8 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("designSummary");
 
     if (!quoteSummary) {
-        console.error("Quote Summary element not found.");
-        return;
+
+    alert("NO QUOTE SUMMARY FOUND");
+
     }
 
     /*==================================================
