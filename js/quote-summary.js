@@ -1,4 +1,9 @@
 alert("QUOTE SUMMARY FILE LOADED");
+window.onerror = function(message, source, line) {
+    alert(
+        "JS ERROR: " + message + " Line: " + line
+    );
+};
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUMMARY
