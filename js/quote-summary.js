@@ -308,40 +308,9 @@ alert("REACHED SAVE QUOTE");
 
     async function saveQuote(customerId) {
 
-    /*=========================================
-    GET NEXT QUOTE NUMBER
-    =========================================*/
-
-    const { data: lastQuote } = await window.db
-        .from("quotes")
-        .select("quote_number")
-        .order("id", { ascending: false })
-        .limit(1);
-
-    let nextNumber = 1;
-
-    if (
-        lastQuote &&
-        lastQuote.length > 0 &&
-        lastQuote[0].quote_number
-    ) {
-
-        nextNumber =
-            parseInt(
-                lastQuote[0].quote_number.replace("MM-", "")
-            ) + 1;
-
-    }
-
-    const quoteNumber =
-        "MM-" +
-        String(nextNumber).padStart(6, "0");
-
     const quoteData = {
 
         customer_id: customerId,
-
-        quote_number: quoteNumber,
 
         service:
             document.getElementById("service").value,
@@ -356,24 +325,27 @@ alert("REACHED SAVE QUOTE");
             document.getElementById("notes").value
 
     };
-alert(JSON.stringify(quoteData));
-        const {
-            data,
-            error
-        } =
-        await window.db
-            .from("quotes")
-            .insert(quoteData)
-            .select()
-            .single();
 
-        if (error) {
 
-            throw error;
+    const {
+        data,
+        error
+    } =
+    await window.db
+        .from("quotes")
+        .insert(quoteData)
+        .select()
+        .single();
 
-        }
 
-        return data;
+    if (error) {
+
+        throw error;
+
+    }
+
+
+    return data;
 
     }
     /*==================================================
