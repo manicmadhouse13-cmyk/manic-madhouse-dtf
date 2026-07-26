@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
-        alert("QUOTE SUBMIT STARTED");
-
 
         try {
 
@@ -56,9 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            alert("CUSTOMER SAVED");
-
-
             const quoteData = {
 
                 customer_id:
@@ -93,9 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (quoteError) {
                 throw quoteError;
             }
-
-
-            alert("QUOTE SAVED");
 
 
             alert(
@@ -136,8 +128,6 @@ async function saveDesigns(quoteId) {
 
 
     if (quoteItems.length === 0) {
-
-        alert("NO DESIGNS FOUND");
 
         return;
 
