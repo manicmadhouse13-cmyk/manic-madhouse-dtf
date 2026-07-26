@@ -102,6 +102,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Your quote number is: " + quote.id
             );
 
+            await saveDesigns(quote.id);
+
+alert("DESIGNS SAVED");
+
 
             window.location.href =
                 "thankyou.html";
