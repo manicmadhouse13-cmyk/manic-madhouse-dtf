@@ -482,85 +482,95 @@ alert(JSON.stringify(quoteData));
             );
 
         }
-alert("REACHED SUBMIT");
-    }    /*==================================================
-    SUBMIT QUOTE
-    ==================================================*/
+/*==================================================
+SUBMIT QUOTE
+==================================================*/
+
 alert("REACHED SUBMIT SECTION");
-    if (form) {
 
-        form.addEventListener("submit", async function (event) {
-            alert("Submit event intercepted");
-event.preventDefault();
+if (form) {
 
+    form.addEventListener("submit", async function (event) {
 
-            try {
+        alert("SUBMIT EVENT INTERCEPTED");
 
-                validateForm();
+        event.preventDefault();
 
-                if (!window.db) {
+        try {
 
-                    throw new Error(
-                        "Supabase database connection not found."
-                    );
+            validateForm();
 
-                }
+            if (!window.db) {
 
-                console.log("Saving customer...");
-
-                const customer =
-                    await saveCustomer();
-
-                console.log("Customer Saved", customer);
-
-                console.log("Saving quote...");
-
-                const quote =
-    await saveQuote(customer.id);
-
-console.log("Quote Saved", quote);
-
-alert(
-    "Your Quote Number is: " +
-    quote.quote_number
-);
-
-                console.log("Saving designs...");
-
-                await saveDesigns(quote.id);
-
-                console.log("Designs Saved");
-
-                clearQuoteBasket();
-
-                alert(
-                    "Your quote request has been submitted successfully!"
+                throw new Error(
+                    "Supabase database connection not found."
                 );
 
-                form.submit();
-
             }
 
-            if (!quoteSummary) {
-    alert("NO QUOTE SUMMARY FOUND - SCRIPT STOPPED");
-            }
+            const customer =
+                await saveCustomer();
 
-clearQuoteBasket();
+            console.log(
+                "Customer Saved",
+                customer
+            );
 
-localStorage.removeItem("manicQuoteBasket");
 
-form.reset();
+            const quote =
+                await saveQuote(customer.id);
 
-window.location.href = "thankyou.html";
 
-    /*==================================================
-    INITIALISE PAGE
-    ==================================================*/
+            console.log(
+                "Quote Saved",
+                quote
+            );
 
-    buildSummary();
 
-    console.log(
-        "QUOTE SUMMARY VERSION 5.0 READY"
-    );
+            await saveDesigns(quote.id);
+
+
+            clearQuoteBasket();
+
+
+            alert(
+                "Quote saved successfully!"
+            );
+
+
+            window.location.href =
+                "thankyou.html";
+
+
+        }
+
+        catch(error) {
+
+            console.error(error);
+
+            alert(
+                error.message ||
+                "There was a problem saving your quote."
+            );
+
+        }
+
+    });
+
+}
+
+
+/*==================================================
+INITIALISE PAGE
+==================================================*/
+
+buildSummary();
+
+
+console.log(
+    "QUOTE SUMMARY VERSION 5.0 READY"
+);
+
+});
 
 
