@@ -93,7 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
             alert(
                 "Your quote number is: " + quote.id
             );
+const quoteNumber =
+    "MM-" +
+    String(quote.id).padStart(6, "0");
 
+
+alert(
+    "Your Quote Number is: " + quoteNumber
+);
             await saveDesigns(quote.id);
 
 alert("DESIGNS SAVED");
