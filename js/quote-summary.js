@@ -523,15 +523,13 @@ if (form) {
 
         catch(error) {
 
-            console.error(error);
+    console.error("QUOTE ERROR:", error);
 
-            alert(
-                error.message ||
-                "There was a problem saving your quote."
-            );
+    alert(
+        "Quote failed: " + error.message
+    );
 
         }
-
     });
 
 }
