@@ -30,9 +30,14 @@ alert("FORM FOUND: " + (form !== null));
 
     if (!quoteSummary) {
 
-    alert("NO QUOTE SUMMARY FOUND");
+    alert("STOPPED: quoteSummary NOT FOUND");
 
-    }
+}
+else {
+
+    alert("quoteSummary FOUND");
+
+}
 
     /*==================================================
     LOAD QUOTE BASKET
