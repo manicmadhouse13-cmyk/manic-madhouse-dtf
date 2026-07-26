@@ -127,5 +127,71 @@ alert("DESIGNS SAVED");
 
     });
 
+async function saveDesigns(quoteId) {
 
+    const quoteItems =
+        JSON.parse(
+            localStorage.getItem("manicQuoteBasket")
+        ) || [];
+
+
+    if (quoteItems.length === 0) {
+
+        alert("NO DESIGNS FOUND");
+
+        return;
+
+    }
+
+
+    for (const item of quoteItems) {
+
+
+        const designData = {
+
+            quote_id: quoteId,
+
+            image_url:
+                item.image || "",
+
+            shirt_colour:
+                item.colour || "",
+
+            shirt_size:
+                item.shirtSize || "",
+
+            print_location:
+                item.location || "",
+
+            design_size:
+                Number(item.size) || 0,
+
+            rotation:
+                Number(item.rotation) || 0,
+
+            quantity:
+                Number(item.quantity) || 1,
+
+            notes:
+                item.notes || ""
+
+        };
+
+
+        const {
+            error
+        } = await window.db
+            .from("designs")
+            .insert(designData);
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+    }
+
+}
 });
