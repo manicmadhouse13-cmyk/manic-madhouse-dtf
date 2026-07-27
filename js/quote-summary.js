@@ -514,7 +514,7 @@ if (form) {
                 "Quote saved successfully!"
             );
 
-
+sessionStorage.setItem("quoteSaved", "true");
             form.requestSubmit();
 
 
