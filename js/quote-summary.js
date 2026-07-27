@@ -515,8 +515,7 @@ if (form) {
             );
 
 
-            window.location.href =
-                "thankyou.html";
+            form.requestSubmit();
 
 
         }
