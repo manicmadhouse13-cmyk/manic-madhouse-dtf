@@ -305,5 +305,20 @@ Need Help?
 <script src="js/script.js"></script>
 
 </body>
+  <script>
+
+const quoteNumber =
+    localStorage.getItem("lastQuoteNumber");
+
+
+if (quoteNumber) {
+
+    document.getElementById(
+        "customerQuoteNumber"
+    ).textContent = quoteNumber;
+
+}
+
+  </script>
 
 </html>
