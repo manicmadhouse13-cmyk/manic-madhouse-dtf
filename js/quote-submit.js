@@ -96,7 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
 const quoteNumber =
     "MM-" +
     String(quote.id).padStart(6, "0");
-
+            
+localStorage.setItem(
+    "lastQuoteNumber",
+    quoteNumber
+);
 
 alert(
     "Your Quote Number is: " + quoteNumber
