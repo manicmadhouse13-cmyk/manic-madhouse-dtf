@@ -518,8 +518,9 @@ if (false) {
                 "Quote saved successfully!"
             );
 
-sessionStorage.setItem("quoteSaved", "true");
-            form.requestSubmit();
+            window.location.href = "thankyou.html";
+
+
 
 
         }
