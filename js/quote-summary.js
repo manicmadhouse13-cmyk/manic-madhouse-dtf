@@ -472,10 +472,6 @@ if (false) {
         alert("SUBMIT EVENT INTERCEPTED");
 
         event.preventDefault();
-        if (sessionStorage.getItem("quoteSaved")) {
-    sessionStorage.removeItem("quoteSaved");
-    return;
-        }
 
         try {
 
