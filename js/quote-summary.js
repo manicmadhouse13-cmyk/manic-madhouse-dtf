@@ -465,7 +465,7 @@ SUBMIT QUOTE
 
 alert("REACHED SUBMIT SECTION");
 
-if (form) {
+if (false) {
 
     form.addEventListener("submit", async function (event) {
 
