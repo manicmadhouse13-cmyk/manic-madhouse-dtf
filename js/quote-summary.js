@@ -462,7 +462,7 @@ await sendQuoteNotification(quote);
         async function sendQuoteNotification(quote) {
 
     const response = await fetch(
-        "YOUR_SUPABASE_FUNCTION_URL_HERE",
+        "https://ymkmpsgossabyznwhluk.supabase.co/functions/v1/new-quote-notification",
         {
             method: "POST",
 
