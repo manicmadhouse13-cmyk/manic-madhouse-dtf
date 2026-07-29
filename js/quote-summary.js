@@ -358,7 +358,7 @@ alert("REACHED SAVE QUOTE");
     ==================================================*/
 
     async function saveDesigns(quoteId) {
-
+await sendQuoteNotification(quote);
         if (quoteItems.length === 0) {
             return;
         }
