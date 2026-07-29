@@ -358,7 +358,6 @@ alert("REACHED SAVE QUOTE");
     ==================================================*/
 
     async function saveDesigns(quoteId) {
-await sendQuoteNotification(quote);
         if (quoteItems.length === 0) {
             return;
         }
@@ -538,31 +537,30 @@ if (false) {
 
 
             const quote =
-                await saveQuote(customer.id);
+    await saveQuote(customer.id);
 
 
-            console.log(
-                "Quote Saved",
-                quote
-            );
+console.log(
+    "Quote Saved",
+    quote
+);
 
 
-            await saveDesigns(quote.id);
+await saveDesigns(quote.id);
 
 
-            clearQuoteBasket();
+await sendQuoteNotification(quote);
 
 
-            alert(
-                "Quote saved successfully!"
-            );
-
-            window.location.href = "thankyou.html";
+clearQuoteBasket();
 
 
+alert(
+    "Quote saved successfully!"
+);
 
 
-        }
+window.location.href = "thankyou.html";
 
         catch(error) {
 
