@@ -458,11 +458,7 @@ alert("REACHED SAVE QUOTE");
             );
 
         }
-        async function sendQuoteNotification(quote) {
-
-    const response = await fetch(
-        "https://ymkmpsgossabyznwhluk.supabase.co/functions/v1/new-quote-notification",
-        {
+        
             method: "POST",
 
             headers: {
