@@ -422,6 +422,17 @@ alert("REACHED SAVE QUOTE");
         buildSummary();
 
     }
+    const quote =
+    await saveQuote(customer.id);
+
+await saveDesigns(quote.id);
+
+await sendQuoteNotification(quote);
+
+clearQuoteBasket();
+
+window.location.href =
+    "thankyou.html";
 
     /*==================================================
     VALIDATE FORM
