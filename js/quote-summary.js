@@ -423,7 +423,7 @@ alert("REACHED SAVE QUOTE");
 
     }
     
-
+await sendQuoteNotification(quote);
     /*==================================================
     VALIDATE FORM
     ==================================================*/
