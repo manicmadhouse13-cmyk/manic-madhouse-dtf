@@ -426,6 +426,9 @@ alert("REACHED SAVE QUOTE");
     await saveQuote(customer.id);
 
 await saveDesigns(quote.id);
+    alert("DESIGNS SAVED - ABOUT TO SEND EMAIL");
+
+await sendQuoteNotification(quote);
 
 await sendQuoteNotification(quote);
 
