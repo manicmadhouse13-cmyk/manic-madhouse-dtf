@@ -459,6 +459,49 @@ await sendQuoteNotification(quote);
             );
 
         }
+        async function sendQuoteNotification(quote) {
+
+    const response = await fetch(
+        "YOUR_SUPABASE_FUNCTION_URL_HERE",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                quoteNumber:
+                    quote.quote_number,
+
+                customerName:
+                    document.getElementById("fullName").value,
+
+                email:
+                    document.getElementById("email").value,
+
+                service:
+                    document.getElementById("service").value,
+
+                notes:
+                    document.getElementById("notes").value
+
+            })
+
+        }
+    );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Email notification failed"
+        );
+
+    }
+
+        }
 /*==================================================
 SUBMIT QUOTE
 ==================================================*/
