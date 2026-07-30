@@ -422,23 +422,6 @@ alert("REACHED SAVE QUOTE");
         buildSummary();
 
     }
-    function clearQuoteBasket() {
-
-    quoteItems = [];
-
-    localStorage.removeItem(
-        "manicQuoteBasket"
-    );
-
-    if (designSummary) {
-
-        designSummary.value = "";
-
-    }
-
-    buildSummary();
-
-}
 
 
 /*==================================================
