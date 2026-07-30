@@ -115,13 +115,6 @@ await sendQuoteNotification(quote);
 window.location.href =
     "thankyou.html";
 
-alert("DESIGNS SAVED");
-
-
-            window.location.href =
-                "thankyou.html";
-
-
         }
 
 
