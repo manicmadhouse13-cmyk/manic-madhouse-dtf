@@ -561,6 +561,7 @@ if (form) {
 
         alert("SUBMIT EVENT INTERCEPTED");
         alert("I AM IN SUBMIT");
+        alert("MADE IT INTO SUBMIT");
 
         event.preventDefault();
 
