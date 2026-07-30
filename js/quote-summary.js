@@ -474,10 +474,6 @@ async function sendQuoteNotification(quote) {
 
 }
 
-
-/*==================================================
-VALIDATE FORM
-==================================================*/
 await sendQuoteNotification(quote);
     /*==================================================
     VALIDATE FORM
