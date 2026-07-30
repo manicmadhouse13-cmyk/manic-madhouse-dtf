@@ -560,6 +560,7 @@ if (form) {
     form.addEventListener("submit", async function (event) {
 
         alert("SUBMIT EVENT INTERCEPTED");
+        alert("I AM IN SUBMIT");
 
         event.preventDefault();
 
