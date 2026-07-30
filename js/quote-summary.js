@@ -422,7 +422,79 @@ alert("REACHED SAVE QUOTE");
         buildSummary();
 
     }
-    
+    function clearQuoteBasket() {
+
+    quoteItems = [];
+
+    localStorage.removeItem(
+        "manicQuoteBasket"
+    );
+
+    if (designSummary) {
+
+        designSummary.value = "";
+
+    }
+
+    buildSummary();
+
+}
+
+
+/*==================================================
+SEND QUOTE NOTIFICATION
+==================================================*/
+
+async function sendQuoteNotification(quote) {
+
+    alert("EMAIL FUNCTION STARTED");
+
+    const response = await fetch(
+        "https://ymkmpsgossabyznwhluk.supabase.co/functions/v1/new-quote-notification",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                quoteNumber:
+                    quote.quote_number,
+
+                customerName:
+                    document.getElementById("fullName").value,
+
+                email:
+                    document.getElementById("email").value,
+
+                service:
+                    document.getElementById("service").value,
+
+                notes:
+                    document.getElementById("notes").value
+
+            })
+
+        }
+    );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Email notification failed"
+        );
+
+    }
+
+}
+
+
+/*==================================================
+VALIDATE FORM
+==================================================*/
 await sendQuoteNotification(quote);
     /*==================================================
     VALIDATE FORM
