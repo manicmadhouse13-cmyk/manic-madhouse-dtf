@@ -131,7 +131,6 @@ window.location.href =
 
     });
 
-async function saveDesigns(quoteId) {
     async function sendQuoteNotification(quote) {
 
     alert("EMAIL FUNCTION STARTED");
@@ -166,6 +165,19 @@ async function saveDesigns(quoteId) {
 
         }
     );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Email notification failed"
+        );
+
+    }
+
+    }
+async function saveDesigns(quoteId) {
+    
 
 
     if (!response.ok) {
