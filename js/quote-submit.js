@@ -7,7 +7,7 @@ VERSION 1.0
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.querySelector("form");
+    const form = document.getElementById("quoteForm");
 
     if (!form) {
         return;
