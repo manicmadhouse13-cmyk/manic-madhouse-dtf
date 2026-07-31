@@ -244,18 +244,6 @@ async function saveDesigns(quoteId) {
 
 });
 
-    const quoteItems =
-        JSON.parse(
-            localStorage.getItem("manicQuoteBasket")
-        ) || [];
-
-
-    if (quoteItems.length === 0) {
-
-        return;
-
-    }
-
 
     for (const item of quoteItems) {
 
