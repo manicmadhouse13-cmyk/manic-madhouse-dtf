@@ -96,8 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-            window.location.href =
-                "thankyou.html";
+            localStorage.removeItem("manicQuoteBasket");
+
+window.location.href =
+    "thankyou.html";
 
 
 
