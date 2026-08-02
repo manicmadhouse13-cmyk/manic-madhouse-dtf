@@ -233,26 +233,46 @@ async function sendQuoteNotification(quote) {
 
             body: JSON.stringify({
 
-                quoteNumber:
-                    quote.id,
+    quoteNumber:
+        quote.id,
 
+    customerName:
+        document.getElementById("fullName").value,
 
-                customerName:
-                    document.getElementById("fullName").value,
+    businessName:
+        document.getElementById("businessName").value,
 
+    email:
+        document.getElementById("email").value,
 
-                email:
-                    document.getElementById("email").value,
+    phone:
+        document.getElementById("phone").value,
 
+    service:
+        document.getElementById("service").value,
 
-                service:
-                    document.getElementById("service").value,
+    quantity:
+        document.getElementById("quantity").value,
 
+    requiredDate:
+        document.getElementById("requiredDate").value,
 
-                notes:
-                    document.getElementById("notes").value
+    printLocation:
+        document.getElementById("printLocation").value,
 
-            })
+    garmentColour:
+        document.getElementById("garmentColour").value,
+
+    sizes:
+        document.getElementById("sizes").value,
+
+    projectDescription:
+        document.getElementById("projectDescription").value,
+
+    notes:
+        document.getElementById("notes").value
+
+})
 
 
         }
