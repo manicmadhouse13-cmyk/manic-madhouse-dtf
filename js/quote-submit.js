@@ -6,7 +6,7 @@ VERSION 1.0
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", function () {
-
+alert("SUBMIT BUTTON PRESSED");
     const form = document.getElementById("quoteForm");
 
     if (!form) {
