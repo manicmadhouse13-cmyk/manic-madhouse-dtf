@@ -88,15 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
             await saveDesigns(quote.id);
 
 
-            alert("DESIGNS SAVED");
-
 
 
             await sendQuoteNotification(quote);
 
 
-
-            alert("EMAIL SENT");
 
 
 
