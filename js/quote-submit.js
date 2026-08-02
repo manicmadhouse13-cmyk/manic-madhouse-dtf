@@ -1,5 +1,3 @@
-alert("QUOTE SUBMIT JS LOADED");
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.getElementById("quoteForm");
@@ -13,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", async function(event) {
 
         event.preventDefault();
-
-        alert("SUBMIT BUTTON PRESSED");
 
 
         try {
@@ -217,9 +213,6 @@ async function saveDesigns(quoteId) {
 
 
 async function sendQuoteNotification(quote) {
-
-
-    alert("EMAIL FUNCTION STARTED");
 
 
 
