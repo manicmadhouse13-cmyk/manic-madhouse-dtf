@@ -175,7 +175,10 @@ if (!response.ok) {
     throw new Error(errorText);
 
 }
-    
+
+}
+
+async function saveDesigns(quoteId) {
 async function saveDesigns(quoteId) {
 
     const quoteItems =
