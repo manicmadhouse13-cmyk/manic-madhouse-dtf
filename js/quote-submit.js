@@ -166,16 +166,16 @@ window.location.href =
         }
     );
 
+if (!response.ok) {
 
-    if (!response.ok) {
+    const errorText = await response.text();
 
-        throw new Error(
-            "Email notification failed"
-        );
+    console.error("RESEND ERROR:", errorText);
 
-    }
+    throw new Error(errorText);
 
-    }
+}
+    
 async function saveDesigns(quoteId) {
 
     const quoteItems =
