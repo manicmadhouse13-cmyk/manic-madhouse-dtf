@@ -425,7 +425,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             try {
-
+             
+setSubmitting(true);
 
                 await processQuote();
 
