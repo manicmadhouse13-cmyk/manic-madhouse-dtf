@@ -3,7 +3,7 @@
  QUOTE SUBMIT
  VERSION 2.0
 ==================================================*/
-
+console.log("QUOTE SYSTEM V2 ACTIVE");
 document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Quote Submit V2 Loaded");
