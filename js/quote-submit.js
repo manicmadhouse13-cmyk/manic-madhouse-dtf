@@ -439,7 +439,7 @@ setSubmitting(true);
                 console.error(
                     error
                 );
-
+setSubmitting(false);
 
                 alert(
                     error.message
