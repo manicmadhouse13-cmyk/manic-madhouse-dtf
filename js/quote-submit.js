@@ -31,7 +31,34 @@ document.addEventListener("DOMContentLoaded", () => {
     //------------------------------------------------
 
     const form = document.getElementById("quoteForm");
+    //------------------------------------------------
+    // SUBMIT BUTTON CONTROL
+    //------------------------------------------------
 
+    const submitButton =
+        form.querySelector(
+            'button[type="submit"]'
+        );
+
+
+    function setSubmitting(state) {
+
+
+        if (!submitButton) {
+            return;
+        }
+
+
+        submitButton.disabled = state;
+
+
+        submitButton.textContent =
+            state
+                ? "Submitting Quote..."
+                : "Request My Quote";
+
+
+    }
     if (!form) {
 
         console.error("Quote Form Not Found");
