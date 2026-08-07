@@ -264,3 +264,162 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`✔ ${basket.length} Design(s) Saved`);
 
     }
+    //------------------------------------------------
+    // SEND EMAIL NOTIFICATION
+    //------------------------------------------------
+
+    async function sendQuoteNotification(quoteId) {
+
+
+        const response = await fetch(
+            CONFIG.edgeFunction,
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body: JSON.stringify(
+                    buildEmailPayload(quoteId)
+                )
+
+            }
+        );
+
+
+        if (!response.ok) {
+
+
+            const errorText =
+                await response.text();
+
+
+            console.error(
+                "Email Error:",
+                errorText
+            );
+
+
+            throw new Error(
+                "Email notification failed"
+            );
+
+        }
+
+
+        console.log("✔ Emails Sent");
+
+    }
+
+
+
+    //------------------------------------------------
+    // SUBMIT PROCESS
+    //------------------------------------------------
+
+    async function processQuote() {
+
+
+        console.log(
+            "Starting Quote Submission..."
+        );
+
+
+        validateForm();
+
+
+        const customer =
+            await saveCustomer();
+
+
+
+        const quote =
+            await saveQuote(customer.id);
+
+
+
+        const quoteNumber =
+            generateQuoteNumber(
+                quote.id
+            );
+
+
+        localStorage.setItem(
+            "lastQuoteNumber",
+            quoteNumber
+        );
+
+
+
+        await saveDesigns(
+            quote.id
+        );
+
+
+
+        await sendQuoteNotification(
+            quoteNumber
+        );
+
+
+
+        clearBasket();
+
+
+
+        console.log(
+            "✔ Quote Complete"
+        );
+
+
+        window.location.href =
+            CONFIG.thankYouPage;
+
+
+    }
+
+
+
+    //------------------------------------------------
+    // FORM SUBMIT EVENT
+    //------------------------------------------------
+
+    form.addEventListener(
+        "submit",
+        async (event) => {
+
+
+            event.preventDefault();
+
+
+            try {
+
+
+                await processQuote();
+
+
+
+            }
+            catch(error) {
+
+
+                console.error(
+                    error
+                );
+
+
+                alert(
+                    error.message
+                );
+
+
+            }
+
+
+        }
+    );
