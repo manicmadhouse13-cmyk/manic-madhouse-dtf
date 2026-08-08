@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const form =
     document.querySelector("form");
 
-alert("FORM FOUND: " + (form !== null));
-
     const quoteSummary =
         document.getElementById("quoteSummary");
 
@@ -34,8 +32,6 @@ alert("FORM FOUND: " + (form !== null));
         document.getElementById("designSummary");
 
     if (!quoteSummary) {
-
-    alert("STOPPED: quoteSummary NOT FOUND");
 
 }
 else {
