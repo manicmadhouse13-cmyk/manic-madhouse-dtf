@@ -1,9 +1,3 @@
-alert("QUOTE SUMMARY FILE LOADED");
-window.onerror = function(message, source, line) {
-    alert(
-        "JS ERROR: " + message + " Line: " + line
-    );
-};
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUMMARY
@@ -11,34 +5,27 @@ VERSION 5.0
 CHUNK 1
 ==================================================*/
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    console.log("QUOTE SUMMARY V5 LOADED");
-
-    /*==================================================
-    ELEMENTS
-    ==================================================*/
-
-    const form =
+const form =
     document.querySelector("form");
 
-    const quoteSummary =
-        document.getElementById("quoteSummary");
+const quoteSummary =
+    document.getElementById("quoteSummary");
 
-    const clearQuotes =
-        document.getElementById("clearQuotes");
+const clearQuotes =
+    document.getElementById("clearQuotes");
 
-    const designSummary =
-        document.getElementById("designSummary");
+const designSummary =
+    document.getElementById("designSummary");
 
-    if (!quoteSummary) {
+
+if (!quoteSummary) {
+
+    console.log("quoteSummary not found");
+    return;
 
 }
-else {
 
-    alert("quoteSummary FOUND");
-
-}
+console.log("quoteSummary found");
 
     /*==================================================
     LOAD QUOTE BASKET
