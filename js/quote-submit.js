@@ -74,12 +74,19 @@ console.log("CUSTOMER CREATED:", customer);
 
 
 
+const quoteNumber =
+    "MM-" + Date.now();
+
+
 const quoteData = {
 
     customer_id: customer.id,
 
     Service:
         document.getElementById("service").value,
+
+    quote_number:
+        quoteNumber,
 
     required_date:
         document.getElementById("requiredDate").value || null,
