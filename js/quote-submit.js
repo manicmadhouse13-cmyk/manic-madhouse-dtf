@@ -65,7 +65,12 @@ error: customerError
 
 
 if (customerError) throw customerError;
+if (customerError) {
+    console.error("CUSTOMER INSERT ERROR:", customerError);
+    throw customerError;
+}
 
+console.log("CUSTOMER CREATED:", customer);
 
 
 
