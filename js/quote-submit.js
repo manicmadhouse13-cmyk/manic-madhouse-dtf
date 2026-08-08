@@ -76,25 +76,22 @@ console.log("CUSTOMER CREATED:", customer);
 
 const quoteData = {
 
+    customer_id: customer.id,
 
-customer_id: customer.id,
+    Service:
+        document.getElementById("service").value,
 
+    required_date:
+        document.getElementById("requiredDate").value || null,
 
-service: document.getElementById("service").value,
+    delivery:
+        "Website",
 
+    note:
+        document.getElementById("notes").value,
 
-required_date:
-
-document.getElementById("requiredDate").value || null,
-
-
-delivery: "Website",
-
-
-notes:
-
-document.getElementById("notes").value
-
+    Status:
+        "New"
 
 };
 
