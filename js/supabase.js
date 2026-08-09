@@ -1,3 +1,4 @@
+alert("SUPABASE FILE LOADED");
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 SUPABASE CONNECTION
