@@ -1,14 +1,13 @@
-alert("SUPABASE FILE LOADED");
-
-alert("SUPABASE LIBRARY: " + (window.supabase !== undefined));
+/*==================================================
+MANIC MADHOUSE DTF DESIGNS
+SUPABASE CONNECTION
+==================================================*/
 
 const SUPABASE_URL =
 "https://sbrixpwtvhaundmtilpa.supabase.co";
 
-
 const SUPABASE_KEY =
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNicml4cHd0dmhhdW5kbXRpbHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxNzI5NDcsImV4cCI6MjEwMTc
-
+"PASTE YOUR COMPLETE ANON KEY HERE";
 
 const db = window.supabase.createClient(
     SUPABASE_URL,
@@ -16,7 +15,5 @@ const db = window.supabase.createClient(
 );
 
 window.db = db;
-
-alert("DB CREATED: " + (window.db !== undefined));
 
 console.log("✅ Supabase Connected");
