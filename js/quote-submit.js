@@ -1,3 +1,4 @@
+alert("QUOTE SUBMIT LOADED");
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUBMIT
