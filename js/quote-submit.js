@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     form.addEventListener("submit", async function (event) {
-alert("FORM FOUND: " + (form !== null));
+
 
         event.preventDefault();
 
