@@ -1,11 +1,4 @@
 alert("SUPABASE FILE LOADED");
-/*==================================================
-MANIC MADHOUSE DTF DESIGNS
-SUPABASE CONNECTION
-VERSION 2.0
-==================================================*/
-
-<script src="js/supabase.js?v=2"></script>alert("SUPABASE FILE LOADED");
 
 alert("SUPABASE LIBRARY: " + (window.supabase !== undefined));
 
