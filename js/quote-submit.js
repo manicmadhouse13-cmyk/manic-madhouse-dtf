@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     const form = document.getElementById("quoteForm");
-
+alert("FORM FOUND: " + (form !== null));
 
     if (!form) {
 
