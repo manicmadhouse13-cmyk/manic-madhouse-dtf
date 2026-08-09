@@ -26,7 +26,7 @@ alert("FORM FOUND: " + (form !== null));
 
 
     form.addEventListener("submit", async function (event) {
-
+alert("FORM FOUND: " + (form !== null));
 
         event.preventDefault();
 
