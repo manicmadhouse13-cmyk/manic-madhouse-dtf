@@ -69,9 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 data: customer,
                 error: customerError
 
-            } = await window.db
-
-                .from("customers")
+            } =await db
+.from("customers") 
 
                 .insert(customerData)
 
@@ -131,9 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 data: quote,
                 error: quoteError
 
-            } = await window.db
-
-                .from("quotes")
+            } = await db
+.from("quotes")
 
                 .insert(quoteData)
 
