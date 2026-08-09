@@ -6,7 +6,7 @@ FINAL PRODUCTION VERSION
 
 
 document.addEventListener("DOMContentLoaded", function () {
-
+console.log("DB CHECK:", db);
 
     console.log("QUOTE SUBMIT LOADED");
 
