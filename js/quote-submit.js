@@ -201,17 +201,11 @@ alert("FORM FOUND: " + (form !== null));
 
         catch(error) {
 
+    console.error("FULL ERROR:", error);
 
-            console.error(
-                "QUOTE ERROR:",
-                error
-            );
-
-
-            alert(
-                error.message
-            );
-
+    alert(
+        error.stack
+    );
 
         }
 
