@@ -18,5 +18,7 @@ const db = window.supabase.createClient(
 );
 
 window.db = db;
-alert("SUPABASE DB CREATED");
+
+alert("DB CREATED: " + (window.db !== undefined));
+
 console.log("✅ Supabase Connected");
