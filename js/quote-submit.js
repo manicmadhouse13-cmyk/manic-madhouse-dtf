@@ -1,16 +1,24 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUBMIT
-FINAL PRODUCTION VERSION
+CLEAN PRODUCTION VERSION
 ==================================================*/
 
 
-const form = document.getElementById("quoteForm");
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 
-if (!form) {
+const form =
+document.getElementById("quoteForm");
 
-console.log("QUOTE FORM NOT FOUND");
+
+if(!form){
+
+console.log(
+"QUOTE FORM NOT FOUND"
+);
 
 return;
 
@@ -18,42 +26,55 @@ return;
 
 
 
-form.addEventListener("submit", async function(event) {
+form.addEventListener(
+"submit",
+async function(event){
 
 
 event.preventDefault();
 
 
 
-try {
+try{
+
+
+if(!window.db){
+
+throw new Error(
+"Supabase connection missing"
+);
+
+}
 
 
 
 const customerData = {
 
 
-full_name: document.getElementById("fullName").value,
+full_name:
+document.getElementById("fullName").value.trim(),
 
 
-business_name: document.getElementById("businessName").value,
+business_name:
+document.getElementById("businessName").value.trim(),
 
 
-email: document.getElementById("email").value,
+email:
+document.getElementById("email").value.trim(),
 
 
-phone: document.getElementById("phone").value
+phone:
+document.getElementById("phone").value.trim()
 
 
 };
 
 
 
+
 const {
-
 data: customer,
-
 error: customerError
-
 
 } = await window.db
 
@@ -67,8 +88,12 @@ error: customerError
 
 
 
+if(customerError){
 
-if (customerError) throw customerError;
+throw customerError;
+
+}
+
 
 
 
@@ -76,22 +101,23 @@ if (customerError) throw customerError;
 const quoteData = {
 
 
-customer_id: customer.id,
+customer_id:
+customer.id,
 
 
-service: document.getElementById("service").value,
+service:
+document.getElementById("service").value,
 
 
 required_date:
-
 document.getElementById("requiredDate").value || null,
 
 
-delivery: "Website",
+delivery:
+"Website",
 
 
 notes:
-
 document.getElementById("notes").value
 
 
@@ -100,12 +126,10 @@ document.getElementById("notes").value
 
 
 
+
 const {
-
 data: quote,
-
 error: quoteError
-
 
 } = await window.db
 
@@ -120,62 +144,69 @@ error: quoteError
 
 
 
-if (quoteError) throw quoteError;
+if(quoteError){
+
+throw quoteError;
+
+}
 
 
 
 
-alert(
 
-"QUOTE SAVED: " + quote.id
-
+await saveDesigns(
+quote.id
 );
 
 
 
 
-await saveDesigns(quote.id);
+
+await sendQuoteNotification(
+quote
+);
 
 
 
 
 
-await sendQuoteNotification(quote);
+localStorage.removeItem(
+"manicQuoteBasket"
+);
 
 
 
 
 
+alert(
+"Quote submitted successfully"
+);
 
-localStorage.removeItem("manicQuoteBasket");
+
+
 
 
 window.location.href =
-
 "thankyou.html";
 
 
 
-
 }
 
 
-
-catch(error) {
-
+catch(error){
 
 
-console.error(error);
-
-
-
-alert(
-
-error.message
-
+console.error(
+"QUOTE ERROR:",
+error
 );
 
 
+alert(
+error.message
+);
+
 
 }
 
@@ -184,106 +215,85 @@ error.message
 });
 
 
+
 });
 
 
 
 
 
+async function saveDesigns(
+quoteId
+){
 
-async function saveDesigns(quoteId) {
 
 
-
-const quoteItems =
-
+const items =
 JSON.parse(
-
 localStorage.getItem("manicQuoteBasket")
-
 ) || [];
 
 
 
-
-if (quoteItems.length === 0) {
-
+if(items.length===0){
 
 return;
-
 
 }
 
 
 
 
-for (const item of quoteItems) {
+for(const item of items){
 
 
 
 const designData = {
 
 
-
-quote_id: quoteId,
-
+quote_id:
+quoteId,
 
 
 image_url:
-
 item.image || "",
 
 
-
 shirt_colour:
-
 item.colour || "",
 
 
-
 shirt_size:
-
 item.shirtSize || "",
 
 
-
 print_location:
-
 item.location || "",
 
 
-
 design_size:
-
 Number(item.size) || 0,
 
 
-
 rotation:
-
 Number(item.rotation) || 0,
 
 
-
 quantity:
-
 Number(item.quantity) || 1,
 
 
-
 notes:
-
 item.notes || ""
-
-
 
 };
 
 
 
 
-const { error } =
-
+const {
+error
+} =
 await window.db
 
 .from("designs")
@@ -292,8 +302,11 @@ await window.db
 
 
 
+if(error){
 
-if (error) throw error;
+throw error;
+
+}
 
 
 
@@ -307,139 +320,105 @@ if (error) throw error;
 
 
 
+async function sendQuoteNotification(
+quote
+){
 
-async function sendQuoteNotification(quote) {
 
 
-
-
-const response = await fetch(
-
+const response =
+await fetch(
 
 "https://ymkmpsgossabyznwhluk.supabase.co/functions/v1/new-quote-notification",
-
 
 {
 
 
-method: "POST",
+method:"POST",
 
 
-
-headers: {
+headers:{
 
 
 "Content-Type":
-
 "application/json"
 
 
 },
 
 
-
-body: JSON.stringify({
+body:JSON.stringify({
 
 
 quoteNumber:
-
 quote.id,
 
 
 customerName:
-
 document.getElementById("fullName").value,
 
 
 businessName:
-
 document.getElementById("businessName").value,
 
 
 email:
-
 document.getElementById("email").value,
 
 
 phone:
-
 document.getElementById("phone").value,
 
 
 service:
-
 document.getElementById("service").value,
 
 
 quantity:
-
-document.getElementById("quantity").value,
+document.getElementById("quantity")?.value || "",
 
 
 requiredDate:
-
 document.getElementById("requiredDate").value,
 
 
 printLocation:
-
-document.getElementById("printLocation").value,
+document.getElementById("printLocation")?.value || "",
 
 
 garmentColour:
-
-document.getElementById("garmentColour").value,
+document.getElementById("garmentColour")?.value || "",
 
 
 sizes:
-
-document.getElementById("sizes").value,
+document.getElementById("sizes")?.value || "",
 
 
 projectDescription:
-
-document.getElementById("projectDescription").value,
+document.getElementById("projectDescription")?.value || "",
 
 
 notes:
-
 document.getElementById("notes").value
 
 
 })
 
 
-
 }
-
 
 );
 
 
 
-
-if (!response.ok) {
-
+if(!response.ok){
 
 
-const errorText =
-
+const text =
 await response.text();
 
 
-
-console.error(
-
-"RESEND ERROR:",
-
-errorText
-
-);
-
-
-
-throw new Error(errorText);
-
+throw new Error(text);
 
 
 }
@@ -447,5 +426,3 @@ throw new Error(errorText);
 
 
 }
-
-
