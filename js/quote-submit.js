@@ -5,211 +5,183 @@ FINAL PRODUCTION VERSION
 ==================================================*/
 
 
-document.addEventListener("DOMContentLoaded", function () {
-console.log("DB CHECK:", db);
+const form = document.getElementById("quoteForm");
 
-    console.log("QUOTE SUBMIT LOADED");
 
+if (!form) {
 
-    const form = document.getElementById("quoteForm");
+console.log("QUOTE FORM NOT FOUND");
 
+return;
 
-    if (!form) {
+}
 
-        console.log("QUOTE FORM NOT FOUND");
 
-        return;
 
-    }
+form.addEventListener("submit", async function(event) {
 
 
+event.preventDefault();
 
-    form.addEventListener("submit", async function (event) {
 
 
-        event.preventDefault();
+try {
 
 
-        try {
 
+const customerData = {
 
-            console.log("STARTING QUOTE");
 
+full_name: document.getElementById("fullName").value,
 
 
-            const customerData = {
+business_name: document.getElementById("businessName").value,
 
 
-                full_name:
-                    document.getElementById("fullName").value.trim(),
+email: document.getElementById("email").value,
 
 
-                business_name:
-                    document.getElementById("businessName").value.trim(),
+phone: document.getElementById("phone").value
 
 
-                email:
-                    document.getElementById("email").value.trim(),
+};
 
 
-                phone:
-                    document.getElementById("phone").value.trim()
 
+const {
 
-            };
+data: customer,
 
+error: customerError
 
 
-            /*
-            SAVE CUSTOMER
-            */
+} = await window.db
 
+.from("customers")
 
-            const {
-                data: customer,
-                error: customerError
+.insert(customerData)
 
-            } =await db
-.from("customers") 
+.select()
 
-                .insert(customerData)
+.single();
 
-                .select()
 
-                .single();
 
 
+if (customerError) throw customerError;
 
-            if (customerError)
-                throw customerError;
 
 
 
-            console.log("CUSTOMER SAVED");
+const quoteData = {
 
 
+customer_id: customer.id,
 
 
-            /*
-            SAVE QUOTE
-            */
+service: document.getElementById("service").value,
 
 
-            const quoteData = {
+required_date:
 
+document.getElementById("requiredDate").value || null,
 
-                customer_id:
-                    customer.id,
 
+delivery: "Website",
 
-                service:
-                    document.getElementById("service").value,
 
+notes:
 
-                required_date:
-                    document.getElementById("requiredDate").value || null,
+document.getElementById("notes").value
 
 
-                delivery:
-                    "Website",
+};
 
 
-                notes:
-                    document.getElementById("notes").value,
 
 
-                status:
-                    "New"
+const {
 
+data: quote,
 
-            };
+error: quoteError
 
 
+} = await window.db
 
-            const {
-                data: quote,
-                error: quoteError
-
-            } = await db
 .from("quotes")
 
-                .insert(quoteData)
+.insert(quoteData)
 
-                .select()
+.select()
 
-                .single();
-
-
-
-            if (quoteError)
-                throw quoteError;
-
-
-
-            console.log("QUOTE SAVED");
+.single();
 
 
 
 
-            /*
-            SAVE DESIGNS
-            */
-
-
-            await saveDesigns(quote.id);
+if (quoteError) throw quoteError;
 
 
 
 
-            /*
-            SEND EMAIL
-            */
+alert(
 
+"QUOTE SAVED: " + quote.id
 
-            await sendNotification(quote);
-
-
-
-
-            /*
-            CLEAR BASKET
-            */
-
-
-            localStorage.removeItem(
-                "manicQuoteBasket"
-            );
+);
 
 
 
-            alert(
-                "Quote submitted successfully"
-            );
+
+await saveDesigns(quote.id);
 
 
 
-            window.location.href =
-                "thankyou.html";
+
+
+await sendQuoteNotification(quote);
 
 
 
-        }
-
-
-        catch(error) {
-
-    console.error("FULL ERROR:", error);
-
-    alert(
-        error.stack
-    );
-
-        }
 
 
 
-    });
+localStorage.removeItem("manicQuoteBasket");
 
+
+window.location.href =
+
+"thankyou.html";
+
+
+
+
+}
+
+
+
+catch(error) {
+
+
+
+console.error(error);
+
+
+
+alert(
+
+error.message
+
+);
+
+
+
+}
+
+
+
+});
 
 
 });
@@ -219,104 +191,114 @@ console.log("DB CHECK:", db);
 
 
 
-
 async function saveDesigns(quoteId) {
 
 
-    const basket =
-        JSON.parse(
-            localStorage.getItem(
-                "manicQuoteBasket"
-            )
-        ) || [];
 
+const quoteItems =
 
+JSON.parse(
 
-    if (!basket.length) {
+localStorage.getItem("manicQuoteBasket")
 
-
-        console.log(
-            "NO DESIGNS"
-        );
-
-
-        return;
-
-
-    }
+) || [];
 
 
 
 
-    for (const item of basket) {
+if (quoteItems.length === 0) {
+
+
+return;
+
+
+}
 
 
 
-        const designData = {
 
-
-            quote_id:
-                quoteId,
-
-
-            image_url:
-                item.image || "",
-
-
-            shirt_colour:
-                item.colour || "",
-
-
-            shirt_size:
-                item.shirtSize || "",
-
-
-            print_location:
-                item.location || "",
-
-
-            design_size:
-                Number(item.size) || 0,
-
-
-            rotation:
-                Number(item.rotation) || 0,
-
-
-            quantity:
-                Number(item.quantity) || 1,
-
-
-            notes:
-                item.notes || ""
-
-
-        };
+for (const item of quoteItems) {
 
 
 
-        const {
-            error
-
-        } = await window.db
-
-            .from("designs")
-
-            .insert(designData);
+const designData = {
 
 
 
-        if (error)
-            throw error;
-
-
-    }
+quote_id: quoteId,
 
 
 
-    console.log(
-        "DESIGNS SAVED"
-    );
+image_url:
+
+item.image || "",
+
+
+
+shirt_colour:
+
+item.colour || "",
+
+
+
+shirt_size:
+
+item.shirtSize || "",
+
+
+
+print_location:
+
+item.location || "",
+
+
+
+design_size:
+
+Number(item.size) || 0,
+
+
+
+rotation:
+
+Number(item.rotation) || 0,
+
+
+
+quantity:
+
+Number(item.quantity) || 1,
+
+
+
+notes:
+
+item.notes || ""
+
+
+
+};
+
+
+
+
+const { error } =
+
+await window.db
+
+.from("designs")
+
+.insert(designData);
+
+
+
+
+if (error) throw error;
+
+
+
+}
+
 
 
 }
@@ -326,76 +308,144 @@ async function saveDesigns(quoteId) {
 
 
 
-
-
-async function sendNotification(quote) {
-
-
-
-    const response = await fetch(
-
-        "https://YOUR_NEW_FUNCTION_URL",
-
-        {
-
-
-            method:
-                "POST",
-
-
-            headers: {
-
-
-                "Content-Type":
-                    "application/json"
-
-
-            },
-
-
-            body:
-                JSON.stringify({
-
-
-                    quoteNumber:
-                        quote.quote_number,
-
-
-                    customerName:
-                        document.getElementById("fullName").value,
-
-
-                    email:
-                        document.getElementById("email").value,
-
-
-                    service:
-                        document.getElementById("service").value,
-
-
-                    notes:
-                        document.getElementById("notes").value
-
-
-                })
-
-
-        }
-
-
-    );
+async function sendQuoteNotification(quote) {
 
 
 
-    if (!response.ok) {
+
+const response = await fetch(
 
 
-        throw new Error(
-            "Email failed"
-        );
+"https://ymkmpsgossabyznwhluk.supabase.co/functions/v1/new-quote-notification",
 
 
-    }
+{
+
+
+method: "POST",
+
+
+
+headers: {
+
+
+"Content-Type":
+
+"application/json"
+
+
+},
+
+
+
+body: JSON.stringify({
+
+
+quoteNumber:
+
+quote.id,
+
+
+customerName:
+
+document.getElementById("fullName").value,
+
+
+businessName:
+
+document.getElementById("businessName").value,
+
+
+email:
+
+document.getElementById("email").value,
+
+
+phone:
+
+document.getElementById("phone").value,
+
+
+service:
+
+document.getElementById("service").value,
+
+
+quantity:
+
+document.getElementById("quantity").value,
+
+
+requiredDate:
+
+document.getElementById("requiredDate").value,
+
+
+printLocation:
+
+document.getElementById("printLocation").value,
+
+
+garmentColour:
+
+document.getElementById("garmentColour").value,
+
+
+sizes:
+
+document.getElementById("sizes").value,
+
+
+projectDescription:
+
+document.getElementById("projectDescription").value,
+
+
+notes:
+
+document.getElementById("notes").value
+
+
+})
+
 
 
 }
+
+
+);
+
+
+
+
+if (!response.ok) {
+
+
+
+const errorText =
+
+await response.text();
+
+
+
+console.error(
+
+"RESEND ERROR:",
+
+errorText
+
+);
+
+
+
+throw new Error(errorText);
+
+
+
+}
+
+
+
+}
+
+
