@@ -73,7 +73,7 @@ document.getElementById("phone").value.trim()
 
 
 
-const console.log("CUSTOMER DATA BEING SENT:", customerData);
+ console.log("CUSTOMER DATA BEING SENT:", customerData);
 
 const {
     data: customer,
