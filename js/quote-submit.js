@@ -1,4 +1,4 @@
-alert("QUOTE SUBMIT DB CHECK: " + (window.db ? "FOUND" : "MISSING"));
+alert("QUOTE SUBMIT FILE LOADED");
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUBMIT
