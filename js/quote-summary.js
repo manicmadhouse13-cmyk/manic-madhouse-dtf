@@ -28,10 +28,25 @@ if(!quoteSummary){
 
 
 
-let quoteItems =
+let quoteItems = [];
+
+try {
+
+quoteItems =
 JSON.parse(
 localStorage.getItem("manicQuoteBasket")
 ) || [];
+
+} catch(error){
+
+console.error(
+"QUOTE BASKET LOAD ERROR:",
+error
+);
+
+quoteItems = [];
+
+}
 
 
 
