@@ -72,19 +72,19 @@ document.getElementById("phone").value.trim()
 
 
 
+const console.log("CUSTOMER DATA BEING SENT:", customerData);
+
 const {
-data: customer,
-error: customerError
-
+    data: customer,
+    error: customerError
 } = await window.db
-
 .from("customers")
-
 .insert(customerData)
-
 .select()
-
 .single();
+
+console.log("CUSTOMER RESPONSE:", customer);
+console.log("CUSTOMER ERROR:", customerError);
 
 
 
