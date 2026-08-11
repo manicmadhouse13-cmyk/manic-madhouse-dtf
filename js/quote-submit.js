@@ -1,3 +1,4 @@
+alert("QUOTE SUBMIT DB CHECK: " + (window.db ? "FOUND" : "MISSING"));
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUBMIT
