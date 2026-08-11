@@ -21,6 +21,7 @@ console.log(
 SUPABASE_KEY.substring(0,10)
 );
 window.db =
+  alert(SUPABASE_URL);
 window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
