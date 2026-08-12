@@ -8,9 +8,9 @@ CLEAN PRODUCTION VERSION
 
 document.addEventListener(
 "DOMContentLoaded",
-function(){
+(function(){
  
-});
+})();
 
 
 const form =
