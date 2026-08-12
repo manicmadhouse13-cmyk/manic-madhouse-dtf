@@ -77,7 +77,7 @@ const {
     error: customerError
 } = await window.db
 .from("customers")
-.insert(customerData)
+.insert([customerData])
 .select()
 .single();
 
@@ -132,11 +132,8 @@ error: quoteError
 } = await window.db
 
 .from("quotes")
-
-.insert(quoteData)
-
+.insert([quoteData])
 .select()
-
 .single();
 
 
