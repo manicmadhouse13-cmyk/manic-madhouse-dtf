@@ -46,7 +46,7 @@ throw new Error(
 
 }
 
-
+});
 
 const customerData = {
 
