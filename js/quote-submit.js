@@ -49,20 +49,11 @@ throw new Error(
 const customerData = {
 
 
-full_name:
-document.getElementById("fullName").value.trim(),
-
-
-business_name:
-document.getElementById("businessName").value.trim(),
-
-
-email:
-document.getElementById("email").value.trim(),
-
-
-phone:
-document.getElementById("phone").value.trim()
+const fullName = document.getElementById("fullName")?.value.trim();
+const businessName = document.getElementById("businessName")?.value.trim();
+const email = document.getElementById("email")?.value.trim();
+const phone = document.getElementById("phone")?.value.trim();
+const contactMethod = document.getElementById("contactMethod")?.value;
 
 
 };
