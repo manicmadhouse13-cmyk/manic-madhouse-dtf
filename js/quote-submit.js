@@ -1,410 +1,228 @@
-alert("QUOTE SUBMIT FILE LOADED");
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUBMIT
-CLEAN PRODUCTION VERSION
+VERSION 3.0
 ==================================================*/
 
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
+    console.log("QUOTE SUBMIT LOADED");
 
-const form =
-document.getElementById("quoteForm");
 
+    const quoteForm = document.getElementById("quoteForm");
 
-if(!form){
+    if (!quoteForm) {
 
-console.log(
-"QUOTE FORM NOT FOUND"
-);
+        console.error("quoteForm NOT FOUND");
 
-return;
+        return;
 
-}
+    }
 
 
+    console.log("quoteForm CONNECTED");
 
-form.addEventListener(
-"submit",
-async function(event){
 
 
-event.preventDefault();
+    quoteForm.addEventListener("submit", async (e) => {
 
+        e.preventDefault();
 
 
-try{
+        console.log("QUOTE FORM SUBMITTED");
 
 
-if(!window.db){
 
-throw new Error(
-"Supabase connection missing"
-);
+        const fullName =
+            document.getElementById("fullName")?.value.trim() || "";
 
-}
 
-const customerData = {
+        const businessName =
+            document.getElementById("businessName")?.value.trim() || "";
 
 
-const fullName = document.getElementById("fullName")?.value.trim();
-const businessName = document.getElementById("businessName")?.value.trim();
-const email = document.getElementById("email")?.value.trim();
-const phone = document.getElementById("phone")?.value.trim();
-const contactMethod = document.getElementById("contactMethod")?.value;
+        const email =
+            document.getElementById("email")?.value.trim() || "";
 
 
-};
+        const phone =
+            document.getElementById("phone")?.value.trim() || "";
 
 
+        const contactMethod =
+            document.getElementById("contactMethod")?.value || "";
 
 
- console.log("CUSTOMER DATA BEING SENT:", customerData);
+        const service =
+            document.getElementById("service")?.value || "";
 
-const {
-    data: customer,
-    error: customerError
-} = await window.db
-.from("customers")
-.insert([customerData])
-.select()
-.single();
 
-console.log("CUSTOMER RESPONSE:", customer);
-console.log("CUSTOMER ERROR:", customerError);
+        const quantity =
+            document.getElementById("quantity")?.value || "";
 
 
+        const requiredDate =
+            document.getElementById("requiredDate")?.value || "";
 
-if(customerError){
 
-throw customerError;
+        const printLocation =
+            document.getElementById("printLocation")?.value || "";
 
-}
 
+        const garmentColour =
+            document.getElementById("garmentColour")?.value || "";
 
 
+        const sizes =
+            document.getElementById("sizes")?.value || "";
 
 
-const quoteData = {
+        const projectDescription =
+            document.getElementById("projectDescription")?.value.trim() || "";
 
 
-customer_id:
-customer.id,
+        const notes =
+            document.getElementById("notes")?.value.trim() || "";
 
 
-service:
-document.getElementById("service").value,
+        const designSummary =
+            document.getElementById("designSummary")?.value || "";
 
 
-required_date:
-document.getElementById("requiredDate").value || null,
 
+        const artworkInput =
+            document.getElementById("artwork");
 
-delivery:
-"Website",
 
+        let artworkFile = null;
 
-notes:
-document.getElementById("notes").value
 
+        if (artworkInput && artworkInput.files.length) {
 
-};
+            artworkFile = artworkInput.files[0].name;
 
+        }
 
 
 
+        const quoteBasket =
+            JSON.parse(localStorage.getItem("quoteBasket")) || [];
 
-const {
-data: quote,
-error: quoteError
 
-} = await window.db
 
-.from("quotes")
-.insert([quoteData])
-.select()
-.single();
+        const quoteData = {
 
 
+            full_name: fullName,
 
+            business_name: businessName,
 
-if(quoteError){
+            email: email,
 
-throw quoteError;
+            phone: phone,
 
-}
+            contact_method: contactMethod,
 
+            service: service,
 
+            quantity: quantity,
 
+            required_date: requiredDate,
 
+            print_location: printLocation,
 
-await saveDesigns(
-quote.id
-);
+            garment_colour: garmentColour,
 
+            sizes: sizes,
 
+            project_description: projectDescription,
 
+            notes: notes,
 
+            design_summary: designSummary,
 
-await sendQuoteNotification(
-quote
-);
+            artwork: artworkFile,
 
+            designs: quoteBasket,
 
 
+            created_at: new Date().toISOString()
 
 
-localStorage.removeItem(
-"manicQuoteBasket"
-);
+        };
 
 
 
+        console.log("QUOTE DATA:", quoteData);
 
 
-alert(
-"Quote submitted successfully"
-);
 
 
+        try {
 
 
+            const { data, error } =
+                await supabase
+                .from("quotes")
+                .insert([quoteData]);
 
-window.location.href =
-"thankyou.html";
 
 
+            if (error) {
 
-}
 
+                console.error("SUPABASE ERROR:", error);
 
-catch(error){
+                alert(
+                    "There was an error sending your quote. Please try again."
+                );
 
+                return;
 
-console.error(
-"QUOTE ERROR:",
-error
-);
+            }
 
 
-alert(
-error.message
-);
 
+            console.log("QUOTE SENT:", data);
 
-}
 
 
+            alert(
+                "Thank you! Your quote request has been submitted."
+            );
 
-});
 
 
+            localStorage.removeItem("quoteBasket");
 
-async function saveDesigns(
-quoteId
-){
 
 
+            quoteForm.reset();
 
-const items =
-JSON.parse(
-localStorage.getItem("manicQuoteBasket")
-) || [];
 
 
+        } 
+        
+        catch (err) {
 
-if(items.length===0){
 
-return;
+            console.error(
+                "SUBMIT ERROR:",
+                err
+            );
 
-}
 
+            alert(
+                "Something went wrong. Please try again."
+            );
 
 
+        }
 
-for(const item of items){
 
 
+    });
 
-const designData = {
 
-
-quote_id:
-quoteId,
-
-
-image_url:
-item.image || "",
-
-
-shirt_colour:
-item.colour || "",
-
-
-shirt_size:
-item.shirtSize || "",
-
-
-print_location:
-item.location || "",
-
-
-design_size:
-Number(item.size) || 0,
-
-
-rotation:
-Number(item.rotation) || 0,
-
-
-quantity:
-Number(item.quantity) || 1,
-
-
-notes:
-item.notes || ""
-
-};
-
-
-
-
-const {
-error
-} =
-await window.db
-
-.from("designs")
-
-.insert(designData);
-
-
-
-if(error){
-
-throw error;
-
-}
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-async function sendQuoteNotification(
-quote
-){
-
-
-
-const response =
-await fetch(
-
-"https://ymkmpsgossabyznwhluk.supabase.co/functions/v1/new-quote-notification",
-
-{
-
-
-method:"POST",
-
-
-headers:{
-
-
-"Content-Type":
-"application/json"
-
-
-},
-
-
-body:JSON.stringify({
-
-
-quoteNumber:
-quote.id,
-
-
-customerName:
-document.getElementById("fullName").value,
-
-
-businessName:
-document.getElementById("businessName").value,
-
-
-email:
-document.getElementById("email").value,
-
-
-phone:
-document.getElementById("phone").value,
-
-
-service:
-document.getElementById("service").value,
-
-
-quantity:
-document.getElementById("quantity")?.value || "",
-
-
-requiredDate:
-document.getElementById("requiredDate").value,
-
-
-printLocation:
-document.getElementById("printLocation")?.value || "",
-
-
-garmentColour:
-document.getElementById("garmentColour")?.value || "",
-
-
-sizes:
-document.getElementById("sizes")?.value || "",
-
-
-projectDescription:
-document.getElementById("projectDescription")?.value || "",
-
-
-notes:
-document.getElementById("notes").value
-
-
-})
-
-
-}
-
-);
-
-
-
-if(!response.ok){
-
-
-const text =
-await response.text();
-
-
-throw new Error(text);
-
-
-}
-
-
-
-}
 
 });
