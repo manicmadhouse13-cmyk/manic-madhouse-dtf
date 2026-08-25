@@ -210,8 +210,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             alert(
-                "Something went wrong. Please try again."
-            );
+    "TEST ERROR MESSAGE"
+);
 
 
         }
