@@ -170,14 +170,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (error) {
 
+    console.error("SUPABASE ERROR:", error);
 
-                console.error("SUPABASE ERROR:", error);
+    alert(error.message);
 
-                alert(
-                    "There was an error sending your quote. Please try again."
-                );
-
-                return;
+    return;
 
             }
 
