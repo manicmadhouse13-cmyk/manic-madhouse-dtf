@@ -162,9 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             const { data, error } =
-                await supabase
-                .from("quotes")
-                .insert([quoteData]);
+    await window.supabaseClient
+    .from("quotes")
+    .insert([quoteData]);
 
 
 
