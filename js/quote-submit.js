@@ -1,227 +1,212 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUBMIT
-FINAL CLEAN VERSION
+FINAL VERSION
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("QUOTE SUBMIT LOADED");
+console.log("QUOTE SUBMIT LOADED");
 
 
-    const quoteForm = document.getElementById("quoteForm");
+const quoteForm = document.getElementById("quoteForm");
 
 
-    if (!quoteForm) {
+if(!quoteForm){
+    console.error("quoteForm missing");
+    return;
+}
 
-        console.log("QUOTE FORM NOT FOUND");
 
-        return;
+console.log("quoteForm CONNECTED");
 
-    }
 
 
-    console.log("QUOTE FORM CONNECTED");
+quoteForm.addEventListener("submit", async (e)=>{
 
+e.preventDefault();
 
 
-    quoteForm.addEventListener("submit", async (event) => {
+console.log("QUOTE FORM SUBMITTED");
 
 
-        event.preventDefault();
 
+const customer = {
 
-        console.log("QUOTE SUBMITTED");
+full_name:
+document.getElementById("fullName")?.value || "",
 
+business_name:
+document.getElementById("businessName")?.value || "",
 
+email:
+document.getElementById("email")?.value || "",
 
-        try {
+phone:
+document.getElementById("phone")?.value || ""
 
+};
 
-            if (!window.supabaseClient) {
 
-                throw new Error(
-                    "Supabase client missing"
-                );
 
-            }
+const quote = {
 
 
+service:
+document.getElementById("service")?.value || "",
 
-            const customerData = {
 
+required_date:
+document.getElementById("requiredDate")?.value || null,
 
-                full_name:
-                document.getElementById("fullName").value.trim(),
 
+delivery:
+document.getElementById("printLocation")?.value || "",
 
-                business_name:
-                document.getElementById("businessName").value.trim(),
 
+notes:
+document.getElementById("notes")?.value || "",
 
-                email:
-                document.getElementById("email").value.trim(),
 
+contact_method:
+document.getElementById("contactMethod")?.value || "",
 
-                phone:
-                document.getElementById("phone").value.trim()
 
+quantity:
+document.getElementById("quantity")?.value || "",
 
-            };
 
+print_location:
+document.getElementById("printLocation")?.value || "",
 
 
-            console.log(
-                "CUSTOMER DATA:",
-                customerData
-            );
+garment_colour:
+document.getElementById("garmentColour")?.value || "",
 
 
+sizes:
+document.getElementById("sizes")?.value || "",
 
-            const {
-                data: customer,
-                error: customerError
 
-            } = await window.supabaseClient
+project_description:
+document.getElementById("projectDescription")?.value || "",
 
-                .from("customers")
 
-                .insert([customerData])
+design_summary:
+document.getElementById("designSummary")?.value || "",
 
-                .select()
 
-                .single();
+artwork:
+document.getElementById("artwork")?.files[0]?.name || "",
 
 
+designs:
+JSON.parse(localStorage.getItem("quoteBasket")) || [],
 
-            if (customerError) {
 
-                throw customerError;
+status:
+"New"
 
-            }
 
+};
 
 
-            console.log(
-                "CUSTOMER CREATED:",
-                customer
-            );
 
+console.log("CUSTOMER:", customer);
+console.log("QUOTE:", quote);
 
 
-            const quoteData = {
 
+try{
 
-                customer_id:
-                customer.customer_id,
 
+// SAVE CUSTOMER FIRST
 
-                quote_number:
-                "MM-" + Date.now(),
+const {data:customerData,error:customerError}=
 
+await supabase
+.from("customers")
+.insert([customer])
+.select()
+.single();
 
-                service:
-                document.getElementById("service").value,
 
 
-                required_date:
-                document.getElementById("requiredDate").value || null,
+if(customerError){
 
+console.error(customerError);
+alert(customerError.message);
+return;
 
-                delivery:
-                "Website",
+}
 
 
-                notes:
-                document.getElementById("notes").value,
 
+console.log("CUSTOMER SAVED", customerData);
 
-                status:
-                "New"
 
 
-            };
+// LINK QUOTE TO CUSTOMER
 
+quote.customer_id = customerData.customer_id;
 
 
-            console.log(
-                "QUOTE DATA:",
-                quoteData
-            );
+quote.quote_number =
+"MM-" + Date.now();
 
 
 
-            const {
-                data: quote,
-                error: quoteError
+const {data:quoteData,error:quoteError}=
 
-            } = await window.supabaseClient
+await supabase
+.from("quotes")
+.insert([quote])
+.select();
 
-                .from("quotes")
 
-                .insert([quoteData])
 
-                .select()
+if(quoteError){
 
-                .single();
+console.error(quoteError);
+alert(quoteError.message);
+return;
 
+}
 
 
-            if (quoteError) {
 
-                throw quoteError;
+console.log("QUOTE SAVED",quoteData);
 
-            }
 
 
+alert(
+"Thank you! Your quote request has been submitted."
+);
 
-            console.log(
-                "QUOTE CREATED:",
-                quote
-            );
 
 
+localStorage.removeItem("quoteBasket");
 
-            localStorage.removeItem(
-                "manicQuoteBasket"
-            );
+quoteForm.reset();
 
 
 
-            alert(
-                "Your quote request has been submitted successfully!"
-            );
+}
 
+catch(err){
 
+console.error(err);
 
-            window.location.href =
-            "thankyou.html";
+alert(
+"Something went wrong. Please try again."
+);
 
 
+}
 
-        }
 
 
-        catch(error) {
-
-
-            console.error(
-                "QUOTE ERROR:",
-                error
-            );
-
-
-            alert(
-                error.message
-            );
-
-
-        }
-
-
-
-    });
-
+});
 
 
 });
