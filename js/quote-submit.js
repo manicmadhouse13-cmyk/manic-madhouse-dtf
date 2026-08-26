@@ -112,44 +112,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const quoteData = {
 
+    customer_id: customer.id,
 
-            full_name: fullName,
+    quote_number:
+        "MM-" + Date.now(),
 
-            business_name: businessName,
+    service:
+        document.getElementById("service").value,
 
-            email: email,
+    required_date:
+        document.getElementById("requiredDate").value || null,
 
-            phone: phone,
+    delivery:
+        "Website",
 
-            contact_method: contactMethod,
+    notes:
+        document.getElementById("notes").value,
 
-            service: service,
+    status:
+        "New"
 
-            quantity: quantity,
-
-            required_date: requiredDate,
-
-            print_location: printLocation,
-
-            garment_colour: garmentColour,
-
-            sizes: sizes,
-
-            project_description: projectDescription,
-
-            notes: notes,
-
-            design_summary: designSummary,
-
-            artwork: artworkFile,
-
-            designs: quoteBasket,
-
-
-            created_at: new Date().toISOString()
-
-
-        };
+};
 
 
 
