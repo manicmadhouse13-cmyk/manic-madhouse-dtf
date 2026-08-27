@@ -124,7 +124,7 @@ try{
 
 const {data:customerData,error:customerError}=
 
-await supabase
+await windows.db
 .from("customers")
 .insert([customer])
 .select()
@@ -158,7 +158,7 @@ quote.quote_number =
 
 const {data:quoteData,error:quoteError}=
 
-await supabase
+await windows.db
 .from("quotes")
 .insert([quote])
 .select();
