@@ -1,212 +1,308 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
-QUOTE SUBMIT
-FINAL VERSION
+QUOTE SUBMIT SYSTEM
+VERSION 1.0
 ==================================================*/
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-console.log("QUOTE SUBMIT LOADED");
 
+    const quoteForm = document.getElementById("quoteForm");
 
-const quoteForm = document.getElementById("quoteForm");
 
+    if (!quoteForm) {
+        console.log("Quote form not found");
+        return;
+    }
 
-if(!quoteForm){
-    console.error("quoteForm missing");
-    return;
-}
 
+    console.log("Quote submit system loaded");
 
-console.log("quoteForm CONNECTED");
 
 
+    quoteForm.addEventListener("submit", async function (e) {
 
-quoteForm.addEventListener("submit", async (e)=>{
+        e.preventDefault();
 
-e.preventDefault();
 
 
-console.log("QUOTE FORM SUBMITTED");
+        const submitButton =
+            quoteForm.querySelector(
+                'button[type="submit"]'
+            );
 
 
+        submitButton.disabled = true;
 
-const customer = {
+        submitButton.innerText =
+            "Sending Quote...";
 
-full_name:
-document.getElementById("fullName")?.value || "",
 
-business_name:
-document.getElementById("businessName")?.value || "",
 
-email:
-document.getElementById("email")?.value || "",
+        try {
 
-phone:
-document.getElementById("phone")?.value || ""
 
-};
+            /*
+            GET DESIGN BASKET
+            */
 
+            let designs = [];
 
+            try {
 
-const quote = {
+                designs =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "manicQuoteBasket"
+                        )
+                    ) || [];
 
+            } catch {
 
-service:
-document.getElementById("service")?.value || "",
+                designs = [];
 
+            }
 
-required_date:
-document.getElementById("requiredDate")?.value || null,
 
 
-delivery:
-document.getElementById("printLocation")?.value || "",
+            /*
+            BUILD FORM DATA
+            */
 
 
-notes:
-document.getElementById("notes")?.value || "",
+            const formData = {
 
 
-contact_method:
-document.getElementById("contactMethod")?.value || "",
+                full_name:
+                    document.getElementById(
+                        "fullName"
+                    ).value,
 
 
-quantity:
-document.getElementById("quantity")?.value || "",
+                business_name:
+                    document.getElementById(
+                        "businessName"
+                    ).value,
 
 
-print_location:
-document.getElementById("printLocation")?.value || "",
+                email:
+                    document.getElementById(
+                        "email"
+                    ).value,
 
 
-garment_colour:
-document.getElementById("garmentColour")?.value || "",
+                phone:
+                    document.getElementById(
+                        "phone"
+                    ).value,
 
 
-sizes:
-document.getElementById("sizes")?.value || "",
+                contact_method:
+                    document.getElementById(
+                        "contactMethod"
+                    ).value,
 
 
-project_description:
-document.getElementById("projectDescription")?.value || "",
+                service:
+                    document.getElementById(
+                        "service"
+                    ).value,
 
 
-design_summary:
-document.getElementById("designSummary")?.value || "",
+                quantity:
+                    document.getElementById(
+                        "quantity"
+                    ).value,
 
 
-artwork:
-document.getElementById("artwork")?.files[0]?.name || "",
+                required_date:
+                    document.getElementById(
+                        "requiredDate"
+                    ).value || null,
 
 
-designs:
-JSON.parse(localStorage.getItem("quoteBasket")) || [],
+                delivery:
+                    "Australia Wide Shipping",
 
 
-status:
-"New"
 
+                print_location:
+                    document.getElementById(
+                        "printLocation"
+                    ).value,
 
-};
 
+                garment_colour:
+                    document.getElementById(
+                        "garmentColour"
+                    ).value,
 
 
-console.log("CUSTOMER:", customer);
-console.log("QUOTE:", quote);
+                sizes:
+                    document.getElementById(
+                        "sizes"
+                    ).value,
 
 
+                project_description:
+                    document.getElementById(
+                        "projectDescription"
+                    ).value,
 
-try{
 
+                notes:
+                    document.getElementById(
+                        "notes"
+                    ).value,
 
-// SAVE CUSTOMER FIRST
 
-const {data:customerData,error:customerError}=
+                design_summary:
+                    document.getElementById(
+                        "designSummary"
+                    ).value,
 
-await window.supabaseClient
-.from("customers")
-.insert([customer])
-.select()
-.single();
 
+                artwork:
+                    null,
 
 
-if(customerError){
+                designs: designs
 
-console.error(customerError);
-alert(customerError.message);
-return;
+            };
 
-}
 
 
+            console.log(
+                "Sending quote:",
+                formData
+            );
 
-console.log("CUSTOMER SAVED", customerData);
 
 
+            /*
+            SEND TO EDGE FUNCTION
+            */
 
-// LINK QUOTE TO CUSTOMER
 
-quote.customer_id = customerData.customer_id;
+            const response =
+                await fetch(
+                    `${SUPABASE_URL}/functions/v1/new-quote-notification`,
+                    {
 
+                        method:"POST",
 
-quote.quote_number =
-"MM-" + Date.now();
+                        headers:{
+                            "Content-Type":
+                                "application/json",
 
+                            "Authorization":
+                                `Bearer ${SUPABASE_KEY}`
 
+                        },
 
-const {data:quoteData,error:quoteError}=
 
-await window.supabaseClient
-.from("quotes")
-.insert([quote])
-.select();
+                        body:
+                            JSON.stringify(
+                                formData
+                            )
 
+                    }
+                );
 
 
-if(quoteError){
 
-console.error(quoteError);
-alert(quoteError.message);
-return;
+            const result =
+                await response.json();
 
-}
 
 
+            console.log(
+                "Server response:",
+                result
+            );
 
-console.log("QUOTE SAVED",quoteData);
 
 
+            if (!result.success) {
 
-alert(
-"Thank you! Your quote request has been submitted."
-);
+                throw new Error(
+                    result.error ||
+                    "Quote failed"
+                );
 
+            }
 
 
-localStorage.removeItem("quoteBasket");
 
-quoteForm.reset();
+            alert(
+                "Quote submitted successfully!\n\nYour quote number is:\n" +
+                result.quote_number
+            );
 
 
 
-}
+            /*
+            CLEAR FORM
+            */
 
-catch(err){
 
-console.error(err);
+            quoteForm.reset();
 
-alert(
-"Something went wrong. Please try again."
-);
 
+            localStorage.removeItem(
+                "manicQuoteBasket"
+            );
 
-}
 
 
+            if (
+                typeof updateQuoteSummary ===
+                "function"
+            ) {
 
-});
+                updateQuoteSummary();
+
+            }
+
+
+
+        }
+
+
+        catch(error) {
+
+
+            console.error(
+                "Quote Error:",
+                error
+            );
+
+
+            alert(
+                "Sorry, there was an error sending your quote.\n\nPlease try again."
+            );
+
+
+        }
+
+
+
+        finally {
+
+
+            submitButton.disabled =
+                false;
+
+
+            submitButton.innerText =
+                "Request My Quote";
+
+
+        }
+
+
+
+    });
 
 
 });
