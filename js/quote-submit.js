@@ -1,23 +1,19 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 QUOTE SUBMIT SYSTEM
-VERSION 1.0
+FINAL VERSION
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", function () {
 
-
     const quoteForm = document.getElementById("quoteForm");
-
 
     if (!quoteForm) {
         console.log("Quote form not found");
         return;
     }
 
-
-    console.log("Quote submit system loaded");
-
+    console.log("Manic Madhouse Quote Submit System Loaded");
 
 
     quoteForm.addEventListener("submit", async function (e) {
@@ -25,26 +21,21 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
 
-
         const submitButton =
-            quoteForm.querySelector(
-                'button[type="submit"]'
-            );
+            quoteForm.querySelector('button[type="submit"]');
 
 
-        submitButton.disabled = true;
-
-        submitButton.innerText =
-            "Sending Quote...";
-
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.innerText = "Sending Quote...";
+        }
 
 
         try {
 
-
-            /*
+            /*==================================================
             GET DESIGN BASKET
-            */
+            ==================================================*/
 
             let designs = [];
 
@@ -52,136 +43,254 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 designs =
                     JSON.parse(
-                        localStorage.getItem(
-                            "manicQuoteBasket"
-                        )
+                        localStorage.getItem("manicQuoteBasket")
                     ) || [];
 
-            } catch {
+            } catch (error) {
+
+                console.warn(
+                    "Could not read design basket:",
+                    error
+                );
 
                 designs = [];
+            }
+
+
+            /*==================================================
+            GET FORM VALUES
+            ==================================================*/
+
+            const fullName =
+                document.getElementById("fullName")?.value.trim() || "";
+
+            const businessName =
+                document.getElementById("businessName")?.value.trim() || "";
+
+            const email =
+                document.getElementById("email")?.value.trim() || "";
+
+            const phone =
+                document.getElementById("phone")?.value.trim() || "";
+
+            const contactMethod =
+                document.getElementById("contactMethod")?.value || "Email";
+
+            const service =
+                document.getElementById("service")?.value || "";
+
+            const quantity =
+                document.getElementById("quantity")?.value || "";
+
+            const requiredDate =
+                document.getElementById("requiredDate")?.value || null;
+
+            const printLocation =
+                document.getElementById("printLocation")?.value || "";
+
+            const garmentColour =
+                document.getElementById("garmentColour")?.value.trim() || "";
+
+            const sizes =
+                document.getElementById("sizes")?.value.trim() || "";
+
+            const projectDescription =
+                document.getElementById("projectDescription")?.value.trim() || "";
+
+            const notes =
+                document.getElementById("notes")?.value.trim() || "";
+
+
+            /*==================================================
+            BUILD DESIGN SUMMARY
+            ==================================================*/
+
+            let designSummary = "";
+
+            if (designs.length > 0) {
+
+                designSummary = designs.map(function (design, index) {
+
+                    return `
+Design ${index + 1}:
+Shirt Colour: ${design.shirtColour || design.colour || "N/A"}
+Shirt Size: ${design.shirtSize || "N/A"}
+Print Location: ${design.printLocation || "N/A"}
+Design Size: ${design.designSize || design.size || "N/A"}
+Rotation: ${design.rotation || "0"}°
+Quantity: ${design.quantity || "N/A"}
+Notes: ${design.notes || "N/A"}
+`;
+
+                }).join("\n");
+
+            } else {
+
+                designSummary =
+                    "No Design Builder designs were added.";
 
             }
 
 
+            /*==================================================
+            VALIDATE EMAIL
+            ==================================================*/
+
+            if (!email) {
+                throw new Error(
+                    "Please enter your email address."
+                );
+            }
+
+
+            /*==================================================
+            STEP 1
+            CALL EXISTING SUPABASE SQL FUNCTION
+            ==================================================*/
+
+            console.log(
+                "Submitting quote to Supabase..."
+            );
+
+
+            const { data: quoteData, error: quoteError } =
+                await window.supabaseClient.rpc(
+                    "submit_quote",
+                    {
+                        p_full_name: fullName,
+                        p_business_name: businessName,
+                        p_email: email,
+                        p_phone: phone,
+                        p_service: service,
+                        p_required_date: requiredDate,
+                        p_delivery: "Australia Wide Shipping",
+                        p_notes: notes,
+                        p_contact_method: contactMethod,
+                        p_quantity: quantity,
+                        p_print_location: printLocation,
+                        p_garment_colour: garmentColour,
+                        p_sizes: sizes,
+                        p_project_description: projectDescription,
+                        p_design_summary: designSummary,
+                        p_artwork: null,
+                        p_designs: designs
+                    }
+                );
+
+
+            if (quoteError) {
+
+                console.error(
+                    "Supabase quote error:",
+                    quoteError
+                );
+
+                throw new Error(
+                    quoteError.message ||
+                    "Unable to save quote."
+                );
+            }
+
+
+            console.log(
+                "Supabase quote response:",
+                quoteData
+            );
+
+
+            /*==================================================
+            GET REAL QUOTE NUMBER
+            ==================================================*/
+
+            let savedQuote = quoteData;
+
 
             /*
-            BUILD FORM DATA
+            Supabase can return the JSON object directly
+            or sometimes inside an array depending on the RPC.
             */
 
-
-            const formData = {
-
-
-                full_name:
-                    document.getElementById(
-                        "fullName"
-                    ).value,
+            if (Array.isArray(savedQuote)) {
+                savedQuote = savedQuote[0];
+            }
 
 
-                business_name:
-                    document.getElementById(
-                        "businessName"
-                    ).value,
+            if (
+                typeof savedQuote === "string"
+            ) {
+
+                try {
+                    savedQuote =
+                        JSON.parse(savedQuote);
+                } catch {
+                    // Leave as-is
+                }
+
+            }
 
 
-                email:
-                    document.getElementById(
-                        "email"
-                    ).value,
+            const quoteNumber =
+                savedQuote?.quote_number ||
+                savedQuote?.quoteNumber ||
+                null;
 
 
-                phone:
-                    document.getElementById(
-                        "phone"
-                    ).value,
+            if (!quoteNumber) {
+
+                console.warn(
+                    "Quote was saved but no quote number was returned.",
+                    savedQuote
+                );
+
+            }
 
 
-                contact_method:
-                    document.getElementById(
-                        "contactMethod"
-                    ).value,
+            /*==================================================
+            STEP 2
+            SEND EMAIL NOTIFICATION
+            ==================================================*/
 
+            const emailData = {
 
-                service:
-                    document.getElementById(
-                        "service"
-                    ).value,
+                quoteNumber: quoteNumber,
 
+                customerName: fullName,
 
-                quantity:
-                    document.getElementById(
-                        "quantity"
-                    ).value,
+                businessName: businessName,
 
+                email: email,
 
-                required_date:
-                    document.getElementById(
-                        "requiredDate"
-                    ).value || null,
+                phone: phone,
 
+                contactMethod: contactMethod,
 
-                delivery:
-                    "Australia Wide Shipping",
+                service: service,
 
+                quantity: quantity,
 
+                requiredDate: requiredDate,
 
-                print_location:
-                    document.getElementById(
-                        "printLocation"
-                    ).value,
+                printLocation: printLocation,
 
+                garmentColour: garmentColour,
 
-                garment_colour:
-                    document.getElementById(
-                        "garmentColour"
-                    ).value,
+                sizes: sizes,
 
+                projectDescription: projectDescription,
 
-                sizes:
-                    document.getElementById(
-                        "sizes"
-                    ).value,
+                notes: notes,
 
-
-                project_description:
-                    document.getElementById(
-                        "projectDescription"
-                    ).value,
-
-
-                notes:
-                    document.getElementById(
-                        "notes"
-                    ).value,
-
-
-                design_summary:
-                    document.getElementById(
-                        "designSummary"
-                    ).value,
-
-
-                artwork:
-                    null,
-
+                designSummary: designSummary,
 
                 designs: designs
 
             };
 
 
-
             console.log(
-                "Sending quote:",
-                formData
+                "Sending email data:",
+                emailData
             );
-
-
-
-            /*
-            SEND TO EDGE FUNCTION
-            */
 
 
             const response =
@@ -189,9 +298,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     `${SUPABASE_URL}/functions/v1/new-quote-notification`,
                     {
 
-                        method:"POST",
+                        method: "POST",
 
-                        headers:{
+                        headers: {
+
                             "Content-Type":
                                 "application/json",
 
@@ -200,51 +310,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         },
 
-
                         body:
                             JSON.stringify(
-                                formData
+                                emailData
                             )
 
                     }
                 );
 
 
-
             const result =
                 await response.json();
 
 
-
             console.log(
-                "Server response:",
+                "Email server response:",
                 result
             );
 
 
-
-            if (!result.success) {
+            if (!response.ok || !result.success) {
 
                 throw new Error(
                     result.error ||
-                    "Quote failed"
+                    "Email notification failed."
                 );
 
             }
 
 
+            /*==================================================
+            SUCCESS
+            ==================================================*/
+
+            const finalQuoteNumber =
+                result.quoteNumber ||
+                quoteNumber ||
+                "Pending";
+
 
             alert(
-                "Quote submitted successfully!\n\nYour quote number is:\n" +
-                result.quote_number
+                "Quote submitted successfully!\n\n" +
+                "Your quote number is:\n" +
+                finalQuoteNumber +
+                "\n\n" +
+                "A confirmation email has been sent to:\n" +
+                email
             );
 
 
-
-            /*
+            /*==================================================
             CLEAR FORM
-            */
-
+            ==================================================*/
 
             quoteForm.reset();
 
@@ -252,7 +369,6 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.removeItem(
                 "manicQuoteBasket"
             );
-
 
 
             if (
@@ -265,44 +381,34 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-
-        }
-
-
-        catch(error) {
-
+        } catch (error) {
 
             console.error(
-                "Quote Error:",
+                "Quote submission error:",
                 error
             );
 
 
             alert(
-                "Sorry, there was an error sending your quote.\n\nPlease try again."
+                "Sorry, there was an error sending your quote.\n\n" +
+                (error.message ||
+                    "Please try again.")
             );
 
 
-        }
+        } finally {
 
+            if (submitButton) {
 
+                submitButton.disabled = false;
 
-        finally {
+                submitButton.innerText =
+                    "Request My Quote";
 
-
-            submitButton.disabled =
-                false;
-
-
-            submitButton.innerText =
-                "Request My Quote";
-
+            }
 
         }
-
-
 
     });
-
 
 });
