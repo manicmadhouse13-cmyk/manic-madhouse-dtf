@@ -1,9 +1,9 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 DESIGN BUILDER
-VERSION 10.0
+VERSION 10.1
 
-FEATURES:
+FIXED:
 - Upload artwork
 - Live shirt preview
 - Resize
@@ -20,1177 +20,879 @@ FEATURES:
 - Local storage
 ==================================================*/
 
-
 document.addEventListener("DOMContentLoaded", function () {
 
-
-    console.log("Manic Madhouse Design Builder V10 Loaded");
-
+    console.log("Manic Madhouse Design Builder V10.1 Loaded");
 
     /*==================================================
     ELEMENTS
     ==================================================*/
 
-
     const shirt = document.getElementById("shirt");
-
     const designPreview = document.getElementById("designPreview");
-
     const uploadImage = document.getElementById("uploadImage");
 
-
     const sizeSlider = document.getElementById("sizeSlider");
-
     const sizeValue = document.getElementById("sizeValue");
 
-
     const rotateSlider = document.getElementById("rotateSlider");
-
     const rotateValue = document.getElementById("rotateValue");
 
-
     const shirtColour = document.getElementById("shirtColour");
-
     const shirtSize = document.getElementById("shirtSize");
-
     const printLocation = document.getElementById("printLocation");
 
-
     const quantity = document.getElementById("quantity");
-
     const extraNotes = document.getElementById("extraNotes");
 
-
     const addQuoteBtn = document.getElementById("addQuote");
-
     const resetBuilder = document.getElementById("resetBuilder");
 
-
     const quoteBasket = document.getElementById("quoteBasket");
-
-
 
     /*==================================================
     BUILDER DATA
     ==================================================*/
 
-
     let builderData = {
-
-
         image: "",
-
-
         size: 180,
-
-
         rotation: 0,
-
-
         x: 0,
-
-
         y: 0,
-
-
-        colour: "Black",
-
-
-        shirtSize: "M",
-
-
-        location: "Front",
-
-
-        quantity: 1,
-
-
+        colour: shirtColour ? shirtColour.value : "Black",
+        shirtSize: shirtSize ? shirtSize.value : "M",
+        location: printLocation ? printLocation.value : "Front",
+        quantity: quantity ? Number(quantity.value) || 1 : 1,
         notes: ""
-
     };
-
-
 
     let quoteItems = [];
 
-try {
+    try {
+        quoteItems =
+            JSON.parse(
+                localStorage.getItem("manicQuoteBasket")
+            ) || [];
+    } catch (error) {
+        console.log("Quote basket loading error", error);
+        quoteItems = [];
+    }
 
-    quoteItems =
-        JSON.parse(
-            localStorage.getItem("manicQuoteBasket")
-        ) || [];
+    /*==================================================
+    UPDATE PREVIEW
+    ==================================================*/
 
-}
-catch(error){
+    function updatePreview() {
 
-    console.log(
-        "Quote basket loading error",
-        error
-    );
+        if (!designPreview) return;
 
-    quoteItems = [];
+        /*
+        Force the important visual properties.
+        This prevents existing CSS from overriding
+        the builder sliders.
+        */
 
-}
+        designPreview.style.setProperty(
+            "width",
+            builderData.size + "px",
+            "important"
+        );
 
+        designPreview.style.setProperty(
+            "height",
+            "auto",
+            "important"
+        );
 
+        designPreview.style.setProperty(
+            "left",
+            "calc(50% + " + builderData.x + "px)",
+            "important"
+        );
+
+        designPreview.style.setProperty(
+            "top",
+            "calc(50% + " + builderData.y + "px)",
+            "important"
+        );
+
+        designPreview.style.setProperty(
+            "transform",
+            "translate(-50%, -50%) rotate(" +
+                builderData.rotation +
+                "deg)",
+            "important"
+        );
+
+        designPreview.style.setProperty(
+            "transform-origin",
+            "center center",
+            "important"
+        );
+
+        if (sizeValue) {
+            sizeValue.textContent =
+                builderData.size + "px";
+        }
+
+        if (rotateValue) {
+            rotateValue.textContent =
+                builderData.rotation + "°";
+        }
+    }
 
     /*==================================================
     IMAGE UPLOAD
     ==================================================*/
 
-
     if (uploadImage) {
-
 
         uploadImage.addEventListener(
             "change",
             function (event) {
 
-
-                const file = event.target.files[0];
-
+                const file =
+                    event.target.files &&
+                    event.target.files[0];
 
                 if (!file) return;
 
-
+                if (!file.type.startsWith("image/")) {
+                    alert("Please upload an image file.");
+                    uploadImage.value = "";
+                    return;
+                }
 
                 const reader = new FileReader();
 
-
-
                 reader.onload = function (e) {
 
+                    builderData.image =
+                        e.target.result;
 
-                    builderData.image = e.target.result;
-
+                    builderData.x = 0;
+                    builderData.y = 0;
+                    builderData.rotation = 0;
 
                     if (designPreview) {
-
 
                         designPreview.src =
                             builderData.image;
 
-
-                        designPreview.style.display =
-                            "block";
-
-
+                        designPreview.style.setProperty(
+                            "display",
+                            "block",
+                            "important"
+                        );
                     }
 
+                    if (rotateSlider) {
+                        rotateSlider.value = 0;
+                    }
+
+                    if (sizeSlider) {
+                        sizeSlider.value =
+                            builderData.size;
+                    }
 
                     updatePreview();
 
-
+                    console.log(
+                        "Artwork uploaded successfully"
+                    );
                 };
 
-
-
                 reader.readAsDataURL(file);
-
-
-
             }
         );
-
-
-    }
-
-
-
-    /*==================================================
-    UPDATE DESIGN PREVIEW
-    ==================================================*/
-
-
-    function updatePreview() {
-
-
-        if (!designPreview) return;
-
-
-
-        designPreview.style.width =
-            builderData.size + "px";
-
-
-
-        designPreview.style.left =
-            "calc(50% + " +
-            builderData.x +
-            "px)";
-
-
-
-        designPreview.style.top =
-            "calc(50% + " +
-            builderData.y +
-            "px)";
-
-
-
-        designPreview.style.transform =
-            "translate(-50%, -50%) rotate(" +
-            builderData.rotation +
-            "deg)";
-
-
     }
 
     /*==================================================
     RESIZE SLIDER
     ==================================================*/
 
-
     if (sizeSlider) {
 
-
-        sizeSlider.value = builderData.size;
-
-
+        sizeSlider.value =
+            builderData.size;
 
         sizeSlider.addEventListener(
             "input",
             function () {
 
-
                 builderData.size =
                     Number(this.value);
 
-
-
-                if (sizeValue) {
-
-
-                    sizeValue.textContent =
-                        builderData.size + "px";
-
-
-                }
-
-
-
                 updatePreview();
 
-
-
+                console.log(
+                    "Design size:",
+                    builderData.size
+                );
             }
         );
-
-
     }
-
-
 
     /*==================================================
     ROTATION SLIDER
     ==================================================*/
 
-
     if (rotateSlider) {
-
 
         rotateSlider.value =
             builderData.rotation;
-
-
 
         rotateSlider.addEventListener(
             "input",
             function () {
 
-
                 builderData.rotation =
                     Number(this.value);
 
-
-
-                if (rotateValue) {
-
-
-                    rotateValue.textContent =
-                        builderData.rotation + "°";
-
-
-                }
-
-
-
                 updatePreview();
 
-
-
+                console.log(
+                    "Design rotation:",
+                    builderData.rotation
+                );
             }
         );
-
-
     }
-
-
 
     /*==================================================
     SHIRT COLOUR
     ==================================================*/
 
-
     if (shirtColour) {
-
 
         shirtColour.addEventListener(
             "change",
             function () {
 
-
                 builderData.colour =
                     this.value;
 
-
-
                 changeShirtColour();
-
-
-
             }
         );
-
-
     }
-
-
 
     function changeShirtColour() {
 
-
         if (!shirt) return;
 
-
+        builderData.colour =
+            shirtColour
+                ? shirtColour.value
+                : builderData.colour;
 
         shirt.dataset.colour =
             builderData.colour;
 
-
-
         /*
-        Supports either:
-        - CSS classes
-        - image swapping
+        Supports shirt colour image swapping
+        if data-black, data-white etc. exist.
         */
 
+        if (shirt.tagName === "IMG") {
 
-        if (
-            shirt.tagName === "IMG"
-        ) {
+            const colourName =
+                String(builderData.colour)
+                    .toLowerCase()
+                    .replace(/\s+/g, "");
 
-
-            let colourName =
-                builderData.colour
-                .toLowerCase();
-
-
-
-            let newSource =
+            const newSource =
                 shirt.getAttribute(
                     "data-" + colourName
                 );
 
-
-
             if (newSource) {
-
-
-                shirt.src =
-                    newSource;
-
-
+                shirt.src = newSource;
             }
-
-
         }
-
-
     }
 
-
-
-
     /*==================================================
-    DROPDOWNS
+    SHIRT SIZE
     ==================================================*/
 
-
     if (shirtSize) {
-
 
         shirtSize.addEventListener(
             "change",
             function () {
 
-
                 builderData.shirtSize =
                     this.value;
-
-
             }
         );
-
-
     }
 
-
+    /*==================================================
+    PRINT LOCATION
+    ==================================================*/
 
     if (printLocation) {
-
 
         printLocation.addEventListener(
             "change",
             function () {
 
-
                 builderData.location =
                     this.value;
-
-
             }
         );
-
-
     }
 
-
+    /*==================================================
+    QUANTITY
+    ==================================================*/
 
     if (quantity) {
-
 
         quantity.addEventListener(
             "change",
             function () {
 
-
                 builderData.quantity =
-                    Number(this.value);
-
-
-
+                    Number(this.value) || 1;
             }
         );
-
-
     }
 
-
-
-
     /*==================================================
-    DRAGGING DESIGN
+    DRAGGING
     ==================================================*/
 
-
     let dragging = false;
-
-
     let startX = 0;
-
-
     let startY = 0;
 
-
-
     if (designPreview) {
-
-
 
         designPreview.addEventListener(
             "pointerdown",
             function (event) {
 
+                if (!builderData.image) return;
 
                 dragging = true;
-
-
 
                 designPreview.setPointerCapture(
                     event.pointerId
                 );
 
-
-
                 startX =
                     event.clientX -
                     builderData.x;
-
-
 
                 startY =
                     event.clientY -
                     builderData.y;
 
-
-
+                event.preventDefault();
             }
         );
-
-
 
         designPreview.addEventListener(
             "pointermove",
             function (event) {
 
-
                 if (!dragging) return;
-
-
 
                 builderData.x =
                     event.clientX -
                     startX;
 
-
-
                 builderData.y =
                     event.clientY -
                     startY;
 
-
-
                 updatePreview();
 
-
-
+                event.preventDefault();
             }
         );
-
-
 
         designPreview.addEventListener(
             "pointerup",
-            function () {
-
+            function (event) {
 
                 dragging = false;
 
-
+                try {
+                    designPreview.releasePointerCapture(
+                        event.pointerId
+                    );
+                } catch (error) {
+                    // Pointer capture may already be released.
+                }
             }
         );
 
+        designPreview.addEventListener(
+            "pointercancel",
+            function () {
+                dragging = false;
+            }
+        );
 
+        designPreview.addEventListener(
+            "touchmove",
+            function (event) {
+
+                if (dragging) {
+                    event.preventDefault();
+                }
+            },
+            {
+                passive: false
+            }
+        );
     }
+
     /*==================================================
     RESET BUILDER
     ==================================================*/
 
-
     if (resetBuilder) {
-
 
         resetBuilder.addEventListener(
             "click",
             function () {
 
-
                 builderData = {
-
-
                     image: "",
-
-
                     size: 180,
-
-
                     rotation: 0,
-
-
                     x: 0,
-
-
                     y: 0,
-
-
-                    colour: "Black",
-
-
-                    shirtSize: "M",
-
-
-                    location: "Front",
-
-
-                    quantity: 1,
-
-
+                    colour: shirtColour
+                        ? shirtColour.value
+                        : "Black",
+                    shirtSize: shirtSize
+                        ? shirtSize.value
+                        : "M",
+                    location: printLocation
+                        ? printLocation.value
+                        : "Front",
+                    quantity: quantity
+                        ? Number(quantity.value) || 1
+                        : 1,
                     notes: ""
-
-
                 };
-
-
 
                 if (designPreview) {
 
-
                     designPreview.src = "";
 
-
-                    designPreview.style.display =
-                        "none";
-
-
+                    designPreview.style.setProperty(
+                        "display",
+                        "none",
+                        "important"
+                    );
                 }
-
-
 
                 if (uploadImage) {
-
-
                     uploadImage.value = "";
-
-
                 }
-
-
 
                 if (sizeSlider) {
-
-
                     sizeSlider.value =
                         builderData.size;
-
-
                 }
-
-
-
-                if (sizeValue) {
-
-
-                    sizeValue.textContent =
-                        builderData.size + "px";
-
-
-                }
-
-
 
                 if (rotateSlider) {
-
-
                     rotateSlider.value =
                         builderData.rotation;
-
-
                 }
 
-
+                if (sizeValue) {
+                    sizeValue.textContent =
+                        builderData.size + "px";
+                }
 
                 if (rotateValue) {
-
-
                     rotateValue.textContent =
                         builderData.rotation + "°";
-
-
                 }
-
-
-
-                if (quantity) {
-
-
-                    quantity.value =
-                        builderData.quantity;
-
-
-                }
-
-
 
                 updatePreview();
 
-
-
+                console.log(
+                    "Design builder reset"
+                );
             }
         );
-
-
     }
 
-
-
-
     /*==================================================
-    ADD TO QUOTE BASKET
+    ADD TO QUOTE
     ==================================================*/
-
 
     if (addQuoteBtn) {
 
-    console.log("ADD QUOTE BUTTON CONNECTED");
+        console.log(
+            "ADD QUOTE BUTTON CONNECTED"
+        );
 
+        addQuoteBtn.addEventListener(
+            "click",
+            function (event) {
 
-    addQuoteBtn.addEventListener(
-        "click",
-        function () {
+                event.preventDefault();
 
-            console.log("ADD QUOTE CLICKED");
-
-            console.log("ADD QUOTE CLICKED");
-
-
+                console.log(
+                    "ADD QUOTE CLICKED"
+                );
 
                 if (!builderData.image) {
-
 
                     alert(
                         "Please upload your artwork before adding to quote."
                     );
 
-
                     return;
-
-
                 }
 
-
-
                 builderData.notes =
-                    extraNotes ?
-                    extraNotes.value :
-                    "";
-
-
+                    extraNotes
+                        ? extraNotes.value
+                        : "";
 
                 const quoteItem = {
 
-
-                    id:
-                        Date.now(),
-
-
+                    id: Date.now(),
 
                     image:
                         builderData.image,
 
-
-
                     size:
                         builderData.size,
 
-
+                    designSize:
+                        builderData.size,
 
                     rotation:
                         builderData.rotation,
 
-
-
                     colour:
                         builderData.colour,
 
-
+                    shirtColour:
+                        builderData.colour,
 
                     shirtSize:
                         builderData.shirtSize,
 
-
-
                     location:
                         builderData.location,
 
-
+                    printLocation:
+                        builderData.location,
 
                     quantity:
                         builderData.quantity,
 
-
-
                     notes:
-                        builderData.notes
+                        builderData.notes,
 
+                    x:
+                        builderData.x,
 
+                    y:
+                        builderData.y
                 };
-
-
 
                 quoteItems.push(
                     quoteItem
                 );
 
-
-
                 saveQuoteBasket();
 
-
-
                 updateQuoteBasketDisplay();
-
-
 
                 alert(
                     "Design added to quote."
                 );
 
-
+                console.log(
+                    "Design saved:",
+                    quoteItem
+                );
             }
         );
-
-
     }
-
-
-
 
     /*==================================================
     SAVE QUOTE BASKET
     ==================================================*/
 
-
     function saveQuoteBasket() {
 
+        try {
 
-    localStorage.setItem(
-        "manicQuoteBasket",
-        JSON.stringify(quoteItems)
-    );
+            localStorage.setItem(
+                "manicQuoteBasket",
+                JSON.stringify(quoteItems)
+            );
 
+            console.log(
+                "Saved quote basket:",
+                quoteItems
+            );
 
-    console.log(
-        "Saved quote basket:",
-        quoteItems
-    );
+        } catch (error) {
 
+            console.error(
+                "Could not save quote basket:",
+                error
+            );
 
+            alert(
+                "There was a problem saving your design. Please try again."
+            );
+        }
     }
-
-
-
 
     /*==================================================
     DISPLAY QUOTE BASKET
     ==================================================*/
 
-
     function updateQuoteBasketDisplay() {
-
 
         if (!quoteBasket) return;
 
-
-
         quoteBasket.innerHTML = "";
 
-
-
         if (quoteItems.length === 0) {
-
 
             quoteBasket.innerHTML =
                 "<p>No designs added yet.</p>";
 
-
-
             return;
-
-
         }
 
-
-
         quoteItems.forEach(
-            function(item){
-
-
+            function (item) {
 
                 const card =
-                    document.createElement(
-                        "div"
-                    );
-
-
+                    document.createElement("div");
 
                 card.className =
                     "quote-item";
 
-
-
                 card.innerHTML = `
 
-
-                    <img 
-                    src="${item.image}"
-                    class="quote-image"
+                    <img
+                        src="${item.image}"
+                        class="quote-image"
+                        alt="Custom DTF Design"
                     >
-
 
                     <div class="quote-details">
 
+                        <strong>
+                            Custom DTF Design
+                        </strong>
 
-                    <strong>
-                    Custom DTF Design
-                    </strong>
+                        <span>
+                            Colour:
+                            ${item.colour || item.shirtColour || "N/A"}
+                        </span>
 
+                        <span>
+                            Shirt Size:
+                            ${item.shirtSize || "N/A"}
+                        </span>
 
-                    <span>
-                    Colour: ${item.colour}
-                    </span>
+                        <span>
+                            Print Location:
+                            ${item.location || item.printLocation || "N/A"}
+                        </span>
 
+                        <span>
+                            Design Size:
+                            ${item.size || item.designSize || "N/A"}px
+                        </span>
 
-                    <span>
-                    Size: ${item.shirtSize}
-                    </span>
+                        <span>
+                            Rotation:
+                            ${item.rotation ?? 0}°
+                        </span>
 
+                        <span>
+                            Quantity:
+                            ${item.quantity || 1}
+                        </span>
 
-                    <span>
-                    Location: ${item.location}
-                    </span>
-
-
-                    <span>
-                    Quantity: ${item.quantity}
-                    </span>
-
-
-                    <span>
-                    Notes: ${item.notes}
-                    </span>
-
+                        <span>
+                            Notes:
+                            ${item.notes || "None"}
+                        </span>
 
                     </div>
 
-
-
                     <button
-                    class="remove-quote"
-                    data-id="${item.id}">
-                    Remove
+                        type="button"
+                        class="remove-quote"
+                        data-id="${item.id}">
+                        Remove
                     </button>
-
-
                 `;
-
-
 
                 quoteBasket.appendChild(
                     card
                 );
-
-
             }
         );
 
-
-
         attachRemoveButtons();
-
-
     }
-
-
-
 
     /*==================================================
     REMOVE QUOTE ITEMS
     ==================================================*/
 
-
-    function attachRemoveButtons(){
-
+    function attachRemoveButtons() {
 
         const buttons =
             document.querySelectorAll(
                 ".remove-quote"
             );
 
-
-
         buttons.forEach(
-            function(button){
-
-
+            function (button) {
 
                 button.addEventListener(
                     "click",
-                    function(){
-
+                    function () {
 
                         const id =
                             Number(
                                 this.dataset.id
                             );
 
-
-
                         quoteItems =
                             quoteItems.filter(
-                                function(item){
-
-
+                                function (item) {
                                     return item.id !== id;
-
-
                                 }
                             );
 
-
-
                         saveQuoteBasket();
 
-
                         updateQuoteBasketDisplay();
-
-
                     }
                 );
-
-
-
             }
         );
-
-
     }
+
     /*==================================================
-    LOAD EXISTING QUOTE BASKET
+    INITIAL PREVIEW STYLING
     ==================================================*/
 
+    if (designPreview) {
 
-    updateQuoteBasketDisplay();
+        designPreview.style.setProperty(
+            "position",
+            "absolute",
+            "important"
+        );
 
+        designPreview.style.setProperty(
+            "cursor",
+            "move",
+            "important"
+        );
 
+        designPreview.style.setProperty(
+            "user-select",
+            "none",
+            "important"
+        );
+
+        designPreview.style.setProperty(
+            "touch-action",
+            "none",
+            "important"
+        );
+
+        designPreview.style.setProperty(
+            "max-width",
+            "none",
+            "important"
+        );
+
+        designPreview.style.setProperty(
+            "height",
+            "auto",
+            "important"
+        );
+
+        designPreview.style.setProperty(
+            "display",
+            "none",
+            "important"
+        );
+    }
 
     /*==================================================
     INITIAL VALUES
     ==================================================*/
 
-
-    if (sizeValue) {
-
-
-        sizeValue.textContent =
-            builderData.size + "px";
-
-
+    if (sizeSlider) {
+        sizeSlider.value =
+            builderData.size;
     }
 
-
-
-    if (rotateValue) {
-
-
-        rotateValue.textContent =
-            builderData.rotation + "°";
-
-
+    if (rotateSlider) {
+        rotateSlider.value =
+            builderData.rotation;
     }
 
-
-
-    if (designPreview) {
-
-
-        designPreview.style.position =
-            "absolute";
-
-
-        designPreview.style.cursor =
-            "move";
-
-
-        designPreview.style.userSelect =
-            "none";
-
-
-        designPreview.style.display =
-            "none";
-
-
-    }
-
-
-
+    updatePreview();
 
     /*==================================================
-    MOBILE TOUCH SUPPORT
+    LOAD EXISTING QUOTE BASKET
     ==================================================*/
 
-
-    if (designPreview) {
-
-
-        designPreview.addEventListener(
-            "touchmove",
-            function(event){
-
-
-                if (!dragging) return;
-
-
-
-                event.preventDefault();
-
-
-
-            },
-            {
-                passive:false
-            }
-        );
-
-
-    }
-
-
-
-
+    updateQuoteBasketDisplay();
 
     /*==================================================
-    EXPOSE FUNCTIONS
-    FOR DEBUGGING / OTHER FILES
+    EXPOSE BUILDER
     ==================================================*/
-
 
     window.ManicMadhouseBuilder = {
 
-
-        getQuoteBasket:
-        function(){
-
-
+        getQuoteBasket: function () {
             return quoteItems;
-
-
         },
 
-
-        clearQuoteBasket:
-        function(){
-
+        clearQuoteBasket: function () {
 
             quoteItems = [];
 
-
             saveQuoteBasket();
 
-
             updateQuoteBasketDisplay();
-
-
         },
 
-
-        refreshQuoteBasket:
-        function(){
-
-
+        refreshQuoteBasket: function () {
             updateQuoteBasketDisplay();
+        },
 
-
+        getBuilderData: function () {
+            return {
+                ...builderData
+            };
         }
-
-
     };
 
-
-
     console.log(
-        "Manic Madhouse Design Builder V10 Ready"
+        "Manic Madhouse Design Builder V10.1 Ready"
     );
-
 
 });
