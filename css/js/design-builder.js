@@ -1,29 +1,41 @@
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 DESIGN BUILDER
-VERSION 7.0
-CHUNK 1 - CORE ENGINE
+VERSION 8.0
+CLEAN CORE ENGINE
 ==================================================*/
 
-function initialiseDesignBuilder() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    /*==============================
+    /*==================================================
     ELEMENTS
-    ==============================*/
+    ==================================================*/
 
     const uploadImage = document.getElementById("uploadImage");
     const designPreview = document.getElementById("designPreview");
-    const shirtImage = document.getElementById("shirtImage");
+
+    // Supports either shirtImage or shirt
+    const shirtImage =
+        document.getElementById("shirtImage") ||
+        document.getElementById("shirt");
+
     const shirtColour = document.getElementById("shirtColour");
+
     const sizeSlider = document.getElementById("sizeSlider");
     const rotateSlider = document.getElementById("rotateSlider");
 
-    // Exit if this page doesn't contain the builder
-    if (!designPreview) return;
+    const sizeValue = document.getElementById("sizeValue");
+    const rotateValue = document.getElementById("rotateValue");
 
-    /*==============================
+    // Exit if the Design Builder isn't on this page
+    if (!designPreview) {
+        return;
+    }
+
+
+    /*==================================================
     DESIGN STATE
-    ==============================*/
+    ==================================================*/
 
     const design = {
 
@@ -32,63 +44,103 @@ function initialiseDesignBuilder() {
         x: 50,
         y: 42,
 
-        size: 80,
+        size: sizeSlider
+            ? Number(sizeSlider.value)
+            : 180,
 
-        rotation: 0,
-
-        shirt: "white"
+        rotation: rotateSlider
+            ? Number(rotateSlider.value)
+            : 0
 
     };
 
-    /*==============================
+
+    /*==================================================
+    UPDATE VALUE LABELS
+    ==================================================*/
+
+    function updateValueLabels() {
+
+        if (sizeValue) {
+            sizeValue.textContent = design.size;
+        }
+
+        if (rotateValue) {
+            rotateValue.textContent = design.rotation + "°";
+        }
+
+    }
+
+
+    /*==================================================
     APPLY DESIGN
-    ==============================*/
+    ==================================================*/
 
     function applyDesign() {
 
-        designPreview.style.display = design.image
-            ? "block"
-            : "none";
+        if (!design.image) {
 
-        if (!design.image) return;
+            designPreview.style.display = "none";
+
+            return;
+        }
+
+
+        designPreview.style.display = "block";
 
         designPreview.src = design.image;
 
         designPreview.style.position = "absolute";
 
         designPreview.style.left = design.x + "%";
+
         designPreview.style.top = design.y + "%";
 
         designPreview.style.width = design.size + "px";
 
+        designPreview.style.height = "auto";
+
         designPreview.style.transform =
-            `translate(-50%, -50%) rotate(${design.rotation}deg)`;
+            "translate(-50%, -50%) rotate(" +
+            design.rotation +
+            "deg)";
+
+        designPreview.style.cursor = dragging
+            ? "grabbing"
+            : "move";
 
     }
 
-    /*==============================
+
+    /*==================================================
     IMAGE UPLOAD
-    ==============================*/
+    ==================================================*/
 
     if (uploadImage) {
 
-        uploadImage.addEventListener("change", event => {
+        uploadImage.addEventListener("change", function (event) {
 
             const file = event.target.files[0];
 
-            if (!file) return;
+            if (!file) {
+                return;
+            }
+
 
             if (!file.type.startsWith("image/")) {
 
                 alert("Please upload an image.");
 
-                return;
+                uploadImage.value = "";
 
+                return;
             }
+
 
             const reader = new FileReader();
 
-            reader.onload = e => {
+
+            reader.onload = function (e) {
 
                 design.image = e.target.result;
 
@@ -96,55 +148,74 @@ function initialiseDesignBuilder() {
 
             };
 
+
             reader.readAsDataURL(file);
 
         });
 
     }
 
-    /*==============================
+
+    /*==================================================
     SHIRT COLOUR
-    ==============================*/
+    ==================================================*/
 
     if (shirtColour && shirtImage) {
 
-    shirtColour.addEventListener("change", function () {
+        shirtColour.addEventListener("change", function () {
 
-    const shirts = {
+            const shirts = {
 
-        black: "shirt-black.png",
-        white: "shirt-white.png",
-        grey: "shirt-grey.png",
-        navy: "shirt-navy.png",
-        red: "shirt-red.png"
+                black: "shirt-black.png",
+                white: "shirt-white.png",
+                grey: "shirt-grey.png",
+                navy: "shirt-navy.png",
+                red: "shirt-red.png"
 
-    };
+            };
 
-    shirt.src = shirts[this.value];
 
-});
+            if (shirts[this.value]) {
 
-    /*==============================
-    SLIDERS
-    ==============================*/
+                shirtImage.src = shirts[this.value];
+
+            }
+
+        });
+
+    }
+
+
+    /*==================================================
+    SIZE SLIDER
+    ==================================================*/
 
     if (sizeSlider) {
 
-        sizeSlider.addEventListener("input", () => {
+        sizeSlider.addEventListener("input", function () {
 
-            design.size = Number(sizeSlider.value);
+            design.size = Number(this.value);
+
+            updateValueLabels();
 
             applyDesign();
 
         });
 
     }
+
+
+    /*==================================================
+    ROTATION SLIDER
+    ==================================================*/
 
     if (rotateSlider) {
 
-        rotateSlider.addEventListener("input", () => {
+        rotateSlider.addEventListener("input", function () {
 
-            design.rotation = Number(rotateSlider.value);
+            design.rotation = Number(this.value);
+
+            updateValueLabels();
 
             applyDesign();
 
@@ -152,40 +223,47 @@ function initialiseDesignBuilder() {
 
     }
 
-    /*==============================
-    INITIAL DRAW
-    ==============================*/
 
-    applyDesign();
-
-}
-    /*==============================
-    DRAG & TOUCH SUPPORT
-    ==============================*/
+    /*==================================================
+    DRAG + TOUCH
+    ==================================================*/
 
     let dragging = false;
 
+
     function getPointerPosition(event) {
 
-        if (event.touches && event.touches.length) {
+        if (
+            event.touches &&
+            event.touches.length > 0
+        ) {
 
             return {
+
                 x: event.touches[0].clientX,
                 y: event.touches[0].clientY
+
             };
 
         }
 
+
         return {
+
             x: event.clientX,
             y: event.clientY
+
         };
 
     }
 
+
     function startDrag(event) {
 
-        if (!design.image) return;
+        if (!design.image) {
+            return;
+        }
+
 
         dragging = true;
 
@@ -195,32 +273,60 @@ function initialiseDesignBuilder() {
 
     }
 
-    function stopDrag() {
-
-        dragging = false;
-
-        designPreview.style.cursor = "move";
-
-    }
 
     function drag(event) {
 
-        if (!dragging) return;
+        if (!dragging) {
+            return;
+        }
 
-        const previewArea = designPreview.parentElement;
 
-        const rect = previewArea.getBoundingClientRect();
+        const container =
+            designPreview.parentElement;
 
-        const pointer = getPointerPosition(event);
+        if (!container) {
+            return;
+        }
+
+
+        const rect =
+            container.getBoundingClientRect();
+
+        const pointer =
+            getPointerPosition(event);
+
+
+        if (
+            rect.width <= 0 ||
+            rect.height <= 0
+        ) {
+            return;
+        }
+
 
         design.x =
             ((pointer.x - rect.left) / rect.width) * 100;
 
+
         design.y =
             ((pointer.y - rect.top) / rect.height) * 100;
 
-        design.x = Math.max(5, Math.min(95, design.x));
-        design.y = Math.max(5, Math.min(95, design.y));
+
+        // Keep artwork inside the shirt preview
+
+        design.x =
+            Math.max(
+                5,
+                Math.min(95, design.x)
+            );
+
+
+        design.y =
+            Math.max(
+                5,
+                Math.min(95, design.y)
+            );
+
 
         applyDesign();
 
@@ -228,158 +334,26 @@ function initialiseDesignBuilder() {
 
     }
 
-    designPreview.addEventListener("mousedown", startDrag);
-    document.addEventListener("mousemove", drag);
-    document.addEventListener("mouseup", stopDrag);
 
-    designPreview.addEventListener(
-        "touchstart",
-        startDrag,
-        { passive: false }
-    );
+    function stopDrag() {
 
-    document.addEventListener(
-        "touchmove",
-        drag,
-        { passive: false }
-    );
+        if (!dragging) {
+            return;
+        }
 
-    document.addEventListener(
-        "touchend",
-        stopDrag
-    );
-/*==================================================
-MANIC MADHOUSE DESIGN BUILDER
-CHUNK 3
-RESIZE + ROTATE CONTROLS
-==================================================*/
-
-const designImage = document.getElementById("designPreview");
-const sizeControl = document.getElementById("sizeSlider");
-const rotateControl = document.getElementById("rotateSlider");
-
-let designSize = 80;
-let designAngle = 0;
-
-
-/* UPDATE DESIGN */
-
-function updateDesign(){
-
-    if(!designImage) return;
-
-    designImage.style.width = designSize + "px";
-
-    designImage.style.transform =
-        `translate(-50%, -50%) rotate(${designAngle}deg)`;
-
-}
-
-
-/* SIZE SLIDER */
-
-if(sizeControl){
-
-    sizeControl.addEventListener("input", function(){
-
-        designSize = this.value;
-
-        updateDesign();
-
-    });
-
-}
-
-
-/* ROTATION SLIDER */
-
-if(rotateControl){
-
-    rotateControl.addEventListener("input", function(){
-
-        designAngle = this.value;
-
-        updateDesign();
-
-    });
-
-}
-/*==================================================
-MANIC MADHOUSE DESIGN BUILDER
-CHUNK 4
-DRAG & DROP POSITIONING
-==================================================*/
-
-if(designImage){
-
-    let dragging = false;
-    let startX = 0;
-    let startY = 0;
-
-
-    function startDrag(e){
-
-        if(designImage.style.display === "none") return;
-
-        dragging = true;
-
-        const rect = designImage.getBoundingClientRect();
-
-        const x = e.touches ? e.touches[0].clientX : e.clientX;
-        const y = e.touches ? e.touches[0].clientY : e.clientY;
-
-
-        startX = x - rect.left;
-        startY = y - rect.top;
-
-
-        designImage.style.cursor = "grabbing";
-
-    }
-
-
-
-    function moveDrag(e){
-
-        if(!dragging) return;
-
-        e.preventDefault();
-
-
-        const container = designImage.parentElement;
-
-        const containerRect = container.getBoundingClientRect();
-
-
-        const x = e.touches ? e.touches[0].clientX : e.clientX;
-        const y = e.touches ? e.touches[0].clientY : e.clientY;
-
-
-        const left = x - containerRect.left - startX;
-        const top = y - containerRect.top - startY;
-
-
-        designImage.style.left = left + "px";
-        designImage.style.top = top + "px";
-
-        designImage.style.transform =
-            `translate(0,0) rotate(${designAngle}deg)`;
-
-    }
-
-
-
-    function stopDrag(){
 
         dragging = false;
 
-        designImage.style.cursor = "move";
+        designPreview.style.cursor = "move";
 
     }
 
 
+    /*==================================================
+    MOUSE DRAG
+    ==================================================*/
 
-    designImage.addEventListener(
+    designPreview.addEventListener(
         "mousedown",
         startDrag
     );
@@ -387,7 +361,7 @@ if(designImage){
 
     document.addEventListener(
         "mousemove",
-        moveDrag
+        drag
     );
 
 
@@ -397,18 +371,25 @@ if(designImage){
     );
 
 
+    /*==================================================
+    TOUCH DRAG
+    ==================================================*/
 
-    designImage.addEventListener(
+    designPreview.addEventListener(
         "touchstart",
         startDrag,
-        {passive:false}
+        {
+            passive: false
+        }
     );
 
 
     document.addEventListener(
         "touchmove",
-        moveDrag,
-        {passive:false}
+        drag,
+        {
+            passive: false
+        }
     );
 
 
@@ -418,4 +399,33 @@ if(designImage){
     );
 
 
-}
+    /*==================================================
+    INITIAL VALUES
+    ==================================================*/
+
+    if (sizeSlider) {
+
+        design.size =
+            Number(sizeSlider.value);
+
+    }
+
+
+    if (rotateSlider) {
+
+        design.rotation =
+            Number(rotateSlider.value);
+
+    }
+
+
+    updateValueLabels();
+
+    applyDesign();
+
+
+    console.log(
+        "Manic Madhouse Design Builder 8.0 loaded successfully"
+    );
+
+});
