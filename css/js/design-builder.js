@@ -1,3 +1,4 @@
+alert("DESIGN BUILDER JS IS LOADING");
 /*==================================================
 MANIC MADHOUSE DTF DESIGNS
 DESIGN BUILDER
