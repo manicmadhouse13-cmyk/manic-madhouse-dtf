@@ -894,5 +894,130 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(
         "Manic Madhouse Design Builder V10.1 Ready"
     );
+/*==================================================
+ADD TO QUOTE
+==================================================*/
 
+const addQuote = document.getElementById("addQuote");
+
+const shirtSize = document.getElementById("shirtSize");
+const printLocation = document.getElementById("printLocation");
+const quantity = document.getElementById("quantity");
+const designNotes = document.getElementById("designNotes");
+
+
+if (addQuote) {
+
+    addQuote.addEventListener("click", function () {
+
+
+        if (!design.image) {
+
+            alert("Please upload a design first.");
+
+            return;
+
+        }
+
+
+        let quoteItems = [];
+
+        try {
+
+            quoteItems =
+            JSON.parse(
+                localStorage.getItem("manicQuoteBasket")
+            ) || [];
+
+        } catch(error) {
+
+            quoteItems = [];
+
+        }
+
+
+
+        const quoteItem = {
+
+
+            id: Date.now(),
+
+
+            image: design.image,
+
+
+            colour:
+                shirtColour
+                ? shirtColour.value
+                : "black",
+
+
+            shirtSize:
+                shirtSize
+                ? shirtSize.value
+                : "",
+
+
+            location:
+                printLocation
+                ? printLocation.value
+                : "",
+
+
+            quantity:
+                quantity
+                ? quantity.value
+                : 1,
+
+
+            designSize:
+                design.size,
+
+
+            rotation:
+                design.rotation,
+
+
+            notes:
+                designNotes
+                ? designNotes.value
+                : ""
+
+
+        };
+
+
+
+        quoteItems.push(quoteItem);
+
+
+
+        localStorage.setItem(
+            "manicQuoteBasket",
+            JSON.stringify(quoteItems)
+        );
+
+
+
+        alert("Design added to quote!");
+
+
+
+        const basket =
+            document.getElementById("quoteBasket");
+
+
+        if (basket) {
+
+            basket.innerHTML =
+            "<p>" +
+            quoteItems.length +
+            " design(s) added to quote.</p>";
+
+        }
+
+
+    });
+
+}
 });
