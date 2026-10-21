@@ -474,7 +474,76 @@ Contact
 ⬆
 </button>
 
+<script>
+(function () {
+    const products = {
+        design1: {
+            image: "design1.png",
+            name: "Chaos But Make It Cute",
+            tag: "Funny DTF Transfer",
+            description: "Add some personality to your next shirt with our Chaos But Make It Cute DTF transfer. This funny and cheeky design is perfect for custom T-shirts, hoodies, jumpers, tote bags and other suitable garments."
+        },
+        design2: {
+            image: "design2.png",
+            name: "Hot Mess Express",
+            tag: "Funny DTF Transfer",
+            description: "Bring some humour to your next custom garment with our Hot Mess Express DTF transfer. Perfect for adding personality to T-shirts, hoodies, jumpers and other suitable garments."
+        },
+        design5: {
+            image: "design5.png",
+            name: "JDM Legends",
+            tag: "Automotive DTF Transfer",
+            description: "Show your love for JDM car culture with our JDM Legends DTF transfer. A great choice for custom T-shirts, hoodies, jumpers and other suitable garments."
+        },
+        design6: {
+            image: "design6.png",
+            name: "Built Different",
+            tag: "Statement DTF Transfer",
+            description: "Make a statement with our Built Different DTF transfer. Add this design to suitable custom T-shirts, hoodies, jumpers and other garments."
+        },
+        design7: {
+            image: "design7.png",
+            name: "JDM Legend",
+            tag: "Automotive DTF Transfer",
+            description: "Celebrate your passion for JDM automotive culture with our JDM Legend DTF transfer. Perfect for suitable custom T-shirts, hoodies, jumpers and other garments."
+        },
+        design10: {
+            image: "design10.png",
+            name: "Country & Western",
+            tag: "Country DTF Transfer",
+            description: "Bring country-inspired style to your next custom garment with our Country & Western DTF transfer. Perfect for suitable T-shirts, hoodies, jumpers and other garments."
+        }
+    };
 
+    const selectedDesign =
+        new URLSearchParams(window.location.search).get("design");
+
+    const product = products[selectedDesign] || products.design1;
+
+    const image = document.getElementById("productImage");
+    const heading = document.querySelector(".product-right h1");
+    const tag = document.querySelector(".product-right .tag");
+    const description =
+        document.querySelector(".product-right .product-description");
+
+    if (image) {
+        image.src = product.image;
+        image.alt = product.name + " DTF transfer";
+    }
+
+    if (heading) {
+        heading.textContent = product.name + " DTF Transfer";
+    }
+
+    if (tag) {
+        tag.textContent = product.tag;
+    }
+
+    if (description) {
+        description.textContent = product.description;
+    }
+})();
+</script>
 <script src="js/script.js"></script>
 
 </body>
